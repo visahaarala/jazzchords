@@ -48,7 +48,7 @@ const ChordPlayer = () => {
       {/* <button>Play/stop</button> */}
       <button onClick={previousHandler}>Previous</button>
       <button onClick={nextHandler}>Next</button>
-      <button onClick={resetHandler}>Reset</button>
+      {/* <button onClick={resetHandler}>Reset</button> */}
     </div>
   );
 };
