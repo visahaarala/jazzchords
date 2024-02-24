@@ -6,11 +6,11 @@ import ChordPlayer from './components/ChordPlayer';
 
 function App() {
   return (
-    <>
+    <div className='container'>
       <ChordSettings />
       <TempoSettings />
       <ChordPlayer />
-    </>
+    </div>
   );
 }
 

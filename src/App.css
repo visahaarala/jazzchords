@@ -18,12 +18,31 @@ html {
 }
 
 body {
-  background-color: beige;
-  color: darkolivegreen;
-  /* fallback for older browsers, help with mobile search bar */
-  min-height: 75vh;
+  background-color: #eee;
+  /* color: darkolivegreen; */
+
+  /* fallback for older browsers */
+  min-height: 100vh;
   /* dynamic viewport height, considering mobile search bars etc */
   min-height: 100dvh;
 
   /* font */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+.section {
+  padding: 1rem;
+  &:not(:last-child) {
+    border-bottom: 1px solid black;
+  }
 }
