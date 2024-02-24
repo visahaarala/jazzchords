@@ -34,6 +34,7 @@ body {
 
 .container {
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+  min-width: 15rem;
   background-color: white;
   display: flex;
   flex-direction: column;
