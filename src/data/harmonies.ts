@@ -57,7 +57,7 @@ const extensions = {
     '9sus', // similar as G-7/C
     '13sus', // similar as Bbmaj7/C
     '7b13sus',
-    'c11',
+    '11',
   ],
   minors: [
     '7',

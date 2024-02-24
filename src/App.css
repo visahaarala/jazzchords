@@ -1,0 +1,29 @@
+/* colors, variables, etc */
+:root {
+}
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* font-size: 50%; */
+}
+
+body {
+  background-color: beige;
+  color: darkolivegreen;
+  /* fallback for older browsers, help with mobile search bar */
+  min-height: 75vh;
+  /* dynamic viewport height, considering mobile search bars etc */
+  min-height: 100dvh;
+
+  /* font */
+}
