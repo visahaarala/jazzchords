@@ -9,7 +9,6 @@ const ChordSettings = () => {
 
   return (
     <div className='section'>
-      <h1>Chord settings</h1>
       <RangeSelect
         title='Accidentals'
         levelsState={ctx.accidentalLevelsState}
