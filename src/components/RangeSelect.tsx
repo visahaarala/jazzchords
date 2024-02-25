@@ -4,14 +4,16 @@ const RangeSelect = <T,>({
   title,
   levelsState,
   options,
+  initialMax,
 }: {
   title: string;
   levelsState: [T[], React.Dispatch<React.SetStateAction<T[]>>];
   options: T[];
+  initialMax?: number;
 }) => {
   const setLevels = levelsState[1];
   const [min, setMin] = useState(0);
-  const [max, setMax] = useState(options.length - 1);
+  const [max, setMax] = useState(initialMax ? initialMax : options.length - 1);
 
   useEffect(() => {
     const newLevels: T[] = [];
@@ -48,7 +50,7 @@ const RangeSelect = <T,>({
             );
           })}
         </select>
-        <span>to</span>
+        <span>&mdash;</span>
         <select id='max' value={max} onChange={maxHandler}>
           {Object.keys(options).map((key) => {
             const value = options[parseInt(key)];

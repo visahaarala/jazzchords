@@ -43,21 +43,32 @@ const ChordPlayer = () => {
   console.log('chordList: ', chordList);
 
   return (
-    <div className='section'>
-      <div className='chords'>
-        <h1>{chordList[chordIndex]}</h1>
-        <h3>{chordList[chordIndex + 1]}</h3>
-      </div>
-      <div className='buttons'>
-        <button onClick={nextHandler}>Next</button>
-        <div className='buttons__half'>
-          <button onClick={setPlay.bind(null, !play)}>
-            {!play ? 'Play' : 'Stop'}
-          </button>
-          <button onClick={previousHandler}>Previous</button>
+    <>
+      <div className='section'>
+        <div className='chords'>
+          <h1>{chordList[chordIndex]}</h1>
+          {/* ... option to have the upcoming chord visible */}
+          {/* <h3>{chordList[chordIndex + 1]}</h3> */}
         </div>
       </div>
-    </div>
+      <div className='section'>
+        <div className='buttons'>
+          <div>
+            <button onClick={nextHandler} className='next'>
+              Next
+            </button>
+            <div>
+              <button onClick={previousHandler}>Previous</button>
+              <div>
+                <button onClick={setPlay.bind(null, !play)}>
+                  {!play ? 'Play' : 'Stop'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

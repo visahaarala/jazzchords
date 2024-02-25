@@ -21,13 +21,13 @@ export const Context = createContext<{
 }>({
   extensionLevelsState: [[], () => {}],
   accidentalLevelsState: [[], () => {}],
-  volumeIsOnState: [true, () => {}],
+  volumeIsOnState: [false, () => {}],
 });
 
 const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const extensionLevelsState = useState<ExtensionLevel[]>([]);
   const accidentalLevelsState = useState<AccidentalLevel[]>([]);
-  const volumeIsOnState = useState(true);
+  const volumeIsOnState = useState(false);
 
   const value = {
     extensionLevelsState,
