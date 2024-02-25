@@ -19,7 +19,7 @@ const ChordPlayer = () => {
   useEffect(() => {
     resetHandler();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ctx]);
+  }, [ctx.extensionLevelsState[0], ctx.accidentalLevelsState[0]]);
 
   const nextHandler = () => {
     if (chordIndex >= chordList.length - 2) {

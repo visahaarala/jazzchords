@@ -19,7 +19,6 @@ const TempoSelect = () => {
             </option>
           ))}
         </select>
-        {/* <span>&nbsp;</span> */}
         <Volume />
         <select id='bpm' defaultValue={tempoList[0]} onChange={bpmHandler}>
           {tempoList.map((bpm) => (

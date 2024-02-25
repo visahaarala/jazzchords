@@ -1,6 +1,7 @@
 :root {
   /* colors, variables, etc */
   --border-radius: 0.3rem;
+  --color-gray: gray;
 }
 
 /* reset */
@@ -53,15 +54,23 @@ body {
   font-size: 1.32rem;
   margin-bottom: 0.5rem;
 }
+.range__selectors {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 .range__selectors > select {
   padding: 0.2rem 0.5rem;
   border-radius: var(--border-radius);
 }
-.range__selectors > span {
-  padding: 0.5rem;
-}
 .range:not(:first-child) {
   margin-top: 0.9rem;
+}
+
+.volume {
+  /* ADD HOVER POINTER etc */
+  height: 1.9rem;
+  width: 1.9rem;
 }
 
 .buttons {
@@ -104,9 +113,7 @@ body {
 }
 
 .github {
-  transform: scale(40%) translateY(-7rem);
-}
-
-.volume {
-  transform: scale(20%);
+  margin: 0;
+  padding: 0;
+  transform: scale(50%) translateY(-70%);
 }
