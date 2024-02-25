@@ -1,0 +1,34 @@
+:root {
+  /* colors, variables, etc */
+  --border-radius: 0.3rem;
+}
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  // font-size: 50%;
+}
+
+body {
+  // background-color: #eee;
+
+  /* fallback for older browsers without dynamic viewport height */
+  min-height: 80vh;
+  min-height: 100dvh;
+
+  /* font */
+
+  /* alignment */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -3,8 +3,9 @@ import { useContext } from 'react';
 import { Context } from '../context/Context';
 import { basesOrganized, extensionsOrganized } from '../data/harmonies';
 import { AccidentalLevel, ExtensionLevel } from '../@types';
+import TempoSelect from './TempoSelect';
 
-const ChordSettings = () => {
+const Settings = () => {
   const ctx = useContext(Context);
 
   return (
@@ -19,8 +20,9 @@ const ChordSettings = () => {
         levelsState={ctx.extensionLevelsState}
         options={Object.keys(extensionsOrganized) as ExtensionLevel[]}
       />
+      <TempoSelect />
     </div>
   );
 };
 
-export default ChordSettings;
+export default Settings;

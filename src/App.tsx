@@ -1,17 +1,16 @@
-// import React from 'react';
 import './App.css';
-import ChordSettings from './components/ChordSettings';
-// import TempoSettings from './components/TempoSettings';
-import ChordPlayer from './components/ChordPlayer';
 import ContextProvider from './context/Context';
+import Settings from './components/Settings';
+import ChordPlayer from './components/ChordPlayer';
+import GitHub from './icons/GitHub';
 
 function App() {
   return (
     <ContextProvider>
       <div className='container'>
-        <ChordSettings />
-        {/* <TempoSettings /> */}
+        <Settings />
         <ChordPlayer />
+        <GitHub />
       </div>
     </ContextProvider>
   );

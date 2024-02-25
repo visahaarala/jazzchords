@@ -1,5 +1,6 @@
-/* colors, variables, etc */
 :root {
+  /* colors, variables, etc */
+  --border-radius: 0.3rem;
 }
 
 /* reset */
@@ -7,43 +8,105 @@
   margin: 0;
   padding: 0;
 }
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-html {
-  /* font-size: 50%; */
-}
-
 body {
-  background-color: #eee;
-  /* color: darkolivegreen; */
-
-  /* fallback for older browsers */
-  min-height: 100vh;
-  /* dynamic viewport height, considering mobile search bars etc */
+  /* fallback for older browsers without dynamic viewport height */
+  min-height: 80vh;
   min-height: 100dvh;
-
   /* font */
+  /* alignment */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .container {
-  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
-  min-width: 15rem;
   background-color: white;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  align-items: center;
 }
 
 .section {
+  padding: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section:not(:first-child) {
+  padding-top: 0;
+}
+
+.range {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.range > h3 {
+  font-size: 1.32rem;
+  margin-bottom: 0.5rem;
+}
+.range__selectors > select {
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--border-radius);
+}
+.range__selectors > span {
+  padding: 0.5rem;
+}
+.range:not(:first-child) {
+  margin-top: 0.9rem;
+}
+
+.buttons {
+  width: 80%;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+}
+.buttons button {
+  flex: 1;
+  border-radius: var(--border-radius);
+  border-width: 1px;
+}
+.buttons > button {
   padding: 1rem;
-  &:not(:last-child) {
-    border-bottom: 1px solid black;
-  }
+}
+.buttons__half {
+  width: 80%;
+  align-self: center;
+  display: flex;
+  gap: 0.5rem;
+}
+.buttons__half > button {
+  padding: 0.3rem 1rem;
+}
+
+.chords {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.chords h1 {
+  font-size: 3rem;
+}
+.chords h3 {
+  font-size: 1.2rem;
+  color: #777;
+}
+
+.github {
+  transform: scale(40%) translateY(-7rem);
+}
+
+.volume {
+  transform: scale(20%);
 }

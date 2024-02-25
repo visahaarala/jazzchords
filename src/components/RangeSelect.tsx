@@ -35,29 +35,31 @@ const RangeSelect = <T,>({
   };
 
   return (
-    <div>
+    <div className='range'>
       <h3>{title}</h3>
-      <select id='min' value={min} onChange={minHandler}>
-        {Object.keys(options).map((key) => {
-          const value = options[parseInt(key)];
-          return (
-            <option value={key} key={key}>
-              {value as string}
-            </option>
-          );
-        })}
-      </select>
-      <span>to</span>
-      <select id='max' value={max} onChange={maxHandler}>
-        {Object.keys(options).map((key) => {
-          const value = options[parseInt(key)];
-          return (
-            <option value={key} key={key}>
-              {value as string}
-            </option>
-          );
-        })}
-      </select>
+      <div className='range__selectors'>
+        <select id='min' value={min} onChange={minHandler}>
+          {Object.keys(options).map((key) => {
+            const value = options[parseInt(key)];
+            return (
+              <option value={key} key={key}>
+                {value as string}
+              </option>
+            );
+          })}
+        </select>
+        <span>to</span>
+        <select id='max' value={max} onChange={maxHandler}>
+          {Object.keys(options).map((key) => {
+            const value = options[parseInt(key)];
+            return (
+              <option value={key} key={key}>
+                {value as string}
+              </option>
+            );
+          })}
+        </select>
+      </div>
     </div>
   );
 };

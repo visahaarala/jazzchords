@@ -14,6 +14,7 @@ const ChordPlayer = () => {
   };
   const [chordList, setChordList] = useState<string[]>([]);
   const [chordIndex, setChordIndex] = useState<number>(0);
+  const [play, setPlay] = useState<boolean>(false);
 
   useEffect(() => {
     resetHandler();
@@ -43,12 +44,19 @@ const ChordPlayer = () => {
 
   return (
     <div className='section'>
-      <h1>{chordList[chordIndex]}</h1>
-      <p>{chordList[chordIndex + 1]}</p>
-      {/* <button>Play/stop</button> */}
-      <button onClick={previousHandler}>Previous</button>
-      <button onClick={nextHandler}>Next</button>
-      {/* <button onClick={resetHandler}>Reset</button> */}
+      <div className='chords'>
+        <h1>{chordList[chordIndex]}</h1>
+        <h3>{chordList[chordIndex + 1]}</h3>
+      </div>
+      <div className='buttons'>
+        <button onClick={nextHandler}>Next</button>
+        <div className='buttons__half'>
+          <button onClick={setPlay.bind(null, !play)}>
+            {!play ? 'Play' : 'Stop'}
+          </button>
+          <button onClick={previousHandler}>Previous</button>
+        </div>
+      </div>
     </div>
   );
 };
