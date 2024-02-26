@@ -1,6 +1,6 @@
 # Jazz chords trainer
 
-[https://chords-brown.vercel.app](https://chords-brown.vercel.app)
+[https://jazzchords.vercel.app](https://jazzchords.vercel.app)
 
 Simple tool for practicing randomly chosen jazz chords.
 
