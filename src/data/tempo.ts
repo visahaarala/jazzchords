@@ -2,7 +2,7 @@ const lowestTempo = 30;
 const highestTempo = 200;
 const growthPercentage = 10;
 
-export const tempi = (): number[] => {
+const generateBpmList = (): number[] => {
   const tempi = [];
   for (
     let tempo = lowestTempo;
@@ -14,4 +14,6 @@ export const tempi = (): number[] => {
   return tempi;
 };
 
-export const beatsPerChord = [1, 2, 3, 4, 5, 6, 7];
+export const bpmOptions = generateBpmList();
+
+export const bpcOptions = [1, 2, 3, 4, 5, 6, 7];

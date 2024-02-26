@@ -2,10 +2,7 @@ const LightDark = () => {
   const strokeWidth = 0.5;
 
   return (
-    <div
-      className='lightdark'
-      // tabIndex={0}
-    >
+    <div className='lightdark' tabIndex={0}>
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'>
         <path
           d='M11 21 A 10 10 0 0 1 11 1 A 10 10 0 0 1 11 21'

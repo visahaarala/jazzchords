@@ -3,7 +3,6 @@ $top: 2rem;
 $focusFilter: contrast(50%);
 
 .github {
-  // this is an <a> tag
   position: absolute;
   left: 2rem;
   top: $top;
@@ -29,6 +28,7 @@ $focusFilter: contrast(50%);
   width: $size;
   height: $size;
   filter: contrast(90%);
+  transition: var(--transition);
 
   &:focus, &:hover {
     outline: none;

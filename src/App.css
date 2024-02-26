@@ -36,7 +36,7 @@
 html {
   font-size: 100%;
 }
-@media (min-width: 34em) {
+@media (min-width: 40em) {
   html {
     font-size: 110%;
   }
@@ -115,11 +115,6 @@ body {
   outline: none;
 }
 
-.chord {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 .chord h1 {
   font-size: 2.6rem;
   font-weight: normal;
@@ -183,6 +178,7 @@ body {
   width: 2rem;
   height: 2rem;
   filter: contrast(90%);
+  transition: var(--transition);
 }
 .lightdark:focus, .lightdark:hover {
   outline: none;

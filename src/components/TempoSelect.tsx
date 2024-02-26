@@ -1,27 +1,35 @@
-import { beatsPerChord, tempi } from '../data/tempo';
+import { ChangeEvent, useContext } from 'react';
+import { bpcOptions, bpmOptions } from '../data/tempo';
 import Volume from './Volume';
+import { Context } from '../context/Context';
 
 const TempoSelect = () => {
-  const tempoList = tempi();
+  const ctx = useContext(Context);
+  const [bpc, setBpc] = ctx.beatsPerChordState;
+  const [bpm, setBpm] = ctx.beatsPerMeasureState;
 
-  const bpmHandler = () => {};
+  const bpcHandler = (e: ChangeEvent<HTMLSelectElement>) => {
+    setBpc(Number(e.target.value));
+  };
 
-  const bpcHandler = () => {};
+  const bpmHandler = (e: ChangeEvent<HTMLSelectElement>) => {
+    setBpm(Number(e.target.value));
+  };
 
   return (
     <div className='range'>
       <h3>Tempo</h3>
       <div className='range__selectors'>
-        <select id='bpm' defaultValue={tempoList[0]} onChange={bpcHandler}>
-          {beatsPerChord.map((bpc) => (
+        <select id='bpm' value={bpc} onChange={bpcHandler}>
+          {bpcOptions.map((bpc) => (
             <option value={bpc} key={bpc}>
               {bpc} {bpc === 1 ? 'beat' : 'beats'} / chord
             </option>
           ))}
         </select>
         <Volume />
-        <select id='bpm' defaultValue={tempoList[0]} onChange={bpmHandler}>
-          {tempoList.map((bpm) => (
+        <select id='bpm' defaultValue={bpm} onChange={bpmHandler}>
+          {bpmOptions.map((bpm) => (
             <option value={bpm} key={bpm}>
               {bpm} bpm
             </option>

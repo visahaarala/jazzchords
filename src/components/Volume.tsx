@@ -3,17 +3,12 @@ Modified from icons "volume-high-outline" and "volume-mute-outline".
 Downloaded from https://ionic.io/ionicons with MIT license.
 */
 
-import { KeyboardEvent, useContext, useEffect, useState } from 'react';
+import { KeyboardEvent, useContext, useState } from 'react';
 import { Context } from '../context/Context';
 const Volume = () => {
   const ctx = useContext(Context);
-  const [isOn, setIsOn] = useState(ctx.volumeIsOnState[0]);
+  const [isOn, setIsOn] = ctx.volumeIsOnState;
   const [isFocused, setIsFocused] = useState(false);
-
-  useEffect(() => {
-    ctx.volumeIsOnState[1](isOn);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOn]);
 
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
     console.log(e.code);
