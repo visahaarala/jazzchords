@@ -6,7 +6,7 @@ import { Context } from '../context/Context';
 const TempoSelect = () => {
   const ctx = useContext(Context);
   const [bpc, setBpc] = ctx.beatsPerChordState;
-  const [bpm, setBpm] = ctx.beatsPerMeasureState;
+  const [bpm, setBpm] = ctx.beatsPerMinuteState;
 
   const bpcHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     setBpc(Number(e.target.value));
