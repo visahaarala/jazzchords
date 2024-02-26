@@ -17,7 +17,7 @@ const Settings = () => {
         initialMax={4}
       />
       <RangeSelect<ExtensionLevel>
-        title='Complexity'
+        title='Difficulty'
         levelsState={ctx.extensionLevelsState}
         options={Object.keys(extensionsOrganized) as ExtensionLevel[]}
         initialMax={2}

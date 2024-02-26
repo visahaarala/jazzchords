@@ -8,6 +8,7 @@ import { Context } from '../context/Context';
 const Volume = () => {
   const ctx = useContext(Context);
   const [isOn, setIsOn] = useState(ctx.volumeIsOnState[0]);
+  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
     ctx.volumeIsOnState[1](isOn);
@@ -27,6 +28,10 @@ const Volume = () => {
       onClick={setIsOn.bind(null, !isOn)}
       tabIndex={0}
       onKeyDown={keyDownHandler}
+      onFocus={setIsFocused.bind(null, true)}
+      onBlur={setIsFocused.bind(null, false)}
+      onMouseOver={setIsFocused.bind(null, true)}
+      onMouseOut={setIsFocused.bind(null, false)}
     >
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
         <path
@@ -35,7 +40,8 @@ const Volume = () => {
           stroke={isOn ? 'var(--color-black)' : 'var(--color-gray-dark)'}
           strokeLinecap='round'
           strokeLinejoin='round'
-          strokeWidth='32'
+          // strokeWidth='32'
+          strokeWidth={!isFocused ? '32' : '52'}
         />
         <path
           fill='none'

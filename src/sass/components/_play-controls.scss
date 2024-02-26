@@ -12,6 +12,7 @@
     background-color: var(--color-gray-light);
     color: var(--color-black);
     cursor: pointer;
+    transition: var(--transition);
 
     &:focus,
     &:hover {
@@ -27,10 +28,7 @@
     width: 100%;
     :not(:first-child) {
       width: calc(100% - 5rem);
-      margin-top: 0.8rem;
-    }
-    :last-child {
-      // margin-bottom: 0.7rem;
+      margin-top: 1.4rem;
     }
   }
 

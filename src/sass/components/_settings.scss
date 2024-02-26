@@ -6,6 +6,7 @@
 
   & > h3 {
     font-size: 1.2rem;
+    font-weight: normal;
     margin-bottom: 0.5rem;
   }
 
@@ -24,6 +25,7 @@
       border-color: var(--color-gray-dark);
       font-family: inherit;
       cursor: pointer;
+      transition: var(--transition);
 
       &:focus,
       &:hover {
@@ -49,6 +51,6 @@
   &:focus,
   &:hover {
     outline: none;
-    box-shadow: var(--box-shadow-focus);
+    // box-shadow: var(--box-shadow-focus);
   }
 }

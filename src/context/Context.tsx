@@ -19,11 +19,13 @@ export const Context = createContext<{
   ];
   volumeIsOnState: [boolean, Dispatch<SetStateAction<boolean>>];
   darkModeState: [boolean, Dispatch<SetStateAction<boolean>>];
+  chordState: [string, Dispatch<SetStateAction<string>>];
 }>({
   extensionLevelsState: [[], () => {}],
   accidentalLevelsState: [[], () => {}],
   volumeIsOnState: [false, () => {}],
   darkModeState: [false, () => {}],
+  chordState: ['', () => {}],
 });
 
 const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
@@ -31,12 +33,14 @@ const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const accidentalLevelsState = useState<AccidentalLevel[]>([]);
   const volumeIsOnState = useState(false);
   const darkModeState = useState(false);
+  const chordState = useState('');
 
   const value = {
     extensionLevelsState,
     accidentalLevelsState,
     volumeIsOnState,
     darkModeState,
+    chordState,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

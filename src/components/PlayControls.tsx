@@ -2,8 +2,10 @@ import { useContext, useEffect, useState } from 'react';
 import { Context } from '../context/Context';
 import { generateChordSorted } from '../data/harmonies';
 
-const ChordPlayer = () => {
+const PlayControls = () => {
   const ctx = useContext(Context);
+  const setChord = ctx.chordState[1];
+
   const generatorProps = {
     extensionLevels: ctx.extensionLevelsState[0],
     accidentalLevels: ctx.accidentalLevelsState[0],
@@ -13,9 +15,15 @@ const ChordPlayer = () => {
   const [play, setPlay] = useState<boolean>(false);
 
   useEffect(() => {
-    resetHandler();
+    setChordList([generateChordSorted(generatorProps)]);
+    setChordIndex(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ctx.extensionLevelsState[0], ctx.accidentalLevelsState[0]]);
+
+  useEffect(() => {
+    setChord(chordList[chordIndex]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chordList, chordIndex]);
 
   const nextHandler = () => {
     if (chordIndex >= chordList.length - 1) {
@@ -28,40 +36,25 @@ const ChordPlayer = () => {
     if (chordIndex > 0) setChordIndex(chordIndex - 1);
   };
 
-  const resetHandler = () => {
-    setChordList([
-      generateChordSorted(generatorProps),
-    ]);
-    setChordIndex(0);
-  };
-
   return (
-    <>
-      <div className='section'>
-        <div className='chord'>
-          <h1>{chordList[chordIndex]}</h1>
-          <p></p>
-        </div>
-      </div>
-      <div className='section'>
-        <div className='buttons'>
+    <div className='section'>
+      <div className='buttons'>
+        <div>
+          <button onClick={nextHandler} className='next'>
+            Next
+          </button>
           <div>
-            <button onClick={nextHandler} className='next'>
-              Next
-            </button>
+            <button onClick={previousHandler}>Previous</button>
             <div>
-              <button onClick={previousHandler}>Previous</button>
-              <div>
-                <button onClick={setPlay.bind(null, !play)}>
-                  {!play ? 'Play' : 'Stop'}
-                </button>
-              </div>
+              <button onClick={setPlay.bind(null, !play)}>
+                {!play ? 'Play' : 'Stop'}
+              </button>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default ChordPlayer;
+export default PlayControls;
