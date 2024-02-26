@@ -1,0 +1,54 @@
+.range {
+  // margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__selectors {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    & > select {
+      min-width: 3rem;
+      padding: 0.4rem 1.1rem;
+      border-radius: var(--border-radius);
+      background-color: var(--color-white);
+      color: var(--color-black);
+      font-size: 0.9rem;
+      border-color: var(--color-gray-dark);
+      font-family: inherit;
+      cursor: pointer;
+
+      &:focus,
+      &:hover {
+        outline: none;
+        box-shadow: var(--box-shadow-focus);
+      }
+    }
+  }
+
+  &:not(:first-child) {
+    margin-top: 1.2rem;
+  }
+}
+
+.volume {
+  border-radius: var(--border-radius);
+  // margin: 0.4rem;
+  height: 2.1rem;
+  width: 2.1rem;
+  padding: 0.2rem;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    outline: none;
+    box-shadow: var(--box-shadow-focus);
+  }
+}

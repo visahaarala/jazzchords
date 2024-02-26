@@ -1,3 +1,8 @@
 @import 'base';
+
 @import 'layout';
-@import 'components';
+
+@import './components/settings';
+@import './components/chord';
+@import './components/play-controls';
+@import './components/github';

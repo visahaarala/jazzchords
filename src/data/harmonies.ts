@@ -115,7 +115,6 @@ export const generateChordSorted = ({
   const baseIndex = Math.floor(Math.random() * bases.length);
   const base = bases[baseIndex];
 
-  console.log(base, extension);
-
+  // return chord constructed of base & extension
   return (base ? base : '') + (extension ? extension.extension : '');
 };

@@ -2,16 +2,17 @@ import './App.css';
 import ContextProvider from './context/Context';
 import Settings from './components/Settings';
 import ChordPlayer from './components/ChordPlayer';
-import GitHub from './icons/GitHub';
+import GitHub from './components/GitHub';
+import Container from './components/Container';
 
 function App() {
   return (
     <ContextProvider>
-      <div className='container'>
+      <Container>
         <Settings />
         <ChordPlayer />
         <GitHub />
-      </div>
+      </Container>
     </ContextProvider>
   );
 }

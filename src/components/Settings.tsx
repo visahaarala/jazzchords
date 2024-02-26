@@ -14,7 +14,7 @@ const Settings = () => {
         title='Accidentals'
         levelsState={ctx.accidentalLevelsState}
         options={Object.keys(basesOrganized) as AccidentalLevel[]}
-        initialMax={3}
+        initialMax={4}
       />
       <RangeSelect<ExtensionLevel>
         title='Complexity'

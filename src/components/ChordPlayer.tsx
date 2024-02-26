@@ -1,7 +1,3 @@
-// import { useContext, useState } from 'react';
-// import { generateChordSorted } from '../data/harmonies';
-// import { Context } from '../context/Context';
-
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../context/Context';
 import { generateChordSorted } from '../data/harmonies';
@@ -22,7 +18,7 @@ const ChordPlayer = () => {
   }, [ctx.extensionLevelsState[0], ctx.accidentalLevelsState[0]]);
 
   const nextHandler = () => {
-    if (chordIndex >= chordList.length - 2) {
+    if (chordIndex >= chordList.length - 1) {
       setChordList([...chordList, generateChordSorted(generatorProps)]);
     }
     setChordIndex(chordIndex + 1);
@@ -35,20 +31,16 @@ const ChordPlayer = () => {
   const resetHandler = () => {
     setChordList([
       generateChordSorted(generatorProps),
-      generateChordSorted(generatorProps),
     ]);
     setChordIndex(0);
   };
 
-  console.log('chordList: ', chordList);
-
   return (
     <>
       <div className='section'>
-        <div className='chords'>
+        <div className='chord'>
           <h1>{chordList[chordIndex]}</h1>
-          {/* ... option to have the upcoming chord visible */}
-          {/* <h3>{chordList[chordIndex + 1]}</h3> */}
+          <p></p>
         </div>
       </div>
       <div className='section'>

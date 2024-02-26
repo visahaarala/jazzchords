@@ -1,0 +1,40 @@
+.buttons {
+  width: 100%;
+
+  & button {
+    width: 100%;
+    padding: 0.3rem;
+    border-radius: var(--border-radius);
+    border-width: 1px;
+    border-color: var(--color-gray-dark);
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: var(--color-gray-light);
+    color: var(--color-black);
+    cursor: pointer;
+
+    &:focus,
+    &:hover {
+      outline: none;
+      box-shadow: var(--box-shadow-focus);
+    }
+  }
+
+  & div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    :not(:first-child) {
+      width: calc(100% - 5rem);
+      margin-top: 0.8rem;
+    }
+    :last-child {
+      // margin-bottom: 0.7rem;
+    }
+  }
+
+  .next {
+    padding: 3rem;
+  }
+}

@@ -1,5 +1,5 @@
 import { beatsPerChord, tempi } from '../data/tempo';
-import Volume from '../icons/Volume';
+import Volume from './Volume';
 
 const TempoSelect = () => {
   const tempoList = tempi();

@@ -1,14 +1,16 @@
 .container {
-  // box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
-  // background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
+  // background-color: blue;
+  // margin-bottom: -4rem;
+
+  // height: 100dvh;
+  // width: 100vw;
 }
 
 .section {
+  // background-color: green;
   padding: 2rem;
-  width: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
