@@ -133,7 +133,7 @@ body {
 }
 .chord__dim {
   font-size: 1.7em;
-  margin-right: 0.1em;
+  margin-right: 0.05em;
   transform: translateY(-0.2em);
 }
 .chord__seventh {
@@ -145,19 +145,20 @@ body {
   align-items: center;
   font-size: 2.4em;
   font-weight: lighter;
-  transform: translateY(0.1em);
+  transform: translateY(0.05em);
+  margin-left: -0.03em;
 }
 .chord__sixnine::before {
   content: "6";
-  font-size: 0.7em;
-  transform: translateY(-0.35em);
-  margin-right: -0.1em;
+  font-size: 0.6em;
+  transform: translateY(-0.5em);
+  margin-right: -0.17em;
 }
 .chord__sixnine::after {
   content: "9";
-  font-size: 0.7em;
-  transform: translateY(0.35em);
-  margin-left: -0.1em;
+  font-size: 0.6em;
+  transform: translateY(0.5em);
+  margin-left: -0.17em;
 }
 .chord__brackets {
   display: flex;

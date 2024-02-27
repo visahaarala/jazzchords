@@ -14,7 +14,7 @@ const LightDark = () => {
   };
 
   useEffect(() => {
-    // set variables at root
+    // set variables at html root
     const root = document.documentElement;
     const github = document.querySelector('a.github');
     github?.setAttribute('background-color', 'red');
