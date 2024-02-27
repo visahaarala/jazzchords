@@ -4,8 +4,8 @@ import Container from './components/Container';
 import Settings from './components/Settings';
 import ChordDisplay from './components/ChordDisplay';
 import PlayControls from './components/PlayControls';
-import GitHub from './components/GitHub';
 import LightDark from './components/LightDark';
+import GitHub from './components/GitHub';
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
         <GitHub />
       </Container>
     </ContextProvider>
+
   );
 }
 

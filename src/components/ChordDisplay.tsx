@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Context } from '../context/Context';
-import Bracket from '../img/Bracket';
+import Bracket from './Bracket';
 
 const ChordDisplay = () => {
   const ctx = useContext(Context);

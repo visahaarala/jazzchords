@@ -2,7 +2,7 @@
 
 [https://jazzchords.vercel.app](https://jazzchords.vercel.app)
 
-Simple tool for practicing random jazz chords.
+A simple tool for practicing random jazz chords.
 
 Set the range of sharps & flats under `Accidentals` and the chord complexity level under `Difficulty`.
 
