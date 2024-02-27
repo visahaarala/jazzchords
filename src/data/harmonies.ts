@@ -13,12 +13,12 @@ export const basesOrganized: {
 } = {
   0: { major: ['C'], minor: ['A'] },
   1: { major: ['G', 'F'], minor: ['E', 'D'] },
-  2: { major: ['D', 'Bb'], minor: ['B', 'G'] },
-  3: { major: ['A', 'Eb'], minor: ['F#', 'C'] },
-  4: { major: ['E', 'Ab'], minor: ['C#', 'F'] },
-  5: { major: ['B', 'Db'], minor: ['G#', 'Bb'] },
-  6: { major: ['F#', 'Gb'], minor: ['D#', 'Eb'] },
-  7: { major: ['C#', 'Cb'], minor: ['A#', 'Ab'] },
+  2: { major: ['D', 'B♭'], minor: ['B', 'G'] },
+  3: { major: ['A', 'E♭'], minor: ['F♯', 'C'] },
+  4: { major: ['E', 'A♭'], minor: ['C♯', 'F'] },
+  5: { major: ['B', 'D♭'], minor: ['G♯', 'B♭'] },
+  6: { major: ['F♯', 'G♭'], minor: ['D♯', 'E♭'] },
+  7: { major: ['C♯', 'C♭'], minor: ['A♯', 'A♭'] },
 };
 
 export const extensionsOrganized: {
@@ -86,10 +86,10 @@ export const extensionsOrganized: {
       extension: ['o', 'maj7', undefined, undefined, undefined],
       isMinor: false,
     },
-    { extension: [undefined, '7', 'b5', undefined, undefined], isMinor: false },
-    { extension: [undefined, '7', '#5', undefined, undefined], isMinor: false },
-    { extension: [undefined, '7', 'b9', undefined, undefined], isMinor: false },
-    { extension: [undefined, '7', '#9', undefined, undefined], isMinor: false },
+    { extension: [undefined, '7', '♭5', undefined, undefined], isMinor: false },
+    { extension: [undefined, '7', '♯5', undefined, undefined], isMinor: false },
+    { extension: [undefined, '7', '♭9', undefined, undefined], isMinor: false },
+    { extension: [undefined, '7', '♯9', undefined, undefined], isMinor: false },
     {
       extension: [undefined, '6', undefined, undefined, undefined],
       isMinor: true,
@@ -115,7 +115,7 @@ export const extensionsOrganized: {
       isMinor: true,
     }, //same as add2
     {
-      extension: [undefined, '7b5', undefined, undefined, undefined],
+      extension: [undefined, '7', '♭5', undefined, undefined],
       isMinor: true,
     }, // same as h7
   ],
@@ -133,23 +133,23 @@ export const extensionsOrganized: {
       isMinor: false,
     },
     {
-      extension: [undefined, '7', '#11', undefined, undefined],
+      extension: [undefined, '7', '♯11', undefined, undefined],
       isMinor: false,
     },
     {
-      extension: [undefined, 'maj7', '#11', undefined, undefined],
+      extension: [undefined, 'maj7', '♯11', undefined, undefined],
       isMinor: false,
     },
     {
-      extension: [undefined, 'maj9', '#11', undefined, undefined],
+      extension: [undefined, 'maj9', '♯11', undefined, undefined],
       isMinor: false,
     },
     {
-      extension: [undefined, 'maj7', '#5', undefined, undefined],
+      extension: [undefined, 'maj7', '♯5', undefined, undefined],
       isMinor: false,
     },
     {
-      extension: [undefined, '13', '#9', undefined, undefined],
+      extension: [undefined, '13', '♯9', undefined, undefined],
       isMinor: false,
     },
     {
@@ -157,13 +157,13 @@ export const extensionsOrganized: {
       isMinor: false,
     }, // or 7sus4(add3) ??
     {
-      extension: [undefined, '9', '#11', undefined, undefined],
+      extension: [undefined, '9', '♯11', undefined, undefined],
       isMinor: false,
     },
-    { extension: [undefined, '9', 'b5', undefined, undefined], isMinor: false },
-    { extension: [undefined, '9', '#5', undefined, undefined], isMinor: false },
+    { extension: [undefined, '9', '♭5', undefined, undefined], isMinor: false },
+    { extension: [undefined, '9', '♯5', undefined, undefined], isMinor: false },
     {
-      extension: [undefined, '7', 'b13', undefined, undefined],
+      extension: [undefined, '7', '♭13', undefined, undefined],
       isMinor: false,
     },
     {
@@ -171,15 +171,15 @@ export const extensionsOrganized: {
       isMinor: false,
     },
     {
-      extension: [undefined, '13', '#11', undefined, undefined],
+      extension: [undefined, '13', '♯11', undefined, undefined],
       isMinor: false,
     },
     {
-      extension: [undefined, '13', 'b9', undefined, undefined],
+      extension: [undefined, '13', '♭9', undefined, undefined],
       isMinor: false,
     },
     {
-      extension: [undefined, '7', 'b9sus4', undefined, undefined],
+      extension: [undefined, '7', '♭9sus4', undefined, undefined],
       isMinor: false,
     }, // similar as Gh7/C
     {
@@ -189,23 +189,23 @@ export const extensionsOrganized: {
     {
       extension: [undefined, '13', 'sus4', undefined, undefined],
       isMinor: false,
-    }, // similar as Bbmaj7/C
+    }, // similar as B♭maj7/C
   ],
   painful: [
     {
       extension: [undefined, '7', undefined, undefined, 'alt.'],
       isMinor: false,
     },
-    { extension: [undefined, '7', '#9', '#5', undefined], isMinor: false },
-    { extension: [undefined, '7', '#9', 'b5', undefined], isMinor: false },
-    { extension: [undefined, '7', '#9', '#11', undefined], isMinor: false },
-    { extension: [undefined, '7', 'b9', '#11', undefined], isMinor: false },
-    { extension: [undefined, '7', 'b9', 'b5', undefined], isMinor: false },
-    { extension: [undefined, '7', 'b9', '#5', undefined], isMinor: false },
-    { extension: [undefined, '7', 'b9', '#9', undefined], isMinor: false },
-    { extension: [undefined, '7', 'b9', 'b13', undefined], isMinor: false },
+    { extension: [undefined, '7', '♯9', '♯5', undefined], isMinor: false },
+    { extension: [undefined, '7', '♯9', '♭5', undefined], isMinor: false },
+    { extension: [undefined, '7', '♯9', '♯11', undefined], isMinor: false },
+    { extension: [undefined, '7', '♭9', '♯11', undefined], isMinor: false },
+    { extension: [undefined, '7', '♭9', '♭5', undefined], isMinor: false },
+    { extension: [undefined, '7', '♭9', '♯5', undefined], isMinor: false },
+    { extension: [undefined, '7', '♭9', '♯9', undefined], isMinor: false },
+    { extension: [undefined, '7', '♭9', '♭13', undefined], isMinor: false },
     {
-      extension: [undefined, '7', 'b13sus4', undefined, undefined],
+      extension: [undefined, '7', '♭13sus4', undefined, undefined],
       isMinor: false,
     },
   ],
@@ -249,8 +249,7 @@ export const generateChords = ({
         isMinor: extension.isMinor,
         dim: ext[0],
         seventh: ext[1],
-        top: ext[2],
-        bottom: ext[3],
+        bracket: [ext[2], ext[3]],
         alt: ext[4],
       };
       if (newChord.seventh === '6/9') {

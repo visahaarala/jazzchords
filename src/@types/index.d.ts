@@ -22,8 +22,7 @@ export type Chord = {
   dim?: string;
   seventh?: string;
   sixNine?: string;
-  top?: string;
-  bottom?: string;
+  bracket: [string?, string?];
   alt?: string;
 };
 

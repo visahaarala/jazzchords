@@ -126,68 +126,79 @@ body {
 }
 .chord__base {
   font-size: 3em;
-  margin-right: 0.1em;
 }
 .chord__flat {
-  margin-left: -0.7em;
-  margin-right: -0.4em;
-  transform: translateY(0.1em);
-  font-size: 2.2em;
+  margin-left: -0.3em;
+  margin-right: -0.2em;
+  font-size: 2.3em;
 }
 .chord__sharp {
   font-size: 2.5em;
-  margin-left: 0em;
-  margin-right: 0.2em;
-  transform: translateY(0.2em);
+  margin-right: 0.05em;
+  transform: translateY(0.07em);
 }
 .chord__minor {
-  font-size: 3em;
+  font-size: 2.2em;
+  transform: translateY(0.33em);
 }
 .chord__dim {
   font-size: 1.7em;
   margin-right: 0.1em;
-  transform: translateY(-0.3em);
+  transform: translateY(-0.2em);
 }
 .chord__seventh {
   font-size: 1.5em;
+  margin-right: 0.05em;
 }
 .chord__sixnine {
-  align-self: center;
   display: flex;
   align-items: center;
-  font-size: 2.7em;
+  font-size: 2.4em;
   font-weight: lighter;
+  transform: translateY(0.1em);
 }
 .chord__sixnine::before {
   content: "6";
-  font-size: 1.5em;
-  transform: translateY(-0.7em);
-  margin-right: -0.3em;
+  font-size: 0.7em;
+  transform: translateY(-0.35em);
+  margin-right: -0.1em;
 }
 .chord__sixnine::after {
   content: "9";
-  font-size: 1.5em;
-  transform: translateY(0.7em);
-  margin-left: -0.3em;
+  font-size: 0.7em;
+  transform: translateY(0.35em);
+  margin-left: -0.1em;
 }
 .chord__brackets {
   display: flex;
-  align-items: center;
+  align-items: end;
+}
+.chord__brackets--double {
+  transform: translateY(-0.4rem);
+}
+.chord__brackets .flat {
+  margin-right: -0.2em;
+  margin-left: -0.15em;
+  margin-top: -1em;
+  font-size: 0.8em;
+}
+.chord__brackets .sharp {
+  font-size: 0.9em;
 }
 .chord__inside-brackets {
-  transform: translateY(-0.132em);
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 1.5em;
 }
 .chord__inside-brackets__small {
-  font-size: 1em;
+  font-size: 1.2em;
 }
 .chord__alt {
   align-self: end;
-  transform: translateY(-0.3em);
-  font-size: 1.7em;
+  transform: translateY(-0.25em);
+  font-size: 1.5em;
+  margin-left: -0.15em;
 }
 
 .buttons {
