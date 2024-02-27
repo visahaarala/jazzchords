@@ -1,6 +1,77 @@
 .chord {
-  h1 {
-    font-size: 2.6rem;
-    font-weight: normal;
+  display: flex;
+  align-items: start;
+  font-family: Arial;
+  font-size: 1rem; // setting for all of the below
+
+  &__base {
+    font-size: 3em;
+    margin-right: 0.1em;
+  }
+  &__flat {
+    // background-color: rgba(yellow, 0.4);
+    margin-left: -0.7em;
+    margin-right: -0.4em;
+    transform: translateY(0.1em);
+    font-size: 2.2em;
+  }
+  &__sharp {
+    // background-color: rgba(yellow, 0.4);
+    font-size: 2.5em;
+    margin-left: -0em;
+    margin-right: 0.2em;
+    transform: translateY(0.2em);
+  }
+  &__minor {
+    font-size: 3em;
+  }
+  &__dim {
+    font-size: 1.7em;
+    margin-right: 0.1em;
+    transform: translateY(-0.3em);
+  }
+  &__seventh {
+    // background-color: orange;
+    font-size: 1.5em;
+  }
+  &__sixnine {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    font-size: 2.7em;
+    font-weight: lighter;
+    // margin-left: 1em;
+    &::before {
+      content: '6';
+      font-size: 1.5em;
+      transform: translateY(-0.7em);
+      margin-right: -0.3em;
+    }
+    &::after {
+      content: '9';
+      font-size: 1.5em;
+      transform: translateY(0.7em);
+      margin-left: -0.3em;
+    }
+  }
+  &__brackets {
+    display: flex;
+    align-items: center;
+  }
+  &__inside-brackets {
+    transform: translateY(-0.132em);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5em;
+
+    &__small {
+      font-size: 1em;
+    }
+  }
+  &__alt {
+    align-self: end;
+    transform: translateY(-0.3em);
+    font-size: 1.7em;
   }
 }

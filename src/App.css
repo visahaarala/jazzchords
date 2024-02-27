@@ -1,13 +1,12 @@
 :root {
-  /* colors, variables, etc */
   --border-radius: 0.3rem;
   --transition: 0.2s all;
   --color-white: white;
-  --color-gray-light: #ccc;
+  --color-gray-light: #ddd;
   --color-gray-dark: #333;
   --color-black: black;
   --github-image: url("./img/github-mark.png");
-  --box-shadow-focus: inset 0 0 0.4rem var(--color-black);
+  --box-shadow-focus: inset 0 0 1rem var(--color-gray-dark);
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -88,7 +87,7 @@ body {
   min-width: 3rem;
   padding: 0.4rem 1.1rem;
   border-radius: var(--border-radius);
-  background-color: var(--color-white);
+  background-color: var(--color-gray-light);
   color: var(--color-black);
   font-size: 0.9rem;
   border-color: var(--color-gray-dark);
@@ -98,7 +97,11 @@ body {
 }
 .range__selectors > select:focus, .range__selectors > select:hover {
   outline: none;
-  box-shadow: var(--box-shadow-focus);
+}
+@media (pointer: fine) {
+  .range__selectors > select:focus, .range__selectors > select:hover {
+    box-shadow: var(--box-shadow-focus);
+  }
 }
 .range:not(:first-child) {
   margin-top: 1.2rem;
@@ -115,9 +118,76 @@ body {
   outline: none;
 }
 
-.chord h1 {
-  font-size: 2.6rem;
-  font-weight: normal;
+.chord {
+  display: flex;
+  align-items: start;
+  font-family: Arial;
+  font-size: 1rem;
+}
+.chord__base {
+  font-size: 3em;
+  margin-right: 0.1em;
+}
+.chord__flat {
+  margin-left: -0.7em;
+  margin-right: -0.4em;
+  transform: translateY(0.1em);
+  font-size: 2.2em;
+}
+.chord__sharp {
+  font-size: 2.5em;
+  margin-left: 0em;
+  margin-right: 0.2em;
+  transform: translateY(0.2em);
+}
+.chord__minor {
+  font-size: 3em;
+}
+.chord__dim {
+  font-size: 1.7em;
+  margin-right: 0.1em;
+  transform: translateY(-0.3em);
+}
+.chord__seventh {
+  font-size: 1.5em;
+}
+.chord__sixnine {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  font-size: 2.7em;
+  font-weight: lighter;
+}
+.chord__sixnine::before {
+  content: "6";
+  font-size: 1.5em;
+  transform: translateY(-0.7em);
+  margin-right: -0.3em;
+}
+.chord__sixnine::after {
+  content: "9";
+  font-size: 1.5em;
+  transform: translateY(0.7em);
+  margin-left: -0.3em;
+}
+.chord__brackets {
+  display: flex;
+  align-items: center;
+}
+.chord__inside-brackets {
+  transform: translateY(-0.132em);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5em;
+}
+.chord__inside-brackets__small {
+  font-size: 1em;
+}
+.chord__alt {
+  align-self: end;
+  transform: translateY(-0.3em);
+  font-size: 1.7em;
 }
 
 .buttons {
@@ -138,7 +208,11 @@ body {
 }
 .buttons button:focus, .buttons button:hover {
   outline: none;
-  box-shadow: var(--box-shadow-focus);
+}
+@media (pointer: fine) {
+  .buttons button:focus, .buttons button:hover {
+    box-shadow: var(--box-shadow-focus);
+  }
 }
 .buttons div {
   display: flex;
@@ -156,31 +230,40 @@ body {
 
 .github {
   position: absolute;
-  left: 2rem;
-  top: 2rem;
+  left: 2.5rem;
+  top: 2.5rem;
   width: 2rem;
   height: 2rem;
   background-image: var(--github-image);
-  background-size: contain;
+  background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
   transition: var(--transition);
+  background-color: var(--color-white);
+  border-radius: 50%;
 }
 .github:focus, .github:hover {
   outline: none;
-  filter: contrast(50%);
+}
+@media (pointer: fine) {
+  .github:focus, .github:hover {
+    filter: contrast(50%);
+  }
 }
 
 .lightdark {
   position: absolute;
-  right: 2rem;
-  top: 2rem;
+  right: 2.5rem;
+  top: 2.5rem;
   width: 2rem;
   height: 2rem;
-  filter: contrast(90%);
   transition: var(--transition);
 }
 .lightdark:focus, .lightdark:hover {
   outline: none;
-  filter: contrast(50%);
+}
+@media (pointer: fine) {
+  .lightdark:focus, .lightdark:hover {
+    filter: contrast(50%);
+  }
 }

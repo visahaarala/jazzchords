@@ -6,7 +6,7 @@ import {
   createContext,
   useState,
 } from 'react';
-import { AccidentalLevel, ExtensionLevel } from '../@types';
+import { AccidentalLevel, Chord, ExtensionLevel } from '../@types';
 import { bpcOptions, bpmOptions } from '../data/tempo';
 
 export const Context = createContext<{
@@ -21,7 +21,8 @@ export const Context = createContext<{
   beatsPerChordState: [number, Dispatch<SetStateAction<number>>];
   beatsPerMinuteState: [number, Dispatch<SetStateAction<number>>];
   volumeIsOnState: [boolean, Dispatch<SetStateAction<boolean>>];
-  chordState: [string, Dispatch<SetStateAction<string>>];
+  chordListState: [Chord[], Dispatch<SetStateAction<Chord[]>>];
+  chordIndexState: [number, Dispatch<SetStateAction<number>>];
   // darkModeState: [boolean, Dispatch<SetStateAction<boolean>>];
 }>({
   extensionLevelsState: [[], () => {}],
@@ -29,7 +30,8 @@ export const Context = createContext<{
   beatsPerChordState: [0, () => {}],
   beatsPerMinuteState: [0, () => {}],
   volumeIsOnState: [false, () => {}],
-  chordState: ['', () => {}],
+  chordListState: [[], () => {}],
+  chordIndexState: [0, () => {}],
   // darkModeState: [false, () => {}],
 });
 
@@ -39,7 +41,8 @@ const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const beatsPerChordState = useState(bpcOptions[0]);
   const beatsPerMinuteState = useState(bpmOptions[0]);
   const volumeIsOnState = useState(false);
-  const chordState = useState('');
+  const chordListState = useState<Chord[]>([]);
+  const chordIndexState = useState(0);
   // const darkModeState = useState(false);
 
   const value = {
@@ -48,7 +51,8 @@ const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     beatsPerChordState,
     beatsPerMinuteState,
     volumeIsOnState,
-    chordState,
+    chordListState,
+    chordIndexState,
     // darkModeState,
   };
 

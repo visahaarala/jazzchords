@@ -19,7 +19,7 @@
       min-width: 3rem;
       padding: 0.4rem 1.1rem;
       border-radius: var(--border-radius);
-      background-color: var(--color-white);
+      background-color: var(--color-gray-light);
       color: var(--color-black);
       font-size: 0.9rem;
       border-color: var(--color-gray-dark);
@@ -30,7 +30,11 @@
       &:focus,
       &:hover {
         outline: none;
-        box-shadow: var(--box-shadow-focus);
+        // not mobile touch screen
+        @media (pointer: fine) {
+          // vs. coarse
+          box-shadow: var(--box-shadow-focus);
+        }
       }
     }
   }

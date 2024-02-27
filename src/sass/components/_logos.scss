@@ -1,37 +1,50 @@
 $size: 2rem;
-$top: 2rem;
+$side: 2.5rem;
+$top: 2.5rem;
 $focusFilter: contrast(50%);
 
 .github {
   position: absolute;
-  left: 2rem;
+  left: $side;
   top: $top;
   width: $size;
   height: $size;
   background-image: var(--github-image);
-  background-size: contain;
+  background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
   transition: var(--transition);
 
+  // to help with focusfilter
+  background-color: var(--color-white);
+  border-radius: 50%;
+
   &:focus,
   &:hover {
     outline: none;
-    filter: $focusFilter;
+    // not mobile touch screen
+    @media (pointer: fine) {
+      // vs. coarse
+      filter: $focusFilter;
+    }
   }
 }
 
 .lightdark {
   position: absolute;
-  right: 2rem;
+  right: $side;
   top: $top;
   width: $size;
   height: $size;
-  filter: contrast(90%);
   transition: var(--transition);
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     outline: none;
-    filter: $focusFilter;
+    // not mobile touch screen
+    @media (pointer: fine) {
+      // vs. coarse
+      filter: $focusFilter;
+    }
   }
 }
