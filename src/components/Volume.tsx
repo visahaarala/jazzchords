@@ -8,7 +8,7 @@ import { Context } from '../context/Context';
 const Volume = () => {
   const ctx = useContext(Context);
   const [isOn, setIsOn] = ctx.volumeIsOnState;
-  const [isFocused, setIsFocused] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);  // useless now
 
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
     console.log(e.code);
@@ -23,10 +23,10 @@ const Volume = () => {
       onClick={setIsOn.bind(null, !isOn)}
       tabIndex={0}
       onKeyDown={keyDownHandler}
-      onFocus={setIsFocused.bind(null, true)}
-      onBlur={setIsFocused.bind(null, false)}
-      onMouseOver={setIsFocused.bind(null, true)}
-      onMouseOut={setIsFocused.bind(null, false)}
+      // onFocus={setIsFocused.bind(null, true)}
+      // onBlur={setIsFocused.bind(null, false)}
+      // onMouseOver={setIsFocused.bind(null, true)}
+      // onMouseOut={setIsFocused.bind(null, false)}
     >
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
         <path

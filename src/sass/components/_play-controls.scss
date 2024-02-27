@@ -16,12 +16,7 @@
 
     &:focus,
     &:hover {
-      outline: none;
-      // not mobile touch screen
-      @media (pointer: fine) {
-        // vs. coarse
-        box-shadow: var(--box-shadow-focus);
-      }
+      outline: var(--color-focus-outline);
     }
   }
 

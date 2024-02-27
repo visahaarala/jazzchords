@@ -38,8 +38,8 @@ export const Context = createContext<{
 const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const extensionLevelsState = useState<ExtensionLevel[]>([]);
   const accidentalLevelsState = useState<AccidentalLevel[]>([]);
-  const beatsPerChordState = useState(bpcOptions[0]);
-  const beatsPerMinuteState = useState(bpmOptions[0]);
+  const beatsPerChordState = useState(bpcOptions[3]);
+  const beatsPerMinuteState = useState(bpmOptions[10]);
   const volumeIsOnState = useState(false);
   const chordListState = useState<Chord[]>([]);
   const chordIndexState = useState(0);

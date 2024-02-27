@@ -1,7 +1,8 @@
-$size: 2rem;
-$side: 2.5rem;
-$top: 2.5rem;
-$focusFilter: contrast(50%);
+$size: 2.4rem;
+$side: 0rem;
+$top: 1rem;
+// $focusFilter: contrast(50%);
+$focusFilter: 'none';
 
 .github {
   position: absolute;
@@ -14,19 +15,11 @@ $focusFilter: contrast(50%);
   background-position: 50%;
   background-repeat: no-repeat;
   transition: var(--transition);
-
-  // to help with focusfilter
-  background-color: var(--color-white);
   border-radius: 50%;
 
   &:focus,
   &:hover {
-    outline: none;
-    // not mobile touch screen
-    @media (pointer: fine) {
-      // vs. coarse
-      filter: $focusFilter;
-    }
+    outline: var(--color-focus-outline);
   }
 }
 
@@ -37,14 +30,10 @@ $focusFilter: contrast(50%);
   width: $size;
   height: $size;
   transition: var(--transition);
+  border-radius: 50%;
 
   &:focus,
   &:hover {
-    outline: none;
-    // not mobile touch screen
-    @media (pointer: fine) {
-      // vs. coarse
-      filter: $focusFilter;
-    }
+    outline: var(--color-focus-outline);
   }
 }

@@ -14,8 +14,8 @@ function App() {
         <Settings />
         <ChordDisplay />
         <PlayControls />
-        <GitHub />
         <LightDark />
+        <GitHub />
       </Container>
     </ContextProvider>
   );

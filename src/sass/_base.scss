@@ -1,13 +1,14 @@
 :root {
   --border-radius: 0.3rem;
-  --transition: 0.2s all;
+  --transition: 0.1s all;
 
   --color-white: white;
   --color-gray-light: #ddd;
   --color-gray-dark: #333;
   --color-black: black;
+  --color-focus-outline: #77F solid 2px;
   --github-image: url('./img/github-mark.png');
-
+  
   @media (prefers-color-scheme: dark) {
     --color-white: #222;
     --color-gray-light: #444;
@@ -15,7 +16,8 @@
     --color-black: #fafafa;
     --github-image: url('./img/github-mark-white.png');
   }
-  --box-shadow-focus: inset 0 0 1rem var(--color-gray-dark);
+  // --box-shadow-focus: inset 0 0 1rem var(--color-gray-dark);
+  --box-shadow-focus: inset 0 0 0.5rem blue;
 }
 
 /* reset */

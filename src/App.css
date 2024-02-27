@@ -1,12 +1,13 @@
 :root {
   --border-radius: 0.3rem;
-  --transition: 0.2s all;
+  --transition: 0.1s all;
   --color-white: white;
   --color-gray-light: #ddd;
   --color-gray-dark: #333;
   --color-black: black;
+  --color-focus-outline: #77F solid 2px;
   --github-image: url("./img/github-mark.png");
-  --box-shadow-focus: inset 0 0 1rem var(--color-gray-dark);
+  --box-shadow-focus: inset 0 0 0.5rem blue;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -56,16 +57,16 @@ body {
 
 .container {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2rem;
 }
 
 .section {
-  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.section:not(:first-child) {
-  padding-top: 0;
 }
 
 .range {
@@ -96,12 +97,7 @@ body {
   transition: var(--transition);
 }
 .range__selectors > select:focus, .range__selectors > select:hover {
-  outline: none;
-}
-@media (pointer: fine) {
-  .range__selectors > select:focus, .range__selectors > select:hover {
-    box-shadow: var(--box-shadow-focus);
-  }
+  outline: var(--color-focus-outline);
 }
 .range:not(:first-child) {
   margin-top: 1.2rem;
@@ -115,7 +111,7 @@ body {
   cursor: pointer;
 }
 .volume:focus, .volume:hover {
-  outline: none;
+  outline: var(--color-focus-outline);
 }
 
 .chord {
@@ -128,7 +124,7 @@ body {
   font-size: 3em;
 }
 .chord__flat {
-  margin-left: -0.3em;
+  margin-left: -0.25em;
   margin-right: -0.2em;
   font-size: 2.3em;
 }
@@ -218,12 +214,7 @@ body {
   transition: var(--transition);
 }
 .buttons button:focus, .buttons button:hover {
-  outline: none;
-}
-@media (pointer: fine) {
-  .buttons button:focus, .buttons button:hover {
-    box-shadow: var(--box-shadow-focus);
-  }
+  outline: var(--color-focus-outline);
 }
 .buttons div {
   display: flex;
@@ -241,40 +232,30 @@ body {
 
 .github {
   position: absolute;
-  left: 2.5rem;
-  top: 2.5rem;
-  width: 2rem;
-  height: 2rem;
+  left: 0rem;
+  top: 1rem;
+  width: 2.4rem;
+  height: 2.4rem;
   background-image: var(--github-image);
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
   transition: var(--transition);
-  background-color: var(--color-white);
   border-radius: 50%;
 }
 .github:focus, .github:hover {
-  outline: none;
-}
-@media (pointer: fine) {
-  .github:focus, .github:hover {
-    filter: contrast(50%);
-  }
+  outline: var(--color-focus-outline);
 }
 
 .lightdark {
   position: absolute;
-  right: 2.5rem;
-  top: 2.5rem;
-  width: 2rem;
-  height: 2rem;
+  right: 0rem;
+  top: 1rem;
+  width: 2.4rem;
+  height: 2.4rem;
   transition: var(--transition);
+  border-radius: 50%;
 }
 .lightdark:focus, .lightdark:hover {
-  outline: none;
-}
-@media (pointer: fine) {
-  .lightdark:focus, .lightdark:hover {
-    filter: contrast(50%);
-  }
+  outline: var(--color-focus-outline);
 }

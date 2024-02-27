@@ -20,7 +20,7 @@ const Settings = () => {
         title='Difficulty'
         levelsState={ctx.extensionLevelsState}
         options={Object.keys(extensionsOrganized) as ExtensionLevel[]}
-        initialMax={2}
+        initialMax={1}
       />
       <TempoSelect />
     </div>
