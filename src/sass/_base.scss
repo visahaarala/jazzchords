@@ -1,23 +1,32 @@
 :root {
   --border-radius: 0.3rem;
-  --transition: 0.1s all;
+  --transition: 0.15s;
 
-  --color-white: white;
-  --color-gray-light: #ddd;
-  --color-gray-dark: #333;
-  --color-black: black;
-  --color-focus-outline: #77F solid 2px;
-  --github-image: url('./img/github-mark.png');
-  
-  @media (prefers-color-scheme: dark) {
-    --color-white: #222;
-    --color-gray-light: #444;
-    --color-gray-dark: #bbb;
-    --color-black: #fafafa;
-    --github-image: url('./img/github-mark-white.png');
+  --color-focus-outline: #49f solid 0.15rem;
+  @media (pointer: coarse) {
+    // no focus outline on mobile devices
+    --color-focus-outline: none;
   }
-  // --box-shadow-focus: inset 0 0 1rem var(--color-gray-dark);
-  --box-shadow-focus: inset 0 0 0.5rem blue;
+
+  /*
+  Dark & light mode :root color variables are set at
+  /src/components/LightDark.tsx
+  */
+
+  // --color-white: white;
+  // --color-gray-light: #ddd;
+  // --color-gray-dark: #333;
+  // --color-black: black;
+  // --github-image: url('./img/github-mark.png');
+
+  // @media (prefers-color-scheme: dark) {
+  //   --color-white: #222;
+  //   --color-gray-light: #444;
+  //   --color-gray-dark: #bbb;
+  //   --color-black: #fafafa;
+  //   --github-image: url('./img/github-mark-white.png');
+  // }
+
 }
 
 /* reset */

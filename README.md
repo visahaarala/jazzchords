@@ -10,4 +10,4 @@ Generate and go back and forth between chords using the `Next` & `Previous` butt
 
 ---
 
-Designed for portrait mobile phone, but also nice on desktop. Use TAB for handy navigation on desktop while practicing an instrument (unless you're using Safari).
+Designed for portrait mobile phone, but also nice on desktop. On desktop, use (`shift`-)`tab`, `space`, `esc` and `arrow` keys handy navigation while playing an instrument (unless you're using Safari).

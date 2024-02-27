@@ -1,21 +1,15 @@
 :root {
   --border-radius: 0.3rem;
-  --transition: 0.1s all;
-  --color-white: white;
-  --color-gray-light: #ddd;
-  --color-gray-dark: #333;
-  --color-black: black;
-  --color-focus-outline: #77F solid 2px;
-  --github-image: url("./img/github-mark.png");
-  --box-shadow-focus: inset 0 0 0.5rem blue;
+  --transition: 0.15s;
+  --color-focus-outline: #49f solid 0.15rem;
+  /*
+  Dark & light mode :root color variables are set at
+  /src/components/LightDark.tsx
+  */
 }
-@media (prefers-color-scheme: dark) {
+@media (pointer: coarse) {
   :root {
-    --color-white: #222;
-    --color-gray-light: #444;
-    --color-gray-dark: #bbb;
-    --color-black: #fafafa;
-    --github-image: url("./img/github-mark-white.png");
+    --color-focus-outline: none;
   }
 }
 
@@ -94,7 +88,7 @@ body {
   border-color: var(--color-gray-dark);
   font-family: inherit;
   cursor: pointer;
-  transition: var(--transition);
+  transition: var(--transition) all;
 }
 .range__selectors > select:focus, .range__selectors > select:hover {
   outline: var(--color-focus-outline);
@@ -109,6 +103,7 @@ body {
   width: 2.1rem;
   padding: 0.2rem;
   cursor: pointer;
+  transition: var(--transition) all;
 }
 .volume:focus, .volume:hover {
   outline: var(--color-focus-outline);
@@ -211,7 +206,7 @@ body {
   background-color: var(--color-gray-light);
   color: var(--color-black);
   cursor: pointer;
-  transition: var(--transition);
+  transition: var(--transition) all;
 }
 .buttons button:focus, .buttons button:hover {
   outline: var(--color-focus-outline);
@@ -236,12 +231,14 @@ body {
   top: 1rem;
   width: 2.4rem;
   height: 2.4rem;
-  background-image: var(--github-image);
+  background-image: url("./img/github-mark-white.png");
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
-  transition: var(--transition);
+  transition: var(--transition) all;
   border-radius: 50%;
+  box-sizing: content-box;
+  border: 2px solid var(--color-white);
 }
 .github:focus, .github:hover {
   outline: var(--color-focus-outline);
@@ -253,8 +250,12 @@ body {
   top: 1rem;
   width: 2.4rem;
   height: 2.4rem;
-  transition: var(--transition);
+  transition: 1s transform, var(--transition) outline;
+  transform: rotate(-20deg);
   border-radius: 50%;
+  cursor: pointer;
+  box-sizing: content-box;
+  border: 2px solid var(--color-white);
 }
 .lightdark:focus, .lightdark:hover {
   outline: var(--color-focus-outline);

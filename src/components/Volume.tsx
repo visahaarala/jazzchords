@@ -3,15 +3,13 @@ Modified from icons "volume-high-outline" and "volume-mute-outline".
 Downloaded from https://ionic.io/ionicons with MIT license.
 */
 
-import { KeyboardEvent, useContext, useState } from 'react';
+import { KeyboardEvent, useContext } from 'react';
 import { Context } from '../context/Context';
 const Volume = () => {
   const ctx = useContext(Context);
   const [isOn, setIsOn] = ctx.volumeIsOnState;
-  const [isFocused, setIsFocused] = useState(false);  // useless now
 
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
-    console.log(e.code);
     if (e.code === 'Enter' || e.code === 'Space') setIsOn(!isOn);
     if (e.code === 'ArrowUp') setIsOn(true);
     if (e.code === 'ArrowDown') setIsOn(false);
@@ -23,10 +21,6 @@ const Volume = () => {
       onClick={setIsOn.bind(null, !isOn)}
       tabIndex={0}
       onKeyDown={keyDownHandler}
-      // onFocus={setIsFocused.bind(null, true)}
-      // onBlur={setIsFocused.bind(null, false)}
-      // onMouseOver={setIsFocused.bind(null, true)}
-      // onMouseOut={setIsFocused.bind(null, false)}
     >
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
         <path
@@ -35,8 +29,7 @@ const Volume = () => {
           stroke={isOn ? 'var(--color-black)' : 'var(--color-gray-dark)'}
           strokeLinecap='round'
           strokeLinejoin='round'
-          // strokeWidth='32'
-          strokeWidth={!isFocused ? '32' : '52'}
+          strokeWidth='38'
         />
         <path
           fill='none'

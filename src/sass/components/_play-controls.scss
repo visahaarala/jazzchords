@@ -12,7 +12,7 @@
     background-color: var(--color-gray-light);
     color: var(--color-black);
     cursor: pointer;
-    transition: var(--transition);
+    transition: var(--transition) all;
 
     &:focus,
     &:hover {

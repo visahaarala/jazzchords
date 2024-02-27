@@ -33,12 +33,6 @@ export const extensionsOrganized: {
       extension: [undefined, undefined, undefined, undefined, undefined],
       isMinor: true,
     },
-    { extension: ['o', '7', undefined, undefined, undefined], isMinor: false },
-    { extension: ['ø', '7', undefined, undefined, undefined], isMinor: false },
-    {
-      extension: ['+', undefined, undefined, undefined, undefined],
-      isMinor: false,
-    },
     {
       extension: ['o', undefined, undefined, undefined, undefined],
       isMinor: false,
@@ -52,15 +46,7 @@ export const extensionsOrganized: {
       isMinor: false,
     },
     {
-      extension: [undefined, '7', 'sus4', undefined, undefined],
-      isMinor: false,
-    },
-    {
       extension: [undefined, 'maj7', undefined, undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, 'maj9', undefined, undefined, undefined],
       isMinor: false,
     },
     {
@@ -69,37 +55,22 @@ export const extensionsOrganized: {
     },
     {
       extension: [undefined, '6/9', undefined, undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, '9', undefined, undefined, undefined],
       isMinor: false,
     },
     {
       extension: [undefined, '7', undefined, undefined, undefined],
       isMinor: true,
     },
-  ],
-  medium: [
-    { extension: ['ø', '9', undefined, undefined, undefined], isMinor: false },
     {
-      extension: ['o', 'maj7', undefined, undefined, undefined],
-      isMinor: false,
+      extension: [undefined, 'maj7', undefined, undefined, undefined],
+      isMinor: true,
     },
-    { extension: [undefined, '7', '♭5', undefined, undefined], isMinor: false },
-    { extension: [undefined, '7', '♯5', undefined, undefined], isMinor: false },
-    { extension: [undefined, '7', '♭9', undefined, undefined], isMinor: false },
-    { extension: [undefined, '7', '♯9', undefined, undefined], isMinor: false },
     {
       extension: [undefined, '6', undefined, undefined, undefined],
       isMinor: true,
     },
     {
       extension: [undefined, '6/9', undefined, undefined, undefined],
-      isMinor: true,
-    },
-    {
-      extension: [undefined, 'maj7', undefined, undefined, undefined],
       isMinor: true,
     },
     {
@@ -115,23 +86,73 @@ export const extensionsOrganized: {
       isMinor: true,
     }, //same as add2
     {
+      extension: [undefined, '9', undefined, undefined, undefined],
+      isMinor: false,
+    },
+    {
+      extension: [undefined, 'maj9', undefined, undefined, undefined],
+      isMinor: false,
+    },
+    {
+      extension: ['+', undefined, undefined, undefined, undefined],
+      isMinor: false,
+    },
+  ],
+  medium: [
+    { extension: ['o', '7', undefined, undefined, undefined], isMinor: false },
+    { extension: ['ø', '7', undefined, undefined, undefined], isMinor: false },
+
+    {
+      extension: [undefined, '7', 'sus4', undefined, undefined],
+      isMinor: false,
+    },
+
+    { extension: ['ø', '9', undefined, undefined, undefined], isMinor: false },
+    {
+      extension: ['o', 'maj7', undefined, undefined, undefined],
+      isMinor: false,
+    },
+    { extension: [undefined, '7', '♭5', undefined, undefined], isMinor: false },
+    { extension: [undefined, '7', '♯5', undefined, undefined], isMinor: false },
+    { extension: [undefined, '7', '♭9', undefined, undefined], isMinor: false },
+    { extension: [undefined, '7', '♯9', undefined, undefined], isMinor: false },
+    {
       extension: [undefined, '7', '♭5', undefined, undefined],
       isMinor: true,
-    }, // same as h7
-  ],
-  hard: [
+    }, // same as halfdim7
+    {
+      extension: [undefined, 'maj7', '♯5', undefined, undefined],
+      isMinor: false,
+    },
+    {
+      extension: [undefined, '7', 'sus4', undefined, undefined],
+      isMinor: false,
+    },
+    { extension: [undefined, '9', '♭5', undefined, undefined], isMinor: false },
+    { extension: [undefined, '9', '♯5', undefined, undefined], isMinor: false },
+    {
+      extension: [undefined, '9', 'sus4', undefined, undefined],
+      isMinor: false,
+    }, // similar as G-7/C
+    {
+      extension: [undefined, '11', undefined, undefined, undefined],
+      isMinor: true,
+    },
+    {
+      extension: [undefined, '11', undefined, undefined, undefined],
+      isMinor: false,
+    },
+    {
+      extension: [undefined, '13', undefined, undefined, undefined],
+      isMinor: false,
+    },
     {
       extension: [undefined, 'maj13', undefined, undefined, undefined],
       isMinor: false,
     },
-    {
-      extension: [undefined, '11', undefined, undefined, undefined],
-      isMinor: true,
-    },
-    {
-      extension: [undefined, '11', undefined, undefined, undefined],
-      isMinor: false,
-    },
+
+  ],
+  hard: [
     {
       extension: [undefined, '7', '♯11', undefined, undefined],
       isMinor: false,
@@ -145,29 +166,15 @@ export const extensionsOrganized: {
       isMinor: false,
     },
     {
-      extension: [undefined, 'maj7', '♯5', undefined, undefined],
-      isMinor: false,
-    },
-    {
       extension: [undefined, '13', '♯9', undefined, undefined],
       isMinor: false,
     },
     {
-      extension: [undefined, '7', 'sus4', undefined, undefined],
-      isMinor: false,
-    }, // or 7sus4(add3) ??
-    {
       extension: [undefined, '9', '♯11', undefined, undefined],
       isMinor: false,
     },
-    { extension: [undefined, '9', '♭5', undefined, undefined], isMinor: false },
-    { extension: [undefined, '9', '♯5', undefined, undefined], isMinor: false },
     {
       extension: [undefined, '7', '♭13', undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, '13', undefined, undefined, undefined],
       isMinor: false,
     },
     {
@@ -182,10 +189,6 @@ export const extensionsOrganized: {
       extension: [undefined, '7', '♭9sus4', undefined, undefined],
       isMinor: false,
     }, // similar as Gh7/C
-    {
-      extension: [undefined, '9', 'sus4', undefined, undefined],
-      isMinor: false,
-    }, // similar as G-7/C
     {
       extension: [undefined, '13', 'sus4', undefined, undefined],
       isMinor: false,

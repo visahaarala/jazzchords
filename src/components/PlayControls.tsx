@@ -12,6 +12,10 @@ const PlayControls = () => {
   const [play, setPlay] = useState<boolean>(false);
   const [beat, setBeat] = useState(1);
 
+  // const click = new Audio('./click.mp3');
+  // console.log(click);
+
+
   const generatorProps = {
     extensionLevels: ctx.extensionLevelsState[0],
     accidentalLevels: ctx.accidentalLevelsState[0],
@@ -36,6 +40,7 @@ const PlayControls = () => {
 
   const previousHandler = () => {
     if (chordIndex > 0) setChordIndex((prevIndex) => prevIndex - 1);
+    setBeat(0);
   };
 
   // Dan Abramov's useInterval hook
@@ -47,12 +52,13 @@ const PlayControls = () => {
         playButton.style.filter = 'brightness(2)';
         setTimeout(() => {
           playButton.style.filter = 'brightness(1)';
-          if (beat % beatsPerChord === 0) {
+          if (beat !== 0 && beat % beatsPerChord === 0) {
             nextHandler();
             setBeat(1);
           } else {
             setBeat((prevBeat) => prevBeat + 1);
           }
+          // click.play();
         }, 50);
       }
     },

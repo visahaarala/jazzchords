@@ -10,12 +10,16 @@ $focusFilter: 'none';
   top: $top;
   width: $size;
   height: $size;
-  background-image: var(--github-image);
+  background-image: url('./img/github-mark-white.png');
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
-  transition: var(--transition);
+  transition: var(--transition) all;
   border-radius: 50%;
+
+  // to make hovering look nicer
+  box-sizing: content-box;
+  border: 2px solid var(--color-white);
 
   &:focus,
   &:hover {
@@ -29,11 +33,21 @@ $focusFilter: 'none';
   top: $top;
   width: $size;
   height: $size;
-  transition: var(--transition);
+  transition: 1s transform,
+    // 0.5s filter,
+    var(--transition) outline;
+  transform: rotate(-20deg);
+  // filter: var(--icon-filter);
   border-radius: 50%;
+  cursor: pointer;
+
+  // to make hovering look nicer
+  box-sizing: content-box;
+  border: 2px solid var(--color-white);
 
   &:focus,
   &:hover {
+    // transform: rotate(-38deg);
     outline: var(--color-focus-outline);
   }
 }

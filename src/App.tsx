@@ -5,7 +5,7 @@ import Settings from './components/Settings';
 import ChordDisplay from './components/ChordDisplay';
 import PlayControls from './components/PlayControls';
 import GitHub from './components/GitHub';
-import LightDark from './img/LightDark';
+import LightDark from './components/LightDark';
 
 function App() {
   return (
