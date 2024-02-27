@@ -2,23 +2,19 @@
   display: flex;
   align-items: start;
   font-family: Arial;
-  font-size: 1rem; // setting for all of the below
 
   &__base {
     font-size: 3em;
   }
   &__flat {
-    // background-color: rgba(yellow, 0.4);
     margin-left: -0.25em;
     margin-right: -0.2em;
-    // transform: translateY(-0.05em);
     font-size: 2.3em;
   }
   &__sharp {
-    // background-color: rgba(yellow, 0.4);
     font-size: 2.5em;
     margin-right: 0.05em;
-    transform: translateY(0.07em);
+    transform: translateY(0.09em);
   }
   &__minor {
     font-size: 2.2em;
@@ -58,17 +54,24 @@
     align-items: end;
 
     &--double {
-      transform: translateY(-0.4rem);
+      transform: translateY(-0.3em);
     }
 
     & .flat {
+      display: inline-block;
       margin-right: -0.2em;
-      margin-left: -0.15em;
+      margin-left: -0.3em;
       margin-top: -1em;
-      font-size: 0.8em;
+      margin-bottom: -1em;
+      transform: translateY(-0.08em);
+      font-size: 0.77em;
     }
     & .sharp {
-      font-size: 0.9em;
+      display: inline-block;
+      font-size: 0.8em;
+      margin-right: 0.02em;
+      margin-left: -0.04em;
+      transform: translateY(-0.1em);
     }
   }
   &__inside-brackets {

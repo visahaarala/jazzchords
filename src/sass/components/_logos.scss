@@ -14,7 +14,7 @@ $focusFilter: 'none';
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
-  transition: var(--transition) all;
+  transition: var(--transition);
   border-radius: 50%;
 
   // to make hovering look nicer
@@ -33,9 +33,7 @@ $focusFilter: 'none';
   top: $top;
   width: $size;
   height: $size;
-  transition: 1s transform,
-    // 0.5s filter,
-    var(--transition) outline;
+  transition: var(--transition), 2s transform;
   transform: rotate(-20deg);
   // filter: var(--icon-filter);
   border-radius: 50%;
@@ -47,7 +45,7 @@ $focusFilter: 'none';
 
   &:focus,
   &:hover {
-    // transform: rotate(-38deg);
     outline: var(--color-focus-outline);
+    transform: rotate(-160deg);
   }
 }

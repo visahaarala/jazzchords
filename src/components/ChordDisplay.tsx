@@ -11,9 +11,10 @@ const ChordDisplay = () => {
   const flat: string = '♭';
   const sharp: string = '♯';
 
-  // Font Size = the size of this chord
-  // use this value to setup <Bracket width={}>
-  const size = 1.5; //rem
+  // FONT SIZE = the size of this chord
+  // this value dictates all other parameters
+  // use this value also in <Brackets size={size}>
+  const size = 1.6; //rem
 
   return (
     <div className='section'>
@@ -48,7 +49,7 @@ const ChordDisplay = () => {
                   (chord.bracket[1] ? ' chord__brackets--double' : '')
                 }
               >
-                <Bracket width={chord.bracket[1] ? size * 0.5 : size * 0.3} />
+                <Bracket size={size} double={chord.bracket[1] ? true : false} />
                 <div
                   className={
                     'chord__inside-brackets' +
@@ -74,7 +75,8 @@ const ChordDisplay = () => {
                   ))}
                 </div>
                 <Bracket
-                  width={chord.bracket[1] ? size * 0.5 : size * 0.3}
+                  size={size}
+                  double={chord.bracket[1] ? true : false}
                   flip
                 />
               </div>

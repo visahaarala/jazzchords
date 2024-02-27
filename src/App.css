@@ -1,6 +1,6 @@
 :root {
   --border-radius: 0.3rem;
-  --transition: 0.15s;
+  --transition: 0.15s all;
   --color-focus-outline: #49f solid 0.15rem;
   /*
   Dark & light mode :root color variables are set at
@@ -88,7 +88,7 @@ body {
   border-color: var(--color-gray-dark);
   font-family: inherit;
   cursor: pointer;
-  transition: var(--transition) all;
+  transition: var(--transition);
 }
 .range__selectors > select:focus, .range__selectors > select:hover {
   outline: var(--color-focus-outline);
@@ -103,7 +103,7 @@ body {
   width: 2.1rem;
   padding: 0.2rem;
   cursor: pointer;
-  transition: var(--transition) all;
+  transition: var(--transition);
 }
 .volume:focus, .volume:hover {
   outline: var(--color-focus-outline);
@@ -113,7 +113,6 @@ body {
   display: flex;
   align-items: start;
   font-family: Arial;
-  font-size: 1rem;
 }
 .chord__base {
   font-size: 3em;
@@ -126,7 +125,7 @@ body {
 .chord__sharp {
   font-size: 2.5em;
   margin-right: 0.05em;
-  transform: translateY(0.07em);
+  transform: translateY(0.09em);
 }
 .chord__minor {
   font-size: 2.2em;
@@ -165,16 +164,23 @@ body {
   align-items: end;
 }
 .chord__brackets--double {
-  transform: translateY(-0.4rem);
+  transform: translateY(-0.3em);
 }
 .chord__brackets .flat {
+  display: inline-block;
   margin-right: -0.2em;
-  margin-left: -0.15em;
+  margin-left: -0.3em;
   margin-top: -1em;
-  font-size: 0.8em;
+  margin-bottom: -1em;
+  transform: translateY(-0.08em);
+  font-size: 0.77em;
 }
 .chord__brackets .sharp {
-  font-size: 0.9em;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right: 0.02em;
+  margin-left: -0.04em;
+  transform: translateY(-0.1em);
 }
 .chord__inside-brackets {
   display: flex;
@@ -206,7 +212,7 @@ body {
   background-color: var(--color-gray-light);
   color: var(--color-black);
   cursor: pointer;
-  transition: var(--transition) all;
+  transition: var(--transition);
 }
 .buttons button:focus, .buttons button:hover {
   outline: var(--color-focus-outline);
@@ -235,7 +241,7 @@ body {
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
-  transition: var(--transition) all;
+  transition: var(--transition);
   border-radius: 50%;
   box-sizing: content-box;
   border: 2px solid var(--color-white);
@@ -250,7 +256,7 @@ body {
   top: 1rem;
   width: 2.4rem;
   height: 2.4rem;
-  transition: 1s transform, var(--transition) outline;
+  transition: var(--transition), 2s transform;
   transform: rotate(-20deg);
   border-radius: 50%;
   cursor: pointer;
@@ -259,4 +265,5 @@ body {
 }
 .lightdark:focus, .lightdark:hover {
   outline: var(--color-focus-outline);
+  transform: rotate(-160deg);
 }
