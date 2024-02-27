@@ -1,6 +1,6 @@
 :root {
   --border-radius: 0.3rem;
-  --transition: 0.15s all;
+  --transition: 0.1s all;
 
   --color-focus-outline: #49f solid 0.15rem;
   @media (pointer: coarse) {
@@ -9,24 +9,10 @@
   }
 
   /*
-  Dark & light mode :root color variables are set at
+  Dark & light mode :root color variables are updated
+  by javascript at:
   /src/components/LightDark.tsx
   */
-
-  // --color-white: white;
-  // --color-gray-light: #ddd;
-  // --color-gray-dark: #333;
-  // --color-black: black;
-  // --github-image: url('./img/github-mark.png');
-
-  // @media (prefers-color-scheme: dark) {
-  //   --color-white: #222;
-  //   --color-gray-light: #444;
-  //   --color-gray-dark: #bbb;
-  //   --color-black: #fafafa;
-  //   --github-image: url('./img/github-mark-white.png');
-  // }
-
 }
 
 /* reset */
@@ -53,6 +39,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: var(--transition);
 
   background-color: var(--color-white);
 

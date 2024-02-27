@@ -35,18 +35,18 @@
     font-size: 2.4em;
     font-weight: lighter;
     transform: translateY(0.05em);
-    margin-left: -0.03em;
+    margin-left: -0.02em;
 
     &::before {
       content: '6';
       font-size: 0.6em;
-      transform: translateY(-0.5em);
+      transform: translateY(-0.53em);
       margin-right: -0.17em;
     }
     &::after {
       content: '9';
       font-size: 0.6em;
-      transform: translateY(0.5em);
+      transform: translateY(0.53em);
       margin-left: -0.17em;
     }
   }

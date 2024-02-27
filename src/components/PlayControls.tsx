@@ -2,6 +2,9 @@ import { useContext, useEffect, useState } from 'react';
 import { Context } from '../context/Context';
 import { generateChord, generateChords } from '../data/harmonies';
 import { useInterval } from '../hooks/useInterval';
+import click from '../sounds/click.mp3';
+
+// require('./../sounds/click.mp3');
 
 const PlayControls = () => {
   const ctx = useContext(Context);
@@ -9,12 +12,9 @@ const PlayControls = () => {
   const [chordIndex, setChordIndex] = ctx.chordIndexState;
   const [beatsPerMinute] = ctx.beatsPerMinuteState;
   const [beatsPerChord] = ctx.beatsPerChordState;
+  const [volumeIsOn] = ctx.volumeIsOnState;
   const [play, setPlay] = useState<boolean>(false);
-  const [beat, setBeat] = useState(1);
-
-  // const click = new Audio('./click.mp3');
-  // console.log(click);
-
+  const [beat, setBeat] = useState(0);
 
   const generatorProps = {
     extensionLevels: ctx.extensionLevelsState[0],
@@ -43,6 +43,8 @@ const PlayControls = () => {
     setBeat(0);
   };
 
+  const audio = new Audio(click);
+
   // Dan Abramov's useInterval hook
   // https://overreacted.io/making-setinterval-declarative-with-react-hooks/
   useInterval(
@@ -58,7 +60,7 @@ const PlayControls = () => {
           } else {
             setBeat((prevBeat) => prevBeat + 1);
           }
-          // click.play();
+          if (play && volumeIsOn) audio.play();
         }, 50);
       }
     },
