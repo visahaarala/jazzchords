@@ -1,6 +1,6 @@
 # Links for studying
 
-### Metronome inconcistency
+### Metronome inconsistency
 
 Use web worker to create a separate worker thread for the metronome.
 
