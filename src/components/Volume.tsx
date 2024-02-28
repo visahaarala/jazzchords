@@ -1,11 +1,17 @@
 /*
-Modified from icons "volume-high-outline" and "volume-mute-outline".
-Downloaded from https://ionic.io/ionicons with MIT license.
+Icon fodified from "volume-high-outline" and "volume-mute-outline",
+downloaded from https://ionic.io/ionicons with MIT license.
 */
 
 import { KeyboardEvent, useContext } from 'react';
 import { Context } from '../context/Context';
+
+const isMobile =
+  window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+
 const Volume = () => {
+  console.log('ismobile: ', isMobile);
+
   const ctx = useContext(Context);
   const [isOn, setIsOn] = ctx.volumeIsOnState;
 
@@ -15,10 +21,14 @@ const Volume = () => {
     if (e.code === 'ArrowDown') setIsOn(false);
   };
 
+  const onClickHandler = () => {
+    !isMobile && setIsOn(!isOn);
+  };
+
   return (
     <div
       className='volume'
-      onClick={setIsOn.bind(null, !isOn)}
+      onClick={() => !isMobile && setIsOn(!isOn)}
       tabIndex={0}
       onKeyDown={keyDownHandler}
     >
@@ -48,6 +58,11 @@ const Volume = () => {
           d='M416 432L64 80'
         />
       </svg>
+      {isMobile && (
+        <span className='volume__tooltip'>
+          Volume not yet available in mobile.
+        </span>
+      )}
     </div>
   );
 };

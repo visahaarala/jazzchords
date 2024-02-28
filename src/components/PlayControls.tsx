@@ -1,11 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../context/Context';
 import { generateChord, generateChords } from '../data/harmonies';
-import click from '../sounds/click.wav';
-// import click from 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/click.wav';
-
-// import { createMetronomeInstance } from '../workers/metronomeWorker';
 import { useMetronome } from '../hooks/useMetronome';
+import click from '../sounds/click.mp3';
 
 const PlayControls = () => {
   const ctx = useContext(Context);
@@ -16,28 +13,20 @@ const PlayControls = () => {
   const [volumeIsOn] = ctx.volumeIsOnState;
   const [play, setPlay] = useState<boolean>(false);
   const [beat, setBeat] = useState(0);
-
   const [audio, setAudio] = useState<HTMLAudioElement>();
 
-  const generatorProps = {
-    extensionLevels: ctx.extensionLevelsState[0],
-    accidentalLevels: ctx.accidentalLevelsState[0],
-  };
-
   // load click audio beforehand to avoid error
-  const loadAudio = () => {
-    const _audio = new Audio(
-      // 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/click.mp3'
-      // 'https://www.videomaker.com/sites/videomaker.com/files/downloads/free-sound-effects/Free_ExplosionSharp_6048_97_1.wav'
-      // 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/click.wav'
-      // 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/Metronome%20sound_long.wav'
-      // 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/Metronome%20sound%20very%20long.wav'
-      click
-    );
+  useEffect(() => {
+    const _audio = new Audio(click);
     _audio.load();
     _audio.addEventListener('canplaythrough', () => {
       setAudio(_audio);
     });
+  }, []);
+
+  const generatorProps = {
+    extensionLevels: ctx.extensionLevelsState[0],
+    accidentalLevels: ctx.accidentalLevelsState[0],
   };
 
   // reset chord list when chord settings are changed
@@ -82,19 +71,6 @@ const PlayControls = () => {
     play ? (60 / beatsPerMinute) * 1000 : undefined
   );
 
-  // useEffect(() => {
-  //   if (play) {
-  //     document.getElementById('test')!.innerHTML = 'useEffect play';
-  //     setTimeout(() => {
-  //       console.log('playing audio');
-  //       audio?.play();
-  //     }, 1000);
-  //   }
-  //   return () => {
-  //     document.getElementById('test')!.innerHTML = '---';
-  //   };
-  // }, [play]);
-
   return (
     <div className='section'>
       <div className='buttons'>
@@ -106,18 +82,14 @@ const PlayControls = () => {
           <div>
             <button onClick={previousHandler}>Previous</button>
             <div>
-              {!audio ? (
-                <button onClick={loadAudio}>Load</button>
-              ) : (
-                <button
-                  onClick={() => {
-                    setPlay(!play);
-                  }}
-                  id='play'
-                >
-                  {!play ? 'Play' : 'Stop'}
-                </button>
-              )}
+              <button
+                onClick={() => {
+                  setPlay(!play);
+                }}
+                id='play'
+              >
+                {!play ? 'Play' : 'Stop'}
+              </button>
             </div>
           </div>
         </div>

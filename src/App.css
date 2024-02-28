@@ -110,6 +110,26 @@ body {
 .volume:focus, .volume:hover {
   outline: var(--color-focus-outline);
 }
+.volume__tooltip {
+  display: inline-block;
+  background-color: var(--color-gray-dark);
+  border: 2px solid var(--color-gray-white);
+  color: var(--color-white);
+  border-radius: var(--border-radius);
+  z-index: 1;
+  position: absolute;
+  margin: auto;
+  right: 5.3rem;
+  top: 4.4rem;
+  width: 10rem;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  filter: brightness(1.3);
+  visibility: hidden;
+}
+.volume:hover .volume__tooltip {
+  visibility: visible;
+}
 
 .chord {
   display: flex;
