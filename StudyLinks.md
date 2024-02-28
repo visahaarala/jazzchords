@@ -1,4 +1,4 @@
-# Links for studying solved problems
+# Links for studying
 
 ### Metronome inconcistency
 
