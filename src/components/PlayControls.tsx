@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../context/Context';
 import { generateChord, generateChords } from '../data/harmonies';
-import click from '../sounds/click.wav';
+// import click from '../sounds/click.wav';
+// import click from 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/click.wav';
 
 // import { createMetronomeInstance } from '../workers/metronomeWorker';
 import { useMetronome } from '../hooks/useMetronome';
@@ -27,8 +28,9 @@ const PlayControls = () => {
   const loadAudio = () => {
     const _audio = new Audio(
       // 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/click.mp3'
-      // 'https://www.videomaker.com/sites/videomaker.com/files/downloads/free-sound-effects/Free_ExplosionSharp_6048_97_1.wav'
-      click
+      'https://www.videomaker.com/sites/videomaker.com/files/downloads/free-sound-effects/Free_ExplosionSharp_6048_97_1.wav'
+      // 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/click.wav'
+      // click
     );
     _audio.load();
     _audio.addEventListener('canplaythrough', () => {
