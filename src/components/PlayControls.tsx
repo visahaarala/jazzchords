@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../context/Context';
 import { generateChord, generateChords } from '../data/harmonies';
-// import click from '../sounds/click.wav';
+import click from '../sounds/click.wav';
 // import click from 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/click.wav';
 
 // import { createMetronomeInstance } from '../workers/metronomeWorker';
@@ -30,8 +30,9 @@ const PlayControls = () => {
       // 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/click.mp3'
       // 'https://www.videomaker.com/sites/videomaker.com/files/downloads/free-sound-effects/Free_ExplosionSharp_6048_97_1.wav'
       // 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/click.wav'
-      'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/Metronome%20sound_long.wav'
-      // click
+      // 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/Metronome%20sound_long.wav'
+      // 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/Metronome%20sound%20very%20long.wav'
+      click
     );
     _audio.load();
     _audio.addEventListener('canplaythrough', () => {
@@ -98,7 +99,7 @@ const PlayControls = () => {
     <div className='section'>
       <div className='buttons'>
         <div>
-          <p id='test'>TEST</p>
+          {/* <p id='test'>TEST</p> */}
           <button onClick={nextHandler} className='next'>
             Next
           </button>

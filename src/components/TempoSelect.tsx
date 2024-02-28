@@ -20,7 +20,7 @@ const TempoSelect = () => {
     <div className='range'>
       <h3>Tempo</h3>
       <div className='range__selectors'>
-        <select id='bpm' value={bpc} onChange={bpcHandler}>
+        <select id='bpc' value={bpc} onChange={bpcHandler}>
           {bpcOptions.map((bpc) => (
             <option value={bpc} key={bpc}>
               {bpc} {bpc === 1 ? 'beat' : 'beats'} / chord

@@ -40,7 +40,7 @@ const RangeSelect = <T,>({
     <div className='range'>
       <h3>{title}</h3>
       <div className='range__selectors'>
-        <select id='min' value={min} onChange={minHandler}>
+        <select id={title + '-min'} value={min} onChange={minHandler}>
           {Object.keys(options).map((key) => {
             const value = options[parseInt(key)];
             return (
@@ -51,7 +51,7 @@ const RangeSelect = <T,>({
           })}
         </select>
         <span>&mdash;</span>
-        <select id='max' value={max} onChange={maxHandler}>
+        <select id={title + '-max'} value={max} onChange={maxHandler}>
           {Object.keys(options).map((key) => {
             const value = options[parseInt(key)];
             return (
