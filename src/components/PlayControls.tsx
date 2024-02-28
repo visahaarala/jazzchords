@@ -28,8 +28,9 @@ const PlayControls = () => {
   const loadAudio = () => {
     const _audio = new Audio(
       // 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/click.mp3'
-      'https://www.videomaker.com/sites/videomaker.com/files/downloads/free-sound-effects/Free_ExplosionSharp_6048_97_1.wav'
+      // 'https://www.videomaker.com/sites/videomaker.com/files/downloads/free-sound-effects/Free_ExplosionSharp_6048_97_1.wav'
       // 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/click.wav'
+      'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/Metronome%20sound_long.wav'
       // click
     );
     _audio.load();
