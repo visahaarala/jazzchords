@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../context/Context';
 import { generateChord, generateChords } from '../data/harmonies';
-import { useInterval } from '../hooks/useInterval';
-import click from '../sounds/click.mp3';
+import click from '../sounds/click.wav';
 
-// require('./../sounds/click.mp3');
+// import { createMetronomeInstance } from '../workers/metronomeWorker';
+import { useMetronome } from '../hooks/useMetronome';
 
 const PlayControls = () => {
   const ctx = useContext(Context);
@@ -16,9 +16,24 @@ const PlayControls = () => {
   const [play, setPlay] = useState<boolean>(false);
   const [beat, setBeat] = useState(0);
 
+  const [audio, setAudio] = useState<HTMLAudioElement>();
+
   const generatorProps = {
     extensionLevels: ctx.extensionLevelsState[0],
     accidentalLevels: ctx.accidentalLevelsState[0],
+  };
+
+  // load click audio beforehand to avoid error
+  const loadAudio = () => {
+    const _audio = new Audio(
+      // 'https://github.com/visahaarala/jazzchords/raw/main/src/sounds/click.mp3'
+      // 'https://www.videomaker.com/sites/videomaker.com/files/downloads/free-sound-effects/Free_ExplosionSharp_6048_97_1.wav'
+      click
+    );
+    _audio.load();
+    _audio.addEventListener('canplaythrough', () => {
+      setAudio(_audio);
+    });
   };
 
   // reset chord list when chord settings are changed
@@ -43,11 +58,7 @@ const PlayControls = () => {
     setBeat(0);
   };
 
-  const audio = new Audio(click);
-
-  // Dan Abramov's useInterval hook
-  // https://overreacted.io/making-setinterval-declarative-with-react-hooks/
-  useInterval(
+  useMetronome(
     () => {
       if (play) {
         const playButton = document.getElementById('play')!;
@@ -60,32 +71,49 @@ const PlayControls = () => {
           } else {
             setBeat((prevBeat) => prevBeat + 1);
           }
-          if (play && volumeIsOn) audio.play();
+          if (audio && play && volumeIsOn) audio.play();
         }, 50);
       }
     },
-    play ? (60 / beatsPerMinute) * 1000 : 9999999 // 10k seconds
+    play ? (60 / beatsPerMinute) * 1000 : undefined
   );
+
+  // useEffect(() => {
+  //   if (play) {
+  //     document.getElementById('test')!.innerHTML = 'useEffect play';
+  //     setTimeout(() => {
+  //       console.log('playing audio');
+  //       audio?.play();
+  //     }, 1000);
+  //   }
+  //   return () => {
+  //     document.getElementById('test')!.innerHTML = '---';
+  //   };
+  // }, [play]);
 
   return (
     <div className='section'>
       <div className='buttons'>
         <div>
+          <p id='test'>TEST</p>
           <button onClick={nextHandler} className='next'>
             Next
           </button>
           <div>
             <button onClick={previousHandler}>Previous</button>
             <div>
-              <button
-                onClick={() => {
-                  setBeat(1);
-                  setPlay(!play);
-                }}
-                id='play'
-              >
-                {!play ? 'Play' : 'Stop'}
-              </button>
+              {!audio ? (
+                <button onClick={loadAudio}>Load</button>
+              ) : (
+                <button
+                  onClick={() => {
+                    setPlay(!play);
+                  }}
+                  id='play'
+                >
+                  {!play ? 'Play' : 'Stop'}
+                </button>
+              )}
             </div>
           </div>
         </div>
