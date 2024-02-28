@@ -2,7 +2,8 @@
 
 ## Fix metronome inconsistency
 
-An amazing article!
+An amazing article about audio timing accuracy:
+
 [https://web.dev/articles/audio-scheduling](https://web.dev/articles/audio-scheduling)
 
 ### before I tried Web Worker & setInterval()...
