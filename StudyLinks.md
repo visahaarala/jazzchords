@@ -2,7 +2,7 @@
 
 ### Metronome inconsistency
 
-Use web worker to create a separate worker thread for the metronome.
+Using Web Worker to create a separate worker thread for the metronome.
 
 [https://plainenglish.io/blog/web-worker-in-react](https://plainenglish.io/blog/web-worker-in-react)
 
