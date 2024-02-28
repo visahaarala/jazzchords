@@ -7,11 +7,9 @@ import { KeyboardEvent, useContext } from 'react';
 import { Context } from '../context/Context';
 
 const isMobile =
-  window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  window.matchMedia && !window.matchMedia('(pointer: fine)').matches;
 
 const Volume = () => {
-  console.log('ismobile: ', isMobile);
-
   const ctx = useContext(Context);
   const [isOn, setIsOn] = ctx.volumeIsOnState;
 

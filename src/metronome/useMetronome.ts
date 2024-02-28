@@ -3,7 +3,7 @@ Help from Dan Abramov:
 https://overreacted.io/making-setinterval-declarative-with-react-hooks/
 */
 import { useEffect, useRef } from 'react';
-import { createMetronomeInstance } from '../workers/metronomeWorker';
+import { createMetronomeInstance } from './metronomeWorker';
 
 export function useMetronome(callback: () => void, delay: number | undefined) {
   const savedCallback = useRef(callback);

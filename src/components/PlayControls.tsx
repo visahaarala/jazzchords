@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../context/Context';
 import { generateChord, generateChords } from '../data/harmonies';
-import { useMetronome } from '../hooks/useMetronome';
+import { useMetronome } from '../metronome/useMetronome';
 import click from '../sounds/click.mp3';
 
 const PlayControls = () => {
