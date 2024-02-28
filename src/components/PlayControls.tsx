@@ -15,14 +15,20 @@ const PlayControls = () => {
   const [beat, setBeat] = useState(0);
   const [audio, setAudio] = useState<HTMLAudioElement>();
 
+  // for Safari in desktop, 
   // load click audio beforehand to avoid error
   useEffect(() => {
-    const _audio = new Audio(click);
-    _audio.load();
-    _audio.addEventListener('canplaythrough', () => {
-      setAudio(_audio);
-    });
-  }, []);
+    // console.log(audio);
+    if (!audio && volumeIsOn) {
+      const _audio = new Audio(click);
+      _audio.load();
+      _audio.addEventListener('canplaythrough', () => {
+        // why is this happening over and over again?
+        console.log('loading audio, current audioState: ', audio);
+        setAudio(_audio);
+      });
+    }
+  }, [volumeIsOn, audio]);
 
   const generatorProps = {
     extensionLevels: ctx.extensionLevelsState[0],
@@ -75,7 +81,7 @@ const PlayControls = () => {
     <div className='section'>
       <div className='buttons'>
         <div>
-          <button onClick={nextHandler} className='next'>
+          <button onClick={nextHandler} className='next' id='next'>
             Next
           </button>
           <div>

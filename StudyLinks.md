@@ -2,7 +2,12 @@
 
 ## Fix metronome inconsistency
 
-Using Web Worker to create a separate worker thread for the metronome.
+An amazing article!
+[https://web.dev/articles/audio-scheduling](https://web.dev/articles/audio-scheduling)
+
+### before I tried Web Worker & setInterval()...
+
+Web Worker to create a separate worker thread for the metronome, but that was still quite inconsistent.
 
 [https://plainenglish.io/blog/web-worker-in-react](https://plainenglish.io/blog/web-worker-in-react)
 

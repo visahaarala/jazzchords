@@ -17,6 +17,7 @@ export function useMetronome(callback: () => void, delay: number | undefined) {
     metronome.postMessage(delay);
     metronome.onmessage = (message) => {
       savedCallback.current();
+      document.getElementById('next')!.innerHTML = message.data;
     };
     // cleanup
     return () => metronome.terminate();
