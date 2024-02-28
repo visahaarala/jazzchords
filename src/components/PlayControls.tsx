@@ -75,7 +75,6 @@ const PlayControls = () => {
     <div className='section'>
       <div className='buttons'>
         <div>
-          {/* <p id='test'>TEST</p> */}
           <button onClick={nextHandler} className='next'>
             Next
           </button>

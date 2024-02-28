@@ -1,7 +1,13 @@
 # TO-DO list
 
-- Fix async metronome audio for mobile.
+### Desktop: Chrome works, Safari audio error
 
-- Detect mobile landscape => layout
+Detect browser?
 
-- PWA, icon, etc
+Audio loading starts from user input (click)?
+
+### Fix async metronome audio for mobile.
+
+### Detect mobile landscape => layout
+
+### PWA, icon, etc
