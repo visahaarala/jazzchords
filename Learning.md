@@ -10,13 +10,13 @@
 
 [https://css-tricks.com/using-requestanimationframe-with-react-hooks/](https://css-tricks.com/using-requestanimationframe-with-react-hooks/)
 
-## Web workers 
+## Web workers
 
 [How to Use Web Workers in React](https://plainenglish.io/blog/web-worker-in-react)
 
-Ended not using one but **web audio clock** instead (which cannot be run in a thread).
+Ended not using one but the **web audio clock** instead (which cannot be run in a thread).
 
-## Change state multiple times from inside useEffect
+## Get updated state in a loop inside useEffect
 
 [Making setInterval Declarative with React Hooks](https://overreacted.io/making-setinterval-declarative-with-react-hooks/)
 
