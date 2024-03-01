@@ -6,6 +6,9 @@ An amazing article about audio timing accuracy:
 
 [https://web.dev/articles/audio-scheduling](https://web.dev/articles/audio-scheduling)
 
+[maybe better article:](https://grantjam.es/creating-a-simple-metronome-using-javascript-and-the-web-audio-api/)
+
+
 #### Animation frame loops
 
 [https://css-tricks.com/using-requestanimationframe-with-react-hooks/](https://css-tricks.com/using-requestanimationframe-with-react-hooks/)
