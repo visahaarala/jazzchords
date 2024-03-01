@@ -3,10 +3,20 @@ Play the metronome sounds from inside this hook.
 Use the hook's callback function to update DOM
 */
 
-import { 
-  // useContext, 
-  useEffect, useRef, useState } from 'react';
+import {
+  // useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 // import { Context } from '../context/Context';
+
+// -----------------
+// TEMPORARY TESTING
+// -----------------
+// const nextText = (text: string) => {
+//   document.getElementById('next')!.innerHTML = text;
+// };
 
 export function useMetronome({
   callBack,
@@ -87,9 +97,20 @@ export function useMetronome({
 
   useEffect(
     () => {
-      let animationFrameId: number | undefined = undefined;
       let previousScheduleTime = 0;
+      let animationFrameId: number | undefined = undefined;
+      // let frameCount = 0;
       const loop = () => {
+        
+        // --- this works on iPhone ---
+        // frameCount++;
+        // if (audioContext && frameCount % 60 === 0) {
+          // savedCallback.current();
+        // }
+
+        // --- this doesn't work on iPhone ---
+        // because audioContext.currentTime is always 0
+        // nextText('' + audioContext.currentTime);
         if (audioContext && delay) {
           const now = audioContext.currentTime;
           if (now > previousScheduleTime + schedulingInterval) {
@@ -100,10 +121,9 @@ export function useMetronome({
           // update DOM visual click when it is time
           if (
             clicksRef.current.length &&
-            // AnimationFrame is 60Hz or more.
-            // Thus below, animationframe can be almost 17ms late.
-            // The "0.01" will give the visual metronome 10ms back.
-            clicksRef.current[0].time < now + 0.01
+            // AnimationFrame is about 60Hz (~17ms per frame).
+            // 0.008 is about half of that
+            clicksRef.current[0].time < now + 0.008
           ) {
             savedCallback.current();
             clicksRef.current = clicksRef.current.slice(1);
@@ -113,20 +133,21 @@ export function useMetronome({
       };
 
       // metronome runs only when delay is not undefined
+      let intervalId: NodeJS.Timer;
       if (delay) {
         // start audioContext from first user play button click
         // (change in this useEffect's delay value)
         if (!audioContext) setAudioContext(new AudioContext());
-
         animationFrameId = requestAnimationFrame(loop);
       }
-
       // whenever delay changes
+      // stop and remove clicks, cancel animationFrame
       return () => {
         clicksRef.current.forEach((c) => {
           c.osc?.stop();
         });
         clicksRef.current = [];
+        clearInterval(intervalId);
         if (animationFrameId) cancelAnimationFrame(animationFrameId);
       };
     },
