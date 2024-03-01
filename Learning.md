@@ -12,8 +12,9 @@
 
 ## Web workers 
 
-Ended not using one but Web Audio clock instead (which cannot be run in a thread).
 [How to Use Web Workers in React](https://plainenglish.io/blog/web-worker-in-react)
+
+Ended not using one but **web audio clock** instead (which cannot be run in a thread).
 
 ## Change state multiple times from inside useEffect
 
