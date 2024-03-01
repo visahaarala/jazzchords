@@ -6,7 +6,11 @@ An amazing article about audio timing accuracy:
 
 [https://web.dev/articles/audio-scheduling](https://web.dev/articles/audio-scheduling)
 
-### before I tried Web Worker & setInterval()...
+#### Animation frame loops
+
+[https://css-tricks.com/using-requestanimationframe-with-react-hooks/](https://css-tricks.com/using-requestanimationframe-with-react-hooks/)
+
+#### using web worker (tried before)
 
 Web Worker to create a separate worker thread for the metronome, but that was still quite inconsistent.
 

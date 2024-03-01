@@ -20,7 +20,7 @@ export const Context = createContext<{
   ];
   beatsPerChordState: [number, Dispatch<SetStateAction<number>>];
   beatsPerMinuteState: [number, Dispatch<SetStateAction<number>>];
-  volumeIsOnState: [boolean, Dispatch<SetStateAction<boolean>>];
+  isMutedState: [boolean, Dispatch<SetStateAction<boolean>>];
   chordListState: [Chord[], Dispatch<SetStateAction<Chord[]>>];
   chordIndexState: [number, Dispatch<SetStateAction<number>>];
   // darkModeState: [boolean, Dispatch<SetStateAction<boolean>>];
@@ -29,7 +29,7 @@ export const Context = createContext<{
   accidentalLevelsState: [[], () => {}],
   beatsPerChordState: [0, () => {}],
   beatsPerMinuteState: [0, () => {}],
-  volumeIsOnState: [false, () => {}],
+  isMutedState: [true, () => {}],
   chordListState: [[], () => {}],
   chordIndexState: [0, () => {}],
   // darkModeState: [false, () => {}],
@@ -40,7 +40,7 @@ const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const accidentalLevelsState = useState<AccidentalLevel[]>([]);
   const beatsPerChordState = useState(bpcOptions[3]);
   const beatsPerMinuteState = useState(bpmOptions[10]);
-  const volumeIsOnState = useState(false);
+  const isMutedState = useState(true);
   const chordListState = useState<Chord[]>([]);
   const chordIndexState = useState(0);
   // const darkModeState = useState(false);
@@ -50,7 +50,7 @@ const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     accidentalLevelsState,
     beatsPerChordState,
     beatsPerMinuteState,
-    volumeIsOnState,
+    isMutedState,
     chordListState,
     chordIndexState,
     // darkModeState,
