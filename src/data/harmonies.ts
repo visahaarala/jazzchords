@@ -150,7 +150,6 @@ export const extensionsOrganized: {
       extension: [undefined, 'maj13', undefined, undefined, undefined],
       isMinor: false,
     },
-
   ],
   hard: [
     {
@@ -264,18 +263,4 @@ export const generateChords = ({
   }
 
   return chords;
-};
-
-export const generateChord = ({
-  extensionLevels,
-  accidentalLevels,
-}: {
-  extensionLevels: ExtensionLevel[];
-  accidentalLevels: AccidentalLevel[];
-}): Chord => {
-  return generateChords({
-    extensionLevels,
-    accidentalLevels,
-    numberOfChords: 1,
-  })[0];
 };

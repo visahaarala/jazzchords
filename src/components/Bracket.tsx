@@ -1,14 +1,11 @@
 const Bracket = ({
   double,
-  size,
   flip,
 }: {
   double?: boolean;
-  size: number;
   flip?: boolean;
 }) => {
-  const width = double ? size * 0.4 : size * 0.2;
-
+  const width = double ? 0.64 : 0.32;
   const strokeWidth = 0.5 / width;
 
   const translateY = double ? 'translateY(.13em)' : '';
@@ -20,7 +17,7 @@ const Bracket = ({
     marginLeft: '0',
   };
   if (flip) {
-    style.transform = 'scaleX(-1)' + translateY;
+    style.transform = 'scaleX(-1) ' + translateY;
     style.marginRight = '0';
     style.marginLeft = '.1rem';
   }

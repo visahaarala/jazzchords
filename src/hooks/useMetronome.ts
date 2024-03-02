@@ -3,13 +3,8 @@ Play the metronome sounds from inside this hook.
 Use the hook's callback function to update DOM
 */
 
-import {
-  // useContext,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
-// import { Context } from '../context/Context';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { Context } from '../context/Context';
 
 // -----------------
 // TEMPORARY TESTING
@@ -34,30 +29,28 @@ export function useMetronome({
     savedCallback.current = callBack;
   });
 
-  // const [isMuted] = useContext(Context).isMutedState;
+  const [isMuted] = useContext(Context).isMutedState;
   const [audioContext, setAudioContext] = useState<AudioContext>();
 
-  // const volumeRef = useRef<GainNode>();
+  const gainNodeRef = useRef<GainNode>();
   const clicksRef = useRef<{ osc: OscillatorNode | undefined; time: number }[]>(
     []
   );
 
-  // useEffect(() => {
-  //   if (audioContext) {
-  //     volumeRef.current = audioContext.createGain();
-  //   }
-  // }, [audioContext]);
+  useEffect(() => {
+    if (audioContext && !gainNodeRef.current) {
+      gainNodeRef.current = audioContext.createGain();
+      gainNodeRef.current.connect(audioContext.destination);
+      gainNodeRef.current.gain.value = isMuted ? 0 : 1;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [audioContext]);
 
-  // useEffect(() => {
-  //   if (volumeRef.current) {
-  //     console.log('changeIsMuted');
-  //     if (isMuted) {
-  //       volumeRef.current.gain.value = 0.5;
-  //     } else {
-  //       volumeRef.current.gain.value = 1;
-  //     }
-  //   }
-  // }, [isMuted]);
+  useEffect(() => {
+    if (gainNodeRef.current) {
+      gainNodeRef.current.gain.value = isMuted ? 0 : 1;
+    }
+  }, [isMuted]);
 
   //
   // Do the scheduling on 1 second interval
@@ -77,18 +70,13 @@ export function useMetronome({
     }
   };
 
-  // set up clicks for playing
-  const clickLength = 0.02; // seconds
+  // Schedule oscillator to play click.
+  const clickLength = 0.018; // seconds
   const createOscillator = (time: number): OscillatorNode | undefined => {
-    // console.log('volume', volumeRef.current);
-    if (
-      audioContext
-      // && volumeRef.current
-    ) {
+    if (audioContext && gainNodeRef.current) {
       var osc = audioContext.createOscillator();
-      osc.connect(audioContext.destination);
-      // osc.connect(volumeRef.current);
-      osc.frequency.value = 880;
+      osc.connect(gainNodeRef.current);
+      osc.frequency.value = 2095; // C note at A=440Hz tuning: ~2093
       osc.start(time);
       osc.stop(time + clickLength);
       return osc;
@@ -101,11 +89,10 @@ export function useMetronome({
       let animationFrameId: number | undefined = undefined;
       // let frameCount = 0;
       const loop = () => {
-        
         // --- this works on iPhone ---
         // frameCount++;
         // if (audioContext && frameCount % 60 === 0) {
-          // savedCallback.current();
+        //   savedCallback.current();
         // }
 
         // --- this doesn't work on iPhone ---

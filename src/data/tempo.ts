@@ -1,5 +1,5 @@
-const lowestTempo = 30;
-const highestTempo = 200;
+const lowestTempo = 20;
+const highestTempo = 220;
 const growthPercentage = 10;
 
 const generateBpmList = (): number[] => {

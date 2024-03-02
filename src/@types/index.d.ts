@@ -7,11 +7,11 @@ export type MajorOrMinor = 'major' | 'minor';
 export type Extension = {
   // o 7 #9 #5 alt.
   extension: [
-    string | undefined,
-    string | undefined,
-    string | undefined,
-    string | undefined,
-    string | undefined
+    string | undefined, // dim
+    string | undefined, // 7
+    string | undefined, // brackets top
+    string | undefined, // brackets bottom
+    string | undefined // alt
   ];
   isMinor: boolean;
 };

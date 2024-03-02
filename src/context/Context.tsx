@@ -10,50 +10,46 @@ import { AccidentalLevel, Chord, ExtensionLevel } from '../@types';
 import { bpcOptions, bpmOptions } from '../data/tempo';
 
 export const Context = createContext<{
-  extensionLevelsState: [
-    ExtensionLevel[],
-    Dispatch<SetStateAction<ExtensionLevel[]>>
-  ];
   accidentalLevelsState: [
     AccidentalLevel[],
     Dispatch<SetStateAction<AccidentalLevel[]>>
+  ];
+  extensionLevelsState: [
+    ExtensionLevel[],
+    Dispatch<SetStateAction<ExtensionLevel[]>>
   ];
   beatsPerChordState: [number, Dispatch<SetStateAction<number>>];
   beatsPerMinuteState: [number, Dispatch<SetStateAction<number>>];
   isMutedState: [boolean, Dispatch<SetStateAction<boolean>>];
   chordListState: [Chord[], Dispatch<SetStateAction<Chord[]>>];
   chordIndexState: [number, Dispatch<SetStateAction<number>>];
-  // darkModeState: [boolean, Dispatch<SetStateAction<boolean>>];
 }>({
-  extensionLevelsState: [[], () => {}],
   accidentalLevelsState: [[], () => {}],
+  extensionLevelsState: [[], () => {}],
   beatsPerChordState: [0, () => {}],
   beatsPerMinuteState: [0, () => {}],
   isMutedState: [true, () => {}],
   chordListState: [[], () => {}],
   chordIndexState: [0, () => {}],
-  // darkModeState: [false, () => {}],
 });
 
 const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const extensionLevelsState = useState<ExtensionLevel[]>([]);
   const accidentalLevelsState = useState<AccidentalLevel[]>([]);
+  const extensionLevelsState = useState<ExtensionLevel[]>([]);
   const beatsPerChordState = useState(bpcOptions[3]);
-  const beatsPerMinuteState = useState(bpmOptions[10]);
-  const isMutedState = useState(true);
+  const beatsPerMinuteState = useState(bpmOptions[13]);
+  const isMutedState = useState(false);
   const chordListState = useState<Chord[]>([]);
   const chordIndexState = useState(0);
-  // const darkModeState = useState(false);
 
   const value = {
-    extensionLevelsState,
     accidentalLevelsState,
+    extensionLevelsState,
     beatsPerChordState,
     beatsPerMinuteState,
     isMutedState,
     chordListState,
     chordIndexState,
-    // darkModeState,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

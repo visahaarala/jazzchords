@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../context/Context';
-import { generateChord, generateChords } from '../data/harmonies';
+import { generateChords } from '../data/harmonies';
 import { useMetronome } from '../hooks/useMetronome';
+import Chord from './Chord';
 
 const PlayControls = () => {
   const ctx = useContext(Context);
@@ -32,7 +33,7 @@ const PlayControls = () => {
     if (chordIndex >= chordList.length - 2) {
       setChordList((prevList) => [
         ...prevList,
-        generateChord({ ...generatorProps }),
+        generateChords({ ...generatorProps, numberOfChords: 1 })[0],
       ]);
     }
     setChordIndex((prevIndex) => prevIndex + 1);
@@ -55,7 +56,6 @@ const PlayControls = () => {
             nextHandler();
             setBeat(1);
           } else {
-            // console.log('setbeat', beat, 'to', beat + 1);
             setBeat((prevBeat) => prevBeat + 1);
           }
         }, 50);
