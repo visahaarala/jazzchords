@@ -1,3 +1,5 @@
+import { TimeSignature } from "../@types";
+
 const lowestTempo = 20;
 const highestTempo = 220;
 const growthPercentage = 10;
@@ -16,4 +18,18 @@ const generateBpmList = (): number[] => {
 
 export const bpmOptions = generateBpmList();
 
-export const bpcOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+export const bpcOptions: TimeSignature[] = [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  '∞',
+];

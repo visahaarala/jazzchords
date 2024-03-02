@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 import { Context } from '../context/Context';
 import { generateChords } from '../data/harmonies';
 import { useMetronome } from '../hooks/useMetronome';
-import Chord from './Chord';
 
 const PlayControls = () => {
   const ctx = useContext(Context);
@@ -42,8 +41,12 @@ const PlayControls = () => {
   // decrement chord index unless it is 0
   const previousHandler = () => {
     if (chordIndex > 0) setChordIndex((prevIndex) => prevIndex - 1);
-    // setBeat(1);
   };
+
+  // when bpc changes, reset beat
+  useEffect(() => {
+    setBeat(1);
+  }, [beatsPerChord])
 
   useMetronome({
     callBack: () => {
@@ -52,11 +55,14 @@ const PlayControls = () => {
         playButton.style.filter = 'brightness(2.5)';
         setTimeout(() => {
           playButton.style.filter = 'brightness(1)';
-          if (beat !== 0 && beat % beatsPerChord === 0) {
-            nextHandler();
-            setBeat(1);
-          } else {
-            setBeat((prevBeat) => prevBeat + 1);
+          if (beatsPerChord != '∞') {
+            const bpc = beatsPerChord as number;
+            if (beat !== 0 && beat % bpc === 0) {
+              nextHandler();
+              setBeat(1);
+            } else {
+              setBeat((prevBeat) => prevBeat + 1);
+            }
           }
         }, 50);
       }

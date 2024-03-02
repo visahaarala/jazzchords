@@ -9,7 +9,9 @@ const TempoSelect = () => {
   const [bpm, setBpm] = ctx.beatsPerMinuteState;
 
   const bpcHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-    setBpc(Number(e.target.value));
+    const value = e.target.value;
+    if (value === '∞') setBpc(value);
+    else setBpc(Number(e.target.value));
   };
 
   const bpmHandler = (e: ChangeEvent<HTMLSelectElement>) => {

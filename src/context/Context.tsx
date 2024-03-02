@@ -6,7 +6,7 @@ import {
   createContext,
   useState,
 } from 'react';
-import { AccidentalLevel, Chord, ExtensionLevel } from '../@types';
+import { AccidentalLevel, Chord, ExtensionLevel, TimeSignature } from '../@types';
 import { bpcOptions, bpmOptions } from '../data/tempo';
 
 export const Context = createContext<{
@@ -18,7 +18,7 @@ export const Context = createContext<{
     ExtensionLevel[],
     Dispatch<SetStateAction<ExtensionLevel[]>>
   ];
-  beatsPerChordState: [number, Dispatch<SetStateAction<number>>];
+  beatsPerChordState: [TimeSignature, Dispatch<SetStateAction<TimeSignature>>];
   beatsPerMinuteState: [number, Dispatch<SetStateAction<number>>];
   isMutedState: [boolean, Dispatch<SetStateAction<boolean>>];
   chordListState: [Chord[], Dispatch<SetStateAction<Chord[]>>];
