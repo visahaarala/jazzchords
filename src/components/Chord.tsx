@@ -25,7 +25,7 @@ const Chord = ({
   const sharp: string = '♯';
 
   // FONT SIZE = the size of this chord
-  // this value dictates all other parameters
+  // this value dictates all other em size parameters
   if (size === undefined) size = 1.6; // rem
 
   if (contrast === undefined) contrast = 100;
@@ -36,7 +36,6 @@ const Chord = ({
   if (marginBottom === undefined) marginBottom = 0;
 
   return (
-    // <div className='section'>
     <div
       className='chord'
       style={{
@@ -108,7 +107,6 @@ const Chord = ({
         </>
       )}
     </div>
-    // </div>
   );
 };
 

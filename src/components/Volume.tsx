@@ -6,9 +6,6 @@ downloaded from https://ionic.io/ionicons with MIT license.
 import { KeyboardEvent, useContext } from 'react';
 import { Context } from '../context/Context';
 
-// const isMobile =
-//   window.matchMedia && !window.matchMedia('(pointer: fine)').matches;
-
 const Volume = () => {
   const ctx = useContext(Context);
   const [isMuted, setIsMuted] = ctx.isMutedState;
@@ -19,14 +16,9 @@ const Volume = () => {
     if (e.code === 'ArrowDown') setIsMuted(true);
   };
 
-  const onClickHandler = () => {
-    // !isMobile && setIsOn(!isOn);
-  };
-
   return (
     <div
       className='volume'
-      // onClick={() => !isMobile && setIsOn(!isOn)}
       onClick={() => setIsMuted(!isMuted)}
       tabIndex={0}
       onKeyDown={keyDownHandler}
@@ -57,11 +49,6 @@ const Volume = () => {
           d='M416 432L64 80'
         />
       </svg>
-      {/* {isMobile && (
-        <span className='volume__tooltip'>
-          Volume not yet available in mobile.
-        </span>
-      )} */}
     </div>
   );
 };
