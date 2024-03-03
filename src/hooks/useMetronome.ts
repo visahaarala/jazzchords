@@ -6,13 +6,6 @@ Use the hook's callback function to update DOM
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Context } from '../context/Context';
 
-// -----------------
-// TEMPORARY TESTING
-// -----------------
-// const nextText = (text: string) => {
-//   document.getElementById('next')!.innerHTML = text;
-// };
-
 export function useMetronome({
   callBack,
   delay,
@@ -20,14 +13,14 @@ export function useMetronome({
   callBack: () => void;
   delay: number | undefined;
 }) {
-  //
-  // A way to update callback after every call.
-  // (it is a problem with loop iterations inside useEffect)
-  // Thanks to Dan Abramov for the idea!
+  // --------------------------------
+  // A way to use updated callback in every render
+  // Thanks Dan Abramov for the idea!
   const savedCallback = useRef(callBack);
   useEffect(() => {
     savedCallback.current = callBack;
   });
+  // --------------------------------
 
   const [isMuted] = useContext(Context).isMutedState;
   const [audioContext, setAudioContext] = useState<AudioContext>();
@@ -87,13 +80,7 @@ export function useMetronome({
     () => {
       let previousScheduleTime = 0;
       let animationFrameId: number | undefined = undefined;
-      // let frameCount = 0;
       const loop = () => {
-        // --- this works on iPhone ---
-        // frameCount++;
-        // if (audioContext && frameCount % 60 === 0) {
-        //   savedCallback.current();
-        // }
 
         // --- this doesn't work on iPhone ---
         // because audioContext.currentTime is always 0
@@ -108,9 +95,8 @@ export function useMetronome({
           // update DOM visual click when it is time
           if (
             clicksRef.current.length &&
-            // AnimationFrame is about 60Hz (~17ms per frame).
-            // 0.008 is about half of that
-            clicksRef.current[0].time < now + 0.008
+            // give the visual side a small head start
+            clicksRef.current[0].time < now + 0.1
           ) {
             savedCallback.current();
             clicksRef.current = clicksRef.current.slice(1);
@@ -120,7 +106,6 @@ export function useMetronome({
       };
 
       // metronome runs only when delay is not undefined
-      let intervalId: NodeJS.Timer;
       if (delay) {
         // start audioContext from first user play button click
         // (change in this useEffect's delay value)
@@ -134,7 +119,6 @@ export function useMetronome({
           c.osc?.stop();
         });
         clicksRef.current = [];
-        clearInterval(intervalId);
         if (animationFrameId) cancelAnimationFrame(animationFrameId);
       };
     },
