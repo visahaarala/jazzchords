@@ -10,11 +10,11 @@ import { AccidentalLevel, Chord, ExtensionLevel, TimeSignature } from '../@types
 import { bpcOptions, bpmOptions } from '../data/tempo';
 
 export const Context = createContext<{
-  accidentalLevelsState: [
+  accidentalLevelState: [
     AccidentalLevel[],
     Dispatch<SetStateAction<AccidentalLevel[]>>
   ];
-  extensionLevelsState: [
+  extensionLevelState: [
     ExtensionLevel[],
     Dispatch<SetStateAction<ExtensionLevel[]>>
   ];
@@ -24,8 +24,8 @@ export const Context = createContext<{
   chordListState: [Chord[], Dispatch<SetStateAction<Chord[]>>];
   chordIndexState: [number, Dispatch<SetStateAction<number>>];
 }>({
-  accidentalLevelsState: [[], () => {}],
-  extensionLevelsState: [[], () => {}],
+  accidentalLevelState: [[], () => {}],
+  extensionLevelState: [[], () => {}],
   beatsPerChordState: [0, () => {}],
   beatsPerMinuteState: [0, () => {}],
   isMutedState: [true, () => {}],
@@ -34,8 +34,8 @@ export const Context = createContext<{
 });
 
 const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const accidentalLevelsState = useState<AccidentalLevel[]>([]);
-  const extensionLevelsState = useState<ExtensionLevel[]>([]);
+  const accidentalLevelState = useState<AccidentalLevel[]>([]);
+  const extensionLevelState = useState<ExtensionLevel[]>([]);
   const beatsPerChordState = useState(bpcOptions[3]);
   const beatsPerMinuteState = useState(bpmOptions[13]);
   const isMutedState = useState(false);
@@ -43,8 +43,8 @@ const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const chordIndexState = useState(0);
 
   const value = {
-    accidentalLevelsState,
-    extensionLevelsState,
+    accidentalLevelState,
+    extensionLevelState,
     beatsPerChordState,
     beatsPerMinuteState,
     isMutedState,

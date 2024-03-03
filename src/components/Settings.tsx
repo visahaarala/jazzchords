@@ -12,13 +12,13 @@ const Settings = () => {
     <div className='section'>
       <RangeSelect
         title='Accidentals'
-        levelsState={ctx.accidentalLevelsState}
+        levelsState={ctx.accidentalLevelState}
         options={Object.keys(basesOrganized) as AccidentalLevel[]}
         initialMax={4}
       />
       <RangeSelect<ExtensionLevel>
         title='Difficulty'
-        levelsState={ctx.extensionLevelsState}
+        levelsState={ctx.extensionLevelState}
         options={Object.keys(extensionsOrganized) as ExtensionLevel[]}
         initialMax={1}
       />

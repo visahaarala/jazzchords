@@ -15,8 +15,8 @@ const PlayControls = () => {
   // props for generating chord, defined in
   // accidentals and difficulty level
   const generatorProps = {
-    extensionLevels: ctx.extensionLevelsState[0],
-    accidentalLevels: ctx.accidentalLevelsState[0],
+    extensionLevels: ctx.extensionLevelState[0],
+    accidentalLevels: ctx.accidentalLevelState[0],
   };
 
   // reset chord list when chord settings are changed
@@ -24,7 +24,7 @@ const PlayControls = () => {
     setChordList(generateChords({ ...generatorProps, numberOfChords: 2 }));
     setChordIndex(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ctx.extensionLevelsState[0], ctx.accidentalLevelsState[0]]);
+  }, [ctx.extensionLevelState[0], ctx.accidentalLevelState[0]]);
 
   // increment chord index,
   // add new chords to array if necessary
