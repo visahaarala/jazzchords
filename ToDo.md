@@ -1,12 +1,11 @@
 # TO-DO list
 
-### Inconsistency in metronome
+- Prevent sleep
 
-An amazing article!
-[https://web.dev/articles/audio-scheduling](https://web.dev/articles/audio-scheduling)
+- Top note
 
-### Fix async metronome audio for mobile.
+- Sointuasteet
 
-### Detect mobile landscape => layout
+- Detect mobile landscape => layout
 
-### PWA, icon, etc
+- PWA, icon, etc
