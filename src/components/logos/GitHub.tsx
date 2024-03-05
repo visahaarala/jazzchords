@@ -1,7 +1,9 @@
+import styles from './Logos.module.scss';
+
 const GitHub = () => {
   return (
     <a
-      className='github'
+      className={styles.github}
       href='https://github.com/visahaarala/chords/blob/main/README.md'
     >
       <svg viewBox='0 0 98 96' xmlns='http://www.w3.org/2000/svg'>

@@ -3,8 +3,9 @@ Icon fodified from "volume-high-outline" and "volume-mute-outline",
 downloaded from https://ionic.io/ionicons with MIT license.
 */
 
+import styles from './Volume.module.scss';
 import { KeyboardEvent, useContext } from 'react';
-import { Context } from '../context/Context';
+import { Context } from '../../context/Context';
 
 const Volume = () => {
   const ctx = useContext(Context);
@@ -18,7 +19,7 @@ const Volume = () => {
 
   return (
     <div
-      className='volume'
+      className={styles.volume}
       onClick={() => setIsMuted(!isMuted)}
       tabIndex={0}
       onKeyDown={keyDownHandler}

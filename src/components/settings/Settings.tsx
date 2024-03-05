@@ -1,8 +1,8 @@
 import RangeSelect from './RangeSelect';
 import { useContext } from 'react';
-import { Context } from '../context/Context';
-import { basesOrganized, extensionsOrganized } from '../data/harmonies';
-import { AccidentalLevel, ExtensionLevel } from '../@types';
+import { Context } from '../../context/Context';
+import { basesOrganized, extensionsOrganized } from '../../data/harmonies';
+import { AccidentalLevel, ExtensionLevel } from '../../@types';
 import TempoSelect from './TempoSelect';
 
 const Settings = () => {

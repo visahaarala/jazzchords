@@ -1,7 +1,8 @@
+import styles from './PlayControls.module.scss';
 import { useContext, useEffect, useState } from 'react';
-import { Context } from '../context/Context';
-import { generateChords } from '../data/harmonies';
-import { useMetronome } from '../hooks/useMetronome';
+import { Context } from '../../context/Context';
+import { generateChords } from '../../data/harmonies';
+import { useMetronome } from '../../hooks/useMetronome';
 
 const PlayControls = () => {
   const ctx = useContext(Context);
@@ -72,9 +73,9 @@ const PlayControls = () => {
 
   return (
     <div className='section'>
-      <div className='buttons'>
+      <div className={styles.button}>
         <div>
-          <button onClick={nextHandler} className='next' id='next'>
+          <button onClick={nextHandler} className={styles.next} id='next'>
             Next
           </button>
           <div>

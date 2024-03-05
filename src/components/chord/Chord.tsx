@@ -1,5 +1,6 @@
+import styles from './Chord.module.scss';
 import { useContext } from 'react';
-import { Context } from '../context/Context';
+import { Context } from '../../context/Context';
 import Bracket from './Bracket';
 
 const Chord = ({
@@ -37,7 +38,7 @@ const Chord = ({
 
   return (
     <div
-      className='chord'
+      className={styles.chord}
       style={{
         fontSize: size + 'rem',
         marginTop: marginTop + 'rem',
@@ -49,48 +50,48 @@ const Chord = ({
         <>
           {chord.base.split('').map((char) =>
             char === flat ? (
-              <div className='chord__flat' key={char}>
+              <div className={styles.chord__flat} key={char}>
                 {flat}
               </div>
             ) : char === sharp ? (
-              <div className='chord__sharp' key={char}>
+              <div className={styles.chord__sharp} key={char}>
                 {sharp}
               </div>
             ) : (
-              <div className='chord__base' key={char}>
+              <div className={styles.chord__base} key={char}>
                 {char}
               </div>
             )
           )}
-          {chord.isMinor && <div className='chord__minor'>m</div>}
-          {chord.dim && <div className='chord__dim'>{chord.dim}</div>}
+          {chord.isMinor && <div className={styles.chord__minor}>m</div>}
+          {chord.dim && <div className={styles.chord__dim}>{chord.dim}</div>}
           {chord.seventh && (
-            <div className='chord__seventh'>{chord.seventh}</div>
+            <div className={styles.chord__seventh}>{chord.seventh}</div>
           )}
-          {chord.sixNine && <div className='chord__sixnine'>/</div>}
+          {chord.sixNine && <div className={styles.chord__sixnine}>/</div>}
           {chord.bracket[0] && (
             <div
-              className={
-                'chord__brackets' +
-                (chord.bracket[1] ? ' chord__brackets--double' : '')
-              }
+              className={`${styles.chord__brackets} ${
+                chord.bracket[1] ? styles['chord__brackets--double'] : ''
+              } `}
             >
               <Bracket double={chord.bracket[1] ? true : false} />
               <div
-                className={
-                  'chord__inside-brackets' +
-                  (chord.bracket[1] ? ' chord__inside-brackets__small' : '')
-                }
+                className={`${styles['chord__inside-brackets']} ${
+                  chord.bracket[1]
+                    ? styles['chord__inside-brackets__small']
+                    : ''
+                }`}
               >
                 {chord.bracket.map((part) => (
                   <div key={Math.random()}>
                     {part?.split('').map((char) =>
                       char === flat ? (
-                        <span className='flat' key={flat}>
+                        <span className={styles.flat} key={flat}>
                           {flat}
                         </span>
                       ) : char === sharp ? (
-                        <span className='sharp' key={sharp}>
+                        <span className={styles.sharp} key={sharp}>
                           {sharp}
                         </span>
                       ) : (
@@ -103,7 +104,7 @@ const Chord = ({
               <Bracket double={chord.bracket[1] ? true : false} flip />
             </div>
           )}
-          {chord.alt && <div className='chord__alt'>{chord.alt}</div>}
+          {chord.alt && <div className={styles.chord__alt}>{chord.alt}</div>}
         </>
       )}
     </div>

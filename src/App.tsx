@@ -1,22 +1,21 @@
-import './App.css';
+import './App.scss';
 import ContextProvider from './context/Context';
-import Container from './components/Container';
-import Settings from './components/Settings';
-import Chords from './components/Chords';
-import PlayControls from './components/PlayControls';
-import LightDark from './components/LightDark';
-import GitHub from './components/GitHub';
+import Settings from './components/settings/Settings';
+import Chords from './components/chord/Chords';
+import PlayControls from './components/play-controls/PlayControls';
+import LightDark from './components/logos/LightDark';
+import GitHub from './components/logos/GitHub';
 
 function App() {
   return (
     <ContextProvider>
-      <Container>
+      <div className='container'>
         <Settings />
         <Chords />
         <PlayControls />
         <LightDark />
         <GitHub />
-      </Container>
+      </div>
     </ContextProvider>
   );
 }

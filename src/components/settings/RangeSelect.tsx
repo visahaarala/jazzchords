@@ -1,3 +1,4 @@
+import styles from './Range.module.scss';
 import { ChangeEvent, useEffect, useState } from 'react';
 
 const RangeSelect = <T,>({
@@ -37,9 +38,9 @@ const RangeSelect = <T,>({
   };
 
   return (
-    <div className='range'>
+    <div className={styles.range}>
       <h3>{title}</h3>
-      <div className='range__selectors'>
+      <div className={styles.range__selector}>
         <select id={title + '-min'} value={min} onChange={minHandler}>
           {Object.keys(options).map((key) => {
             const value = options[parseInt(key)];

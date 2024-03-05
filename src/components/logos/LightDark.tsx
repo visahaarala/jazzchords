@@ -1,3 +1,4 @@
+import styles from './Logos.module.scss';
 import { KeyboardEvent, useEffect, useState } from 'react';
 
 /*
@@ -33,7 +34,7 @@ const LightDark = () => {
 
   return (
     <div
-      className='lightdark'
+      className={styles.lightdark}
       tabIndex={0}
       onClick={setIsDarkMode.bind(null, !isDarkMode)}
       onKeyDown={keyDownHandler}

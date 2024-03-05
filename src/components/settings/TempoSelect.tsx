@@ -1,7 +1,8 @@
+import styles from './Range.module.scss';
 import { ChangeEvent, useContext } from 'react';
-import { bpcOptions, bpmOptions } from '../data/tempo';
+import { bpcOptions, bpmOptions } from '../../data/tempo';
 import Volume from './Volume';
-import { Context } from '../context/Context';
+import { Context } from '../../context/Context';
 
 const TempoSelect = () => {
   const ctx = useContext(Context);
@@ -19,9 +20,9 @@ const TempoSelect = () => {
   };
 
   return (
-    <div className='range'>
+    <div className={styles.range}>
       <h3>Tempo</h3>
-      <div className='range__selectors'>
+      <div className={styles.range__selector}>
         <select id='bpc' value={bpc} onChange={bpcHandler}>
           {bpcOptions.map((bpc) => (
             <option value={bpc} key={bpc}>
