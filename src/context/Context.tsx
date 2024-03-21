@@ -6,17 +6,22 @@ import {
   createContext,
   useState,
 } from 'react';
-import { AccidentalLevel, Chord, ExtensionLevel, TimeSignature } from '../@types';
+import {
+  AccidentalLevel,
+  Chord,
+  ExtensionLevel,
+  TimeSignature,
+} from '../@types';
 import { bpcOptions, bpmOptions } from '../data/tempo';
 
 export const Context = createContext<{
   accidentalLevelState: [
-    AccidentalLevel[],
-    Dispatch<SetStateAction<AccidentalLevel[]>>
+    [AccidentalLevel, AccidentalLevel],
+    Dispatch<SetStateAction<[AccidentalLevel, AccidentalLevel]>>
   ];
   extensionLevelState: [
-    ExtensionLevel[],
-    Dispatch<SetStateAction<ExtensionLevel[]>>
+    [ExtensionLevel, ExtensionLevel],
+    Dispatch<SetStateAction<[ExtensionLevel, ExtensionLevel]>>
   ];
   beatsPerChordState: [TimeSignature, Dispatch<SetStateAction<TimeSignature>>];
   beatsPerMinuteState: [number, Dispatch<SetStateAction<number>>];
@@ -24,8 +29,8 @@ export const Context = createContext<{
   chordListState: [Chord[], Dispatch<SetStateAction<Chord[]>>];
   chordIndexState: [number, Dispatch<SetStateAction<number>>];
 }>({
-  accidentalLevelState: [[], () => {}],
-  extensionLevelState: [[], () => {}],
+  accidentalLevelState: [['0', '4'], () => {}],
+  extensionLevelState: [['easy', 'medium'], () => {}],
   beatsPerChordState: [0, () => {}],
   beatsPerMinuteState: [0, () => {}],
   isMutedState: [true, () => {}],
@@ -34,8 +39,14 @@ export const Context = createContext<{
 });
 
 const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const accidentalLevelState = useState<AccidentalLevel[]>([]);
-  const extensionLevelState = useState<ExtensionLevel[]>([]);
+  const accidentalLevelState = useState<[AccidentalLevel, AccidentalLevel]>([
+    '0',
+    '4',
+  ]);
+  const extensionLevelState = useState<[ExtensionLevel, ExtensionLevel]>([
+    'easy',
+    'medium',
+  ]);
   const beatsPerChordState = useState(bpcOptions[3]);
   const beatsPerMinuteState = useState(bpmOptions[13]);
   const isMutedState = useState(false);
@@ -51,7 +62,7 @@ const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     chordListState,
     chordIndexState,
   };
-
+  
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };
 
