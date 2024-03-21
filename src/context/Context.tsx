@@ -62,7 +62,7 @@ const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     chordListState,
     chordIndexState,
   };
-  
+
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };
 

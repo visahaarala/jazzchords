@@ -14,13 +14,11 @@ const Settings = () => {
         title='Accidentals'
         levelsState={ctx.accidentalLevelState}
         options={Object.keys(basesOrganized) as AccidentalLevel[]}
-        initialMax={4}
       />
       <RangeSelect<ExtensionLevel>
         title='Difficulty'
         levelsState={ctx.extensionLevelState}
         options={Object.keys(extensionsOrganized) as ExtensionLevel[]}
-        initialMax={1}
       />
       <TempoSelect />
     </>
