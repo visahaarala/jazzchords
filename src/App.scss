@@ -9,10 +9,22 @@
   }
 
   /*
-  Dark & light mode :root color variables are updated
-  by javascript at:
+  DARK & LIGHT color variables.
+  These variables are dynamically updated at:
   /src/components/LightDark.tsx
   */
+  --color-white: white;
+  --color-gray-light: #ddd;
+  --color-gray-dark: #444;
+  --color-black: #202428;
+  --color-github: #24292f;
+  @media (prefers-color-scheme: dark) {
+    --color-white: #202428;
+    --color-gray-light: #444;
+    --color-gray-dark: #bbb;
+    --color-black: #fafafa;
+    --color-github: #fff;
+  }
 }
 
 /* reset */
@@ -54,6 +66,8 @@ body {
 
 .container {
   position: relative;
+  height: 25rem;
+  background-color: red;
 
   display: flex;
   flex-direction: column;
