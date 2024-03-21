@@ -14,7 +14,7 @@
 
 [How to Use Web Workers in React](https://plainenglish.io/blog/web-worker-in-react)
 
-Ended not using one but the **web audio clock** instead (which cannot be run in a thread).
+... ended not using one but the **web audio clock** instead (which cannot be run in a thread)
 
 ### Get updated state in a loop inside useEffect
 
