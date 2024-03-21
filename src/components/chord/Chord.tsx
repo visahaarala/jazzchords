@@ -30,10 +30,7 @@ const Chord = ({
   if (size === undefined) size = 1.6; // rem
 
   if (contrast === undefined) contrast = 100;
-
-  if (marginTop === undefined) marginTop = size * 0.5;
-  else marginTop = size * 0.5 + marginTop;
-
+  if (marginTop === undefined) marginTop = 0;
   if (marginBottom === undefined) marginBottom = 0;
 
   return (

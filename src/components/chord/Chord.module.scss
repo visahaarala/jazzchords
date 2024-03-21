@@ -1,4 +1,6 @@
 .chord {
+  height: 3em;
+
   display: flex;
   align-items: start;
   font-family: Arial;
@@ -34,7 +36,7 @@
     align-items: center;
     font-size: 2.4em;
     font-weight: lighter;
-    transform: translateY(0.05em);
+    transform: translateY(0.037em);
     margin-left: -0em;
 
     &::before {
