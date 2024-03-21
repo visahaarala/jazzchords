@@ -66,6 +66,7 @@ body {
 
 .container {
   position: relative;
+  padding: 2rem 2rem;
 
   // fallback for older browsers without dynamic viewport height
   min-height: 80vh;
@@ -75,16 +76,24 @@ body {
   max-height: 40rem;
   max-width: 30rem;
 
-  background-color: red;
+  background-color: gray;
 
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 1.5rem;
+  // align-items: stretch;
+  gap: 2rem;
 }
 
-.section {
+main {
+  background-color: green;
+  flex: 1;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
+  
+}
+
+footer {
+  background-color: blue;
+  flex: 0;
 }

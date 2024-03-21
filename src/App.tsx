@@ -11,6 +11,7 @@ import ErrorPage from './pages/ErrorPage';
 import Chords from './pages/Chords';
 import Settings from './pages/Settings';
 import Info from './pages/Info';
+import ContextProvider from './context/Context';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,11 @@ const router = createBrowserRouter([
   },
 ]);
 
-const App = () => <RouterProvider router={router} />;
+const App = () => (
+  <ContextProvider>
+    <RouterProvider router={router} />
+  </ContextProvider>
+);
 
 // function App() {
 //   return

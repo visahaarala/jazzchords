@@ -9,7 +9,7 @@ const Settings = () => {
   const ctx = useContext(Context);
 
   return (
-    <div className='page'>
+    <>
       <RangeSelect
         title='Accidentals'
         levelsState={ctx.accidentalLevelState}
@@ -23,7 +23,7 @@ const Settings = () => {
         initialMax={1}
       />
       <TempoSelect />
-    </div>
+    </>
   );
 };
 
