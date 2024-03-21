@@ -1,22 +1,21 @@
 .navigation {
-  background-color: blue;
-  padding: 2rem;
-  // background-color: white;
-
-  // display: flex;
-  // // justify-content: stretch;
+  padding: 1rem;
 
   ul {
     list-style: none;
     display: flex;
-    background-color: cyan;
-    // justify-content: space-evenly;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: space-evenly;
   }
-}
 
-.icon {
-  width: 2rem;
-  height: 2rem;
+  a {
+    color: inherit;
+    display: inline-block;
+    border-radius: var(--border-radius);
+
+    &:focus,
+    &:hover,
+    &:focus-visible {
+      outline: var(--color-focus-outline);
+    }
+  }
 }
