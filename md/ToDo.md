@@ -1,5 +1,9 @@
 # TO-DO list
 
+- Fix chords updating on every render (away & back)
+
+- Fix beat starting from 2 when play
+
 - Settings show random top note
 
 - Settings reset button
