@@ -1,3 +1,4 @@
+import { KeyboardEvent } from 'react';
 import styles from './PlayButton.module.scss';
 
 const PlayButton = ({
@@ -10,10 +11,18 @@ const PlayButton = ({
   onClick: () => void;
 }) => {
 
+  const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
+    const code = e.code;
+    if (code === 'Space' || code === 'Enter') {
+      onClick();
+    }
+  }
+
   return (
     <div
       className={styles.playButton}
       onClick={onClick}
+      onKeyDown={keyDownHandler}
       tabIndex={1}
       id={id}
     >

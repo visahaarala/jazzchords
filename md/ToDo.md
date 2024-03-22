@@ -1,8 +1,14 @@
 # TO-DO list
 
-- Fix chords updating on every render (away & back)
+- Fix chords updating on every render (away & back) --- chords into context
+
+- stop using context... chords updating with changes to settings etc..
 
 - Fix beat starting from 2 when play
+
+- use hooks instead of context (?) (udemy) ???
+
+- Show beat below chords (circles w/ or w/o color)
 
 - Settings show random top note
 
