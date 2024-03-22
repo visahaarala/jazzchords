@@ -1,14 +1,7 @@
 .range {
-  // margin: 0 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-
-  & > h3 {
-    font-size: 1.2rem;
-    font-weight: normal;
-    margin-bottom: 0.5rem;
-  }
+  align-items: start;
 
   &__selector {
     display: flex;
@@ -17,11 +10,11 @@
 
     & > select {
       min-width: 3rem;
-      padding: 0.4rem 1.1rem;
+      padding: 0.7rem 1.2rem;
       border-radius: var(--border-radius);
       background-color: var(--color-gray-light);
       color: var(--color-black);
-      font-size: 0.9rem;
+      font-size: 1rem;
       border-color: var(--color-gray-dark);
       font-family: inherit;
       cursor: pointer;
@@ -32,9 +25,5 @@
         outline: var(--color-focus-outline);
       }
     }
-  }
-
-  &:not(:first-child) {
-    margin-top: 1.2rem;
   }
 }

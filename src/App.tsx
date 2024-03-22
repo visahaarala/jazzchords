@@ -25,20 +25,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-const App = () => <RouterProvider router={router} />
-;
-// function App() {
-//   return (
-//     <ContextProvider>
-//       <div className='container'>
-//         <Settings />
-//         <Chords />
-//         <PlayControls />
-//         <LightDark />
-//         <GitHub />
-//       </div>
-//     </ContextProvider>
-//   );
-// }
+const App = () => <RouterProvider router={router} />;
 
 export default App;

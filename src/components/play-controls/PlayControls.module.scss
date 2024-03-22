@@ -1,37 +1,12 @@
-.button {
-  width: 100%;
+.controls {
+  height: 12rem;
+  display: flex;
+  gap: 1.5rem;
 
-  & button {
+  & > div {
     width: 100%;
-    padding: 0.3rem;
-    border-radius: var(--border-radius);
-    border-width: 1px;
-    border-color: var(--color-gray-dark);
-    font-size: 1rem;
-    font-family: inherit;
-    background-color: var(--color-gray-light);
-    color: var(--color-black);
-    cursor: pointer;
-    transition: var(--transition);
-
-    &:focus,
-    &:hover {
-      outline: var(--color-focus-outline);
-    }
-  }
-
-  & div {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    :not(:first-child) {
-      width: calc(100% - 5rem);
-      margin-top: 1.4rem;
-    }
-  }
-
-  .next {
-    height: 7rem;
+    gap: 1.5rem;
   }
 }

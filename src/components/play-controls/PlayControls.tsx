@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../context/Context';
 import { generateChords } from '../../data/harmonies';
 import { useMetronome } from '../../hooks/useMetronome';
+import PlayButton from './PlayButton';
 
 const PlayControls = () => {
   const ctx = useContext(Context);
@@ -47,7 +48,7 @@ const PlayControls = () => {
   // when bpc changes, reset beat
   useEffect(() => {
     setBeat(1);
-  }, [beatsPerChord])
+  }, [beatsPerChord]);
 
   useMetronome({
     callBack: () => {
@@ -62,6 +63,7 @@ const PlayControls = () => {
               nextHandler();
               setBeat(1);
             } else {
+              console.log('setBeat else');
               setBeat((prevBeat) => prevBeat + 1);
             }
           }
@@ -72,26 +74,17 @@ const PlayControls = () => {
   });
 
   return (
-    <div className='section'>
-      <div className={styles.button}>
-        <div>
-          <button onClick={nextHandler} className={styles.next} id='next'>
-            Next
-          </button>
-          <div>
-            <button onClick={previousHandler}>Previous</button>
-            <div>
-              <button
-                onClick={() => {
-                  setPlay(!play);
-                }}
-                id='play'
-              >
-                {!play ? 'Play' : 'Stop'}
-              </button>
-            </div>
-          </div>
-        </div>
+    <div className={styles.controls}>
+      <div>
+        <PlayButton
+          onClick={() => setPlay(!play)}
+          type={play ? 'stop' : 'play'}
+          id='play'
+        />
+        <PlayButton onClick={previousHandler} type='prev' />
+      </div>
+      <div>
+        <PlayButton onClick={nextHandler} type='next' />
       </div>
     </div>
   );

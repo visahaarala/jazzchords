@@ -1,28 +1,42 @@
 import styles from './Navigation.module.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import SettingsIcon from './SettingsIcon';
 import InfoIcon from './InfoIcon';
 import ChordIcon from './ChordIcon';
+import { KeyboardEvent } from 'react';
 
 const Navigation = () => {
-  // icon "settings-sharp" from
-  // https://ionic.io/ionicons with MIT license
+  const navigate = useNavigate();
+
+  const keyDownHandler = (
+    e: KeyboardEvent<HTMLAnchorElement>,
+    target: string
+  ) => {
+    if (e.code === 'Space') {
+      navigate(target);
+    }
+  };
 
   return (
     <nav className={styles.navigation}>
       <ul>
         <li>
-          <NavLink to='info'>
+          <NavLink to='info' onKeyDown={(e) => keyDownHandler(e, 'info')}>
             <InfoIcon />
           </NavLink>
         </li>
         <li>
-          <NavLink to='settings'>
+          <NavLink
+            to='settings'
+            onKeyDown={(e) => keyDownHandler(e, 'settings')}
+          >
             <SettingsIcon />
           </NavLink>
         </li>
         <li>
-          <NavLink to=''><ChordIcon /></NavLink>
+          <NavLink to='' onKeyDown={(e) => keyDownHandler(e, '')}>
+            <ChordIcon />
+          </NavLink>
         </li>
       </ul>
     </nav>

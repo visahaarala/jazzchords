@@ -1,6 +1,6 @@
 import styles from './Icon.module.scss';
 
-// modified icon "settings-sharp" from
+// icon "settings-sharp" from
 // https://ionic.io/ionicons with MIT license
 
 const SettingsIcon = () => {

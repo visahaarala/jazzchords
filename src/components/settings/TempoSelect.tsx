@@ -21,20 +21,19 @@ const TempoSelect = () => {
 
   return (
     <div className={styles.range}>
-      <h3>Tempo</h3>
       <div className={styles.range__selector}>
-        <select id='bpc' value={bpc} onChange={bpcHandler}>
-          {bpcOptions.map((bpc) => (
-            <option value={bpc} key={bpc}>
-              {bpc} {bpc === 1 ? 'beat' : 'beats'} / chord
-            </option>
-          ))}
-        </select>
-        <Volume />
         <select id='bpm' defaultValue={bpm} onChange={bpmHandler}>
           {bpmOptions.map((bpm) => (
             <option value={bpm} key={bpm}>
               {bpm} bpm
+            </option>
+          ))}
+        </select>
+        <Volume />
+        <select id='bpc' value={bpc} onChange={bpcHandler}>
+          {bpcOptions.map((bpc) => (
+            <option value={bpc} key={bpc}>
+              {bpc} {bpc === 1 ? 'beat' : 'beats'} / chord
             </option>
           ))}
         </select>

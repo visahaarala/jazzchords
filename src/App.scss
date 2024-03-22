@@ -14,16 +14,21 @@
   /src/components/LightDark.tsx
   */
   --color-white: white;
+  --color-gray-lighter: #eee;
   --color-gray-light: #ddd;
   --color-gray-dark: #444;
   --color-black: #202428;
   --color-github: #24292f;
+  --container-box-shadow: 0rem 0.3rem 3rem rgba(0, 0, 0, 0.1);
+
   @media (prefers-color-scheme: dark) {
     --color-white: #202428;
+    --color-gray-lighter: #333;
     --color-gray-light: #444;
     --color-gray-dark: #bbb;
     --color-black: #fafafa;
     --color-github: #fff;
+    --container-box-shadow: 0rem 0.3rem 2rem rgba(255, 255, 255, 0.05);
   }
 }
 
@@ -54,6 +59,10 @@ body {
   transition: var(--transition);
 
   background-color: var(--color-white);
+  @media (pointer: fine) {
+    // container card styling only on desktop (not mobile)
+    background-color: var(--color-gray-lighter);
+  }
 
   // fallback for older browsers without dynamic viewport height
   min-height: 80vh;
@@ -66,34 +75,38 @@ body {
 
 .container {
   position: relative;
-  padding: 1rem 1rem;
 
-  // fallback for older browsers without dynamic viewport height
-  min-height: 80vh;
+  height: 80vh; // fallback for older browsers
   height: 100dvh;
   width: 100vw;
-
   max-height: 40rem;
   max-width: 30rem;
 
-  background-color: gray;
-
   display: flex;
   flex-direction: column;
-  // align-items: stretch;
-  gap: 1rem;
+
+  @media (pointer: fine) {
+    // container card styling only on desktop (not mobile)
+    background-color: var(--color-white);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--container-box-shadow);
+  }
 }
 
 main {
-  background-color: green;
+  // background-color: green;
   flex: 1;
-
   display: flex;
   flex-direction: column;
-
+  justify-content: end;
+  padding: 2.5rem 1.7rem;
 }
 
 footer {
-  background-color: blue;
+  padding: 1rem;
+  background-color: var(--color-gray-light);
+  // background-color: blue;
+  border-top: 1px solid var(--color-gray-dark);
   flex: 0;
 }

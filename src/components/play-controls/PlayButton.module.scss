@@ -1,0 +1,25 @@
+.playButton {
+  height: 100%;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-gray-dark);
+  background-color: var(--color-gray-light);
+  color: inherit;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:focus,
+  &:hover {
+    outline: var(--color-focus-outline);
+  }
+}
+
+$size: 2.3rem;
+.icon {
+  width: $size;
+  height: $size;
+  padding: 0.3rem;
+  border-radius: var(--border-radius);
+}

@@ -10,16 +10,19 @@ const Settings = () => {
 
   return (
     <>
+      <h3>♭♭♭ / ♯♯♯</h3>
       <RangeSelect
-        title='Accidentals'
+        // title='Accidentals'
         levelsState={ctx.accidentalLevelState}
         options={Object.keys(basesOrganized) as AccidentalLevel[]}
       />
+      <h3>C7 / C9b13</h3>
       <RangeSelect<ExtensionLevel>
-        title='Difficulty'
+        // title='Difficulty'
         levelsState={ctx.extensionLevelState}
         options={Object.keys(extensionsOrganized) as ExtensionLevel[]}
       />
+      <h3>Tempo & metronome</h3>
       <TempoSelect />
     </>
   );

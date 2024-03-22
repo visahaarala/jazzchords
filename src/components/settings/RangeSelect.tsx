@@ -2,11 +2,9 @@ import styles from './Range.module.scss';
 import { ChangeEvent } from 'react';
 
 const RangeSelect = <T,>({
-  title,
   levelsState,
   options,
 }: {
-  title: string;
   levelsState: [[T, T], React.Dispatch<React.SetStateAction<[T, T]>>];
   options: T[];
 }) => {
@@ -29,14 +27,12 @@ const RangeSelect = <T,>({
     const newMinValue = options[newMinIndex];
     const newMaxValue = options[newMaxIndex];
     setLevels([newMinValue, newMaxValue]);
-
   };
 
   return (
     <div className={styles.range}>
-      <h3>{title}</h3>
       <div className={styles.range__selector}>
-        <select id={title + '-min'} value={minIndex} onChange={minHandler}>
+        <select id={'min'} value={minIndex} onChange={minHandler}>
           {Object.keys(options).map((key) => {
             const value = options[parseInt(key)];
             return (
@@ -47,7 +43,7 @@ const RangeSelect = <T,>({
           })}
         </select>
         <span>&mdash;</span>
-        <select id={title + '-max'} value={maxIndex} onChange={maxHandler}>
+        <select id={'max'} value={maxIndex} onChange={maxHandler}>
           {Object.keys(options).map((key) => {
             const value = options[parseInt(key)];
             return (
