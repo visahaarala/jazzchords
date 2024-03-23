@@ -4,7 +4,9 @@
 
 - stop using context... chords updating with changes to settings etc..
 
-- Fix beat starting from 2 when play
+- Fix beat (now starting from 2 when play)
+
+- change stop icon to pause
 
 - use hooks instead of context (?) (udemy) ???
 
