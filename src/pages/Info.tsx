@@ -8,8 +8,8 @@ const headerIconStyle: React.CSSProperties = {
   display: 'inline-block',
   width: '1.5rem',
   height: '1.5rem',
-  marginRight: '.25rem',
-  transform: 'translateY(.25rem)',
+  marginRight: '.1rem',
+  transform: 'translateY(.35rem)',
 };
 
 const iconStyle: React.CSSProperties = {
