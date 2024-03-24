@@ -1,4 +1,4 @@
-import styles from './Logos.module.scss';
+import styles from './Github.module.scss';
 
 const GitHub = () => {
   return (

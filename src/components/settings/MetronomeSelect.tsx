@@ -4,7 +4,7 @@ import { bpcOptions, bpmOptions } from '../../data/tempo';
 import Volume from './Volume';
 import { Context } from '../../context/Context';
 
-const TempoSelect = () => {
+const MetronomeSelect = () => {
   const ctx = useContext(Context);
   const [bpc, setBpc] = ctx.beatsPerChordState;
   const [bpm, setBpm] = ctx.beatsPerMinuteState;
@@ -21,7 +21,6 @@ const TempoSelect = () => {
 
   return (
     <div className={styles.range}>
-      <h3>Tempo</h3>
       <div className={styles.range__selector}>
         <select id='bpc' value={bpc} onChange={bpcHandler}>
           {bpcOptions.map((bpc) => (
@@ -43,4 +42,4 @@ const TempoSelect = () => {
   );
 };
 
-export default TempoSelect;
+export default MetronomeSelect;

@@ -1,0 +1,19 @@
+.chordPage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chords {
+  flex: 1;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.controls {
+  flex: 0;
+  align-self: stretch;
+}

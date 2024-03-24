@@ -9,10 +9,29 @@
   }
 
   /*
-  Dark & light mode :root color variables are updated
-  by javascript at:
+  DARK & LIGHT color variables.
+  These variables are dynamically updated at:
   /src/components/LightDark.tsx
   */
+  --color-white: white;
+  --color-gray-lighter: #eee;
+  --color-gray-light: #ddd;
+  --color-gray-dark: #444;
+  --color-black: #202428;
+  --color-github: #24292f;
+  --color-link: #246;
+  --container-box-shadow: 0rem 0.3rem 3rem rgba(0, 0, 0, 0.1);
+
+  @media (prefers-color-scheme: dark) {
+    --color-white: #202428;
+    --color-gray-lighter: #333;
+    --color-gray-light: #444;
+    --color-gray-dark: #bbb;
+    --color-black: #fafafa;
+    --color-github: #fff;
+    --color-link: #8bf;
+    --container-box-shadow: 0rem 0.3rem 2rem rgba(255, 255, 255, 0.05);
+  }
 }
 
 /* reset */
@@ -21,6 +40,7 @@
   padding: 0;
   appearance: none;
   text-decoration: none;
+  // transition: var(--transition);
 }
 *,
 *::before,
@@ -30,9 +50,9 @@
 
 html {
   font-size: 100%;
-  @media (min-width: 40em) {
-    font-size: 110%;
-  }
+  // @media (min-width: 40em) {
+  //   font-size: 110%;
+  // }
 }
 
 body {
@@ -42,8 +62,12 @@ body {
   transition: var(--transition);
 
   background-color: var(--color-white);
+  @media (pointer: fine) {
+    // container card styling only on desktop (not mobile)
+    background-color: var(--color-gray-lighter);
+  }
 
-  /* fallback for older browsers without dynamic viewport height */
+  // fallback for older browsers without dynamic viewport height
   min-height: 80vh;
   min-height: 100dvh;
 
@@ -55,14 +79,45 @@ body {
 .container {
   position: relative;
 
+  height: 80vh; // fallback for older browsers
+  height: 100dvh;
+  width: 100vw;
+  max-height: 40rem;
+  max-width: 30rem;
+
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 1.5rem;
+
+  @media (pointer: fine) {
+    // container card styling only on desktop (not mobile)
+    background-color: var(--color-white);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--container-box-shadow);
+  }
 }
 
-.section {
+main {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 2rem 2rem;
+}
+
+footer {
+  padding: 1rem;
+  background-color: var(--color-gray-light);
+  border-top: 1px solid var(--color-gray-dark);
+  flex: 0;
+}
+
+h2 {
+  font-weight: normal;
+  font-size: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid currentColor;
+  margin-bottom: 4rem;
+
+  display: flex; // for the text
+  justify-content: end;
 }

@@ -1,47 +1,43 @@
 import styles from './Range.module.scss';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent } from 'react';
 
 const RangeSelect = <T,>({
-  title,
-  levelsState,
+  range,
+  setRange,
+  // rangeState,
   options,
-  initialMax,
 }: {
-  title: string;
-  levelsState: [T[], React.Dispatch<React.SetStateAction<T[]>>];
+  range: [T, T];
+  setRange: (range: [T, T]) => void;
+  // rangeState: [[T, T], React.Dispatch<React.SetStateAction<[T, T]>>];
   options: T[];
-  initialMax?: number;
 }) => {
-  const setLevels = levelsState[1];
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(initialMax ? initialMax : options.length - 1);
+  // const [[min, max], setLevels] = rangeState;
+  const [min, max] = range;
 
-  useEffect(() => {
-    const newLevels: T[] = [];
-    for (let i = min; i <= max; i++) {
-      newLevels.push(options[i]);
-    }
-    setLevels(newLevels);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [min, max]);
+  const minIndex = options.indexOf(min);
+  const maxIndex = options.indexOf(max);
 
   const minHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-    const newMin = parseInt(e.target.value);
-    setMin(newMin);
-    if (newMin > max) setMax(newMin);
+    const newMinIndex = Number(e.target.value);
+    const newMaxIndex = newMinIndex > maxIndex ? newMinIndex : maxIndex;
+    const newMinValue = options[newMinIndex];
+    const newMaxValue = options[newMaxIndex];
+    setRange([newMinValue, newMaxValue]);
   };
 
   const maxHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-    const newMax = parseInt(e.target.value);
-    setMax(newMax);
-    if (newMax < min) setMin(newMax);
+    const newMaxIndex = Number(e.target.value);
+    const newMinIndex = newMaxIndex < minIndex ? newMaxIndex : minIndex;
+    const newMinValue = options[newMinIndex];
+    const newMaxValue = options[newMaxIndex];
+    setRange([newMinValue, newMaxValue]);
   };
 
   return (
     <div className={styles.range}>
-      <h3>{title}</h3>
       <div className={styles.range__selector}>
-        <select id={title + '-min'} value={min} onChange={minHandler}>
+        <select id={'min'} value={minIndex} onChange={minHandler}>
           {Object.keys(options).map((key) => {
             const value = options[parseInt(key)];
             return (
@@ -52,7 +48,7 @@ const RangeSelect = <T,>({
           })}
         </select>
         <span>&mdash;</span>
-        <select id={title + '-max'} value={max} onChange={maxHandler}>
+        <select id={'max'} value={maxIndex} onChange={maxHandler}>
           {Object.keys(options).map((key) => {
             const value = options[parseInt(key)];
             return (

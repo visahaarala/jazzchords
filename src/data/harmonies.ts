@@ -214,17 +214,17 @@ export const extensionsOrganized: {
 };
 
 export const generateChords = ({
-  extensionLevels,
-  accidentalLevels,
+  extensionRange,
+  accidentalRange,
   numberOfChords,
 }: {
-  extensionLevels: ExtensionLevel[];
-  accidentalLevels: AccidentalLevel[];
+  extensionRange: ExtensionLevel[];
+  accidentalRange: AccidentalLevel[];
   numberOfChords: number;
 }): Chord[] => {
   // make a list of all chosen extensions
   const levels: Extension[] = [];
-  for (let level of extensionLevels) {
+  for (let level of extensionRange) {
     levels.push(...extensionsOrganized[level]);
   }
 
@@ -236,7 +236,7 @@ export const generateChords = ({
 
     // make a list of all bases (for that extension, minor or major)
     const bases: string[] = [];
-    for (let level of accidentalLevels) {
+    for (let level of accidentalRange) {
       const newBases =
         basesOrganized[level][extension.isMinor ? 'minor' : 'major'];
       bases.push(...newBases);

@@ -1,0 +1,28 @@
+.navigation {
+  // padding: 2rem 0;
+
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    // justify-content: center;
+    // gap: 3rem;
+  }
+
+  a {
+    color: inherit;
+
+    // color: var(--color-link);
+
+    display: inline-block;
+    border-radius: var(--border-radius);
+
+    &:focus,
+    &:hover,
+    &:focus-visible {
+      outline: none;
+      color: var(--color-link);
+      // outline: var(--color-focus-outline);
+    }
+  }
+}

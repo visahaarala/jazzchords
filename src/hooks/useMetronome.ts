@@ -57,7 +57,9 @@ export function useMetronome({
       latestClick = clicksRef.current.slice(-1)[0].time;
     }
     while (latestClick < now + schedulingPeriod) {
-      latestClick = latestClick + delay! / 1000;
+      if (clicksRef.current.length) {
+        latestClick = latestClick + delay! / 1000;
+      }
       const osc = createOscillator(latestClick);
       clicksRef.current.push({ osc, time: latestClick });
     }
@@ -78,16 +80,16 @@ export function useMetronome({
 
   useEffect(
     () => {
-      let previousScheduleTime = 0;
+      let previousScheduleTime: number | undefined;
+      // let previousScheduleTime = 0;
       let animationFrameId: number | undefined = undefined;
       const loop = () => {
-
         // --- this doesn't work on iPhone ---
         // because audioContext.currentTime is always 0
         // nextText('' + audioContext.currentTime);
         if (audioContext && delay) {
           const now = audioContext.currentTime;
-          if (now > previousScheduleTime + schedulingInterval) {
+          if (!previousScheduleTime || now > previousScheduleTime + schedulingInterval) {
             scheduleClicks();
             previousScheduleTime = now;
           }
