@@ -1,8 +1,10 @@
-# Jazz chords trainer
+# jazzchords
 
 [https://jazzchords.vercel.app](https://jazzchords.vercel.app)
 
-A simple tool for practicing random jazz chords.
+A tool for practicing random jazz chords.
+
+Written with React, Typescript & SCSS.
 
 Designed for portrait mobile phone, but also nice on desktop. On desktop, use (`shift`-) `tab`, `space`, `esc` and `arrow` keys for easier navigation while playing an instrument.
 
@@ -16,5 +18,5 @@ Generate and go back and forth between chords using the `Next` & `Previous` butt
 
 #### Problems
 
-- `play` button might not work on older iPhone iOS versions because of problems with AudioContext.
-- Using tab to navigate on desktop might not work in Safari.
+- `play` button seems to not work on older iPhone iOS versions due to problems with AudioContext.
+- Using tab to navigate on desktop seems to work only partially in Safari.
