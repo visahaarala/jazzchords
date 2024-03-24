@@ -13,6 +13,11 @@
   justify-content: space-evenly;
 }
 
+.beats {
+  flex: 0;
+  align-self: center;
+}
+
 .controls {
   flex: 0;
   align-self: stretch;
