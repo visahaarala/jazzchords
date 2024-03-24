@@ -1,14 +1,18 @@
 # TO-DO list
 
-- Fix chords updating on every render (away & back) --- chords into context
+### top priority
 
 - stop using context... chords updating with changes to settings etc..
+
+- use hooks instead of context (?) (udemy) ???
+
+### later
+
+- Fix chords updating on every render (away & back) --- chords into context
 
 - Fix beat (now starting from 2 when play)
 
 - change stop icon to pause
-
-- use hooks instead of context (?) (udemy) ???
 
 - Show beat below chords (circles w/ or w/o color)
 
