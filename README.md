@@ -4,10 +4,17 @@
 
 A simple tool for practicing random jazz chords.
 
-Set the range of sharps & flats under `Accidentals` and the chord complexity level under `Difficulty`.
+Designed for portrait mobile phone, but also nice on desktop. On desktop, use (`shift`-) `tab`, `space`, `esc` and `arrow` keys for easier navigation while playing an instrument.
 
-Generate and go back and forth between chords using the `Next` & `Previous` buttons, or automatically `Play` through different chords using metronome settings under `Tempo`.
+#### Settings
 
-Designed for portrait mobile phone, but also nice on desktop. On desktop, use (`shift`-) `tab`, `space`, `esc` and `arrow` keys for navigation while playing an instrument (unless you're using Safari).
+Set the range of sharps & flats under `Accidentals`, the chord complexity level under `Difficulty`, and tempo & time signature under `Tempo`.
 
-`play` button does not work on iPhone iOS ver. 16.x because of problems with audioContext.
+#### Play
+
+Generate and go back and forth between chords using the `Next` & `Previous` buttons, or automatically `Play` through different chords.
+
+#### Problems
+
+- `play` button might not work on older iPhone iOS versions because of problems with AudioContext.
+- Using tab to navigate on desktop might not work in Safari.
