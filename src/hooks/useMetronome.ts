@@ -57,9 +57,9 @@ export function useMetronome({
       latestClick = clicksRef.current.slice(-1)[0].time;
     }
     while (latestClick < now + schedulingPeriod) {
-      if (clicksRef.current.length) {
+      // if (clicksRef.current.length) {
         latestClick = latestClick + delay! / 1000;
-      }
+      // }
       const osc = createOscillator(latestClick);
       clicksRef.current.push({ osc, time: latestClick });
     }

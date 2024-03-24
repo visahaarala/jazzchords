@@ -37,7 +37,7 @@ const PlayControls = () => {
 
   // when bpc changes, reset beat
   useEffect(() => {
-    setBeat(1);
+    setBeat(0);
   }, [beatsPerChord]);
 
   useMetronome({
@@ -50,10 +50,11 @@ const PlayControls = () => {
           if (beatsPerChord != '∞') {
             const bpc = beatsPerChord as number;
             if (beat !== 0 && beat % bpc === 0) {
+              console.log('setBeat 1')
               nextHandler();
               setBeat(1);
             } else {
-              console.log('setBeat else');
+              console.log('setBeat 2,3,4,...');
               setBeat((prevBeat) => prevBeat + 1);
             }
           }

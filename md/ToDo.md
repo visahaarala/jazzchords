@@ -4,8 +4,6 @@
 
 - Show beat below chords (circles w/ or w/o color)
 
-- Fix beat (now starting from 2 when play)
-
 #### later
 
 - Prevent sleep
