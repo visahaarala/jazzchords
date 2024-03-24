@@ -6,8 +6,6 @@
 
 #### later
 
-- Prevent sleep
-
 - Detect mobile landscape => layout
 
 - PWA, icon, etc
