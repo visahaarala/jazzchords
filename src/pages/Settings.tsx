@@ -5,9 +5,6 @@ import { useContext } from 'react';
 import { Context } from '../context/Context';
 import { basesOrganized, extensionsOrganized } from '../data/harmonies';
 import { AccidentalLevel, ExtensionLevel } from '../@types';
-import TempoSelect from '../components/settings/MetronomeSelect';
-import TimeSignatureSelect from '../components/settings/TimeSignatureSelect';
-import Volume from '../components/settings/Volume';
 import MetronomeSelect from '../components/settings/MetronomeSelect';
 
 const Settings = () => {
