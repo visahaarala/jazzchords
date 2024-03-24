@@ -17,10 +17,6 @@
     color: var(--color-link);
     border-radius: var(--border-radius);
 
-    // &:focus {
-    //   outline: var(--color-focus-outline);
-    // }
-
     &:hover, &:focus {
       text-decoration: underline;
       outline: none;
