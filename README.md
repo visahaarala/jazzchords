@@ -18,4 +18,4 @@ Tested desktop browsers (on Mac Os X): Chrome, Safari, Opera and Firefox. Best d
 
 - Using tab to navigate on a desktop browser seems to work only partially in Safari.
 
-- `wakeLock` is used to prevent display from sleeping when playing through chords. However, it seems to work only on newer desktop browsers (excluding Firefox). On mobile devices, the screen sleep time should be changed manually from device settings.
+- `wakeLock` is used to prevent display from sleeping when playing through chords. However, it seems to work only on newer desktop browsers (excluding Firefox). On mobile devices, the screen sleep time should be changed manually from the device settings.
