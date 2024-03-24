@@ -14,4 +14,4 @@ Designed primarily for portrait mobile phone (iPhone XS as a reference), but als
 
 - Using tab to navigate on a desktop browser seems to work only partially in Safari.
 
-- `wakeLock` is used to prevent display from sleeping when playing through chords. However, it only seems to work on newer desktop browsers (excluding Firefox). On mobile devices, the screen sleep time must be changed from device settings.
+- `wakeLock` is used to prevent display from sleeping when playing through chords. However, it seems to work only on newer desktop browsers (excluding Firefox). On mobile devices, the screen sleep time should be changed manually from device settings.

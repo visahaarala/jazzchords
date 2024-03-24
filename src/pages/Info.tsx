@@ -18,7 +18,10 @@ const Info = () => (
       </p>
       <p>
         More info at{' '}
-        <a href='https://github.com/visahaarala/jazzchords'>GitHub</a>.
+        <a href='https://github.com/visahaarala/jazzchords/blob/main/README.md'>
+          GitHub
+        </a>
+        .
       </p>
     </div>
   </>
