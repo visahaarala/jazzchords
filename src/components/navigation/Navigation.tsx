@@ -2,7 +2,7 @@ import styles from './Navigation.module.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
 import SettingsIcon from './SettingsIcon';
 import InfoIcon from './InfoIcon';
-import ChordIcon from './ChordIcon';
+import PlaybackIcon from './PlaybackIcon';
 import { KeyboardEvent } from 'react';
 
 const Navigation = () => {
@@ -35,7 +35,7 @@ const Navigation = () => {
         </li>
         <li>
           <NavLink to='' onKeyDown={(e) => keyDownHandler(e, '')}>
-            <ChordIcon />
+            <PlaybackIcon />
           </NavLink>
         </li>
       </ul>

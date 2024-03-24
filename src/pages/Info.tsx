@@ -1,4 +1,25 @@
+import React from 'react';
 import styles from './Info.module.scss';
+import SettingsIcon from '../components/navigation/SettingsIcon';
+import PlaybackIcon from '../components/navigation/PlaybackIcon';
+import PlayButtonIcon from '../components/play-controls/PlayButtonIcon';
+
+const headerIconStyle: React.CSSProperties = {
+  display: 'inline-block',
+  width: '1.5rem',
+  height: '1.5rem',
+  marginRight: '.25rem',
+  transform: 'translateY(.25rem)',
+};
+
+const iconStyle: React.CSSProperties = {
+  display: 'inline-block',
+  width: '1rem',
+  height: '1rem',
+  marginRight: '.2rem',
+  marginLeft: '.2rem',
+  transform: 'translateY(.15rem)',
+};
 
 const Info = () => (
   <>
@@ -6,15 +27,18 @@ const Info = () => (
     <div className={styles.info}>
       <p>A tool for practicing random jazz chords.</p>
       <p>
-        <b>settings</b>: Set the range of sharps & flats below{' '}
-        <code>accidentals</code>, the chord complexity level under{' '}
-        <code>difficulty</code>, and tempo & time signature under{' '}
-        <code>metronome</code>.
+        <SettingsIcon style={headerIconStyle} /> Set the range of key signatures
+        below <span>accidentals</span>, the chord complexity level under{' '}
+        <span>difficulty</span>, and tempo & time signature under{' '}
+        <span>metronome</span>.
       </p>
       <p>
-        <b>playback</b>: Randomly generate and go back and forth between chords
-        using the <code>next</code> & <code>previous</code> buttons, or{' '}
-        <code>play</code> through random chords with metronome.
+        <PlaybackIcon style={headerIconStyle} /> Randomly generate and go back
+        and forth between chords using the{' '}
+        <PlayButtonIcon type='next' style={iconStyle} /> &{' '}
+        <PlayButtonIcon type='prev' style={iconStyle} /> buttons, or play{' '}
+        <PlayButtonIcon type='play' style={iconStyle} /> through random chords
+        with metronome.
       </p>
       <p>
         More info at{' '}

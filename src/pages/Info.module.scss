@@ -1,23 +1,24 @@
 .info {
   p {
-    &:not(:first-of-type) {
-      margin-top: 1.2rem;
-    }
     line-height: 1.6;
     font-size: 1rem;
+
+    & + p {
+      margin-top: 1rem;
+    }
   }
 
-  code {
+  span {
     padding-left: 0.1rem;
     padding-right: 0.1rem;
-    font-size: 0.9rem;
+    letter-spacing: 0.132rem;
   }
 
   a {
     color: var(--color-link);
-    border-radius: var(--border-radius);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       text-decoration: underline;
       outline: none;
     }
