@@ -6,7 +6,7 @@ A tool for practicing random jazz chords.
 
 Written with React, Typescript & SCSS.
 
-Designed for portrait mobile phone, but also nice on desktop. On desktop, use (`shift`-) `tab`, `space`, `esc` and `arrow` keys for easier navigation while playing an instrument.
+Designed for portrait mobile phone, but also works on desktop. On desktop, use (`shift`-) `tab`, `space`, `esc` and `arrow` keys for easier navigation while playing an instrument.
 
 #### Settings
 
