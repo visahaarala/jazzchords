@@ -2,7 +2,7 @@
 
 #### soon
 
-- Show beat below chords (circles w/ or w/o color)
+- make color scheme nicer
 
 #### later
 

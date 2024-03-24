@@ -6,8 +6,8 @@ import Beats from '../components/beats/Beats';
 const Chords = () => (
   <div className={styles.chordPage}>
     <div className={styles.chords}>
-      <Chord size={2} />
-      <Chord indexOffset={1} size={0.9} contrast={40} />
+      <Chord size={1.6} />
+      <Chord indexOffset={1} size={1.1} contrast={30} />
     </div>
     <div className={styles.beats}>
       <Beats />

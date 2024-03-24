@@ -6,17 +6,12 @@ A tool for practicing random jazz chords.
 
 Written with React, Typescript & SCSS.
 
-Designed for portrait mobile phone, but also works on desktop. On desktop, use (`shift`-) `tab`, `space`, `esc` and `arrow` keys for easier navigation while playing an instrument.
+Designed primarily for portrait mobile phone (iPhone XS as a reference), but also works on desktop. On desktop, use (`shift`-) `tab`, `space`, `esc` and `arrow` keys for easier navigation while playing an instrument.
 
-#### Settings
+#### Issues
 
-Set the range of sharps & flats under `Accidentals`, the chord complexity level under `Difficulty`, and tempo & time signature under `Tempo`.
+- `play` button seems to not work on some older iPhone iOS versions due to problems with AudioContext.
 
-#### Play
+- Using tab to navigate on a desktop browser seems to work only partially in Safari.
 
-Generate and go back and forth between chords using the `Next` & `Previous` buttons, or automatically `Play` through different chords.
-
-#### Problems
-
-- `play` button seems to not work on older iPhone iOS versions due to problems with AudioContext.
-- Using tab to navigate on desktop seems to work only partially in Safari.
+- `wakeLock` is used to prevent display from sleeping when playing through chords. However, it only seems to work on newer desktop browsers (excluding Firefox). On mobile devices, the screen sleep time must be changed from device settings.

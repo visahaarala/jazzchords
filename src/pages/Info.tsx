@@ -4,16 +4,17 @@ const Info = () => (
   <>
     <h2>jazzchords</h2>
     <div className={styles.info}>
-      <p>A simple tool for practicing random jazz chords.</p>
+      <p>A tool for practicing random jazz chords.</p>
       <p>
-        Designed for portrait mobile phone, but also works on desktop. On
-        desktop, use <code>(shift-)tab</code>, <code>space</code>,{' '}
-        <code>esc</code> and <code>arrow</code> keys for navigation while
-        playing an instrument.
+        <b>settings</b>: Set the range of sharps & flats below{' '}
+        <code>accidentals</code>, the chord complexity level under{' '}
+        <code>difficulty</code>, and tempo & time signature under{' '}
+        <code>metronome</code>.
       </p>
       <p>
-        Play button might not work on older iOS versions. Using tab to navigate
-        on desktop might not work in Safari.
+        <b>playback</b>: Randomly generate and go back and forth between chords
+        using the <code>next</code> & <code>previous</code> buttons, or{' '}
+        <code>play</code> through random chords with metronome.
       </p>
       <p>
         More info at{' '}

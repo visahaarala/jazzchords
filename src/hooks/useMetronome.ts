@@ -13,14 +13,12 @@ export function useMetronome({
   callBack: () => void;
   delay: number | undefined;
 }) {
-  // --------------------------------
   // A way to use updated callback in every render
   // Thanks Dan Abramov for the idea!
   const savedCallback = useRef(callBack);
   useEffect(() => {
     savedCallback.current = callBack;
   });
-  // --------------------------------
 
   const [isMuted] = useContext(Context).isMutedState;
   const [audioContext, setAudioContext] = useState<AudioContext>();
@@ -45,7 +43,6 @@ export function useMetronome({
     }
   }, [isMuted]);
 
-  //
   // Do the scheduling on 1 second interval
   // Schedule clicks 3 seconds ahead of time
   const schedulingInterval = 1; // seconds

@@ -8,8 +8,6 @@ const Beats = () => {
   const numBeats = Number(ctx.beatsPerChordState[0]);
   const beatCircles: JSX.Element[] = [];
 
-  console.log('beat', ctx.beatState[0]);
-
   if (!isNaN(numBeats) && numBeats !== 1) {
     for (let beat = 1; beat <= numBeats; beat++) {
       beatCircles.push(<BeatCirle beatNumber={beat} key={beat} />);
