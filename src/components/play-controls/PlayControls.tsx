@@ -1,5 +1,5 @@
 import styles from './PlayControls.module.scss';
-import { useContext, useEffect, useReducer, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Context } from '../../context/Context';
 import { generateChords } from '../../data/harmonies';
 import { useMetronome } from '../../hooks/useMetronome';
