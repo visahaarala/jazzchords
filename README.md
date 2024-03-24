@@ -14,7 +14,7 @@ Tested desktop browsers (on Mac Os X): Chrome, Safari, Opera and Firefox. Best d
 
 - Firefox messes up the chord symbol layout.
 
-- `play` button seems to not work on some older iPhone iOS versions due to problems with AudioContext.
+- `play` functionality seems to not work on some older iPhone iOS versions due to problems with AudioContext.
 
 - Using tab to navigate on a desktop browser seems to work only partially in Safari.
 
