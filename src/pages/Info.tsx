@@ -12,9 +12,8 @@ const Info = () => (
         playing an instrument.
       </p>
       <p>
-        Play button might not work on older iOS versions because of problems
-        with AudioContext. Using tab to navigate on desktop might not work in
-        Safari.
+        Play button might not work on older iOS versions. Using tab to navigate
+        on desktop might not work in Safari.
       </p>
       <p>
         More info at{' '}
