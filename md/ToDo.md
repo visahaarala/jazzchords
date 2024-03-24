@@ -1,15 +1,5 @@
 # TO-DO list
 
-### top priority
-
-- stop using context... chords updating with changes to settings etc..
-
-- use hooks instead of context (?) (udemy) ???
-
-### later
-
-- Fix chords updating on every render (away & back) --- chords into context
-
 - Fix beat (now starting from 2 when play)
 
 - change stop icon to pause
@@ -20,7 +10,7 @@
 
 - Settings reset button
 
-- Settings copy link
+- Settings copy link ... context useEffect to apply on first render
 
 - url params for settings (ability to load program with given settings)
 

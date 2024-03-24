@@ -2,13 +2,18 @@ import styles from './Range.module.scss';
 import { ChangeEvent } from 'react';
 
 const RangeSelect = <T,>({
-  levelsState,
+  range,
+  setRange,
+  // rangeState,
   options,
 }: {
-  levelsState: [[T, T], React.Dispatch<React.SetStateAction<[T, T]>>];
+  range: [T, T];
+  setRange: (range: [T, T]) => void;
+  // rangeState: [[T, T], React.Dispatch<React.SetStateAction<[T, T]>>];
   options: T[];
 }) => {
-  const [[min, max], setLevels] = levelsState;
+  // const [[min, max], setLevels] = rangeState;
+  const [min, max] = range;
 
   const minIndex = options.indexOf(min);
   const maxIndex = options.indexOf(max);
@@ -18,7 +23,7 @@ const RangeSelect = <T,>({
     const newMaxIndex = newMinIndex > maxIndex ? newMinIndex : maxIndex;
     const newMinValue = options[newMinIndex];
     const newMaxValue = options[newMaxIndex];
-    setLevels([newMinValue, newMaxValue]);
+    setRange([newMinValue, newMaxValue]);
   };
 
   const maxHandler = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -26,7 +31,7 @@ const RangeSelect = <T,>({
     const newMinIndex = newMaxIndex < minIndex ? newMaxIndex : minIndex;
     const newMinValue = options[newMinIndex];
     const newMaxValue = options[newMaxIndex];
-    setLevels([newMinValue, newMaxValue]);
+    setRange([newMinValue, newMaxValue]);
   };
 
   return (

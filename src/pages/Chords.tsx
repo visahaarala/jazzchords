@@ -1,5 +1,5 @@
 import styles from './Chords.module.scss';
-import Chord from '../components/chord/Chord';
+import Chord from '../components/chords/Chord';
 import PlayControls from '../components/play-controls/PlayControls';
 
 const Chords = () => (

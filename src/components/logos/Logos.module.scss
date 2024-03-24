@@ -4,9 +4,9 @@ $top: 1rem;
 $focusFilter: 'none';
 
 .github {
-  position: absolute;
-  left: $side;
-  top: $top;
+  // position: absolute;
+  // left: $side;
+  // top: $top;
   width: $size;
   height: $size;
   transition: var(--transition);

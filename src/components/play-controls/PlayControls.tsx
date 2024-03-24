@@ -12,21 +12,7 @@ const PlayControls = () => {
   const [beatsPerMinute] = ctx.beatsPerMinuteState;
   const [beatsPerChord] = ctx.beatsPerChordState;
   const [play, setPlay] = useState<boolean>(false);
-  const [beat, setBeat] = useState(0);
-
-  // props for generating chord, defined in
-  // accidentals and difficulty level
-  const generatorProps = {
-    extensionLevels: ctx.extensionLevelState[0],
-    accidentalLevels: ctx.accidentalLevelState[0],
-  };
-
-  // reset chord list when chord settings are changed
-  useEffect(() => {
-    setChordList(generateChords({ ...generatorProps, numberOfChords: 2 }));
-    setChordIndex(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ctx.extensionLevelState[0], ctx.accidentalLevelState[0]]);
+  const [beat, setBeat] = ctx.beatState;
 
   // increment chord index,
   // add new chords to array if necessary
@@ -34,7 +20,11 @@ const PlayControls = () => {
     if (chordIndex >= chordList.length - 2) {
       setChordList((prevList) => [
         ...prevList,
-        generateChords({ ...generatorProps, numberOfChords: 1 })[0],
+        generateChords({
+          extensionRange: ctx.extensionRange,
+          accidentalRange: ctx.accidentalRange,
+          numberOfChords: 1,
+        })[0],
       ]);
     }
     setChordIndex((prevIndex) => prevIndex + 1);
@@ -78,7 +68,7 @@ const PlayControls = () => {
       <div>
         <PlayButton
           onClick={() => setPlay(!play)}
-          type={play ? 'stop' : 'play'}
+          type={play ? 'pause' : 'play'}
           id='play'
         />
         <PlayButton onClick={previousHandler} type='prev' />

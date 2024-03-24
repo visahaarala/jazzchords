@@ -7,16 +7,15 @@ const PlayButton = ({
   onClick,
 }: {
   id?: string;
-  type: 'next' | 'prev' | 'play' | 'stop';
+  type: 'next' | 'prev' | 'play' | 'pause';
   onClick: () => void;
 }) => {
-
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
     const code = e.code;
     if (code === 'Space' || code === 'Enter') {
       onClick();
     }
-  }
+  };
 
   return (
     <div
@@ -38,8 +37,13 @@ const PlayButton = ({
               <path d='M2 2 L 18 10 L 2 18 z' fill='currentColor' />
               <path d='M18 2v16' stroke='white' strokeWidth='2' fill='none' />
             </>
-          ) : type === 'stop' ? (
-            <path d='M2 2h16v16h-16z' fill='currentColor' />
+          ) : type === 'pause' ? (
+            <path
+              d='M5 2v16m10 0v-16'
+              fill='none'
+              stroke='currentColor'
+              strokeWidth='5'
+            />
           ) : (
             ''
           )}
