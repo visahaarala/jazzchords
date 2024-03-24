@@ -2,6 +2,8 @@
 
 #### soon
 
+- alt. & 6/9 chord layout
+
 - make color scheme nicer
 
 #### later
