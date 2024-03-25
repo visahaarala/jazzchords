@@ -25,28 +25,28 @@ const Info = () => (
   <>
     <h2>jazzchords</h2>
     <div className={styles.info}>
-      <p>A tool for practicing random jazz chords.</p>
-      <p>
+      <div>A tool for practicing random jazz chords.</div>
+      <div>
         <SettingsIcon style={headerIconStyle} /> Set the range of key signatures
         below <span>accidentals</span>, the chord complexity level under{' '}
-        <span>difficulty</span>, and tempo & time signature under{' '}
+        <span>difficulty</span>, and tempo, time signature & volume under{' '}
         <span>metronome</span>.
-      </p>
-      <p>
+      </div>
+      <div>
         <PlaybackIcon style={headerIconStyle} /> Randomly generate and go back
         and forth between chords using the{' '}
         <PlayButtonIcon type='next' style={iconStyle} /> &{' '}
         <PlayButtonIcon type='prev' style={iconStyle} /> buttons, or play{' '}
         <PlayButtonIcon type='play' style={iconStyle} /> through random chords
         with metronome.
-      </p>
-      <p>
+      </div>
+      <div>
         More info at{' '}
         <a href='https://github.com/visahaarala/jazzchords/blob/main/README.md'>
           GitHub
         </a>
         .
-      </p>
+      </div>
     </div>
   </>
 );

@@ -6,7 +6,10 @@ import { Context } from '../../context/Context';
 
 const MetronomeSelect = () => {
   const ctx = useContext(Context);
-  const [bpc, setBpc] = ctx.beatsPerChordState;
+  // const [bpc, setBpc] = ctx.beatsPerChordState;
+  const bpc = ctx.beatsPerChord;
+  const setBpc = ctx.setBeatsPerChord;
+
   const [bpm, setBpm] = ctx.beatsPerMinuteState;
 
   const bpcHandler = (e: ChangeEvent<HTMLSelectElement>) => {

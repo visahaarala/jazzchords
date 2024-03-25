@@ -21,7 +21,10 @@ export const Context = createContext<{
   setAccidentalRange: (range: [AccidentalLevel, AccidentalLevel]) => void;
   extensionRange: [ExtensionLevel, ExtensionLevel];
   setExtensionRange: (range: [ExtensionLevel, ExtensionLevel]) => void;
-  beatsPerChordState: [TimeSignature, Dispatch<SetStateAction<TimeSignature>>];
+  // beatsPerChordState: [TimeSignature, Dispatch<SetStateAction<TimeSignature>>];
+  beatsPerChord: TimeSignature;
+  setBeatsPerChord: (timeSignature: TimeSignature) => void;
+
   beatsPerMinuteState: [number, Dispatch<SetStateAction<number>>];
   isMutedState: [boolean, Dispatch<SetStateAction<boolean>>];
   chordListState: [Chord[], Dispatch<SetStateAction<Chord[]>>];
@@ -32,7 +35,10 @@ export const Context = createContext<{
   setAccidentalRange: () => {},
   extensionRange: ['easy', 'medium'],
   setExtensionRange: () => {},
-  beatsPerChordState: [0, () => {}],
+  // beatsPerChordState: [0, () => {}],
+  beatsPerChord: 4,
+  setBeatsPerChord: () => {},
+
   beatsPerMinuteState: [0, () => {}],
   isMutedState: [true, () => {}],
   chordListState: [[], () => {}],
@@ -90,12 +96,20 @@ const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     chordIndexState[1](0);
   };
 
+  const setBeatsPerChord = (timeSignature: TimeSignature) => {
+    beatsPerChordState[1](timeSignature);
+    beatState[1](0);
+  }
+
   const value = {
     accidentalRange: accidentalRangeState[0],
     setAccidentalRange,
     extensionRange: extensionRangeState[0],
     setExtensionRange,
-    beatsPerChordState,
+    // beatsPerChordState,
+    beatsPerChord: beatsPerChordState[0],
+    setBeatsPerChord,
+
     beatsPerMinuteState,
     isMutedState,
     chordListState,

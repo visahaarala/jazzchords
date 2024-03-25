@@ -5,7 +5,7 @@ import BeatCirle from './BeatCircle';
 
 const Beats = () => {
   const ctx = useContext(Context);
-  const numBeats = Number(ctx.beatsPerChordState[0]);
+  const numBeats = Number(ctx.beatsPerChord);
   const beatCircles: JSX.Element[] = [];
 
   if (!isNaN(numBeats) && numBeats !== 1) {
@@ -14,7 +14,11 @@ const Beats = () => {
     }
   }
 
-  return <div className={styles.beats}>{beatCircles}</div>;
+  const clickHandler = () => {
+    ctx.beatState[1](0);
+  }
+
+  return <div className={styles.beats} onClick={clickHandler}>{beatCircles}</div>;
 };
 
 export default Beats;

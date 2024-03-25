@@ -10,7 +10,7 @@ const PlayControls = () => {
   const [chordList, setChordList] = ctx.chordListState;
   const [chordIndex, setChordIndex] = ctx.chordIndexState;
   const [beatsPerMinute] = ctx.beatsPerMinuteState;
-  const [beatsPerChord] = ctx.beatsPerChordState;
+  const beatsPerChord = ctx.beatsPerChord;
   const [play, setPlay] = useState<boolean>(false);
   const [beat, setBeat] = ctx.beatState;
 
@@ -56,10 +56,10 @@ const PlayControls = () => {
     if (chordIndex > 0) setChordIndex((prevIndex) => prevIndex - 1);
   };
 
-  useEffect(() => {
-    // when bpc changes, reset beat
-    setBeat(0);
-  }, [beatsPerChord]);
+  // useEffect(() => {
+  //   // when bpc changes, reset beat
+  //   setBeat(0);
+  // }, [beatsPerChord]);
 
   useMetronome({
     callBack: () => {
