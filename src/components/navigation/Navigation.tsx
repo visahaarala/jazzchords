@@ -1,8 +1,8 @@
 import styles from './Navigation.module.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
-import SettingsIcon from './SettingsIcon';
-import InfoIcon from './InfoIcon';
-import PlaybackIcon from './PlaybackIcon';
+import SettingsIcon from '../svgs/navigation/SettingsIcon';
+import InfoIcon from '../svgs/navigation/InfoIcon';
+import PlaybackIcon from '../svgs/navigation/PlaybackIcon';
 import { KeyboardEvent } from 'react';
 
 const Navigation = () => {

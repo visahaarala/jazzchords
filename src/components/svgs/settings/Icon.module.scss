@@ -1,0 +1,19 @@
+.icon {
+  // background-color: red;
+
+  border-radius: var(--border-radius);
+  height: 2.4rem;
+  width: 2.4rem;
+  padding: 0.2rem;
+  cursor: pointer;
+  transition: var(--transition);
+
+  &:focus,
+  &:hover {
+    outline: var(--color-focus-outline);
+  }
+
+  &:hover &__tooltip {
+    visibility: visible;
+  }
+}

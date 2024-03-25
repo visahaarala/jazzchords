@@ -1,7 +1,7 @@
 import styles from './Range.module.scss';
 import { ChangeEvent, useContext } from 'react';
 import { bpcOptions, bpmOptions } from '../../data/tempo';
-import Volume from './Volume';
+import Volume from '../svgs/settings/VolumeIcon';
 import { Context } from '../../context/Context';
 
 const MetronomeSelect = () => {
