@@ -5,7 +5,8 @@ import { bpcOptions } from '../../data/tempo';
 
 const TimeSignatureSelect = () => {
   const ctx = useContext(Context);
-  const [bpc, setBpc] = ctx.beatsPerChordState;
+  const bpc = ctx.beatsPerChord;
+  const setBpc = ctx.setBeatsPerChord;
 
   const bpcHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
