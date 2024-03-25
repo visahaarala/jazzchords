@@ -9,11 +9,10 @@ const PlayControls = () => {
   const ctx = useContext(Context);
   const [chordList, setChordList] = ctx.chordListState;
   const [chordIndex, setChordIndex] = ctx.chordIndexState;
-  const [beatsPerMinute] = ctx.beatsPerMinuteState;
+  const beatsPerMinute = ctx.beatsPerMinute;
   const beatsPerChord = ctx.beatsPerChord;
-  const [play, setPlay] = useState<boolean>(false);
   const [beat, setBeat] = ctx.beatState;
-
+  const [play, setPlay] = useState<boolean>(false);
   const wakeLock = useRef<WakeLockSentinel>();
 
   // prevent display sleep while metronome playing

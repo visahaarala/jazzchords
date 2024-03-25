@@ -1,27 +1,24 @@
 import styles from './Range.module.scss';
 import { ChangeEvent, useContext } from 'react';
 import { bpcOptions, bpmOptions } from '../../data/tempo';
-import Volume from '../svgs/settings/VolumeIcon';
+import Volume from '../icons/settings/VolumeIcon';
 import { Context } from '../../context/Context';
-import { TimeSignature } from '../../@types';
+import useAppendSearchParams from '../../hooks/useAppendSearchParams';
 
 const MetronomeSelect = () => {
   const ctx = useContext(Context);
-  // const [bpc, setBpc] = ctx.beatsPerChordState;
+  const appendSearchParams = useAppendSearchParams();
   const bpc = ctx.beatsPerChord;
-  const setBpc = ctx.setBeatsPerChord;
+  const bpm = ctx.beatsPerMinute;
 
-  const [bpm, setBpm] = ctx.beatsPerMinuteState;
+  console.log('bpm at metronome settings', bpm);
 
   const bpcHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-    setBpc(e.target.value as TimeSignature);
-    // const value = e.target.value;
-    // if (value === '∞') setBpc(value);
-    // else setBpc(Number(e.target.value));
+    appendSearchParams('bpc', e.target.value);
   };
 
   const bpmHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-    setBpm(Number(e.target.value));
+    appendSearchParams('bpm', e.target.value);
   };
 
   return (

@@ -1,6 +1,12 @@
 # TO-DO list
 
+#### now
+
+- url search params to manage settings state
+
 #### soon
+
+- move reset to bottom
 
 - make links stay colored when active
 
@@ -27,4 +33,3 @@
 - Top note
 
 - Sointuasteet
-

@@ -17,8 +17,8 @@ const CopyIcon = () => {
     console.log(window.location);
     let url = window.location.origin + window.location.pathname;
     url += '?bpc=' + ctx.beatsPerChord;
-    url += '&bpm=' + ctx.beatsPerMinuteState[0];
-    url += '&isMuted=' + ctx.isMutedState[0];
+    url += '&bpm=' + ctx.beatsPerMinute;
+    url += '&isMuted=' + ctx.isMuted;
     url += '&dmin=' + ctx.extensionRange[0];
     url += '&dmax=' + ctx.extensionRange[1];
     url += '&amin=' + ctx.accidentalRange[0];

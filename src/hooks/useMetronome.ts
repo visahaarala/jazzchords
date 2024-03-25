@@ -20,7 +20,7 @@ export function useMetronome({
     savedCallback.current = callBack;
   });
 
-  const [isMuted] = useContext(Context).isMutedState;
+  const isMuted = useContext(Context).isMuted;
   const [audioContext, setAudioContext] = useState<AudioContext>();
 
   const gainNodeRef = useRef<GainNode>();

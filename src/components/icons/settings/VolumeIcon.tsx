@@ -6,31 +6,26 @@ downloaded from https://ionic.io/ionicons with MIT license.
 import styles from './Icon.module.scss';
 import { KeyboardEvent, useContext } from 'react';
 import { Context } from '../../../context/Context';
-import { useSearchParams } from 'react-router-dom';
+import useAppendSearchParams from '../../../hooks/useAppendSearchParams';
 
 const Volume = () => {
-  const searchParams = useSearchParams();
-  const ctx = useContext(Context);
-  const [isMuted, setIsMuted] = ctx.isMutedState;
+  const isMuted = useContext(Context).isMuted;
+  const appendSearchParams = useAppendSearchParams();
 
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
-    // if (e.code === 'Enter' || e.code === 'Space') setIsMuted(!isMuted);
-    // if (e.code === 'ArrowUp') setIsMuted(false);
-    // if (e.code === 'ArrowDown') setIsMuted(true);
-    if (e.code === 'Enter' || e.code === 'Space') updateIsMutedParams(!isMuted);
-    if (e.code === 'ArrowUp') updateIsMutedParams(false);
-    if (e.code === 'ArrowDown') updateIsMutedParams(true);
+    if (e.code === 'Enter' || e.code === 'Space') setIsMuted(!isMuted);
+    if (e.code === 'ArrowUp') setIsMuted(false);
+    if (e.code === 'ArrowDown') setIsMuted(true);
   };
 
-  const updateIsMutedParams = (isMuted: boolean) => {
-    
-  }
+  const setIsMuted = (isMuted: boolean) => {
+    appendSearchParams('isMuted', isMuted + '');
+  };
 
   return (
     <div
       className={styles.icon}
-      // onClick={() => setIsMuted(!isMuted)}
-      onClick={() => updateIsMutedParams(!isMuted)}
+      onClick={() => setIsMuted(!isMuted)}
       tabIndex={0}
       onKeyDown={keyDownHandler}
     >

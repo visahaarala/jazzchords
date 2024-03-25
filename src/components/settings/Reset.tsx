@@ -1,14 +1,13 @@
 import { KeyboardEvent } from 'react';
 import styles from './Reset.module.scss';
 import { useSearchParams } from 'react-router-dom';
+import { defaults } from '../../context/Context';
 
 const Reset = () => {
-  const [params, setParams] = useSearchParams();
+  const setParams = useSearchParams()[1];
 
   const reset = () => {
-    console.log('reset');
-    // window.location.href = window.location.origin + '/settings';
-    setParams({ q: '321' });
+    setParams({});
   };
 
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {

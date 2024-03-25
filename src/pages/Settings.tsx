@@ -6,7 +6,7 @@ import { Context } from '../context/Context';
 import { basesOrganized, extensionsOrganized } from '../data/harmonies';
 import { AccidentalLevel, ExtensionLevel } from '../@types';
 import MetronomeSelect from '../components/settings/MetronomeSelect';
-import CopyIcon from '../components/svgs/settings/CopyIcon';
+import CopyIcon from '../components/icons/settings/CopyIcon';
 import Reset from '../components/settings/Reset';
 
 const Settings = () => {

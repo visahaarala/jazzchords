@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Info.module.scss';
-import SettingsIcon from '../components/svgs/navigation/SettingsIcon';
-import PlaybackIcon from '../components/svgs/navigation/PlaybackIcon';
-import PlayButtonIcon from '../components/svgs/play/PlayButtonIcon';
+import SettingsIcon from '../components/icons/navigation/SettingsIcon';
+import PlaybackIcon from '../components/icons/navigation/PlaybackIcon';
+import PlayButtonIcon from '../components/icons/play/PlayButtonIcon';
 
 const headerIconStyle: React.CSSProperties = {
   display: 'inline-block',
