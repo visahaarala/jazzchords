@@ -4,6 +4,8 @@
 
 - make links stay colored when active
 
+- link copy explanation to info
+
 - make color scheme nicer
 
 #### later
