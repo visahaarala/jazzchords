@@ -1,3 +1,13 @@
+export type SearchParams = {
+  bpc: TimeSignature;
+  bpm: number;
+  isMuted: boolean;
+  amin: AccidentalLevel;
+  amax: AccidentalLevel;
+  dmin: ExtensionLevel;
+  dmax: ExtensionLevel;
+};
+
 export type Range = {
   min: number;
   max: number;

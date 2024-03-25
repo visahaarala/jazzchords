@@ -17,24 +17,26 @@ const Navigation = () => {
     }
   };
 
+  const search = window.location.search;
+
   return (
     <nav className={styles.navigation}>
       <ul>
         <li>
-          <NavLink to='info' onKeyDown={(e) => keyDownHandler(e, 'info')}>
+          <NavLink to={'info'+search} onKeyDown={(e) => keyDownHandler(e, 'info')}>
             <InfoIcon />
           </NavLink>
         </li>
         <li>
           <NavLink
-            to='settings'
+            to={'settings'+search}
             onKeyDown={(e) => keyDownHandler(e, 'settings')}
           >
             <SettingsIcon />
           </NavLink>
         </li>
         <li>
-          <NavLink to='' onKeyDown={(e) => keyDownHandler(e, '')}>
+          <NavLink to={'play' + search} onKeyDown={(e) => keyDownHandler(e, 'play')}>
             <PlaybackIcon />
           </NavLink>
         </li>

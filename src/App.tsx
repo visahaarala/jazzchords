@@ -2,7 +2,7 @@ import './App.scss';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import RootLayout from './pages/RootLayout';
 import ErrorPage from './pages/ErrorPage';
-import Chords from './pages/Chords';
+import Play from './pages/Play';
 import Settings from './pages/Settings';
 import Info from './pages/Info';
 
@@ -12,7 +12,8 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <Chords /> },
+      { index: true, element: <Play /> },
+      { path: 'play', element: <Play /> },
       {
         path: 'settings',
         element: <Settings />,

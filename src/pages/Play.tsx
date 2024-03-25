@@ -3,7 +3,7 @@ import Chord from '../components/chords/Chord';
 import PlayControls from '../components/play-controls/PlayControls';
 import Beats from '../components/beats/Beats';
 
-const Chords = () => (
+const Play = () => (
   <div className={styles.chordPage}>
     <div className={styles.chords}>
       <Chord size={1.6} />
@@ -18,4 +18,4 @@ const Chords = () => (
   </div>
 );
 
-export default Chords;
+export default Play;

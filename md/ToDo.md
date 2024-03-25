@@ -6,6 +6,8 @@
 
 - link copy explanation to info
 
+- settings reset
+
 - make color scheme nicer
 
 #### later

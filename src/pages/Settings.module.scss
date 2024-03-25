@@ -5,14 +5,18 @@
 
   span {
     margin-left: auto;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
   }
+}
+
+.reset {
+  align-self: center;
+  margin-top: 0.6rem;
   margin-bottom: auto;
 }
 
 .settings {
   display: flex;
-  // flex: 0;
   flex-direction: column;
   align-items: center;
 
@@ -27,7 +31,7 @@ h3 {
   font-weight: normal;
   font-size: 1.2rem;
   &:not(:first-child) {
-    margin-top: 2rem;
+    margin-top: 1.2rem;
   }
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
 }

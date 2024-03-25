@@ -29,9 +29,10 @@ const Info = () => (
       <div>A tool for practicing random jazz chords.</div>
       <div>
         <SettingsIcon style={headerIconStyle} /> Set the range of key signatures
-        below <span>accidentals</span>, the chord complexity level under{' '}
-        <span>difficulty</span>, and tempo, time signature & volume under{' '}
+        under <span>accidentals</span>, the range of chord complexity under{' '}
+        <span>difficulty</span>, and the settings for tempo, time signature & volume under{' '}
         <span>metronome</span>.
+        Copy the settings URL to share them with others. Or reset to default settings.
       </div>
       <div>
         <PlaybackIcon style={headerIconStyle} /> Randomly generate and go back

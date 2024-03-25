@@ -11,6 +11,7 @@ import {
   AccidentalLevel,
   Chord,
   ExtensionLevel,
+  SearchParams,
   TimeSignature,
 } from '../@types';
 import { bpcOptions, bpmOptions } from '../data/tempo';
@@ -21,7 +22,18 @@ import {
 } from '../data/harmonies';
 import { useSearchParams } from 'react-router-dom';
 
+const defaults: SearchParams = {
+  bpc: bpcOptions[3],
+  bpm: bpmOptions[13],
+  isMuted: false,
+  amin: '0',
+  amax: '4',
+  dmin: 'easy',
+  dmax: 'hard',
+};
+
 export const Context = createContext<{
+  searchParamsState: [SearchParams, Dispatch<SetStateAction<SearchParams>>];
   accidentalRange: [AccidentalLevel, AccidentalLevel];
   setAccidentalRange: (range: [AccidentalLevel, AccidentalLevel]) => void;
   extensionRange: [ExtensionLevel, ExtensionLevel];
@@ -34,6 +46,7 @@ export const Context = createContext<{
   chordIndexState: [number, Dispatch<SetStateAction<number>>];
   beatState: [number, Dispatch<SetStateAction<number>>];
 }>({
+  searchParamsState: [defaults, () => {}],
   accidentalRange: ['0', '4'],
   setAccidentalRange: () => {},
   extensionRange: ['easy', 'medium'],
@@ -48,54 +61,20 @@ export const Context = createContext<{
 });
 
 const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  // read url search query parameters
-  const [searchParams] = useSearchParams();
-  const bpc = searchParams.get('bpc');
-  const bpm = searchParams.get('bpm');
-  const isMuted = searchParams.get('isMuted');
-  const amin = searchParams.get('amin');
-  const amax = searchParams.get('amax');
-  const dmin = searchParams.get('dmin');
-  const dmax = searchParams.get('dmax');
-
-  // check if parameters are valid
-  const isMutedValue = isMuted === 'true' ? true : false;
-  const bpcValue =
-    bpc && bpcOptions.includes(bpc as TimeSignature)
-      ? (bpc as TimeSignature)
-      : bpcOptions[3];
-  const bpmValue =
-    Number(bpm) && bpmOptions.includes(Number(bpm))
-      ? Number(bpm)
-      : bpmOptions[13];
-  let aminValue =
-    amin && Object.keys(basesOrganized).includes(amin) ? amin : '0';
-  let amaxValue =
-    amax && Object.keys(basesOrganized).includes(amax) ? amax : '4';
-  if (aminValue > amaxValue) {
-    aminValue = '0';
-    amaxValue = '4';
-  }
-  const extensionsKeys = Object.keys(extensionsOrganized);
-  let dminValue = dmin && extensionsKeys.includes(dmin) ? dmin : 'easy';
-  let dmaxValue = dmax && extensionsKeys.includes(dmax) ? dmax : 'medium';
-  if (extensionsKeys.indexOf(dminValue) > extensionsKeys.indexOf(dmaxValue)) {
-    dminValue = 'easy';
-    dmaxValue = 'medium';
-  }
-
   // setup states with valid values
+  const searchParamsState = useState<SearchParams>(defaults);
+
   const accidentalRangeState = useState<[AccidentalLevel, AccidentalLevel]>([
-    aminValue as AccidentalLevel,
-    amaxValue as AccidentalLevel,
+    defaults.amin,
+    defaults.amax,
   ]);
   const extensionRangeState = useState<[ExtensionLevel, ExtensionLevel]>([
-    dminValue as ExtensionLevel,
-    dmaxValue as ExtensionLevel,
+    defaults.dmin,
+    defaults.dmax,
   ]);
-  const beatsPerChordState = useState<TimeSignature>(bpcValue);
-  const beatsPerMinuteState = useState(bpmValue);
-  const isMutedState = useState(isMutedValue);
+  const beatsPerChordState = useState<TimeSignature>(defaults.bpc);
+  const beatsPerMinuteState = useState(defaults.bpm);
+  const isMutedState = useState(defaults.isMuted);
   const chordListState = useState<Chord[]>([]);
   const chordIndexState = useState(0);
   const beatState = useState(0);
@@ -139,14 +118,60 @@ const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     beatState[1](0);
   };
 
+  // read url search query parameters
+  const [searchParams] = useSearchParams();
+  useEffect(() => {
+    console.log('useEffect');
+    const bpc = searchParams.get('bpc');
+    const bpm = searchParams.get('bpm');
+    const isMuted = searchParams.get('isMuted');
+    const amin = searchParams.get('amin');
+    const amax = searchParams.get('amax');
+    const dmin = searchParams.get('dmin');
+    const dmax = searchParams.get('dmax');
+    // check if parameters are valid and update state
+    const isMutedValue = isMuted
+      ? isMuted === 'true'
+        ? true
+        : false
+      : defaults.isMuted;
+    isMutedState[1](isMutedValue);
+
+    const bpcValue =
+      bpc && bpcOptions.includes(bpc as TimeSignature)
+        ? (bpc as TimeSignature)
+        : defaults.bpc;
+    setBeatsPerChord(bpcValue);
+
+    const bpmValue =
+      Number(bpm) && bpmOptions.includes(Number(bpm))
+        ? Number(bpm)
+        : bpmOptions[13];
+    let aminValue =
+      amin && Object.keys(basesOrganized).includes(amin) ? amin : '0';
+    let amaxValue =
+      amax && Object.keys(basesOrganized).includes(amax) ? amax : '4';
+    if (aminValue > amaxValue) {
+      aminValue = '0';
+      amaxValue = '4';
+    }
+    const extensionsKeys = Object.keys(extensionsOrganized);
+    let dminValue = dmin && extensionsKeys.includes(dmin) ? dmin : 'easy';
+    let dmaxValue = dmax && extensionsKeys.includes(dmax) ? dmax : 'medium';
+    if (extensionsKeys.indexOf(dminValue) > extensionsKeys.indexOf(dmaxValue)) {
+      dminValue = 'easy';
+      dmaxValue = 'medium';
+    }
+  }, [searchParams]);
+
   const value = {
+    searchParamsState,
     accidentalRange: accidentalRangeState[0],
     setAccidentalRange,
     extensionRange: extensionRangeState[0],
     setExtensionRange,
     beatsPerChord: beatsPerChordState[0],
     setBeatsPerChord,
-
     beatsPerMinuteState,
     isMutedState,
     chordListState,

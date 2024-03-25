@@ -7,6 +7,7 @@ import { basesOrganized, extensionsOrganized } from '../data/harmonies';
 import { AccidentalLevel, ExtensionLevel } from '../@types';
 import MetronomeSelect from '../components/settings/MetronomeSelect';
 import CopyIcon from '../components/svgs/settings/CopyIcon';
+import Reset from '../components/settings/Reset';
 
 const Settings = () => {
   const ctx = useContext(Context);
@@ -17,6 +18,9 @@ const Settings = () => {
       <div className={styles.copy}>
         <span>Copy settings URL to clipboard</span>
         <CopyIcon />
+      </div>
+      <div className={styles.reset}>
+        <Reset />
       </div>
       <div className={styles.settings}>
         <h3>metronome</h3>
