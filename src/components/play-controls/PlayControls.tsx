@@ -23,15 +23,13 @@ const PlayControls = () => {
       try {
         navigator.wakeLock.request().then((wl) => {
           wakeLock.current = wl;
-          // console.log('setup', wakeLock.current);
         });
       } catch (e) {
-        console.log(e);
+        console.error('wakeLock failed:', e);
       }
     }
     return () => {
       wakeLock.current?.release();
-      // console.log('close', wakeLock.current);
     };
   }, [play]);
 
@@ -55,11 +53,6 @@ const PlayControls = () => {
     // decrement chord index unless it is 0
     if (chordIndex > 0) setChordIndex((prevIndex) => prevIndex - 1);
   };
-
-  // useEffect(() => {
-  //   // when bpc changes, reset beat
-  //   setBeat(0);
-  // }, [beatsPerChord]);
 
   useMetronome({
     callBack: () => {
