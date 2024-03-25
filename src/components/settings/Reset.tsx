@@ -1,7 +1,6 @@
 import { KeyboardEvent } from 'react';
 import styles from './Reset.module.scss';
 import { useSearchParams } from 'react-router-dom';
-import { defaults } from '../../context/Context';
 
 const Reset = () => {
   const setParams = useSearchParams()[1];

@@ -4,7 +4,6 @@ import RangeSelect from '../components/settings/RangeSelect';
 import { useContext } from 'react';
 import { Context } from '../context/Context';
 import { basesOrganized, extensionsOrganized } from '../data/harmonies';
-import { AccidentalLevel, ExtensionLevel } from '../@types';
 import MetronomeSelect from '../components/settings/MetronomeSelect';
 import CopyIcon from '../components/icon-buttons/settings/CopyIcon';
 import Reset from '../components/settings/Reset';
@@ -39,7 +38,7 @@ const Settings = () => {
           max={ctx.accidentalRange[1]}
           minKey='amin'
           maxKey='amax'
-          options={Object.keys(basesOrganized) as AccidentalLevel[]}
+          options={Object.keys(basesOrganized)}
         />
       </div>
     </>
