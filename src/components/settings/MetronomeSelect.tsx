@@ -3,6 +3,7 @@ import { ChangeEvent, useContext } from 'react';
 import { bpcOptions, bpmOptions } from '../../data/tempo';
 import Volume from '../svgs/settings/VolumeIcon';
 import { Context } from '../../context/Context';
+import { TimeSignature } from '../../@types';
 
 const MetronomeSelect = () => {
   const ctx = useContext(Context);
@@ -13,9 +14,10 @@ const MetronomeSelect = () => {
   const [bpm, setBpm] = ctx.beatsPerMinuteState;
 
   const bpcHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
-    if (value === '∞') setBpc(value);
-    else setBpc(Number(e.target.value));
+    setBpc(e.target.value as TimeSignature);
+    // const value = e.target.value;
+    // if (value === '∞') setBpc(value);
+    // else setBpc(Number(e.target.value));
   };
 
   const bpmHandler = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -28,7 +30,7 @@ const MetronomeSelect = () => {
         <select id='bpc' value={bpc} onChange={bpcHandler}>
           {bpcOptions.map((bpc) => (
             <option value={bpc} key={bpc}>
-              {bpc} {bpc === 1 ? 'beat' : 'beats'} / chord
+              {bpc} {bpc === '1' ? 'beat' : 'beats'} / chord
             </option>
           ))}
         </select>
