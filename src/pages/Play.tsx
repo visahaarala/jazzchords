@@ -7,7 +7,7 @@ const Play = () => (
   <div className={styles.playPage}>
     <div className={styles.chords}>
       <Chord size={1.6} />
-      <Chord indexOffset={1} size={1.1} contrast={30} />
+      <Chord indexOffset={1} size={0.95} contrast={30} />
     </div>
     <div className={styles.beats}>
       <Beats />
