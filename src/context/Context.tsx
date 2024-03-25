@@ -39,7 +39,7 @@ export const Context = createContext<{
   setExtensionRange: (range: [ExtensionLevel, ExtensionLevel]) => void;
   beatsPerChord: TimeSignature;
   beatsPerMinute: number;
-  isMuted: boolean,
+  isMuted: boolean;
   chordListState: [Chord[], Dispatch<SetStateAction<Chord[]>>];
   chordIndexState: [number, Dispatch<SetStateAction<number>>];
   beatState: [number, Dispatch<SetStateAction<number>>];
@@ -50,7 +50,7 @@ export const Context = createContext<{
   setExtensionRange: () => {},
   beatsPerChord: '4',
   beatsPerMinute: 4,
-  isMuted : false,
+  isMuted: false,
   chordListState: [[], () => {}],
   chordIndexState: [0, () => {}],
   beatState: [0, () => {}],
@@ -66,7 +66,7 @@ const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     defaults.dmax,
   ]);
   const beatsPerChordState = useState<TimeSignature>(defaults.bpc);
-  const beatsPerMinuteState = useState(defaults.bpm);
+  const beatsPerMinuteState = useState<number>(defaults.bpm);
   const isMutedState = useState(defaults.isMuted);
   const chordListState = useState<Chord[]>([]);
   const chordIndexState = useState(0);
@@ -143,8 +143,8 @@ const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
       Number(bpm) && bpmOptions.includes(Number(bpm))
         ? Number(bpm)
         : bpmOptions[13];
-    beatsPerMinuteState[1](bpmValue);
     console.log('bpmValue', bpmValue);
+    beatsPerMinuteState[1](bpmValue);
 
     let aminValue =
       amin && Object.keys(basesOrganized).includes(amin) ? amin : '0';

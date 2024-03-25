@@ -1,26 +1,31 @@
+import useAppendSearchParams from '../../hooks/useAppendSearchParams';
 import styles from './Range.module.scss';
 import { ChangeEvent } from 'react';
 
-const RangeSelect = <T,>({
-  range,
-  setRange,
+const RangeSelect = ({
+  min,
+  max,
+  minKey,
+  maxKey,
   options,
 }: {
-  range: [T, T];
-  setRange: (range: [T, T]) => void;
-  options: T[];
+  min: string;
+  max: string;
+  minKey: string;
+  maxKey: string;
+  options: string[];
 }) => {
-  const [min, max] = range;
-
   const minIndex = options.indexOf(min);
   const maxIndex = options.indexOf(max);
+  const appendSearchParams = useAppendSearchParams();
 
   const minHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     const newMinIndex = Number(e.target.value);
     const newMaxIndex = newMinIndex > maxIndex ? newMinIndex : maxIndex;
     const newMinValue = options[newMinIndex];
     const newMaxValue = options[newMaxIndex];
-    setRange([newMinValue, newMaxValue]);
+    appendSearchParams(minKey, newMinValue);
+    appendSearchParams(maxKey, newMaxValue);
   };
 
   const maxHandler = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -28,7 +33,8 @@ const RangeSelect = <T,>({
     const newMinIndex = newMaxIndex < minIndex ? newMaxIndex : minIndex;
     const newMinValue = options[newMinIndex];
     const newMaxValue = options[newMaxIndex];
-    setRange([newMinValue, newMaxValue]);
+    appendSearchParams(minKey, newMinValue);
+    appendSearchParams(maxKey, newMaxValue);
   };
 
   return (

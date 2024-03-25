@@ -1,7 +1,7 @@
 import styles from './Range.module.scss';
 import { ChangeEvent, useContext } from 'react';
 import { bpcOptions, bpmOptions } from '../../data/tempo';
-import Volume from '../icons/settings/VolumeIcon';
+import Volume from '../icon-buttons/settings/VolumeIcon';
 import { Context } from '../../context/Context';
 import useAppendSearchParams from '../../hooks/useAppendSearchParams';
 
@@ -12,6 +12,7 @@ const MetronomeSelect = () => {
   const bpm = ctx.beatsPerMinute;
 
   console.log('bpm at metronome settings', bpm);
+  console.log('bpc at metronome settings', bpc);
 
   const bpcHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     appendSearchParams('bpc', e.target.value);

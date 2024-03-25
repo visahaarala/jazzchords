@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Info.module.scss';
-import SettingsIcon from '../components/icons/navigation/SettingsIcon';
-import PlaybackIcon from '../components/icons/navigation/PlaybackIcon';
-import PlayButtonIcon from '../components/icons/play/PlayButtonIcon';
+import SettingsIcon from '../components/icon-buttons/navigation/SettingsIcon';
+import PlaybackIcon from '../components/icon-buttons/navigation/PlaybackIcon';
+import PlayButtonIcon from '../components/icon-buttons/play/PlayButtonIcon';
 
 const headerIconStyle: React.CSSProperties = {
   display: 'inline-block',
@@ -32,7 +32,7 @@ const Info = () => (
         under <span>accidentals</span>, the range of chord complexity under{' '}
         <span>difficulty</span>, and the settings for tempo, time signature & volume under{' '}
         <span>metronome</span>.
-        Copy the settings URL to share them with others. Or reset to default settings.
+        Copy the settings URL to share it with others. Or <span>reset</span> to default settings.
       </div>
       <div>
         <PlaybackIcon style={headerIconStyle} /> Randomly generate and go back

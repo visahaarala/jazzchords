@@ -10,9 +10,7 @@
 }
 
 .reset {
-  align-self: center;
-  margin-top: 0.6rem;
-  margin-bottom: auto;
+  margin: auto;
 }
 
 .settings {
@@ -33,5 +31,5 @@ h3 {
   &:not(:first-child) {
     margin-top: 1.2rem;
   }
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
 }
