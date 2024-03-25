@@ -2,6 +2,7 @@ import { ChangeEvent, useContext } from 'react';
 import styles from './Range.module.scss';
 import { Context } from '../../context/Context';
 import { bpcOptions } from '../../data/tempo';
+import { TimeSignature } from '../../@types';
 
 const TimeSignatureSelect = () => {
   const ctx = useContext(Context);
@@ -9,9 +10,7 @@ const TimeSignatureSelect = () => {
   const setBpc = ctx.setBeatsPerChord;
 
   const bpcHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
-    if (value === '∞') setBpc(value);
-    else setBpc(Number(e.target.value));
+    setBpc(e.target.value as TimeSignature);
   };
 
   return (
@@ -20,7 +19,7 @@ const TimeSignatureSelect = () => {
         <select id='bpc' value={bpc} onChange={bpcHandler}>
           {bpcOptions.map((bpc) => (
             <option value={bpc} key={bpc}>
-              {bpc} {bpc === 1 ? 'beat' : 'beats'} / chord
+              {bpc} {bpc === '1' ? 'beat' : 'beats'} / chord
             </option>
           ))}
         </select>

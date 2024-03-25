@@ -1,3 +1,5 @@
+// import { TimeSignature } from "../@types";
+
 import { TimeSignature } from "../@types";
 
 const lowestTempo = 20;
@@ -19,17 +21,17 @@ const generateBpmList = (): number[] => {
 export const bpmOptions = generateBpmList();
 
 export const bpcOptions: TimeSignature[] = [
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  11,
-  12,
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  '11',
+  '12',
   '∞',
 ];

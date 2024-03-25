@@ -62,7 +62,7 @@ const PlayControls = () => {
         setTimeout(() => {
           playButton.style.filter = 'brightness(1)';
           if (beatsPerChord != '∞') {
-            const bpc = beatsPerChord as number;
+            const bpc = Number(beatsPerChord);
             if (beat !== 0 && beat % bpc === 0) {
               nextHandler();
               setBeat(1);

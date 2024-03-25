@@ -14,17 +14,20 @@ import {
   TimeSignature,
 } from '../@types';
 import { bpcOptions, bpmOptions } from '../data/tempo';
-import { generateChords } from '../data/harmonies';
+import {
+  basesOrganized,
+  extensionsOrganized,
+  generateChords,
+} from '../data/harmonies';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export const Context = createContext<{
   accidentalRange: [AccidentalLevel, AccidentalLevel];
   setAccidentalRange: (range: [AccidentalLevel, AccidentalLevel]) => void;
   extensionRange: [ExtensionLevel, ExtensionLevel];
   setExtensionRange: (range: [ExtensionLevel, ExtensionLevel]) => void;
-  // beatsPerChordState: [TimeSignature, Dispatch<SetStateAction<TimeSignature>>];
   beatsPerChord: TimeSignature;
   setBeatsPerChord: (timeSignature: TimeSignature) => void;
-
   beatsPerMinuteState: [number, Dispatch<SetStateAction<number>>];
   isMutedState: [boolean, Dispatch<SetStateAction<boolean>>];
   chordListState: [Chord[], Dispatch<SetStateAction<Chord[]>>];
@@ -35,10 +38,8 @@ export const Context = createContext<{
   setAccidentalRange: () => {},
   extensionRange: ['easy', 'medium'],
   setExtensionRange: () => {},
-  // beatsPerChordState: [0, () => {}],
-  beatsPerChord: 4,
+  beatsPerChord: '4',
   setBeatsPerChord: () => {},
-
   beatsPerMinuteState: [0, () => {}],
   isMutedState: [true, () => {}],
   chordListState: [[], () => {}],
@@ -47,17 +48,54 @@ export const Context = createContext<{
 });
 
 const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
+  // read url search query parameters
+  const [searchParams] = useSearchParams();
+  const bpc = searchParams.get('bpc');
+  const bpm = searchParams.get('bpm');
+  const isMuted = searchParams.get('isMuted');
+  const amin = searchParams.get('amin');
+  const amax = searchParams.get('amax');
+  const dmin = searchParams.get('dmin');
+  const dmax = searchParams.get('dmax');
+
+  // check if parameters are valid
+  const isMutedValue = isMuted === 'true' ? true : false;
+  const bpcValue =
+    bpc && bpcOptions.includes(bpc as TimeSignature)
+      ? (bpc as TimeSignature)
+      : bpcOptions[3];
+  const bpmValue =
+    Number(bpm) && bpmOptions.includes(Number(bpm))
+      ? Number(bpm)
+      : bpmOptions[13];
+  let aminValue =
+    amin && Object.keys(basesOrganized).includes(amin) ? amin : '0';
+  let amaxValue =
+    amax && Object.keys(basesOrganized).includes(amax) ? amax : '4';
+  if (aminValue > amaxValue) {
+    aminValue = '0';
+    amaxValue = '4';
+  }
+  const extensionsKeys = Object.keys(extensionsOrganized);
+  let dminValue = dmin && extensionsKeys.includes(dmin) ? dmin : 'easy';
+  let dmaxValue = dmax && extensionsKeys.includes(dmax) ? dmax : 'medium';
+  if (extensionsKeys.indexOf(dminValue) > extensionsKeys.indexOf(dmaxValue)) {
+    dminValue = 'easy';
+    dmaxValue = 'medium';
+  }
+
+  // setup states with valid values
   const accidentalRangeState = useState<[AccidentalLevel, AccidentalLevel]>([
-    '0',
-    '4',
+    aminValue as AccidentalLevel,
+    amaxValue as AccidentalLevel,
   ]);
   const extensionRangeState = useState<[ExtensionLevel, ExtensionLevel]>([
-    'easy',
-    'medium',
+    dminValue as ExtensionLevel,
+    dmaxValue as ExtensionLevel,
   ]);
-  const beatsPerChordState = useState(bpcOptions[3]);
-  const beatsPerMinuteState = useState(bpmOptions[13]);
-  const isMutedState = useState(false);
+  const beatsPerChordState = useState<TimeSignature>(bpcValue);
+  const beatsPerMinuteState = useState(bpmValue);
+  const isMutedState = useState(isMutedValue);
   const chordListState = useState<Chord[]>([]);
   const chordIndexState = useState(0);
   const beatState = useState(0);
@@ -99,14 +137,13 @@ const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const setBeatsPerChord = (timeSignature: TimeSignature) => {
     beatsPerChordState[1](timeSignature);
     beatState[1](0);
-  }
+  };
 
   const value = {
     accidentalRange: accidentalRangeState[0],
     setAccidentalRange,
     extensionRange: extensionRangeState[0],
     setExtensionRange,
-    // beatsPerChordState,
     beatsPerChord: beatsPerChordState[0],
     setBeatsPerChord,
 

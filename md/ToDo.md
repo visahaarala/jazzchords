@@ -2,6 +2,8 @@
 
 #### soon
 
+- make links stay colored when active
+
 - make color scheme nicer
 
 #### later
