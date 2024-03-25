@@ -1,5 +1,3 @@
-// import { TimeSignature } from "../@types";
-
 import { TimeSignature } from "../@types";
 
 const lowestTempo = 20;

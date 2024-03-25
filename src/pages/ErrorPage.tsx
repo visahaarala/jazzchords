@@ -1,18 +1,30 @@
-import ContextProvider from "../context/Context";
-import Navigation from "../components/navigation/Navigation";
+import styles from './ErrorPage.module.scss';
+import Navigation from '../components/navigation/Navigation';
 
 const ErrorPage = () => {
   return (
-    <ContextProvider>
-      <div className='container'>
-        <main>
-          bad url
-        </main>
-        <footer>
-          <Navigation />
-        </footer>
-      </div>
-    </ContextProvider>
+    <div className='container'>
+      <main>
+        <h2>top secret</h2>
+        <div className={styles.secret}>
+          <p>Chi è fuori è fuori, chi è dentro è dentro.</p>
+          <p>Chi è fuori è fuori, chi è dentro è dentro.</p>
+          <p>Chi è fuori è fuori, chi è dentro è dentro.</p>
+          <p>Chi è fuori è fuori, chi è dentro è dentro.</p>
+          <p>Chi è fuori è fuori, chi è dentro è dentro.</p>
+          <p>Chi è fuori è fuori, chi è dentro è dentro.</p>
+          <p>Chi è fuori è fuori, chi è dentro è dentro.</p>
+          <p>Chi è fuori è fuori, chi è dentro è dentro.</p>
+          <p>Chi è fuori è fuori, chi è dentro è dentro.</p>
+          <p>Chi è fuori è fuori, chi è dentro è dentro.</p>
+          <p>Chi è fuori è fuori, chi è dentro è dentro.</p>
+          <p>Just kidding. Bad URL.</p>
+        </div>
+      </main>
+      <footer>
+        <Navigation />
+      </footer>
+    </div>
   );
 };
 

@@ -1,0 +1,17 @@
+.secret {
+  // background-color: blue;
+  // height: 100%;
+  // width: 100%;
+  margin: auto;
+  // display: flex;
+  // flex-direction: column;
+
+  p {
+    // margin: auto;
+    &:last-of-type {
+      text-align: end;
+      margin-top: 8rem;
+      opacity: 0.6;
+    }
+  }
+}
