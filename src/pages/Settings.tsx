@@ -15,7 +15,7 @@ const Settings = () => {
     <>
       <h2>settings</h2>
       <div className={styles.copy}>
-        <span>Copy settings url to clipboard</span>
+        <span>Copy settings URL to clipboard</span>
         <CopyIcon />
       </div>
       <div className={styles.settings}>
