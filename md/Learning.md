@@ -28,7 +28,7 @@ vs.
 
 #### Vercel with react router
 
-`vercel.json` at the root of the project:
+Add `vercel.json` at the root of the project:
 
 ```json
 {
