@@ -1,9 +1,11 @@
 import { Outlet } from 'react-router-dom';
 import Navigation from '../components/navigation/Navigation';
-import ContextProvider from '../context/Context';
+// import ContextProvider from '../context/Context';
+import ReducerContextProvider from '../context/ReducerContext';
 
 const RootLayout = () => (
-  <ContextProvider>
+  // <ContextProvider>
+  <ReducerContextProvider>
     <div className='container'>
       <main>
         <Outlet />
@@ -12,7 +14,8 @@ const RootLayout = () => (
         <Navigation />
       </footer>
     </div>
-  </ContextProvider>
+  </ReducerContextProvider>
+  // </ContextProvider>
 );
 
 export default RootLayout;

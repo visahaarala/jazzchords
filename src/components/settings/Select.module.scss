@@ -1,0 +1,17 @@
+.select {
+  min-width: 3rem;
+  padding: 0.7rem 1rem;
+  border-radius: var(--border-radius);
+  background-color: var(--color-gray-light);
+  color: var(--color-black);
+  font-size: 0.9rem;
+  border-color: var(--color-gray-dark);
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+
+  &:focus,
+  &:hover {
+    outline: var(--color-focus-outline);
+  }
+}

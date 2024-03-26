@@ -1,6 +1,6 @@
 import styles from './Chord.module.scss';
 import { useContext } from 'react';
-import { Context } from '../../context/Context';
+import { ReducerContext } from '../../context/ReducerContext';
 import Bracket from './Bracket';
 
 const Chord = ({
@@ -16,9 +16,11 @@ const Chord = ({
   marginBottom?: number; // rem
   contrast?: number; // percentage
 }) => {
-  const ctx = useContext(Context);
-  const [chordList] = ctx.chordListState;
-  const [chordIndex] = ctx.chordIndexState;
+  // const ctx = useContext(Context);
+  // const [chordList] = ctx.chordListState;
+  // const [chordIndex] = ctx.chordIndexState;
+  const { state } = useContext(ReducerContext);
+  const { chordList, chordIndex } = state;
 
   const index = indexOffset ? chordIndex + indexOffset : chordIndex;
   const chord = chordList[index];

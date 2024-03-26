@@ -5,12 +5,11 @@ downloaded from https://ionic.io/ionicons with MIT license.
 
 import styles from './Icon.module.scss';
 import { KeyboardEvent, useContext } from 'react';
-import { Context } from '../../../context/Context';
-import useAppendSearchParams from '../../../hooks/useAppendSearchParams';
+import { ReducerContext } from '../../../context/ReducerContext';
 
 const Volume = () => {
-  const isMuted = useContext(Context).isMuted;
-  const appendSearchParams = useAppendSearchParams();
+  const { state, dispatch } = useContext(ReducerContext);
+  const isMuted = state.isMuted;
 
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.code === 'Enter' || e.code === 'Space') setIsMuted(!isMuted);
@@ -18,8 +17,8 @@ const Volume = () => {
     if (e.code === 'ArrowDown') setIsMuted(true);
   };
 
-  const setIsMuted = (isMuted: boolean) => {
-    appendSearchParams('isMuted', isMuted + '');
+  const setIsMuted = (muted: boolean) => {
+    dispatch({ type: 'SET_MUTED', payload: { isMuted: muted } });
   };
 
   return (

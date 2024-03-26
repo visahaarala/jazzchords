@@ -1,11 +1,13 @@
 import styles from './Beats.module.scss';
-import { useContext } from 'react';
-import { Context } from '../../context/Context';
 import BeatCirle from './BeatCircle';
+import { useContext } from 'react';
+import { ReducerContext } from '../../context/ReducerContext';
 
 const Beats = () => {
-  const ctx = useContext(Context);
-  const numBeats = Number(ctx.beatsPerChord);
+  // const ctx = useContext(Context);
+  const { state, dispatch } = useContext(ReducerContext);
+  // const numBeats = Number(ctx.beatsPerChordState[0]);
+  const numBeats = Number(state.beatsPerChord);
   const beatCircles: JSX.Element[] = [];
 
   if (!isNaN(numBeats) && numBeats !== 1) {
@@ -15,10 +17,14 @@ const Beats = () => {
   }
 
   const clickHandler = () => {
-    ctx.beatState[1](0);
-  }
+    dispatch({ type: 'RESET_BEAT', payload: { beat: 0 } });
+  };
 
-  return <div className={styles.beats} onClick={clickHandler}>{beatCircles}</div>;
+  return (
+    <div className={styles.beats} onClick={clickHandler}>
+      {beatCircles}
+    </div>
+  );
 };
 
 export default Beats;

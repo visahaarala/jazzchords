@@ -4,7 +4,7 @@ Use the hook's callback function to update DOM
 */
 
 import { useContext, useEffect, useRef, useState } from 'react';
-import { Context } from '../context/Context';
+import { ReducerContext } from '../context/ReducerContext';
 
 export function useMetronome({
   callBack,
@@ -20,7 +20,7 @@ export function useMetronome({
     savedCallback.current = callBack;
   });
 
-  const isMuted = useContext(Context).isMuted;
+  const isMuted = useContext(ReducerContext).state.isMuted;
   const [audioContext, setAudioContext] = useState<AudioContext>();
 
   const gainNodeRef = useRef<GainNode>();

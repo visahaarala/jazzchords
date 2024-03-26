@@ -1,17 +1,12 @@
 import styles from './PlayControls.module.scss';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { Context } from '../../context/Context';
-import { generateChords } from '../../data/harmonies';
+import { ReducerContext } from '../../context/ReducerContext';
 import { useMetronome } from '../../hooks/useMetronome';
 import PlayButton from './PlayButton';
 
 const PlayControls = () => {
-  const ctx = useContext(Context);
-  const [chordList, setChordList] = ctx.chordListState;
-  const [chordIndex, setChordIndex] = ctx.chordIndexState;
-  const beatsPerMinute = ctx.beatsPerMinute;
-  const beatsPerChord = ctx.beatsPerChord;
-  const [beat, setBeat] = ctx.beatState;
+  const { state, dispatch } = useContext(ReducerContext);
+  const { chordList, chordIndex, beatsPerMinute, beatsPerChord, beat } = state;
   const [play, setPlay] = useState<boolean>(false);
   const wakeLock = useRef<WakeLockSentinel>();
 
@@ -33,24 +28,16 @@ const PlayControls = () => {
   }, [play]);
 
   const nextHandler = () => {
-    // increment chord index,
-    // add new chords to array if necessary
     if (chordIndex >= chordList.length - 2) {
-      setChordList((prevList) => [
-        ...prevList,
-        generateChords({
-          extensionRange: ctx.extensionRange,
-          accidentalRange: ctx.accidentalRange,
-          numberOfChords: 1,
-        })[0],
-      ]);
+      dispatch({ type: 'APPEND_CHORD_LIST' });
     }
-    setChordIndex((prevIndex) => prevIndex + 1);
+    dispatch({ type: 'INCREMENT_CHORD_INDEX' });
   };
 
   const previousHandler = () => {
-    // decrement chord index unless it is 0
-    if (chordIndex > 0) setChordIndex((prevIndex) => prevIndex - 1);
+    if (chordIndex > 0) {
+      dispatch({ type: 'DECREMENT_CHORD_INDEX' });
+    }
   };
 
   useMetronome({
@@ -64,15 +51,15 @@ const PlayControls = () => {
             const bpc = Number(beatsPerChord);
             if (beat !== 0 && beat % bpc === 0) {
               nextHandler();
-              setBeat(1);
+              dispatch({ type: 'SET_BEAT', payload: { beat: 1 } });
             } else {
-              setBeat((prevBeat) => prevBeat + 1);
+              dispatch({ type: 'INCREMENT_BEAT' });
             }
           }
         }, 50);
       }
     },
-    delay: play ? (60 / beatsPerMinute) * 1000 : undefined,
+    delay: play ? (60 / Number(beatsPerMinute)) * 1000 : undefined,
   });
 
   return (

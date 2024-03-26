@@ -1,12 +1,57 @@
-export type SearchParams = {
-  bpc: TimeSignature;
+export type SearchParamsType = {
+  bpc: BeatsPerChord;
   bpm: BeatsPerMinute;
   isMuted: boolean;
-  amin: Accidentals;
-  amax: Accidentals;
-  dmin: Difficulty;
-  dmax: Difficulty;
+  amin: AccidentalLevel;
+  amax: AccidentalLevel;
+  dmin: DifficultyLevel;
+  dmax: DifficultyLevel;
 };
+
+export type ProgramStateType = {
+  accidentalsMin: AccidentalLevel;
+  accidentalsMax: AccidentalLevel;
+  difficultyMin: DifficultyLevel;
+  difficultyMax: DifficultyLevel;
+  chordList: Chord[];
+  chordIndex: number;
+  beatsPerChord: BeatsPerChord;
+  beatsPerMinute: BeatsPerMinute;
+  beat: number;
+  isMuted: boolean;
+};
+
+export type ReducerActionTypeType =
+  | 'SET_BPC'
+  | 'SET_BPM'
+  | 'SET_MUTED'
+  | 'SET_BEAT'
+  | 'INCREMENT_BEAT'
+  | 'RESET_BEAT'
+  | 'APPEND_CHORD_LIST'
+  | 'INCREMENT_CHORD_INDEX'
+  | 'DECREMENT_CHORD_INDEX'
+  | 'SET_DIFFICULTY_MIN'
+  | 'SET_DIFFICULTY_MAX'
+  | 'SET_DIFFICULTY_MAX'
+  | 'SET_ACCIDENTALS_MIN'
+  | 'SET_ACCIDENTALS_MAX'
+  | 'RESET_SETTINGS';
+
+export type ReducerActionPayload = Partial<ProgramStateType>;
+
+export type ReducerActionType = {
+  type: ReducerActionTypeType;
+  payload?: ReducerActionPayload;
+};
+
+// export type ChordGenerateParams = {
+//   number: number;
+//   difficultyMin?: DifficultyLevel;
+//   difficultyMax?: DifficultyLevel;
+//   accidentalsMin?: AccidentalLevel;
+//   accidentalsMax?: AccidentalLevel;
+// };
 
 export type Range = {
   min: number;
@@ -36,10 +81,11 @@ export type Chord = {
   alt?: string;
 };
 
-export type Accidentals = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
-export type Difficulty = 'easy' | 'medium' | 'hard' | 'painful';
+export type AccidentalLevel = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 
-export type TimeSignature =
+export type DifficultyLevel = 'easy' | 'medium' | 'hard' | 'painful';
+
+export type BeatsPerChord =
   | '1'
   | '2'
   | '3'

@@ -1,4 +1,4 @@
-import { TimeSignature, BeatsPerMinute } from '../@types';
+import { BeatsPerChord, BeatsPerMinute } from '../@types';
 
 export const bpmOptions: BeatsPerMinute[] = [
   '20',
@@ -29,7 +29,7 @@ export const bpmOptions: BeatsPerMinute[] = [
   '178',
 ];
 
-export const bpcOptions: TimeSignature[] = [
+export const bpcOptions: BeatsPerChord[] = [
   '1',
   '2',
   '3',

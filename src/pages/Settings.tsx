@@ -1,16 +1,19 @@
 import styles from './Settings.module.scss';
 
-import RangeSelect from '../components/settings/RangeSelect';
-import { useContext } from 'react';
-import { Context } from '../context/Context';
-import { basesOrganized, extensionsOrganized } from '../data/harmonies';
-import MetronomeSelect from '../components/settings/MetronomeSelect';
+import { accidentalLevels, difficultyLevels } from '../data/harmonies';
 import CopyIcon from '../components/icon-buttons/settings/CopyIcon';
 import Reset from '../components/settings/Reset';
+import Select from '../components/settings/Select';
+import {
+  AccidentalLevel,
+  BeatsPerChord,
+  BeatsPerMinute,
+  DifficultyLevel,
+} from '../@types';
+import { bpcOptions, bpmOptions } from '../data/beats';
+import Volume from '../components/icon-buttons/settings/VolumeIcon';
 
 const Settings = () => {
-  const ctx = useContext(Context);
-
   return (
     <>
       <h2>settings</h2>
@@ -23,23 +26,50 @@ const Settings = () => {
       </div>
       <div className={styles.settings}>
         <h3>metronome</h3>
-        <MetronomeSelect />
+        <div>
+          <Select<BeatsPerChord>
+            dispatchActionType='SET_BPC'
+            payloadKey='beatsPerChord'
+            options={bpcOptions}
+            description='beats / chord'
+            descriptionSingle='beat / chord'
+          />
+          <Volume />
+          <Select<BeatsPerMinute>
+            dispatchActionType='SET_BPM'
+            payloadKey='beatsPerMinute'
+            options={bpmOptions}
+            description='bpm'
+          />
+        </div>
         <h3>difficulty</h3>
-        {/* {/* <RangeSelect
-          min={ctx.extensionRange[0]}
-          max={ctx.extensionRange[1]}
-          minKey='dmin'
-          maxKey='dmax'
-          options={Object.keys(extensionsOrganized)}
-        /> */}
+        <div>
+          <Select<DifficultyLevel>
+            dispatchActionType='SET_DIFFICULTY_MIN'
+            payloadKey='difficultyMin'
+            options={difficultyLevels}
+          />
+          <span>&mdash;</span>
+          <Select<DifficultyLevel>
+            dispatchActionType='SET_DIFFICULTY_MAX'
+            payloadKey='difficultyMax'
+            options={difficultyLevels}
+          />
+        </div>
         <h3>accidentals</h3>
-        {/* <RangeSelect
-          min={ctx.accidentalsMin}
-          max={ctx.accidentalsMax}
-          // minKey='amin'
-          // maxKey='amax'
-          options={Object.keys(basesOrganized)}
-        /> */}
+        <div>
+          <Select<AccidentalLevel>
+            dispatchActionType='SET_ACCIDENTALS_MIN'
+            payloadKey='accidentalsMin'
+            options={accidentalLevels}
+          />
+          <span>&mdash;</span>
+          <Select<AccidentalLevel>
+            dispatchActionType='SET_ACCIDENTALS_MAX'
+            payloadKey='accidentalsMax'
+            options={accidentalLevels}
+          />
+        </div>
       </div>
     </>
   );

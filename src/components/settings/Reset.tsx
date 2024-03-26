@@ -1,12 +1,12 @@
-import { KeyboardEvent } from 'react';
+import { KeyboardEvent, useContext } from 'react';
 import styles from './Reset.module.scss';
-import { useSearchParams } from 'react-router-dom';
+import { ReducerContext } from '../../context/ReducerContext';
 
 const Reset = () => {
-  const setParams = useSearchParams()[1];
+  const { dispatch } = useContext(ReducerContext);
 
   const reset = () => {
-    setParams({});
+    dispatch({ type: 'RESET_SETTINGS' });
   };
 
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {

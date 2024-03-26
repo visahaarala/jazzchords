@@ -1,13 +1,14 @@
 import {
-  Accidentals,
+  AccidentalLevel,
   MajorOrMinor,
-  Difficulty,
+  DifficultyLevel,
   Extension,
   Chord,
+  ProgramStateType,
 } from '../@types';
 
 export const basesOrganized: {
-  [key in Accidentals]: {
+  [key in AccidentalLevel]: {
     [key in MajorOrMinor]: string[];
   };
 } = {
@@ -21,8 +22,12 @@ export const basesOrganized: {
   7: { major: ['C♯', 'C♭'], minor: ['A♯', 'A♭'] },
 };
 
+export const accidentalLevels = Object.keys(
+  basesOrganized
+) as AccidentalLevel[];
+
 export const extensionsOrganized: {
-  [key in Difficulty]: Extension[];
+  [key in DifficultyLevel]: Extension[];
 } = {
   easy: [
     {
@@ -213,19 +218,9 @@ export const extensionsOrganized: {
   ],
 };
 
-const createDifficultyLevelsArray = (
-  difficultyMin: Difficulty,
-  difficultyMax: Difficulty
-): Difficulty[] => {
-  const allLevels = Object.keys(extensionsOrganized) as Difficulty[];
-  const minIndex = allLevels.indexOf(difficultyMin);
-  const maxIndex = allLevels.indexOf(difficultyMax);
-  const levelsArray: Difficulty[] = [];
-  for (let i = minIndex; i <= maxIndex; i++) {
-    levelsArray.push(allLevels[i]);
-  }
-  return levelsArray;
-};
+export const difficultyLevels = Object.keys(
+  extensionsOrganized
+) as DifficultyLevel[];
 
 const createRangeArray = <T>(min: T, max: T, options: T[]) => {
   const minIndex = options.indexOf(min);
@@ -237,23 +232,17 @@ const createRangeArray = <T>(min: T, max: T, options: T[]) => {
   return rangeArray;
 };
 
-export const generateChords = ({
-  difficultyMin,
-  difficultyMax,
-  accidentalsMin,
-  accidentalsMax,
-  numberOfChords,
-}: {
-  difficultyMin: Difficulty;
-  difficultyMax: Difficulty;
-  accidentalsMin: Accidentals;
-  accidentalsMax: Accidentals;
-  numberOfChords: number;
-}): Chord[] => {
+export const generateChords = (
+  number: number,
+  state: ProgramStateType
+): Chord[] => {
+  const { difficultyMin, difficultyMax, accidentalsMin, accidentalsMax } =
+    state;
+
   const difficultyLevels = createRangeArray(
     difficultyMin,
     difficultyMax,
-    Object.keys(extensionsOrganized) as Difficulty[]
+    Object.keys(extensionsOrganized) as DifficultyLevel[]
   );
   const extensions: Extension[] = [];
   for (const level of difficultyLevels) {
@@ -262,11 +251,11 @@ export const generateChords = ({
   const accidentalsLevels = createRangeArray(
     accidentalsMin,
     accidentalsMax,
-    Object.keys(basesOrganized) as Accidentals[]
+    Object.keys(basesOrganized) as AccidentalLevel[]
   );
 
   const chords: Chord[] = [];
-  for (let i = 0; i < numberOfChords; i++) {
+  for (let i = 0; i < number; i++) {
     // choose an extension randomly
     const randomExtensionIndex = Math.floor(Math.random() * extensions.length);
     const extension = extensions[randomExtensionIndex];

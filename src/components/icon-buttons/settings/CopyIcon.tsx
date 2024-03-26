@@ -1,9 +1,9 @@
-import { Context } from '../../../context/Context';
+// import { Context } from '../../../context/Context';
 import styles from './Icon.module.scss';
 import { KeyboardEvent, useContext, useEffect, useState } from 'react';
 
 const CopyIcon = () => {
-  const ctx = useContext(Context);
+  // const ctx = useContext(Context);
 
   const [showToolTip, setShowTooltip] = useState(false);
 
@@ -16,15 +16,15 @@ const CopyIcon = () => {
   const copyUrlToClipboard = () => {
     console.log(window.location);
     let url = window.location.origin + window.location.pathname;
-    url += '?bpc=' + ctx.beatsPerChordState[0];
-    url += '&bpm=' + ctx.beatsPerMinuteState[0];
-    url += '&isMuted=' + ctx.isMutedState[0];
-    url += '&dmin=' + ctx.difficultyMin;
-    url += '&dmax=' + ctx.difficultyMax;
-    url += '&amin=' + ctx.accidentalsMin;
-    url += '&amax=' + ctx.accidentalsMax;
-    navigator.clipboard.writeText(url);
-    setShowTooltip(true);
+    // url += '?bpc=' + ctx.beatsPerChordState[0];
+    // url += '&bpm=' + ctx.beatsPerMinuteState[0];
+    // url += '&isMuted=' + ctx.isMutedState[0];
+    // url += '&dmin=' + ctx.difficultyMin;
+    // url += '&dmax=' + ctx.difficultyMax;
+    // url += '&amin=' + ctx.accidentalsMin;
+    // url += '&amax=' + ctx.accidentalsMax;
+    // navigator.clipboard.writeText(url);
+    // setShowTooltip(true);
   };
 
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
