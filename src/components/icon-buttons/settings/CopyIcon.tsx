@@ -1,6 +1,11 @@
 // import { Context } from '../../../context/Context';
 import styles from './Icon.module.scss';
-import { KeyboardEvent, useContext, useEffect, useState } from 'react';
+import {
+  KeyboardEvent,
+  // useContext,
+  useEffect,
+  useState,
+} from 'react';
 
 const CopyIcon = () => {
   // const ctx = useContext(Context);
@@ -15,7 +20,7 @@ const CopyIcon = () => {
 
   const copyUrlToClipboard = () => {
     console.log(window.location);
-    let url = window.location.origin + window.location.pathname;
+    // let url = window.location.origin + window.location.pathname;
     // url += '?bpc=' + ctx.beatsPerChordState[0];
     // url += '&bpm=' + ctx.beatsPerMinuteState[0];
     // url += '&isMuted=' + ctx.isMutedState[0];
