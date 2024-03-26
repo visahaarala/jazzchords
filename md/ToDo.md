@@ -1,20 +1,18 @@
 # TO-DO list
 
-#### now
-
-- url search params to manage settings state
-
 #### soon
 
-- move reset to bottom
+- copy settings to URL fix
+
+- load settings from URL and clear url search
+
+- organize icons to one 'icons' folder
+
+- icon functionality elsewhere in components
 
 - make links stay colored when active
 
-- link copy explanation to info
-
-- settings reset
-
-- make color scheme nicer
+- make color scheme nicer (outline color to separate variable)
 
 #### later
 
@@ -26,10 +24,4 @@
 
 - show random top note
 
-- Settings copy link ... context useEffect to apply on first render
-
-- url params for settings (ability to load program with given settings)
-
-- Top note
-
-- Sointuasteet
+- sointuasteet

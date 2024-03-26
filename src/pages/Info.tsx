@@ -10,7 +10,7 @@ const headerIconStyle: React.CSSProperties = {
   height: '1.5rem',
   padding: '0',
   marginRight: '.2rem',
-  transform: 'translateY(.4rem)',
+  transform: 'translateY(.3rem)',
 };
 
 const iconStyle: React.CSSProperties = {
@@ -32,7 +32,7 @@ const Info = () => (
         under <span>accidentals</span>, the range of chord complexity under{' '}
         <span>difficulty</span>, and the settings for tempo, time signature & volume under{' '}
         <span>metronome</span>.
-        Copy the settings URL to share it with others. Or <span>reset</span> to default settings.
+        Copy the settings URL to share it with others.
       </div>
       <div>
         <PlaybackIcon style={headerIconStyle} /> Randomly generate and go back
