@@ -1,11 +1,11 @@
 export type SearchParams = {
   bpc: TimeSignature;
-  bpm: number;
+  bpm: BeatsPerMinute;
   isMuted: boolean;
-  amin: AccidentalLevel;
-  amax: AccidentalLevel;
-  dmin: ExtensionLevel;
-  dmax: ExtensionLevel;
+  amin: Accidentals;
+  amax: Accidentals;
+  dmin: Difficulty;
+  dmax: Difficulty;
 };
 
 export type Range = {
@@ -36,8 +36,8 @@ export type Chord = {
   alt?: string;
 };
 
-export type AccidentalLevel = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
-export type ExtensionLevel = 'easy' | 'medium' | 'hard' | 'painful';
+export type Accidentals = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
+export type Difficulty = 'easy' | 'medium' | 'hard' | 'painful';
 
 export type TimeSignature =
   | '1'
@@ -53,3 +53,31 @@ export type TimeSignature =
   | '11'
   | '12'
   | '∞';
+
+export type BeatsPerMinute =
+  | '20'
+  | '22'
+  | '24'
+  | '26'
+  | '28'
+  | '30'
+  | '33'
+  | '36'
+  | '39'
+  | '42'
+  | '46'
+  | '50'
+  | '55'
+  | '60'
+  | '66'
+  | '72'
+  | '79'
+  | '86'
+  | '94'
+  | '102'
+  | '112'
+  | '124'
+  | '136'
+  | '148'
+  | '162'
+  | '178';

@@ -1,22 +1,33 @@
-import { TimeSignature } from "../@types";
+import { TimeSignature, BeatsPerMinute } from '../@types';
 
-const lowestTempo = 20;
-const highestTempo = 220;
-const growthPercentage = 10;
-
-const generateBpmList = (): number[] => {
-  const tempi = [];
-  for (
-    let tempo = lowestTempo;
-    tempo <= highestTempo;
-    tempo = Math.floor((tempo * (100 + growthPercentage)) / 100)
-  ) {
-    tempi.push(tempo);
-  }
-  return tempi;
-};
-
-export const bpmOptions = generateBpmList();
+export const bpmOptions: BeatsPerMinute[] = [
+  '20',
+  '22',
+  '24',
+  '26',
+  '28',
+  '30',
+  '33',
+  '36',
+  '39',
+  '42',
+  '46',
+  '50',
+  '55',
+  '60',
+  '66',
+  '72',
+  '79',
+  '86',
+  '94',
+  '102',
+  '112',
+  '124',
+  '136',
+  '148',
+  '162',
+  '178',
+];
 
 export const bpcOptions: TimeSignature[] = [
   '1',

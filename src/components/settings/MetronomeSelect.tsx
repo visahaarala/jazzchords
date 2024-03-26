@@ -8,8 +8,8 @@ import useAppendSearchParams from '../../hooks/useAppendSearchParams';
 const MetronomeSelect = () => {
   const ctx = useContext(Context);
   const appendSearchParams = useAppendSearchParams();
-  const bpc = ctx.beatsPerChord;
-  const bpm = ctx.beatsPerMinute;
+  const bpc = ctx.beatsPerChordState[0];
+  const bpm = ctx.beatsPerMinuteState[0];
 
   console.log('bpm at metronome settings', bpm);
   console.log('bpc at metronome settings', bpc);

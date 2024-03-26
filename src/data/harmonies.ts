@@ -1,13 +1,13 @@
 import {
-  AccidentalLevel,
+  Accidentals,
   MajorOrMinor,
-  ExtensionLevel,
+  Difficulty,
   Extension,
   Chord,
 } from '../@types';
 
 export const basesOrganized: {
-  [key in AccidentalLevel]: {
+  [key in Accidentals]: {
     [key in MajorOrMinor]: string[];
   };
 } = {
@@ -22,7 +22,7 @@ export const basesOrganized: {
 };
 
 export const extensionsOrganized: {
-  [key in ExtensionLevel]: Extension[];
+  [key in Difficulty]: Extension[];
 } = {
   easy: [
     {
@@ -213,54 +213,92 @@ export const extensionsOrganized: {
   ],
 };
 
+const createDifficultyLevelsArray = (
+  difficultyMin: Difficulty,
+  difficultyMax: Difficulty
+): Difficulty[] => {
+  const allLevels = Object.keys(extensionsOrganized) as Difficulty[];
+  const minIndex = allLevels.indexOf(difficultyMin);
+  const maxIndex = allLevels.indexOf(difficultyMax);
+  const levelsArray: Difficulty[] = [];
+  for (let i = minIndex; i <= maxIndex; i++) {
+    levelsArray.push(allLevels[i]);
+  }
+  return levelsArray;
+};
+
+const createRangeArray = <T>(min: T, max: T, options: T[]) => {
+  const minIndex = options.indexOf(min);
+  const maxIndex = options.indexOf(max);
+  const rangeArray: T[] = [];
+  for (let i = minIndex; i <= maxIndex; i++) {
+    rangeArray.push(options[i]);
+  }
+  return rangeArray;
+};
+
 export const generateChords = ({
-  extensionRange,
-  accidentalRange,
+  difficultyMin,
+  difficultyMax,
+  accidentalsMin,
+  accidentalsMax,
   numberOfChords,
 }: {
-  extensionRange: ExtensionLevel[];
-  accidentalRange: AccidentalLevel[];
+  difficultyMin: Difficulty;
+  difficultyMax: Difficulty;
+  accidentalsMin: Accidentals;
+  accidentalsMax: Accidentals;
   numberOfChords: number;
 }): Chord[] => {
-  // make a list of all chosen extensions
-  const levels: Extension[] = [];
-  for (let level of extensionRange) {
-    levels.push(...extensionsOrganized[level]);
+  const difficultyLevels = createRangeArray(
+    difficultyMin,
+    difficultyMax,
+    Object.keys(extensionsOrganized) as Difficulty[]
+  );
+  const extensions: Extension[] = [];
+  for (const level of difficultyLevels) {
+    extensions.push(...extensionsOrganized[level]);
   }
+  const accidentalsLevels = createRangeArray(
+    accidentalsMin,
+    accidentalsMax,
+    Object.keys(basesOrganized) as Accidentals[]
+  );
 
   const chords: Chord[] = [];
   for (let i = 0; i < numberOfChords; i++) {
-    // choose one randomly
-    const index = Math.floor(Math.random() * levels.length);
-    const extension = levels[index];
-
-    // make a list of all bases (for that extension, minor or major)
-    const bases: string[] = [];
-    for (let level of accidentalRange) {
-      const newBases =
-        basesOrganized[level][extension.isMinor ? 'minor' : 'major'];
-      bases.push(...newBases);
+    // choose an extension randomly
+    const randomExtensionIndex = Math.floor(Math.random() * extensions.length);
+    const extension = extensions[randomExtensionIndex];
+    // choose an accidentalLevel randomly
+    const randomAccidentalsLevelIndex = Math.floor(
+      Math.random() * accidentalsLevels.length
+    );
+    const randomAccidentalsLevel =
+      accidentalsLevels[randomAccidentalsLevelIndex];
+    // choose bases for accidentalLevel & extension
+    const randomBases =
+      basesOrganized[randomAccidentalsLevel][
+        extension.isMinor ? 'minor' : 'major'
+      ];
+    // choose one of those bases
+    const randomBaseIndex = Math.floor(Math.random() * randomBases.length);
+    const base = randomBases[randomBaseIndex];
+    // create new Chord
+    const ext = extension.extension;
+    const newChord: Chord = {
+      base: base,
+      isMinor: extension.isMinor,
+      dim: ext[0],
+      seventh: ext[1],
+      bracket: [ext[2], ext[3]],
+      alt: ext[4],
+    };
+    if (newChord.seventh === '6/9') {
+      newChord.seventh = undefined;
+      newChord.sixNine = '6/9';
     }
-    // choose one randomly
-    const baseIndex = Math.floor(Math.random() * bases.length);
-    const base = bases[baseIndex];
-    if (base && extension) {
-      const ext = extension.extension;
-      const newChord: Chord = {
-        base,
-        isMinor: extension.isMinor,
-        dim: ext[0],
-        seventh: ext[1],
-        bracket: [ext[2], ext[3]],
-        alt: ext[4],
-      };
-      if (newChord.seventh === '6/9') {
-        newChord.seventh = undefined;
-        newChord.sixNine = '6/9';
-      }
-      chords.push(newChord);
-    }
+    chords.push(newChord);
   }
-
   return chords;
 };

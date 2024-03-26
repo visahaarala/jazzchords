@@ -25,21 +25,21 @@ const Settings = () => {
         <h3>metronome</h3>
         <MetronomeSelect />
         <h3>difficulty</h3>
-        <RangeSelect
+        {/* {/* <RangeSelect
           min={ctx.extensionRange[0]}
           max={ctx.extensionRange[1]}
           minKey='dmin'
           maxKey='dmax'
           options={Object.keys(extensionsOrganized)}
-        />
+        /> */}
         <h3>accidentals</h3>
-        <RangeSelect
-          min={ctx.accidentalRange[0]}
-          max={ctx.accidentalRange[1]}
-          minKey='amin'
-          maxKey='amax'
+        {/* <RangeSelect
+          min={ctx.accidentalsMin}
+          max={ctx.accidentalsMax}
+          // minKey='amin'
+          // maxKey='amax'
           options={Object.keys(basesOrganized)}
-        />
+        /> */}
       </div>
     </>
   );

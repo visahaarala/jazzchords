@@ -18,7 +18,7 @@ const ErrorPage = () => {
           <p>Chi è fuori è fuori, chi è dentro è dentro.</p>
           <p>Chi è fuori è fuori, chi è dentro è dentro.</p>
           <p>Chi è fuori è fuori, chi è dentro è dentro.</p>
-          <p>Just kidding. Bad URL.</p>
+          <p>Just kidding. Bad URL. Or something else.</p>
         </div>
       </main>
       <footer>
