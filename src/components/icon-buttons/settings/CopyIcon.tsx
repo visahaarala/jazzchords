@@ -19,7 +19,7 @@ const CopyIcon = () => {
   }, [showToolTip]);
 
   const copyUrlToClipboard = () => {
-    console.log(window.location);
+    // console.log(window.location);
     // let url = window.location.origin + window.location.pathname;
     // url += '?bpc=' + ctx.beatsPerChordState[0];
     // url += '&bpm=' + ctx.beatsPerMinuteState[0];
