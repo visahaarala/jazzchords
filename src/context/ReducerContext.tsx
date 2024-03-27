@@ -11,17 +11,20 @@ import {
   generateChords,
 } from '../data/harmonies';
 
-const initialState: ProgramStateType = {
-  isMuted: false,
-  difficultyMin: 'medium',
-  difficultyMax: 'hard',
-  accidentalsMin: '0',
-  accidentalsMax: '4',
-  chordList: [],
-  chordIndex: 0,
-  beatsPerChord: '4',
-  beatsPerMinute: '60',
-  beat: 0,
+const initialState = (): ProgramStateType => {
+  const state: ProgramStateType = {
+    isMuted: false,
+    difficultyMin: 'medium',
+    difficultyMax: 'hard',
+    accidentalsMin: '0',
+    accidentalsMax: '4',
+    chordList: [],
+    chordIndex: 0,
+    beatsPerChord: '4',
+    beatsPerMinute: '60',
+    beat: 0,
+  };
+  return { ...state, chordList: generateChords(2, state) };
 };
 
 const getStateWithUpdatedRangeAndChords = <T,>({
@@ -130,7 +133,7 @@ const reducer = (
       });
     }
     case 'RESET_SETTINGS': {
-      return { ...initialState, chordList: generateChords(2, initialState) };
+      return initialState();
     }
 
     /// PLAYER
@@ -165,15 +168,12 @@ export const ReducerContext = createContext<{
   state: ProgramStateType;
   dispatch: Dispatch<ReducerActionType>;
 }>({
-  state: initialState,
+  state: initialState(),
   dispatch: () => {},
 });
 
 const ReducerContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, {
-    ...initialState,
-    chordList: generateChords(2, initialState),
-  });
+  const [state, dispatch] = useReducer(reducer, initialState());
   return (
     <ReducerContext.Provider value={{ state, dispatch }}>
       {children}
