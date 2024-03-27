@@ -1,6 +1,6 @@
 import styles from './Play.module.scss';
 import Chord from '../components/chords/Chord';
-import PlayControls from '../components/play-controls/PlayControls';
+import PlayControls from '../components/player/PlayControls';
 import Beats from '../components/beats/Beats';
 
 const Play = () => (

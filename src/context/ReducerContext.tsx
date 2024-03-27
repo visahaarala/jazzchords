@@ -14,7 +14,7 @@ import {
 const initialState = (): ProgramStateType => {
   const state: ProgramStateType = {
     isMuted: false,
-    difficultyMin: 'medium',
+    difficultyMin: 'easy',
     difficultyMax: 'hard',
     accidentalsMin: '0',
     accidentalsMax: '4',
@@ -44,31 +44,21 @@ const getStateWithUpdatedRangeAndChords = <T,>({
 }): ProgramStateType => {
   const payloadValue = action.payload![payloadKey] as T;
   const stateValue = state[stateKey] as T;
-  const aIsGreaterOrEqualToB =
-    list.indexOf(payloadValue) >= list.indexOf(stateValue);
-  let newPayloadKeyValue: T;
-  let newStateKeyValue: T;
-  if (!inverse) {
-    if (!aIsGreaterOrEqualToB) {
-      newPayloadKeyValue = payloadValue;
-      newStateKeyValue = stateValue;
-    } else {
-      newPayloadKeyValue = payloadValue;
-      newStateKeyValue = payloadValue;
-    }
+  const payloadValueIsGreateThanStateValue =
+    list.indexOf(payloadValue) > list.indexOf(stateValue);
+  let newStateValue: T;
+  if (
+    (!inverse && !payloadValueIsGreateThanStateValue) ||
+    (inverse && payloadValueIsGreateThanStateValue)
+  ) {
+    newStateValue = stateValue;
   } else {
-    if (aIsGreaterOrEqualToB) {
-      newPayloadKeyValue = stateValue;
-      newStateKeyValue = payloadValue;
-    } else {
-      newPayloadKeyValue = payloadValue;
-      newStateKeyValue = payloadValue;
-    }
+    newStateValue = payloadValue;
   }
   const newState = {
     ...state,
-    [payloadKey]: newPayloadKeyValue,
-    [stateKey]: newStateKeyValue,
+    [payloadKey]: payloadValue,
+    [stateKey]: newStateValue,
   };
   return {
     ...newState,

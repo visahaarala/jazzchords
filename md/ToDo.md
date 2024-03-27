@@ -1,14 +1,16 @@
 # TO-DO list
 
+#### now
+
+- organize icons to one 'icons' folder
+
+- icon functionality elsewhere in components
+
 #### soon
 
 - copy settings to URL fix
 
 - load settings from URL and clear url search
-
-- organize icons to one 'icons' folder
-
-- icon functionality elsewhere in components
 
 - make links stay colored when active
 
