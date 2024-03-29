@@ -1,9 +1,9 @@
 import styles from './Settings.module.scss';
 
 import { accidentalLevels, difficultyLevels } from '../data/harmonies';
-import CopyIcon from '../components/icon-buttons/settings/CopyIcon';
 import Reset from '../components/settings/Reset';
 import Select from '../components/settings/Select';
+import Volume from '../components/settings/Volume';
 import {
   AccidentalLevel,
   BeatsPerChord,
@@ -11,16 +11,11 @@ import {
   DifficultyLevel,
 } from '../@types';
 import { bpcOptions, bpmOptions } from '../data/beats';
-import Volume from '../components/icon-buttons/settings/VolumeIcon';
 
 const Settings = () => {
   return (
     <>
       <h2>settings</h2>
-      {/* <div className={styles.copy}>
-        <span>Copy settings URL to clipboard</span>
-        <CopyIcon />
-      </div> */}
       <div className={styles.reset}>
         <Reset />
       </div>

@@ -8,6 +8,8 @@
 
 #### soon
 
+- add just a simple metronome, tempo changing from up & down keys
+
 - copy settings to URL fix
 
 - load settings from URL and clear url search

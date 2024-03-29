@@ -3,30 +3,24 @@ Icon fodified from "volume-high-outline" and "volume-mute-outline",
 downloaded from https://ionic.io/ionicons with MIT license.
 */
 
+import { KeyboardEvent } from 'react';
 import styles from './Icon.module.scss';
-import { KeyboardEvent, useContext } from 'react';
-import { ReducerContext } from '../../../context/ReducerContext';
 
-const Volume = () => {
-  const { state, dispatch } = useContext(ReducerContext);
-  const isMuted = state.isMuted;
-
-  const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.code === 'Enter' || e.code === 'Space') setIsMuted(!isMuted);
-    if (e.code === 'ArrowUp') setIsMuted(false);
-    if (e.code === 'ArrowDown') setIsMuted(true);
-  };
-
-  const setIsMuted = (muted: boolean) => {
-    dispatch({ type: 'SET_MUTED', payload: { isMuted: muted } });
-  };
-
+const VolumeIcon = ({
+  onClick,
+  onKeyDown,
+  isMuted,
+}: {
+  onClick: () => void;
+  onKeyDown: (e: KeyboardEvent<HTMLDivElement>) => void;
+  isMuted: boolean;
+}) => {
   return (
     <div
       className={styles.icon}
-      onClick={() => setIsMuted(!isMuted)}
+      onClick={onClick}
       tabIndex={0}
-      onKeyDown={keyDownHandler}
+      onKeyDown={onKeyDown}
     >
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
         <path
@@ -58,4 +52,4 @@ const Volume = () => {
   );
 };
 
-export default Volume;
+export default VolumeIcon;
