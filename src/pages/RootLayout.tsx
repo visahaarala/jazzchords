@@ -4,7 +4,6 @@ import Navigation from '../components/navigation/Navigation';
 import ReducerContextProvider from '../context/ReducerContext';
 
 const RootLayout = () => (
-  // <ContextProvider>
   <ReducerContextProvider>
     <div className='container'>
       <main>
@@ -15,7 +14,6 @@ const RootLayout = () => (
       </footer>
     </div>
   </ReducerContextProvider>
-  // </ContextProvider>
 );
 
 export default RootLayout;

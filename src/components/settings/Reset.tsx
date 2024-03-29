@@ -1,6 +1,6 @@
 import { KeyboardEvent, useContext } from 'react';
-import styles from './Reset.module.scss';
 import { ReducerContext } from '../../context/ReducerContext';
+import Button from '../div-buttons/Button';
 
 const Reset = () => {
   const { dispatch } = useContext(ReducerContext);
@@ -15,16 +15,7 @@ const Reset = () => {
     }
   };
 
-  return (
-    <div
-      className={styles.reset}
-      tabIndex={0}
-      onClick={reset}
-      onKeyDown={keyDownHandler}
-    >
-      Reset
-    </div>
-  );
+  return <Button onClick={reset} onKeyDown={keyDownHandler} text='Reset' />;
 };
 
 export default Reset;

@@ -1,9 +1,9 @@
 import styles from './Settings.module.scss';
 
 import { accidentalLevels, difficultyLevels } from '../data/harmonies';
-import Reset from '../components/settings/Reset';
 import Select from '../components/settings/Select';
 import Volume from '../components/settings/Volume';
+import Reset from '../components/settings/Reset';
 import {
   AccidentalLevel,
   BeatsPerChord,

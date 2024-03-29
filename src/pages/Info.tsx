@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './Info.module.scss';
-import SettingsIcon from '../components/icon-buttons/navigation/SettingsIcon';
-import PlaybackIcon from '../components/icon-buttons/navigation/PlaybackIcon';
-import PlayButtonIcon from '../components/icon-buttons/play/PlayButtonIcon';
+import SettingsIcon from '../components/icons/navigation/SettingsIcon';
+import PlaybackIcon from '../components/icons/navigation/PlaybackIcon';
+import PlayButtonIcon from '../components/icons/play/PlayButtonIcon';
+import MetronomeIcon from '../components/icons/navigation/MetronomeIcon';
 
 const headerIconStyle: React.CSSProperties = {
   display: 'inline-block',
@@ -26,21 +27,24 @@ const Info = () => (
   <>
     <h2>jazzchords</h2>
     <div className={styles.info}>
-      <div>A tool for practicing random jazz chords.</div>
+      <div>Tool for practicing random jazz chords.</div>
       <div>
-        <SettingsIcon style={headerIconStyle} /> Set the range of key signatures
-        under <span>accidentals</span>, the range of chord complexity under{' '}
-        <span>difficulty</span>, and the settings for tempo, time signature & volume under{' '}
-        <span>metronome</span>.
-        Copy the settings URL to share it with others.
-      </div>
-      <div>
-        <PlaybackIcon style={headerIconStyle} /> Randomly generate and go back
-        and forth between chords using the{' '}
+        <PlaybackIcon style={headerIconStyle} /> <b>Player</b> &mdash; Randomly
+        generate and go back and forth between chords using the{' '}
         <PlayButtonIcon type='next' style={iconStyle} /> &{' '}
         <PlayButtonIcon type='prev' style={iconStyle} /> buttons, or play{' '}
         <PlayButtonIcon type='play' style={iconStyle} /> through random chords
         with metronome.
+      </div>
+      <div>
+        <SettingsIcon style={headerIconStyle} /> <b>Settings</b> &mdash; Set the
+        range of key signatures under <span>accidentals</span>, the range of
+        chord complexity under <span>difficulty</span>, and the settings for
+        tempo, time signature & volume under <span>metronome</span>.
+      </div>
+      <div>
+        <MetronomeIcon style={headerIconStyle} /> <b>Metronome</b> &mdash; A
+        separate standalone metronome for practicing.
       </div>
       <div>
         More info at{' '}

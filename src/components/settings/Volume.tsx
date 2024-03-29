@@ -1,6 +1,6 @@
 import { KeyboardEvent, useContext } from 'react';
 import { ReducerContext } from '../../context/ReducerContext';
-import VolumeIcon from '../icon-buttons/settings/VolumeIcon';
+import VolumeIcon from '../icons/settings/VolumeIcon';
 
 const Volume = () => {
   const { state, dispatch } = useContext(ReducerContext);

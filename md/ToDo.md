@@ -2,19 +2,15 @@
 
 #### now
 
-- organize icons to one 'icons' folder
-
-- icon functionality elsewhere in components
+- add just a simple metronome, tempo changing from up & down keys
 
 #### soon
 
-- add just a simple metronome, tempo changing from up & down keys
+- make links stay colored when active
 
 - copy settings to URL fix
 
 - load settings from URL and clear url search
-
-- make links stay colored when active
 
 - make color scheme nicer (outline color to separate variable)
 
