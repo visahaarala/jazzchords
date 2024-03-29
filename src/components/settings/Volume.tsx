@@ -14,7 +14,6 @@ const Volume = () => {
   };
 
   const setIsMuted = (muted: boolean) => {
-    console.log('click');
     dispatch({ type: 'SET_MUTED', payload: { isMuted: muted } });
   };
 
