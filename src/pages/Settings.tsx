@@ -17,10 +17,10 @@ const Settings = () => {
   return (
     <>
       <h2>settings</h2>
-      <div className={styles.copy}>
+      {/* <div className={styles.copy}>
         <span>Copy settings URL to clipboard</span>
         <CopyIcon />
-      </div>
+      </div> */}
       <div className={styles.reset}>
         <Reset />
       </div>
