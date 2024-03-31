@@ -46,13 +46,8 @@ const getStateWithUpdatedRangeAndChords = <T,>({
   const stateValue = state[stateKey] as T;
   const payloadValueIsGreateThanStateValue =
     list.indexOf(payloadValue) > list.indexOf(stateValue);
-  let newStateValue: T;
-  if (
-    (!inverse && !payloadValueIsGreateThanStateValue) ||
-    (inverse && payloadValueIsGreateThanStateValue)
-  ) {
-    newStateValue = stateValue;
-  } else {
+  let newStateValue = stateValue;
+  if (inverse !== payloadValueIsGreateThanStateValue) {
     newStateValue = payloadValue;
   }
   const newState = {
