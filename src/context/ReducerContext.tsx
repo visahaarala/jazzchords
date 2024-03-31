@@ -1,9 +1,9 @@
 import { Dispatch, FC, ReactNode, createContext, useReducer } from 'react';
 import {
-  AccidentalLevelType,
-  DifficultyLevelType,
-  ProgramStateType,
-  ReducerActionType,
+  AccidentalLevel,
+  DifficultyLevel,
+  ProgramState,
+  ReducerAction,
 } from '../@types';
 import {
   accidentalLevels,
@@ -11,8 +11,8 @@ import {
   generateChords,
 } from '../data/harmonies';
 
-const initialState = (): ProgramStateType => {
-  const state: ProgramStateType = {
+const initialState = (): ProgramState => {
+  const state: ProgramState = {
     isMuted: false,
     difficultyMin: 'easy',
     difficultyMax: 'medium',
@@ -35,13 +35,13 @@ const getStateWithUpdatedRangeAndChords = <T,>({
   list,
   inverse,
 }: {
-  action: ReducerActionType;
-  payloadKey: keyof ProgramStateType;
-  state: ProgramStateType;
-  stateKey: keyof ProgramStateType;
+  action: ReducerAction;
+  payloadKey: keyof ProgramState;
+  state: ProgramState;
+  stateKey: keyof ProgramState;
   list: T[];
   inverse: boolean;
-}): ProgramStateType => {
+}): ProgramState => {
   const payloadValue = action.payload![payloadKey] as T;
   const stateValue = state[stateKey] as T;
   const payloadValueIsGreateThanStateValue =
@@ -68,9 +68,9 @@ const getStateWithUpdatedRangeAndChords = <T,>({
 };
 
 const reducer = (
-  state: ProgramStateType,
-  action: ReducerActionType
-): ProgramStateType => {
+  state: ProgramState,
+  action: ReducerAction
+): ProgramState => {
   switch (action.type) {
     /// SETTINGS
     case 'SET_BPC': {
@@ -83,7 +83,7 @@ const reducer = (
       return { ...state, isMuted: action.payload!.isMuted! };
     }
     case 'SET_DIFFICULTY_MIN': {
-      return getStateWithUpdatedRangeAndChords<DifficultyLevelType>({
+      return getStateWithUpdatedRangeAndChords<DifficultyLevel>({
         action,
         payloadKey: 'difficultyMin',
         state,
@@ -93,7 +93,7 @@ const reducer = (
       });
     }
     case 'SET_DIFFICULTY_MAX': {
-      return getStateWithUpdatedRangeAndChords<DifficultyLevelType>({
+      return getStateWithUpdatedRangeAndChords<DifficultyLevel>({
         action,
         payloadKey: 'difficultyMax',
         state,
@@ -103,7 +103,7 @@ const reducer = (
       });
     }
     case 'SET_ACCIDENTALS_MIN': {
-      return getStateWithUpdatedRangeAndChords<AccidentalLevelType>({
+      return getStateWithUpdatedRangeAndChords<AccidentalLevel>({
         action,
         payloadKey: 'accidentalsMin',
         state,
@@ -113,7 +113,7 @@ const reducer = (
       });
     }
     case 'SET_ACCIDENTALS_MAX': {
-      return getStateWithUpdatedRangeAndChords<AccidentalLevelType>({
+      return getStateWithUpdatedRangeAndChords<AccidentalLevel>({
         action,
         payloadKey: 'accidentalsMax',
         state,
@@ -155,8 +155,8 @@ const reducer = (
 };
 
 export const ReducerContext = createContext<{
-  state: ProgramStateType;
-  dispatch: Dispatch<ReducerActionType>;
+  state: ProgramState;
+  dispatch: Dispatch<ReducerAction>;
 }>({
   state: initialState(),
   dispatch: () => {},

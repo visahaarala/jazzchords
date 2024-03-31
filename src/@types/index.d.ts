@@ -1,27 +1,27 @@
-export type SearchParamsType = {
-  bpc: BeatsPerChordType;
-  bpm: BeatsPerMinuteType;
+export type SearchParams = {
+  bpc: BeatsPerChord;
+  bpm: BeatsPerMinute;
   isMuted: boolean;
-  amin: AccidentalLevelType;
-  amax: AccidentalLevelType;
-  dmin: DifficultyLevelType;
-  dmax: DifficultyLevelType;
+  amin: AccidentalLevel;
+  amax: AccidentalLevel;
+  dmin: DifficultyLevel;
+  dmax: DifficultyLevel;
 };
 
-export type ProgramStateType = {
-  accidentalsMin: AccidentalLevelType;
-  accidentalsMax: AccidentalLevelType;
-  difficultyMin: DifficultyLevelType;
-  difficultyMax: DifficultyLevelType;
-  chordList: ChordType[];
+export type ProgramState = {
+  accidentalsMin: AccidentalLevel;
+  accidentalsMax: AccidentalLevel;
+  difficultyMin: DifficultyLevel;
+  difficultyMax: DifficultyLevel;
+  chordList: Chord[];
   chordIndex: number;
-  beatsPerChord: BeatsPerChordType;
-  beatsPerMinute: BeatsPerMinuteType;
+  beatsPerChord: BeatsPerChord;
+  beatsPerMinute: BeatsPerMinute;
   beat: number;
   isMuted: boolean;
 };
 
-export type ReducerActionTypeType =
+export type ReducerActionType =
   | 'SET_BPC'
   | 'SET_BPM'
   | 'SET_MUTED'
@@ -38,19 +38,19 @@ export type ReducerActionTypeType =
   | 'SET_ACCIDENTALS_MAX'
   | 'RESET_SETTINGS';
 
-export type ReducerActionType = {
-  type: ReducerActionTypeType;
-  payload?: Partial<ProgramStateType>;
+export type ReducerAction = {
+  type: ReducerActionType;
+  payload?: Partial<ProgramState>;
 };
 
-export type RangeType = {
+export type Range = {
   min: number;
   max: number;
 };
 
-export type MajorOrMinorType = 'major' | 'minor';
+export type MajorOrMinor = 'major' | 'minor';
 
-export type ExtensionType = {
+export type Extension = {
   extension: [
     string | undefined, // dim
     string | undefined, // 7
@@ -61,7 +61,7 @@ export type ExtensionType = {
   isMinor: boolean;
 };
 
-export type ChordType = {
+export type Chord = {
   base: string;
   isMinor: boolean;
   dim?: string;
@@ -71,11 +71,11 @@ export type ChordType = {
   alt?: string;
 };
 
-export type AccidentalLevelType = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
+export type AccidentalLevel = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 
-export type DifficultyLevelType = 'easy' | 'medium' | 'hard' | 'painful';
+export type DifficultyLevel = 'easy' | 'medium' | 'hard' | 'painful';
 
-export type BeatsPerChordType =
+export type BeatsPerChord =
   | '1'
   | '2'
   | '3'
@@ -90,7 +90,7 @@ export type BeatsPerChordType =
   | '12'
   | '∞';
 
-export type BeatsPerMinuteType =
+export type BeatsPerMinute =
   | '20'
   | '22'
   | '24'

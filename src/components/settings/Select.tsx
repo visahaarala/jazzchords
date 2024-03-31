@@ -1,5 +1,5 @@
 import styles from './Select.module.scss';
-import { ProgramStateType, ReducerActionTypeType } from '../../@types';
+import { ProgramState, ReducerActionType } from '../../@types';
 import { useContext } from 'react';
 import { ReducerContext } from '../../context/ReducerContext';
 
@@ -10,8 +10,8 @@ const Select = <T,>({
   description,
   descriptionSingle,
 }: {
-  dispatchActionType: ReducerActionTypeType;
-  payloadKey: keyof ProgramStateType;
+  dispatchActionType: ReducerActionType;
+  payloadKey: keyof ProgramState;
   options: T[];
   description?: string;
   descriptionSingle?: string;

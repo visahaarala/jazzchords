@@ -1,6 +1,6 @@
-import { BeatsPerChordType, BeatsPerMinuteType } from '../@types';
+import { BeatsPerChord, BeatsPerMinute } from '../@types';
 
-export const bpmOptions: BeatsPerMinuteType[] = [
+export const bpmOptions: BeatsPerMinute[] = [
   '20',
   '22',
   '24',
@@ -29,7 +29,7 @@ export const bpmOptions: BeatsPerMinuteType[] = [
   '178',
 ];
 
-export const bpcOptions: BeatsPerChordType[] = [
+export const bpcOptions: BeatsPerChord[] = [
   '1',
   '2',
   '3',

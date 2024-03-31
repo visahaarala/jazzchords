@@ -5,10 +5,10 @@ import Select from '../components/settings/Select';
 import Volume from '../components/settings/Volume';
 import Reset from '../components/settings/Reset';
 import {
-  AccidentalLevelType,
-  BeatsPerChordType,
-  BeatsPerMinuteType,
-  DifficultyLevelType,
+  AccidentalLevel,
+  BeatsPerChord,
+  BeatsPerMinute,
+  DifficultyLevel,
 } from '../@types';
 import { bpcOptions, bpmOptions } from '../data/beats';
 
@@ -22,7 +22,7 @@ const Settings = () => {
       <div className={styles.settings}>
         <h3>metronome</h3>
         <div>
-          <Select<BeatsPerChordType>
+          <Select<BeatsPerChord>
             dispatchActionType='SET_BPC'
             payloadKey='beatsPerChord'
             options={bpcOptions}
@@ -30,7 +30,7 @@ const Settings = () => {
             descriptionSingle='beat / chord'
           />
           <Volume />
-          <Select<BeatsPerMinuteType>
+          <Select<BeatsPerMinute>
             dispatchActionType='SET_BPM'
             payloadKey='beatsPerMinute'
             options={bpmOptions}
@@ -39,13 +39,13 @@ const Settings = () => {
         </div>
         <h3>difficulty</h3>
         <div>
-          <Select<DifficultyLevelType>
+          <Select<DifficultyLevel>
             dispatchActionType='SET_DIFFICULTY_MIN'
             payloadKey='difficultyMin'
             options={difficultyLevels}
           />
           <span>&mdash;</span>
-          <Select<DifficultyLevelType>
+          <Select<DifficultyLevel>
             dispatchActionType='SET_DIFFICULTY_MAX'
             payloadKey='difficultyMax'
             options={difficultyLevels}
@@ -53,13 +53,13 @@ const Settings = () => {
         </div>
         <h3>accidentals</h3>
         <div>
-          <Select<AccidentalLevelType>
+          <Select<AccidentalLevel>
             dispatchActionType='SET_ACCIDENTALS_MIN'
             payloadKey='accidentalsMin'
             options={accidentalLevels}
           />
           <span>&mdash;</span>
-          <Select<AccidentalLevelType>
+          <Select<AccidentalLevel>
             dispatchActionType='SET_ACCIDENTALS_MAX'
             payloadKey='accidentalsMax'
             options={accidentalLevels}

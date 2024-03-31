@@ -1,15 +1,15 @@
 import {
-  AccidentalLevelType,
-  MajorOrMinorType,
-  DifficultyLevelType,
-  ExtensionType,
-  ChordType,
-  ProgramStateType,
+  AccidentalLevel,
+  MajorOrMinor,
+  DifficultyLevel,
+  Extension,
+  Chord,
+  ProgramState,
 } from '../@types';
 
 export const basesOrganized: {
-  [key in AccidentalLevelType]: {
-    [key in MajorOrMinorType]: string[];
+  [key in AccidentalLevel]: {
+    [key in MajorOrMinor]: string[];
   };
 } = {
   0: { major: ['C'], minor: ['A'] },
@@ -24,10 +24,10 @@ export const basesOrganized: {
 
 export const accidentalLevels = Object.keys(
   basesOrganized
-) as AccidentalLevelType[];
+) as AccidentalLevel[];
 
 export const extensionsOrganized: {
-  [key in DifficultyLevelType]: ExtensionType[];
+  [key in DifficultyLevel]: Extension[];
 } = {
   easy: [
     {
@@ -220,7 +220,7 @@ export const extensionsOrganized: {
 
 export const difficultyLevels = Object.keys(
   extensionsOrganized
-) as DifficultyLevelType[];
+) as DifficultyLevel[];
 
 const createRangeArray = <T>(min: T, max: T, options: T[]) => {
   const minIndex = options.indexOf(min);
@@ -234,27 +234,27 @@ const createRangeArray = <T>(min: T, max: T, options: T[]) => {
 
 export const generateChords = (
   number: number,
-  state: ProgramStateType
-): ChordType[] => {
+  state: ProgramState
+): Chord[] => {
   const { difficultyMin, difficultyMax, accidentalsMin, accidentalsMax } =
     state;
 
   const difficultyLevels = createRangeArray(
     difficultyMin,
     difficultyMax,
-    Object.keys(extensionsOrganized) as DifficultyLevelType[]
+    Object.keys(extensionsOrganized) as DifficultyLevel[]
   );
-  const extensions: ExtensionType[] = [];
+  const extensions: Extension[] = [];
   for (const level of difficultyLevels) {
     extensions.push(...extensionsOrganized[level]);
   }
   const accidentalsLevels = createRangeArray(
     accidentalsMin,
     accidentalsMax,
-    Object.keys(basesOrganized) as AccidentalLevelType[]
+    Object.keys(basesOrganized) as AccidentalLevel[]
   );
 
-  const chords: ChordType[] = [];
+  const chords: Chord[] = [];
   for (let i = 0; i < number; i++) {
     // choose an extension randomly
     const randomExtensionIndex = Math.floor(Math.random() * extensions.length);
@@ -275,7 +275,7 @@ export const generateChords = (
     const base = randomBases[randomBaseIndex];
     // create new Chord
     const ext = extension.extension;
-    const newChord: ChordType = {
+    const newChord: Chord = {
       base: base,
       isMinor: extension.isMinor,
       dim: ext[0],
