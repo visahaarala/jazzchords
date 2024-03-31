@@ -1,22 +1,22 @@
 export type SearchParamsType = {
-  bpc: BeatsPerChord;
-  bpm: BeatsPerMinute;
+  bpc: BeatsPerChordType;
+  bpm: BeatsPerMinuteType;
   isMuted: boolean;
-  amin: AccidentalLevel;
-  amax: AccidentalLevel;
-  dmin: DifficultyLevel;
-  dmax: DifficultyLevel;
+  amin: AccidentalLevelType;
+  amax: AccidentalLevelType;
+  dmin: DifficultyLevelType;
+  dmax: DifficultyLevelType;
 };
 
 export type ProgramStateType = {
-  accidentalsMin: AccidentalLevel;
-  accidentalsMax: AccidentalLevel;
-  difficultyMin: DifficultyLevel;
-  difficultyMax: DifficultyLevel;
-  chordList: Chord[];
+  accidentalsMin: AccidentalLevelType;
+  accidentalsMax: AccidentalLevelType;
+  difficultyMin: DifficultyLevelType;
+  difficultyMax: DifficultyLevelType;
+  chordList: ChordType[];
   chordIndex: number;
-  beatsPerChord: BeatsPerChord;
-  beatsPerMinute: BeatsPerMinute;
+  beatsPerChord: BeatsPerChordType;
+  beatsPerMinute: BeatsPerMinuteType;
   beat: number;
   isMuted: boolean;
 };
@@ -38,29 +38,19 @@ export type ReducerActionTypeType =
   | 'SET_ACCIDENTALS_MAX'
   | 'RESET_SETTINGS';
 
-export type ReducerActionPayload = Partial<ProgramStateType>;
-
 export type ReducerActionType = {
   type: ReducerActionTypeType;
-  payload?: ReducerActionPayload;
+  payload?: Partial<ProgramStateType>;
 };
 
-// export type ChordGenerateParams = {
-//   number: number;
-//   difficultyMin?: DifficultyLevel;
-//   difficultyMax?: DifficultyLevel;
-//   accidentalsMin?: AccidentalLevel;
-//   accidentalsMax?: AccidentalLevel;
-// };
-
-export type Range = {
+export type RangeType = {
   min: number;
   max: number;
 };
 
-export type MajorOrMinor = 'major' | 'minor';
+export type MajorOrMinorType = 'major' | 'minor';
 
-export type Extension = {
+export type ExtensionType = {
   extension: [
     string | undefined, // dim
     string | undefined, // 7
@@ -71,7 +61,7 @@ export type Extension = {
   isMinor: boolean;
 };
 
-export type Chord = {
+export type ChordType = {
   base: string;
   isMinor: boolean;
   dim?: string;
@@ -81,11 +71,11 @@ export type Chord = {
   alt?: string;
 };
 
-export type AccidentalLevel = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
+export type AccidentalLevelType = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 
-export type DifficultyLevel = 'easy' | 'medium' | 'hard' | 'painful';
+export type DifficultyLevelType = 'easy' | 'medium' | 'hard' | 'painful';
 
-export type BeatsPerChord =
+export type BeatsPerChordType =
   | '1'
   | '2'
   | '3'
@@ -100,7 +90,7 @@ export type BeatsPerChord =
   | '12'
   | '∞';
 
-export type BeatsPerMinute =
+export type BeatsPerMinuteType =
   | '20'
   | '22'
   | '24'

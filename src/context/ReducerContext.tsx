@@ -1,7 +1,7 @@
 import { Dispatch, FC, ReactNode, createContext, useReducer } from 'react';
 import {
-  AccidentalLevel,
-  DifficultyLevel,
+  AccidentalLevelType,
+  DifficultyLevelType,
   ProgramStateType,
   ReducerActionType,
 } from '../@types';
@@ -83,7 +83,7 @@ const reducer = (
       return { ...state, isMuted: action.payload!.isMuted! };
     }
     case 'SET_DIFFICULTY_MIN': {
-      return getStateWithUpdatedRangeAndChords<DifficultyLevel>({
+      return getStateWithUpdatedRangeAndChords<DifficultyLevelType>({
         action,
         payloadKey: 'difficultyMin',
         state,
@@ -93,7 +93,7 @@ const reducer = (
       });
     }
     case 'SET_DIFFICULTY_MAX': {
-      return getStateWithUpdatedRangeAndChords<DifficultyLevel>({
+      return getStateWithUpdatedRangeAndChords<DifficultyLevelType>({
         action,
         payloadKey: 'difficultyMax',
         state,
@@ -103,7 +103,7 @@ const reducer = (
       });
     }
     case 'SET_ACCIDENTALS_MIN': {
-      return getStateWithUpdatedRangeAndChords<AccidentalLevel>({
+      return getStateWithUpdatedRangeAndChords<AccidentalLevelType>({
         action,
         payloadKey: 'accidentalsMin',
         state,
@@ -113,7 +113,7 @@ const reducer = (
       });
     }
     case 'SET_ACCIDENTALS_MAX': {
-      return getStateWithUpdatedRangeAndChords<AccidentalLevel>({
+      return getStateWithUpdatedRangeAndChords<AccidentalLevelType>({
         action,
         payloadKey: 'accidentalsMax',
         state,

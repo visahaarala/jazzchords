@@ -1,4 +1,3 @@
-import { KeyboardEvent } from 'react';
 import styles from './Button.module.scss';
 
 const Button = ({
@@ -6,19 +5,23 @@ const Button = ({
   onKeyDown,
   text,
   minWidth,
+  focus,
 }: {
   onClick: () => void;
-  onKeyDown: (e: KeyboardEvent<HTMLDivElement>) => void;
+  onKeyDown: (code: string) => void;
   text: string;
   minWidth?: number; // rem
+  focus?: boolean;
 }) => {
   return (
     <div
       className={styles.reset}
       tabIndex={0}
       onClick={onClick}
-      onKeyDown={onKeyDown}
+      onKeyDown={(e) => onKeyDown(e.code)}
       style={{ minWidth: `${minWidth}rem` }}
+
+      // autoFocus
     >
       {text}
     </div>

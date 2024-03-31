@@ -1,4 +1,4 @@
-import { KeyboardEvent, useContext } from 'react';
+import { useContext } from 'react';
 import { ReducerContext } from '../../context/ReducerContext';
 import Button from '../div-buttons/Button';
 
@@ -9,8 +9,8 @@ const Reset = () => {
     dispatch({ type: 'RESET_SETTINGS' });
   };
 
-  const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.code === 'Space' || e.code === 'Enter') {
+  const keyDownHandler = (code: string) => {
+    if (code === 'Space' || code === 'Enter') {
       reset();
     }
   };
