@@ -5,13 +5,11 @@ const Button = ({
   onKeyDown,
   text,
   minWidth,
-  focus,
 }: {
   onClick: () => void;
   onKeyDown: (code: string) => void;
   text: string;
   minWidth?: number; // rem
-  focus?: boolean;
 }) => {
   return (
     <div
@@ -20,8 +18,6 @@ const Button = ({
       onClick={onClick}
       onKeyDown={(e) => onKeyDown(e.code)}
       style={{ minWidth: `${minWidth}rem` }}
-
-      // autoFocus
     >
       {text}
     </div>
