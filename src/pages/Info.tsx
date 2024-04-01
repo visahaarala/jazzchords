@@ -27,7 +27,15 @@ const Info = () => (
   <>
     <h2>jazzchords</h2>
     <div className={styles.info}>
-      <div>Tool for practicing random jazz chords.</div>
+      <div>
+        <MetronomeIcon style={headerIconStyle} /> <b>Metronome</b> &mdash; A
+        separate standalone metronome for practicing.
+      </div>
+
+      <div>
+        <SettingsIcon style={headerIconStyle} /> <b>Settings</b> &mdash; Settings for the jazzchords player.
+      </div>
+
       <div>
         <PlaybackIcon style={headerIconStyle} /> <b>Player</b> &mdash; Randomly
         generate and go back and forth between chords using the{' '}
@@ -36,16 +44,7 @@ const Info = () => (
         <PlayButtonIcon type='play' style={iconStyle} /> through random chords
         with metronome.
       </div>
-      <div>
-        <SettingsIcon style={headerIconStyle} /> <b>Settings</b> &mdash; Set the
-        range of key signatures under <span>accidentals</span>, the range of
-        chord complexity under <span>difficulty</span>, and the settings for
-        tempo, time signature & volume under <span>metronome</span>.
-      </div>
-      <div>
-        <MetronomeIcon style={headerIconStyle} /> <b>Metronome</b> &mdash; A
-        separate standalone metronome for practicing.
-      </div>
+
       <div>
         More info at{' '}
         <a href='https://github.com/visahaarala/jazzchords/blob/main/README.md'>

@@ -6,7 +6,14 @@ import PlayButton from './PlayButton';
 
 const PlayControls = () => {
   const { state, dispatch } = useContext(ReducerContext);
-  const { chordList, chordIndex, beatsPerMinute, beatsPerChord, beat } = state;
+  const {
+    chordList,
+    chordIndex,
+    beatsPerMinute,
+    beatsPerChord,
+    beat,
+    isMuted,
+  } = state;
   const [play, setPlay] = useState<boolean>(false);
   const wakeLock = useRef<WakeLockSentinel>();
 
@@ -60,6 +67,7 @@ const PlayControls = () => {
       }
     },
     delay: play ? (60 / Number(beatsPerMinute)) * 1000 : undefined,
+    isMuted,
   });
 
   return (

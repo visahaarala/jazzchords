@@ -5,7 +5,6 @@ import Beats from '../components/beats/Beats';
 
 const Play = () => (
   <>
-    <h2>player</h2>
     <div className={styles.playPage}>
       <div className={styles.chords}>
         <Chord size={1.6} />

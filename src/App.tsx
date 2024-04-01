@@ -7,6 +7,8 @@ import Settings from './pages/Settings';
 import Info from './pages/Info';
 import Metronome from './pages/Metronome';
 
+export const isCoarse = matchMedia('(pointer:coarse)').matches;
+
 const router = createBrowserRouter([
   {
     path: '/',

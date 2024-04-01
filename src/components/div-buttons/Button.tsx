@@ -5,15 +5,17 @@ const Button = ({
   onKeyDown,
   text,
   minWidth,
+  className,
 }: {
   onClick: () => void;
   onKeyDown: (code: string) => void;
   text: string;
   minWidth?: number; // rem
+  className?: string;
 }) => {
   return (
     <div
-      className={styles.reset}
+      className={`${styles.button} ${className}`}
       tabIndex={0}
       onClick={onClick}
       onKeyDown={(e) => onKeyDown(e.code)}

@@ -15,7 +15,7 @@ const Reset = () => {
     }
   };
 
-  return <Button onClick={reset} onKeyDown={keyDownHandler} text='Reset' />;
+  return <Button onClick={reset} onKeyDown={keyDownHandler} text='Reset' minWidth={10}/>;
 };
 
 export default Reset;

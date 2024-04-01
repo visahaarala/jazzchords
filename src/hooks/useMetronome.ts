@@ -9,9 +9,11 @@ import { ReducerContext } from '../context/ReducerContext';
 export function useMetronome({
   callBack,
   delay,
+  isMuted,
 }: {
   callBack: () => void;
   delay: number | undefined;
+  isMuted: boolean;
 }) {
   // A way to use updated callback in every render
   // Thanks Dan Abramov for the idea!
@@ -20,7 +22,7 @@ export function useMetronome({
     savedCallback.current = callBack;
   });
 
-  const isMuted = useContext(ReducerContext).state.isMuted;
+  // const isMuted = useContext(ReducerContext).state.isMuted;
   const [audioContext, setAudioContext] = useState<AudioContext>();
 
   const gainNodeRef = useRef<GainNode>();

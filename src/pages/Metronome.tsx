@@ -1,7 +1,9 @@
 import styles from './Metronome.module.scss';
 
-import { ChangeEvent, useState } from 'react';
-import Button from '../components/div-buttons/Button';
+import { KeyboardEvent, useEffect, useState } from 'react';
+import VolumeIcon from '../components/icons/settings/VolumeIcon';
+import { isCoarse } from '../App';
+import { useMetronome } from '../hooks/useMetronome';
 
 const min = 20;
 const max = 300;
@@ -9,9 +11,10 @@ const max = 300;
 const Metronome = () => {
   const [play, setPlay] = useState(false);
   const [tempo, setTempo] = useState(60);
+  const [isMuted, setIsMuted] = useState(false);
+  const [delay, setDelay] = useState<number>();
 
   const keyDownHandler = (code: string) => {
-    console.log(code);
     if (code === 'Space' || code === 'Enter') {
       setPlay(!play);
     }
@@ -23,7 +26,6 @@ const Metronome = () => {
 
   const tempoUp = (number: number) => {
     const newTempo = tempo + number > max ? max : tempo + number;
-    console.log(tempo, newTempo);
     setTempo(newTempo);
   };
   const tempoDown = (number: number) => {
@@ -31,76 +33,110 @@ const Metronome = () => {
     setTempo(newTempo);
   };
 
-  const rangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setTempo(Number(e.target.value));
+  const rangeHandler = (number: string) => {
+    setTempo(Number(number));
   };
+
+  const volumeKeyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.code === 'Enter' || e.code === 'Space') setIsMuted(!isMuted);
+    if (e.code === 'ArrowUp') setIsMuted(false);
+    if (e.code === 'ArrowDown') setIsMuted(true);
+  };
+
+  useEffect(() => {
+    console.log('useEffect', tempo);
+    if (play) {
+      setDelay((1000 * 60) / tempo);
+    } else {
+      setDelay(undefined);
+    }
+  }, [tempo, play]);
+
+  useMetronome({
+    callBack: () => {
+      document.getElementsByTagName('main')[0].style.backgroundColor =
+        'var(--color-gray-dark)';
+      document.getElementById('metronomeStart')!.style.filter = 'brightness(2)';
+      setTimeout(() => {
+        document.getElementsByTagName('main')[0].style.backgroundColor =
+        'var(--color-white)';
+        document.getElementById('metronomeStart')!.style.filter =
+          'brightness(1)';
+      }, 50);
+    },
+    delay,
+    isMuted,
+  });
 
   return (
     <>
-      <h2>metronome</h2>
       <div className={styles.metronome}>
-        <p>Use arrow keys to change tempo.</p>
-        <div className={styles.tempo}>{tempo}</div>
-        <input
-          tabIndex={-1}
-          type='range'
-          value={tempo}
-          onChange={rangeHandler}
-          min={min}
-          max={max}
-        />
-        <div className={styles.plusminus}>
-          <span
-            tabIndex={0}
-            onClick={tempoDown.bind(null, 10)}
-            onKeyDown={(e) =>
-              e.code === 'Space' || e.code === 'Enter'
-                ? tempoDown(10)
-                : keyDownHandler(e.code)
-            }
-          >
-            -10
-          </span>
-          <span
-            tabIndex={0}
-            onClick={tempoDown.bind(null, 1)}
-            onKeyDown={(e) =>
-              e.code === 'Space' || e.code === 'Enter'
-                ? tempoDown(1)
-                : keyDownHandler(e.code)
-            }
-          >
-            -1
-          </span>
-          <span
-            tabIndex={0}
-            onClick={tempoUp.bind(null, 1)}
-            onKeyDown={(e) =>
-              e.code === 'Space' || e.code === 'Enter'
-                ? tempoUp(1)
-                : keyDownHandler(e.code)
-            }
-          >
-            +1
-          </span>
-          <span
-            tabIndex={0}
-            onClick={tempoUp.bind(null, 10)}
-            onKeyDown={(e) =>
-              e.code === 'Space' || e.code === 'Enter'
-                ? tempoUp(10)
-                : keyDownHandler(e.code)
-            }
-          >
-            +10
-          </span>
+        <div
+          className={`${styles.tempo} ${
+            play && !isCoarse ? styles.tempo__play : ''
+          }`}
+          tabIndex={!isCoarse ? 0 : -1}
+          onKeyDown={(e) => keyDownHandler(e.code)}
+        >
+          {tempo}
         </div>
-        <Button
-          onClick={setPlay.bind(null, !play)}
-          onKeyDown={keyDownHandler}
-          text={play ? 'Stop' : 'Start'}
-          minWidth={8}
-        />
+        {isCoarse ? (
+          <input
+            className={styles.range}
+            tabIndex={-1}
+            type='range'
+            value={tempo}
+            onChange={(e) => rangeHandler(e.target.value)}
+            min={min}
+            max={max}
+          />
+        ) : (
+          ''
+        )}
+        <div className={styles.grid}>
+          {isCoarse ? (
+            <>
+              <div onClick={tempoDown.bind(null, 5)} className='button'>
+                -5
+              </div>
+              <div onClick={tempoDown.bind(null, 1)} className='button'>
+                -1
+              </div>
+              <div onClick={tempoUp.bind(null, 1)} className='button'>
+                +1
+              </div>
+              <div onClick={tempoUp.bind(null, 5)} className='button'>
+                +5
+              </div>
+            </>
+          ) : (
+            <div className={styles.text}>
+              <p>
+                Click <code>start/stop</code> or <code>{tempo}</code>.
+              </p>
+              <p>
+                Use <code>Arrows</code>, <code>Space</code>, & <code>Tab</code>{' '}
+                for control.
+              </p>
+            </div>
+          )}
+          <div
+            id={'metronomeStart'}
+            onClick={setPlay.bind(null, !play)}
+            onKeyDown={(e) => keyDownHandler(e.code)}
+            className={`button ${styles.start}`}
+            tabIndex={isCoarse ? -1 : 0}
+          >
+            {play ? 'Stop' : 'Start'}
+          </div>
+          <div className={styles.volume}>
+            <VolumeIcon
+              onClick={setIsMuted.bind(null, !isMuted)}
+              onKeyDown={volumeKeyDownHandler}
+              isMuted={isMuted}
+            />
+          </div>
+        </div>
       </div>
     </>
   );

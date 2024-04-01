@@ -15,12 +15,11 @@ import { bpcOptions, bpmOptions } from '../data/beats';
 const Settings = () => {
   return (
     <>
-      <h2>settings</h2>
       <div className={styles.reset}>
         <Reset />
       </div>
       <div className={styles.settings}>
-        <h3>metronome</h3>
+        <h3>Time signature & metronome</h3>
         <div>
           <Select<BeatsPerChord>
             dispatchActionType='SET_BPC'
@@ -37,7 +36,7 @@ const Settings = () => {
             description='bpm'
           />
         </div>
-        <h3>difficulty</h3>
+        <h3>Chord difficulty</h3>
         <div>
           <Select<DifficultyLevel>
             dispatchActionType='SET_DIFFICULTY_MIN'
@@ -51,7 +50,7 @@ const Settings = () => {
             options={difficultyLevels}
           />
         </div>
-        <h3>accidentals</h3>
+        <h3>Key signature (♯ / ♭)</h3>
         <div>
           <Select<AccidentalLevel>
             dispatchActionType='SET_ACCIDENTALS_MIN'
