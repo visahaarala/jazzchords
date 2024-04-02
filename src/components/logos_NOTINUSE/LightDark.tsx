@@ -3,6 +3,9 @@ import { KeyboardEvent, useEffect, useState } from 'react';
 
 /*
 This component handles the light/dark mode of the whole program
+
+CURRENTLY NOT IN USE
+
 */
 const LightDark = () => {
   const [isDarkMode, setIsDarkMode] = useState(
