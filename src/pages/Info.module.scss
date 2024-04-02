@@ -3,8 +3,9 @@
     line-height: 1.6;
     font-size: 1rem;
 
-    & + div {
-      margin-top: 1rem;
+    & + div { // to ignore first one
+    // & > div {
+      margin-top: 1.8rem;
     }
   }
 

@@ -7,8 +7,8 @@ const Play = () => (
   <>
     <div className={styles.playPage}>
       <div className={styles.chords}>
-        <Chord size={1.6} />
-        <Chord indexOffset={1} size={0.95} contrast={30} />
+        <Chord size={1.4} /> {/** galaxy A4 can handle 1.4 */}
+        <Chord indexOffset={1} size={0.85} contrast={30} />
       </div>
       <div className={styles.beats}>
         <Beats />

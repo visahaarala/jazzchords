@@ -103,6 +103,7 @@ main {
   display: flex;
   flex-direction: column;
   padding: 2rem 2rem;
+  overflow: scroll;
 }
 
 footer {
@@ -118,7 +119,7 @@ h2 {
   font-size: 1.4rem;
   padding-bottom: 0.3rem;
   border-bottom: 0.1rem solid currentColor;
-  margin-bottom: 2rem;
+  margin-bottom: 2.2rem;
 
   display: flex; // for the text
   justify-content: center;
