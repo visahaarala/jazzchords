@@ -1,3 +1,9 @@
+/**
+ * 
+ * CURRENTLY NOT IN USE 
+ * 
+ */
+
 // import { Context } from '../../../context/Context';
 import styles from './Icon.module.scss';
 import {
