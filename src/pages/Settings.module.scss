@@ -3,13 +3,14 @@
 }
 
 .settings {
-  // margin-top: auto;
+  margin-top: auto;
   display: flex;
   flex-direction: column;
-  align-items: end;
 
   h3 {
     align-self: stretch;
+    display: flex;
+    justify-content: start;
     letter-spacing: 0.1rem;
     font-weight: normal;
     font-size: 1rem;
@@ -20,6 +21,7 @@
   }
 
   & > div {
+    align-self: end;
     display: flex;
     align-items: center;
     gap: 1rem;

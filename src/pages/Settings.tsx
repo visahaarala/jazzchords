@@ -15,10 +15,40 @@ import { bpcOptions, bpmOptions } from '../data/beats';
 const Settings = () => {
   return (
     <>
-      <div className={styles.reset}>
+      {/* <div className={styles.reset}>
         <Reset />
-      </div>
+      </div> */}
       <div className={styles.settings}>
+        <h3>Key signature (♯ / ♭)</h3>
+        <div>
+          <Select<AccidentalLevel>
+            dispatchActionType='SET_ACCIDENTALS_MIN'
+            payloadKey='accidentalsMin'
+            options={accidentalLevels}
+          />
+          <span>&mdash;</span>
+          <Select<AccidentalLevel>
+            dispatchActionType='SET_ACCIDENTALS_MAX'
+            payloadKey='accidentalsMax'
+            options={accidentalLevels}
+          />
+        </div>
+
+        <h3>Chord difficulty</h3>
+        <div>
+          <Select<DifficultyLevel>
+            dispatchActionType='SET_DIFFICULTY_MIN'
+            payloadKey='difficultyMin'
+            options={difficultyLevels}
+          />
+          <span>&mdash;</span>
+          <Select<DifficultyLevel>
+            dispatchActionType='SET_DIFFICULTY_MAX'
+            payloadKey='difficultyMax'
+            options={difficultyLevels}
+          />
+        </div>
+
         <h3>Time signature & metronome</h3>
         <div>
           <Select<BeatsPerChord>
@@ -34,34 +64,6 @@ const Settings = () => {
             payloadKey='beatsPerMinute'
             options={bpmOptions}
             description='bpm'
-          />
-        </div>
-        <h3>Chord difficulty</h3>
-        <div>
-          <Select<DifficultyLevel>
-            dispatchActionType='SET_DIFFICULTY_MIN'
-            payloadKey='difficultyMin'
-            options={difficultyLevels}
-          />
-          <span>&mdash;</span>
-          <Select<DifficultyLevel>
-            dispatchActionType='SET_DIFFICULTY_MAX'
-            payloadKey='difficultyMax'
-            options={difficultyLevels}
-          />
-        </div>
-        <h3>Key signature (♯ / ♭)</h3>
-        <div>
-          <Select<AccidentalLevel>
-            dispatchActionType='SET_ACCIDENTALS_MIN'
-            payloadKey='accidentalsMin'
-            options={accidentalLevels}
-          />
-          <span>&mdash;</span>
-          <Select<AccidentalLevel>
-            dispatchActionType='SET_ACCIDENTALS_MAX'
-            payloadKey='accidentalsMax'
-            options={accidentalLevels}
           />
         </div>
       </div>

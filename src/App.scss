@@ -112,18 +112,21 @@ footer {
 }
 
 h2 {
+  // color: var(--color-gray-dark);
   font-weight: normal;
-  font-size: 2rem;
-  padding-bottom: 0.5rem;
+  // font-size: 2rem;
+  font-size: 1.6rem;
+  padding-bottom: 0.3rem;
   border-bottom: 0.1rem solid currentColor;
   margin-bottom: 2rem;
 
   display: flex; // for the text
+  justify-content: center;
   justify-content: end;
 }
 
 .button {
-  padding: 0.7rem 2rem;
+  padding: 0.7rem 1.2rem;
   border-radius: var(--border-radius);
   border: 1px solid var(--color-gray-dark);
   background-color: var(--color-gray-light);

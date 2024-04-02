@@ -6,6 +6,7 @@ const RootLayout = () => (
   <ReducerContextProvider>
     <div className='container'>
       <main>
+        <h2>jazzchords</h2>
         <Outlet />
       </main>
       <footer>

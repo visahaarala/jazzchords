@@ -13,6 +13,7 @@ const Metronome = () => {
   const [tempo, setTempo] = useState(60);
   const [isMuted, setIsMuted] = useState(false);
   const [delay, setDelay] = useState<number>();
+  const isMobile = isCoarse;
 
   const keyDownHandler = (code: string) => {
     if (code === 'Space' || code === 'Enter') {
@@ -73,14 +74,14 @@ const Metronome = () => {
       <div className={styles.metronome}>
         <div
           className={`${styles.tempo} ${
-            play && !isCoarse ? styles.tempo__play : ''
+            play && !isMobile ? styles.tempo__play : ''
           }`}
-          tabIndex={!isCoarse ? 0 : -1}
+          tabIndex={!isMobile ? 0 : -1}
           onKeyDown={(e) => keyDownHandler(e.code)}
         >
           {tempo}
         </div>
-        {isCoarse ? (
+        {isMobile ? (
           <input
             className={styles.range}
             tabIndex={-1}
@@ -94,7 +95,7 @@ const Metronome = () => {
           ''
         )}
         <div className={styles.grid}>
-          {isCoarse ? (
+          {isMobile ? (
             <>
               <div onClick={tempoDown.bind(null, 5)} className='button'>
                 -5
@@ -125,7 +126,7 @@ const Metronome = () => {
             onClick={setPlay.bind(null, !play)}
             onKeyDown={(e) => keyDownHandler(e.code)}
             className={`button ${styles.start}`}
-            tabIndex={isCoarse ? -1 : 0}
+            tabIndex={isMobile ? -1 : 0}
           >
             {play ? 'Stop' : 'Start'}
           </div>

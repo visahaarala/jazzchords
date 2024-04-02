@@ -3,8 +3,7 @@ Play the metronome sounds from inside this hook.
 Use the hook's callback function to update DOM
 */
 
-import { useContext, useEffect, useRef, useState } from 'react';
-import { ReducerContext } from '../context/ReducerContext';
+import { useEffect, useRef, useState } from 'react';
 
 export function useMetronome({
   callBack,
@@ -22,9 +21,7 @@ export function useMetronome({
     savedCallback.current = callBack;
   });
 
-  // const isMuted = useContext(ReducerContext).state.isMuted;
   const [audioContext, setAudioContext] = useState<AudioContext>();
-
   const gainNodeRef = useRef<GainNode>();
   const clicksRef = useRef<{ osc: OscillatorNode | undefined; time: number }[]>(
     []
@@ -80,12 +77,8 @@ export function useMetronome({
   useEffect(
     () => {
       let previousScheduleTime: number | undefined;
-      // let previousScheduleTime = 0;
       let animationFrameId: number | undefined = undefined;
       const loop = () => {
-        // --- this doesn't work on iPhone ---
-        // because audioContext.currentTime is always 0
-        // nextText('' + audioContext.currentTime);
         if (audioContext && delay) {
           const now = audioContext.currentTime;
           if (!previousScheduleTime || now > previousScheduleTime + schedulingInterval) {
@@ -93,12 +86,12 @@ export function useMetronome({
             previousScheduleTime = now;
           }
 
-          // update DOM visual click when it is time
           if (
             clicksRef.current.length &&
             // give the visual side a small head start
             clicksRef.current[0].time < now + 0.1
-          ) {
+            ) {
+            // update DOM visual click when it is time
             savedCallback.current();
             clicksRef.current = clicksRef.current.slice(1);
           }

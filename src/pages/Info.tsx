@@ -25,7 +25,6 @@ const iconStyle: React.CSSProperties = {
 
 const Info = () => (
   <>
-    <h2>jazzchords</h2>
     <div className={styles.info}>
       <div>
         <MetronomeIcon style={headerIconStyle} /> <b>Metronome</b> &mdash; A
