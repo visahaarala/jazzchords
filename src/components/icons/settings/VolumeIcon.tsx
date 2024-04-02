@@ -1,5 +1,5 @@
 /*
-Icon fodified from "volume-high-outline" and "volume-mute-outline",
+Icon fodified from "sunny-outline",
 downloaded from https://ionic.io/ionicons with MIT license.
 */
 
@@ -29,7 +29,7 @@ const VolumeIcon = ({
           stroke={!isMuted ? 'var(--color-black)' : 'var(--color-gray-dark)'}
           strokeLinecap='round'
           strokeLinejoin='round'
-          strokeWidth='38'
+          strokeWidth={!isMuted ? '38' : '22'}
         />
         <path
           fill='none'
@@ -41,10 +41,10 @@ const VolumeIcon = ({
         />
         <path
           fill='none'
-          stroke={!isMuted ? 'none' : 'var(--color-black)'}
+          stroke={!isMuted ? 'none' : 'var(--color-gray-dark)'}
           strokeLinecap='round'
           strokeMiterlimit='10'
-          strokeWidth='32'
+          strokeWidth='22'
           d='M416 432L64 80'
         />
       </svg>

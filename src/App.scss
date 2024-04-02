@@ -74,6 +74,7 @@ body {
   /* font */
   font-family: sans-serif;
   color: var(--color-black);
+  letter-spacing: 0.02rem;
 }
 
 .container {
@@ -112,10 +113,9 @@ footer {
 }
 
 h2 {
-  // color: var(--color-gray-dark);
+
   font-weight: normal;
-  // font-size: 2rem;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   padding-bottom: 0.3rem;
   border-bottom: 0.1rem solid currentColor;
   margin-bottom: 2rem;

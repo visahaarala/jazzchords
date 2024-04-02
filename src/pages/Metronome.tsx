@@ -2,8 +2,8 @@ import styles from './Metronome.module.scss';
 
 import { KeyboardEvent, useEffect, useState } from 'react';
 import VolumeIcon from '../components/icons/settings/VolumeIcon';
-import { isCoarse } from '../App';
 import { useMetronome } from '../hooks/useMetronome';
+import LightIcon from '../components/icons/settings/LightIcon';
 
 const min = 20;
 const max = 300;
@@ -12,8 +12,9 @@ const Metronome = () => {
   const [play, setPlay] = useState(false);
   const [tempo, setTempo] = useState(60);
   const [isMuted, setIsMuted] = useState(false);
+  const [flashIsOn, setFlashIsOn] = useState(false);
   const [delay, setDelay] = useState<number>();
-  const isMobile = isCoarse;
+  const isMobile = matchMedia('(pointer:coarse)').matches;
 
   const keyDownHandler = (code: string) => {
     if (code === 'Space' || code === 'Enter') {
@@ -44,8 +45,13 @@ const Metronome = () => {
     if (e.code === 'ArrowDown') setIsMuted(true);
   };
 
+  const lightKeyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.code === 'Enter' || e.code === 'Space') setFlashIsOn(!flashIsOn);
+    if (e.code === 'ArrowUp') setFlashIsOn(true);
+    if (e.code === 'ArrowDown') setFlashIsOn(false);
+  };
+
   useEffect(() => {
-    console.log('useEffect', tempo);
     if (play) {
       setDelay((1000 * 60) / tempo);
     } else {
@@ -55,12 +61,19 @@ const Metronome = () => {
 
   useMetronome({
     callBack: () => {
-      document.getElementsByTagName('main')[0].style.backgroundColor =
-        'var(--color-gray-dark)';
-      document.getElementById('metronomeStart')!.style.filter = 'brightness(2)';
+      if (flashIsOn) {
+        document.getElementsByTagName('main')[0].style.backgroundColor =
+          'var(--color-gray-dark)';
+        document.getElementById('metronomeStart')!.style.filter =
+          'brightness(4)';
+        } else {
+        document.getElementById('metronomeStart')!.style.filter =
+          'brightness(1.8)';
+      }
+
       setTimeout(() => {
         document.getElementsByTagName('main')[0].style.backgroundColor =
-        'var(--color-white)';
+          'var(--color-white)';
         document.getElementById('metronomeStart')!.style.filter =
           'brightness(1)';
       }, 50);
@@ -121,6 +134,13 @@ const Metronome = () => {
               </p>
             </div>
           )}
+          <div className={styles.volume}>
+            <LightIcon
+              onClick={setFlashIsOn.bind(null, !flashIsOn)}
+              onKeyDown={lightKeyDownHandler}
+              isOn={flashIsOn}
+            />
+          </div>
           <div
             id={'metronomeStart'}
             onClick={setPlay.bind(null, !play)}
