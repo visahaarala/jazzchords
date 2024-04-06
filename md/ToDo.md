@@ -17,7 +17,7 @@
 
 #### maybe later..
 
-- dark / light mode
+- switch dark / light mode
 
 - show random top note
 
