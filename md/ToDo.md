@@ -2,9 +2,7 @@
 
 #### now
 
-- make links stay colored when active
-
-- samsung window innerwidth: 360 & height: 520
+- Galaxy A3 window innerwidth: 360 & height: 520
 - iPhone XS window innerwidth: 375 & height: 634
 
 #### soon
