@@ -28,11 +28,12 @@ const Info = () => (
     <div className={styles.info}>
       <div>
         <MetronomeIcon style={headerIconStyle} /> <b>Metronome</b> &mdash; A
-        separate standalone metronome for practicing.
+        metronome for practicing.
       </div>
 
       <div>
-        <SettingsIcon style={headerIconStyle} /> <b>Settings</b> &mdash; Settings for the jazzchords player.
+        <SettingsIcon style={headerIconStyle} /> <b>Settings</b> &mdash;
+        Settings for the jazzchords player.
       </div>
 
       <div>

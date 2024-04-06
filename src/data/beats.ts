@@ -27,6 +27,10 @@ export const bpmOptions: BeatsPerMinute[] = [
   '148',
   '162',
   '178',
+  '196',
+  '216',
+  '238',
+  '262',
 ];
 
 export const bpcOptions: BeatsPerChord[] = [

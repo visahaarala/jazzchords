@@ -63,10 +63,6 @@ const Metronome = () => {
   useMetronome({
     callBack: () => {
       if (flashIsOn) {
-        // document.getElementsByTagName('main')[0].style.backgroundColor =
-        //   'var(--color-gray-dark)';
-        // document.getElementById('metronomeStart')!.style.filter =
-        //   'brightness(4)';
         document.getElementsByTagName('body')[0].style.filter =
           'invert(100%) hue-rotate(180deg)';
       } else {
