@@ -12,7 +12,7 @@
     padding: 1rem;
     border-radius: var(--border-radius);
     &:focus {
-      outline: var(--color-focus-outline);
+      outline: var(--outline-focus);
     }
   }
 
@@ -53,14 +53,15 @@
       }
     }
 
-    .start {
-      grid-column: 2 / 4;
-    }
-
-    .volume {
+    .icon {
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .start {
+      text-align: center;
+      grid-column: 2 / 4;
     }
   }
 }

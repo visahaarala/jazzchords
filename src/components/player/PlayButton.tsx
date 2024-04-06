@@ -20,7 +20,7 @@ const PlayButton = ({
 
   return (
     <div
-      className={styles.playButton}
+      className={`button ${styles.playButton}`}
       onClick={onClick}
       onKeyDown={keyDownHandler}
       tabIndex={1}

@@ -29,7 +29,7 @@ const Select = <T,>({
       id={payloadKey}
       value={value as string}
       onChange={(e) => changeHandler(e.target.value as T)}
-      className={styles.select}
+      className={`button ${styles.select}`}
     >
       {options.map((option) => (
         <option value={option as string} key={option as string}>

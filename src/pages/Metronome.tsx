@@ -30,6 +30,7 @@ const Metronome = () => {
     const newTempo = tempo + number > max ? max : tempo + number;
     setTempo(newTempo);
   };
+
   const tempoDown = (number: number) => {
     const newTempo = tempo - number < min ? min : tempo - number;
     setTempo(newTempo);
@@ -62,21 +63,25 @@ const Metronome = () => {
   useMetronome({
     callBack: () => {
       if (flashIsOn) {
-        document.getElementsByTagName('main')[0].style.backgroundColor =
-          'var(--color-gray-dark)';
+        // document.getElementsByTagName('main')[0].style.backgroundColor =
+        //   'var(--color-gray-dark)';
+        // document.getElementById('metronomeStart')!.style.filter =
+        //   'brightness(4)';
+        document.getElementsByTagName('body')[0].style.filter =
+          'invert(100%) hue-rotate(180deg)';
+      } else {
         document.getElementById('metronomeStart')!.style.filter =
-          'brightness(4)';
-        } else {
-        document.getElementById('metronomeStart')!.style.filter =
-          'brightness(1.8)';
+          'brightness(2)';
       }
-
       setTimeout(() => {
-        document.getElementsByTagName('main')[0].style.backgroundColor =
-          'var(--color-white)';
-        document.getElementById('metronomeStart')!.style.filter =
-          'brightness(1)';
-      }, 50);
+        if (flashIsOn) {
+          document.getElementsByTagName('body')[0].style.filter =
+            'invert(0) hue-rotate(0)';
+        } else {
+          document.getElementById('metronomeStart')!.style.filter =
+            'brightness(1)';
+        }
+      }, 100);
     },
     delay,
     isMuted,
@@ -134,7 +139,7 @@ const Metronome = () => {
               </p>
             </div>
           )}
-          <div className={styles.volume}>
+          <div className={styles.icon}>
             <LightIcon
               onClick={setFlashIsOn.bind(null, !flashIsOn)}
               onKeyDown={lightKeyDownHandler}
@@ -150,7 +155,7 @@ const Metronome = () => {
           >
             {play ? 'Stop' : 'Start'}
           </div>
-          <div className={styles.volume}>
+          <div className={styles.icon}>
             <VolumeIcon
               onClick={setIsMuted.bind(null, !isMuted)}
               onKeyDown={volumeKeyDownHandler}
