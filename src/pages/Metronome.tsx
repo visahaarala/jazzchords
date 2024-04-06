@@ -1,20 +1,24 @@
 import styles from './Metronome.module.scss';
 
-import { KeyboardEvent, useEffect, useState } from 'react';
+import { KeyboardEvent, useContext, useEffect, useState } from 'react';
 import VolumeIcon from '../components/icons/settings/VolumeIcon';
 import { useMetronome } from '../hooks/useMetronome';
 import LightIcon from '../components/icons/settings/LightIcon';
+import { MetronomeContext } from '../context/MetronomeContext';
 
 const min = 20;
 const max = 300;
 
 const Metronome = () => {
-  const [play, setPlay] = useState(false);
-  const [tempo, setTempo] = useState(60);
-  const [isMuted, setIsMuted] = useState(false);
-  const [flashIsOn, setFlashIsOn] = useState(false);
-  const [delay, setDelay] = useState<number>();
   const isMobile = matchMedia('(pointer:coarse)').matches;
+
+  const ctx = useContext(MetronomeContext);
+  const [tempo, setTempo] = ctx.tempoState;
+  const [isMuted, setIsMuted] = ctx.mutedState;
+  const [flashIsOn, setFlashIsOn] = ctx.flashState;
+  
+  const [play, setPlay] = useState(false);
+  const [delay, setDelay] = useState<number>();
 
   const keyDownHandler = (code: string) => {
     if (code === 'Space' || code === 'Enter') {

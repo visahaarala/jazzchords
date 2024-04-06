@@ -4,7 +4,6 @@
     font-size: 1rem;
 
     & + div { // to ignore first one
-    // & > div {
       margin-top: 1.4rem;
     }
   }

@@ -88,7 +88,7 @@ export function useMetronome({
 
           if (
             clicksRef.current.length &&
-            // give the visual side a small head start
+            // give the visual click a small head start
             clicksRef.current[0].time < now + 0.1
             ) {
             // update DOM visual click when it is time
@@ -106,7 +106,8 @@ export function useMetronome({
         if (!audioContext) setAudioContext(new AudioContext());
         animationFrameId = requestAnimationFrame(loop);
       }
-      // whenever delay changes
+      
+      // cleanup function (whenever delay changes)
       // stop and remove clicks, cancel animationFrame
       return () => {
         clicksRef.current.forEach((c) => {

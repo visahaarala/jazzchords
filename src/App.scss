@@ -1,3 +1,15 @@
+/*
+
+Main SCSS file including also global:
+
+.container
+main
+footer
+h2
+.button
+
+*/
+
 :root {
   --border-radius: 0.3rem;
   --transition: 0.1s all;
@@ -30,7 +42,6 @@
     // no focus outline on mobile devices
     --outline-focus: none;
   }
-
 }
 
 /* reset */
@@ -48,9 +59,6 @@
 
 html {
   font-size: 100%;
-  // @media (min-width: 40em) {
-  //   font-size: 110%;
-  // }
 }
 
 body {
@@ -65,8 +73,7 @@ body {
     background-color: var(--color-gray-lighter);
   }
 
-  // fallback for older browsers without dynamic viewport height
-  min-height: 80vh;
+  min-height: 80vh; // fallback for older browsers
   min-height: 100dvh;
 
   /* font */
@@ -80,6 +87,7 @@ body {
 
   height: 80vh; // fallback for older browsers
   height: 100dvh;
+  
   width: 100vw;
   max-height: 40rem;
   max-width: 30rem;
@@ -105,10 +113,10 @@ main {
 }
 
 footer {
+  flex: 0;
   padding: 1rem;
   background-color: var(--color-gray-light);
   border-top: 1px solid var(--color-gray-dark);
-  flex: 0;
 }
 
 h2 {
@@ -119,8 +127,8 @@ h2 {
   border-bottom: 1px solid currentColor;
   margin-bottom: 2.2rem;
 
-  display: flex; // for the text
-  justify-content: center;
+  // for the text
+  display: flex;
   justify-content: end;
 }
 

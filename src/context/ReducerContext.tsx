@@ -62,14 +62,16 @@ const getStateWithUpdatedRangeAndChords = <T,>({
   };
 };
 
-const reducer = (
-  state: ProgramState,
-  action: ReducerAction
-): ProgramState => {
+const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
   switch (action.type) {
     /// SETTINGS
     case 'SET_BPC': {
-      return { ...state, beatsPerChord: action.payload!.beatsPerChord! };
+      const bpc = action.payload!.beatsPerChord!;
+      return {
+        ...state,
+        beatsPerChord: bpc,
+        beat: bpc === '1' ? 1 : 0,
+      };
     }
     case 'SET_BPM': {
       return { ...state, beatsPerMinute: action.payload!.beatsPerMinute! };

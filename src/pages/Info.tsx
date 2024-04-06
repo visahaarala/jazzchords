@@ -28,7 +28,7 @@ const Info = () => (
     <div className={styles.info}>
       <div>
         <MetronomeIcon style={headerIconStyle} /> <b>Metronome</b> &mdash; A
-        metronome for practicing.
+        separate metronome for practicing.
       </div>
 
       <div>
