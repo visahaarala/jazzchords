@@ -5,6 +5,8 @@
 - Galaxy A3 window innerwidth: 360 & height: 520
 - iPhone XS window innerwidth: 375 & height: 634
 
+- use chrome lighthouse
+
 #### soon
 
 - PWA, icon, etc

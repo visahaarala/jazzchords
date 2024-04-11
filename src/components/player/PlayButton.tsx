@@ -23,7 +23,7 @@ const PlayButton = ({
       className={`button ${styles.playButton}`}
       onClick={onClick}
       onKeyDown={keyDownHandler}
-      tabIndex={1}
+      tabIndex={0}
       id={id}
     >
       <PlayButtonIcon type={type} />
