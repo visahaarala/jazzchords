@@ -1,7 +1,7 @@
 import styles from './Icon.module.scss';
 
 const InfoIcon = ({ style }: { style?: React.CSSProperties }) => (
-  <div className={styles.icon} style={style}>
+  <div className={styles.icon} style={style} title='info'>
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
       <path
         d='M6 9h4v8.5 m-5.5 0 h 11'
