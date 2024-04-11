@@ -35,3 +35,13 @@ Add `vercel.json` at the root of the project:
   "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
 ```
+
+#### Chrome lighthouse
+
+To check website quality
+
+#### PWA
+
+[Vite PWA](https://vite-pwa-org.netlify.app/guide/)
+
+[Learn PWA](https://web.dev/learn/pwa/)
