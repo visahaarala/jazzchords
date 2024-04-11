@@ -5,11 +5,17 @@
 - Galaxy A3 window innerwidth: 360 & height: 520
 - iPhone XS window innerwidth: 375 & height: 634
 
+- PWA, icon, etc
 - use chrome lighthouse
+
+index.html - make these change programmatically (light / dark)
+```
+    <link rel="mask-icon" href="/icons/vite.svg" color="#246">
+    <meta name="theme-color" content="#246">
+```
 
 #### soon
 
-- PWA, icon, etc
 
 - make color scheme nicer
 
