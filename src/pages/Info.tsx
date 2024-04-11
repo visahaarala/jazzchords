@@ -46,7 +46,7 @@ const Info = () => (
       </div>
 
       <div>
-        More info at{' '}
+        More info at{'  '}
         <a href='https://github.com/visahaarala/jazzchords/blob/main/README.md'>
           GitHub
         </a>

@@ -1,7 +1,7 @@
 import styles from './Icon.module.scss';
 
 const MetronomeIcon = ({ style }: { style?: React.CSSProperties }) => (
-  <div className={styles.icon} style={style}>
+  <div className={styles.icon} style={style} title='metronome'>
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
       <path
         d='M4 18L8 3L12 3L16 18z'
