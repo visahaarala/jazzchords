@@ -10,6 +10,8 @@
 
 - Info about PWA & installability.
 
+- Info about mobile silent mode
+
 #### soon
 
 - make color scheme nicer
