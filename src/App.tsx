@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Play /> },
       { path: 'play', element: <Play /> },
-      { 
+      {
         path: 'metronome',
         element: <Metronome />,
       },
