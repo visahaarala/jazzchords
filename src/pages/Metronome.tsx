@@ -5,6 +5,7 @@ import VolumeIcon from '../components/icons/settings/VolumeIcon';
 import { useMetronome } from '../hooks/useMetronome';
 import LightIcon from '../components/icons/settings/LightIcon';
 import { MetronomeContext } from '../context/MetronomeContext';
+import DisplaySleepComment from '../components/misc/DisplaySleepComment';
 
 const min = 20;
 const max = 300;
@@ -16,7 +17,7 @@ const Metronome = () => {
   const [tempo, setTempo] = ctx.tempoState;
   const [isMuted, setIsMuted] = ctx.mutedState;
   const [flashIsOn, setFlashIsOn] = ctx.flashState;
-  
+
   const [play, setPlay] = useState(false);
   const [delay, setDelay] = useState<number>();
 
@@ -68,7 +69,7 @@ const Metronome = () => {
     callBack: () => {
       if (flashIsOn) {
         document.getElementsByTagName('body')[0].style.filter =
-          'invert(100%) hue-rotate(180deg)';
+          'invert(100%) hue-rotate(180deg) brightness(.5)';
       } else {
         document.getElementById('metronomeStart')!.style.filter =
           'brightness(2)';
@@ -76,7 +77,7 @@ const Metronome = () => {
       setTimeout(() => {
         if (flashIsOn) {
           document.getElementsByTagName('body')[0].style.filter =
-            'invert(0) hue-rotate(0)';
+            'invert(0) hue-rotate(0) brightness(1)';
         } else {
           document.getElementById('metronomeStart')!.style.filter =
             'brightness(1)';
@@ -90,6 +91,7 @@ const Metronome = () => {
   return (
     <>
       <div className={styles.metronome}>
+        <DisplaySleepComment />
         <div
           className={`${styles.tempo} ${
             play && !isMobile ? styles.tempo__play : ''

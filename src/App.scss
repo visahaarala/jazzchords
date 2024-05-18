@@ -14,28 +14,32 @@ h2
   --border-radius: 0.3rem;
   --transition: 0.1s all;
 
-  /*
-  LIGHT AND DARK MODES
-  */
-  --color-white: white;
-  --color-gray-lighter: #eee;
-  --color-gray-light: #ddd;
-  --color-gray-dark: #444;
-  --color-black: #202428;
-  --color-github: #24292f;
-  --color-link: #47c;
-  --container-box-shadow: 0 0 6rem rgba(0, 0, 0, 0.05);
+  // /*
+  // LIGHT AND DARK MODES
+  // */
+  // --color-white: white;
+  // --color-gray-lighter: #eee;
+  // --color-gray-light: #ddd;
+  // --color-gray-dark: #444;
+  // --color-black: #202428;
+  // --color-github: #24292f;
+  // --color-link: #47c;
+  // --container-box-shadow: 0 0 6rem rgba(0, 0, 0, 0.05);
 
-  @media (prefers-color-scheme: dark) {
+  // @media (prefers-color-scheme: dark) {
     --color-white: #202428;
-    --color-gray-lighter: #333;
+    --color-white: #101418;
+    --color-gray-lighter: #222;
     --color-gray-light: #444;
     --color-gray-dark: #bbb;
     --color-black: #fafafa;
     --color-github: #fff;
     --color-link: #59f;
+
+    --color-link: #39c;
+    --color-link: #4ad;
     --container-box-shadow: 0 0 6rem rgba(255, 255, 255, 0.01);
-  }
+  // }
 
   --outline-focus: var(--color-link) solid 0.15rem;
   @media (pointer: coarse) {

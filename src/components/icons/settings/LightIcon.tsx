@@ -1,5 +1,5 @@
 /*
-Icon fodified from "volume-high-outline" and "volume-mute-outline",
+Icon fodified from "sunny-outline",
 downloaded from https://ionic.io/ionicons with MIT license.
 */
 
