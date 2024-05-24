@@ -11,31 +11,31 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
       },
-      includeAssets: ['/icons/16.png', '/icons/180.png', '/icons/vite.svg'],
-      manifest: {
-        name: 'jazzchords',
-        short_name: 'jc',
+      includeAssets: ['/icons/favicon.ico', '/icons/apple-touch-icon.png', '/icons/svg/icon-rectangle.svg'],
+      manifest: { 
+        name: 'Jazz Chords',
+        short_name: 'Jazz Chords',
         description: 'A tool for training jazz harmonies and groove.',
-        theme_color: '#ffffff',
+        theme_color: '#141a1d',
         icons: [
           {
-            src: '/icons/192.png',
+            src: '/icons/pwa-192x192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/icons/512.png',
+            src: '/icons/pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png',
           },
           {
-            src: '/icons/512.png',
+            src: '/icons/pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/icons/512.png',
+            src: '/icons/pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable'

@@ -14,7 +14,7 @@ Tested desktop browsers (on Mac Os X): Chrome, Safari, Opera and Firefox. Best d
 
 ## Issues
 
-- Firefox messes up the chord symbol layout.
+- The chord symbol layout does not work in Firefox.
 
 - `play` functionality seems to not work on some older iPhone iOS versions due to problems with AudioContext.
 
@@ -72,7 +72,7 @@ To check website quality.
 
 #### PWA icons
 
-Icons are generated from svg files in ./icons/source folder by using [Favicon InBrowser.App](https://favicon.inbrowser.app/tools/favicon-generator).
+Icons are generated from svg files in ./icons/svg folder by using [Favicon InBrowser.App](https://favicon.inbrowser.app/tools/favicon-generator).
 
 Further instructions for PWA icons in [https://vite-pwa-org.netlify.app/guide/pwa-minimal-requirements.html](https://vite-pwa-org.netlify.app/guide/pwa-minimal-requirements.html).
 

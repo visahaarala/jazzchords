@@ -27,15 +27,17 @@ h2
   // --container-box-shadow: 0 0 6rem rgba(0, 0, 0, 0.05);
 
   // @media (prefers-color-scheme: dark) {
-    --color-white: #202428;
-    --color-white: #101418;
-    --color-gray-lighter: #222;
+    // --color-white: #202428;
+    // --color-white: #101418;
+    // --color-white: #15191f;
+    --color-white: #141a1d;
+    // --color-gray-lighter: #65696f;
+    --color-gray-lighter: #333;
     --color-gray-light: #444;
     --color-gray-dark: #bbb;
     --color-black: #fafafa;
-    --color-github: #fff;
+    
     --color-link: #59f;
-
     --color-link: #39c;
     --color-link: #4ad;
     --container-box-shadow: 0 0 6rem rgba(255, 255, 255, 0.01);
