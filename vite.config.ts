@@ -16,7 +16,7 @@ export default defineConfig({
         name: 'Jazz Chords',
         short_name: 'Jazz Chords',
         description: 'A tool for training jazz harmonies and groove.',
-        theme_color: '#141a1d',
+        theme_color: '#101418',
         icons: [
           {
             src: '/icons/pwa-192x192.png',
