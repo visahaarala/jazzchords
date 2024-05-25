@@ -1,25 +1,26 @@
 import React from 'react';
 import styles from './Info.module.scss';
-import SettingsIcon from '../components/icons/navigation/SettingsIcon';
-import PlaybackIcon from '../components/icons/navigation/PlaybackIcon';
-import PlayButtonIcon from '../components/icons/play/PlayButtonIcon';
-import MetronomeIcon from '../components/icons/navigation/MetronomeIcon';
+import SettingsIcon from '../components/icons/SettingsIcon';
+import MetronomeIcon from '../components/icons/MetronomeIcon';
+import PlayIcon from '../components/icons/PlayIcon';
+import NextIcon from '../components/icons/NextIcon';
+import PreviousIcon from '../components/icons/PreviousIcon';
 
 const headerIconStyle: React.CSSProperties = {
   display: 'inline-block',
   width: '1.5rem',
   height: '1.5rem',
   padding: '0',
-  marginRight: '.2rem',
+  marginRight: '.6rem',
   transform: 'translateY(.3rem)',
 };
 
-const iconStyle: React.CSSProperties = {
+const textIconStyle: React.CSSProperties = {
   display: 'inline-block',
   width: '1rem',
   height: '1rem',
-  marginRight: '.1rem',
-  marginLeft: '.1rem',
+  marginLeft: '.4rem',
+  marginRight: '.4rem',
   transform: 'translateY(.15rem)',
 };
 
@@ -27,26 +28,41 @@ const Info = () => (
   <>
     <div className={styles.info}>
       <div>
-        <MetronomeIcon style={headerIconStyle} /> <b>Metronome</b> &mdash; A
-        separate metronome for practicing.
+        <div style={headerIconStyle}>
+          <MetronomeIcon />
+        </div>
+        A separate metronome for practicing.
       </div>
 
       <div>
-        <SettingsIcon style={headerIconStyle} /> <b>Settings</b> &mdash;
+        <div style={headerIconStyle}>
+          <SettingsIcon />
+        </div>
         Settings for the jazzchords player.
       </div>
 
       <div>
-        <PlaybackIcon style={headerIconStyle} /> <b>Player</b> &mdash; Randomly
-        generate and go back and forth between chords using the{' '}
-        <PlayButtonIcon type='next' style={iconStyle} /> &{' '}
-        <PlayButtonIcon type='prev' style={iconStyle} /> buttons, or play{' '}
-        <PlayButtonIcon type='play' style={iconStyle} /> through random chords
-        with metronome.
+        <div style={headerIconStyle}>
+          <PlayIcon />
+        </div>
+        Jazzchords player &mdash; randomly generate and go back and forth
+        between chords using the
+        <div style={textIconStyle}>
+          <NextIcon />
+        </div>
+        and
+        <div style={textIconStyle}>
+          <PreviousIcon />
+        </div>
+        buttons, or play
+        <div style={textIconStyle}>
+          <PlayIcon />
+        </div>
+        through random chords.
       </div>
 
       <div>
-        More info at{'  '}
+        More info at{' '}
         <a href='https://github.com/visahaarala/jazzchords/blob/main/README.md'>
           GitHub
         </a>

@@ -1,11 +1,12 @@
 import styles from './Metronome.module.scss';
 
 import { KeyboardEvent, useContext, useEffect, useState } from 'react';
-import VolumeIcon from '../components/icons/settings/VolumeIcon';
+import VolumeIcon from '../components/icons/metronome/VolumeIcon';
 import { useMetronome } from '../hooks/useMetronome';
-import LightIcon from '../components/icons/settings/LightIcon';
 import { MetronomeContext } from '../context/MetronomeContext';
-import DisplaySleepComment from '../components/misc/DisplaySleepComment';
+import DisplaySleepComment from '../components/misc/PlayInstructions';
+import Light from '../components/metronome/Light';
+import Volume from '../components/metronome/Volume';
 
 const min = 20;
 const max = 300;
@@ -16,7 +17,7 @@ const Metronome = () => {
   const ctx = useContext(MetronomeContext);
   const [tempo, setTempo] = ctx.tempoState;
   const [isMuted, setIsMuted] = ctx.mutedState;
-  const [flashIsOn, setFlashIsOn] = ctx.flashState;
+  const [flashIsOn] = ctx.flashState;
 
   const [play, setPlay] = useState(false);
   const [delay, setDelay] = useState<number>();
@@ -49,12 +50,6 @@ const Metronome = () => {
     if (e.code === 'Enter' || e.code === 'Space') setIsMuted(!isMuted);
     if (e.code === 'ArrowUp') setIsMuted(false);
     if (e.code === 'ArrowDown') setIsMuted(true);
-  };
-
-  const lightKeyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.code === 'Enter' || e.code === 'Space') setFlashIsOn(!flashIsOn);
-    if (e.code === 'ArrowUp') setFlashIsOn(true);
-    if (e.code === 'ArrowDown') setFlashIsOn(false);
   };
 
   useEffect(() => {
@@ -141,13 +136,7 @@ const Metronome = () => {
               </p>
             </div>
           )}
-          <div className={styles.icon}>
-            <LightIcon
-              onClick={setFlashIsOn.bind(null, !flashIsOn)}
-              onKeyDown={lightKeyDownHandler}
-              isOn={flashIsOn}
-            />
-          </div>
+          <Light />
           <div
             id={'metronomeStart'}
             onClick={setPlay.bind(null, !play)}
@@ -157,13 +146,7 @@ const Metronome = () => {
           >
             {play ? 'Stop' : 'Start'}
           </div>
-          <div className={styles.icon}>
-            <VolumeIcon
-              onClick={setIsMuted.bind(null, !isMuted)}
-              onKeyDown={volumeKeyDownHandler}
-              isMuted={isMuted}
-            />
-          </div>
+          <Volume />
         </div>
       </div>
     </>

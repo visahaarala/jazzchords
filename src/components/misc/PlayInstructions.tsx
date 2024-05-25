@@ -1,4 +1,4 @@
-import styles from './DisplaySleepComment.module.scss';
+import styles from './PlayInstructions.module.scss';
 
 const DisplaySleepComment = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;
@@ -7,8 +7,8 @@ const DisplaySleepComment = () => {
     <>
       {isMobile ? (
         <p className={styles.comment}>
-          Make sure display screen timout / sleep / auto-lock is prevented from
-          system settings.
+          Prevent screen timout / sleep / auto-lock from settings if necessary.
+          Turn off silent mode to hear the click.
         </p>
       ) : (
         ''

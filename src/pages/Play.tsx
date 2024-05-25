@@ -2,7 +2,7 @@ import styles from './Play.module.scss';
 import Chord from '../components/chords/Chord';
 import PlayControls from '../components/player/PlayControls';
 import Beats from '../components/beats/Beats';
-import DisplaySleepComment from '../components/misc/DisplaySleepComment';
+import DisplaySleepComment from '../components/misc/PlayInstructions';
 
 const Play = () => {
   return (

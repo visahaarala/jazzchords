@@ -1,8 +1,11 @@
+import styles from './MetronomeIcon.module.scss';
 import { KeyboardEvent, useContext } from 'react';
 import { ReducerContext } from '../../context/ReducerContext';
-import VolumeIcon from '../icons/settings/VolumeIcon';
+import VolumeIcon from '../icons/metronome/VolumeIcon';
 
 const Volume = () => {
+  const isMobile = matchMedia('(pointer:coarse)').matches;
+
   const { state, dispatch } = useContext(ReducerContext);
   const isMuted = state.isMuted;
 
@@ -18,11 +21,14 @@ const Volume = () => {
   };
 
   return (
-    <VolumeIcon
+    <div
+      className={styles.icon}
       onClick={setIsMuted.bind(null, !isMuted)}
       onKeyDown={keyDownHandler}
-      isMuted={isMuted}
-    />
+      tabIndex={isMobile ? -1 : 0}
+    >
+      <VolumeIcon isOn={!isMuted} />
+    </div>
   );
 };
 

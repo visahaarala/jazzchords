@@ -1,15 +1,15 @@
 import { KeyboardEvent } from 'react';
 import styles from './PlayButton.module.scss';
-import PlayButtonIcon from '../icons/play/PlayButtonIcon';
+// import PlayButtonIcon from '../icons/play/PlayButtonIcon';
 
 const PlayButton = ({
-  id,
-  type,
+  icon,
   onClick,
+  id,
 }: {
-  id?: string;
-  type: 'next' | 'prev' | 'play' | 'pause';
+  icon: JSX.Element;
   onClick: () => void;
+  id?: string;
 }) => {
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
     const code = e.code;
@@ -26,7 +26,7 @@ const PlayButton = ({
       tabIndex={0}
       id={id}
     >
-      <PlayButtonIcon type={type} />
+      <div className={styles.icon}>{icon}</div>
     </div>
   );
 };

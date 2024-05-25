@@ -1,15 +1,14 @@
 import styles from './Navigation.module.scss';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { CSSProperties, KeyboardEvent } from 'react';
-import SettingsIcon from '../icons/navigation/SettingsIcon';
-import InfoIcon from '../icons/navigation/InfoIcon';
-import PlaybackIcon from '../icons/navigation/PlaybackIcon';
-import MetronomeIcon from '../icons/navigation/MetronomeIcon';
+import { KeyboardEvent } from 'react';
+import SettingsIcon from '../icons/SettingsIcon';
+import InfoIcon from '../icons/InfoIcon';
+import MetronomeIcon from '../icons/MetronomeIcon';
+import PlayIcon from '../icons/PlayIcon';
 
 const Navigation = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  console.log(pathname);
 
   const keyDownHandler = (
     e: KeyboardEvent<HTMLAnchorElement>,
@@ -20,45 +19,31 @@ const Navigation = () => {
     }
   };
 
-  const activeStyle = (paths: string[]): CSSProperties => {
-    const style: CSSProperties = {};
-    for (const path of paths) {
-      if (path === pathname) {
-        style.color = 'var(--color-link)';
-      }
+  const color = (name: string) => {
+    if ('/' + name === pathname) {
+      return 'var(--color-link)';
     }
-    return style;
+  };
+
+  const navIcons = {
+    info: <InfoIcon color={color('info')} />,
+    metronome: <MetronomeIcon color={color('metronome')} />,
+    settings: <SettingsIcon color={color('settings')} />,
+    play: <PlayIcon color={color('play')} />,
   };
 
   return (
     <nav className={styles.navigation}>
       <ul>
-        <li>
-          <NavLink to={'info'} onKeyDown={(e) => keyDownHandler(e, 'info')}>
-            <InfoIcon style={activeStyle(['/info'])} />
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={'metronome'}
-            onKeyDown={(e) => keyDownHandler(e, 'metronome')}
-          >
-            <MetronomeIcon style={activeStyle(['/metronome'])} />
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={'settings'}
-            onKeyDown={(e) => keyDownHandler(e, 'settings')}
-          >
-            <SettingsIcon style={activeStyle(['/settings'])} />
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to={'play'} onKeyDown={(e) => keyDownHandler(e, 'play')}>
-            <PlaybackIcon style={activeStyle(['/play', '/'])} />
-          </NavLink>
-        </li>
+        {Object.keys(navIcons).map((key) => {
+          return (
+            <li key={key}>
+              <NavLink to={key} onKeyDown={(e) => keyDownHandler(e, key)}>
+                {navIcons[key as keyof typeof navIcons]}
+              </NavLink>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

@@ -3,6 +3,10 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { ReducerContext } from '../../context/ReducerContext';
 import { useMetronome } from '../../hooks/useMetronome';
 import PlayButton from './PlayButton';
+import PlayIcon from '../icons/PlayIcon';
+import PauseIcon from '../icons/PauseIcon';
+import PreviousIcon from '../icons/PreviousIcon';
+import NextIcon from '../icons/NextIcon';
 
 const PlayControls = () => {
   const { state, dispatch } = useContext(ReducerContext);
@@ -75,13 +79,13 @@ const PlayControls = () => {
       <div>
         <PlayButton
           onClick={() => setPlay(!play)}
-          type={play ? 'pause' : 'play'}
-          id='play'
+          icon={play ? <PauseIcon /> : <PlayIcon />}
+          id='play' // for click light
         />
-        <PlayButton onClick={previousHandler} type='prev' />
+        <PlayButton onClick={previousHandler} icon={<PreviousIcon />} />
       </div>
       <div>
-        <PlayButton onClick={nextHandler} type='next' />
+        <PlayButton onClick={nextHandler} icon={<NextIcon />} />
       </div>
     </div>
   );

@@ -3,17 +3,21 @@
     list-style: none;
     display: flex;
     justify-content: space-evenly;
-  }
 
-  a {
-    color: inherit;
-    display: inline-block;
-    border-radius: var(--border-radius);
+    li {
+      $size: 2.4rem;
+      padding: 0.2rem;
+      width: $size;
+      height: $size;
 
-    &:focus,
-    &:hover {
-      outline: none;
-      color: var(--color-link);
+      &:focus {
+        // FIX THIS
+        outline: var(--outline-focus);
+      }
+
+      a {
+        color: inherit;
+      }
     }
   }
 }

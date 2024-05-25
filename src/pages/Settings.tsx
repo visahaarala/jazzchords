@@ -2,7 +2,7 @@ import styles from './Settings.module.scss';
 
 import { accidentalLevels, difficultyLevels } from '../data/harmonies';
 import Select from '../components/settings/Select';
-import Volume from '../components/settings/Volume';
+import Volume from '../components/metronome/Volume';
 import {
   AccidentalLevel,
   BeatsPerChord,
