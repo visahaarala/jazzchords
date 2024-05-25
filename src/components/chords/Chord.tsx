@@ -16,9 +16,6 @@ const Chord = ({
   marginBottom?: number; // rem
   contrast?: number; // percentage
 }) => {
-  // const ctx = useContext(Context);
-  // const [chordList] = ctx.chordListState;
-  // const [chordIndex] = ctx.chordIndexState;
   const { state } = useContext(ReducerContext);
   const { chordList, chordIndex } = state;
 

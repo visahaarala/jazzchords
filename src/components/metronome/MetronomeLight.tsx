@@ -1,9 +1,9 @@
-import styles from './MetronomeIcon.module.scss';
+import styles from './MetronomeIconButton.module.scss';
 import { KeyboardEvent, useContext } from 'react';
 import { MetronomeContext } from '../../context/MetronomeContext';
-import LightIcon from '../icons/metronome/LightIcon';
+import LightIcon from '../icons/LightIcon';
 
-const Light = () => {
+const MetronomeLight = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;
 
   const ctx = useContext(MetronomeContext);
@@ -28,4 +28,4 @@ const Light = () => {
   );
 };
 
-export default Light;
+export default MetronomeLight;

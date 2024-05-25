@@ -2,7 +2,6 @@ import styles from './Settings.module.scss';
 
 import { accidentalLevels, difficultyLevels } from '../data/harmonies';
 import Select from '../components/settings/Select';
-import Volume from '../components/metronome/Volume';
 import {
   AccidentalLevel,
   BeatsPerChord,
@@ -10,6 +9,7 @@ import {
   DifficultyLevel,
 } from '../@types';
 import { bpcOptions, bpmOptions } from '../data/beats';
+import PlayerMute from '../components/settings/PlayerMute';
 
 const Settings = () => {
   return (
@@ -53,7 +53,7 @@ const Settings = () => {
             options={bpcOptions}
             description='/ 4'
           />
-          <Volume />
+          <PlayerMute />
           <Select<BeatsPerMinute>
             dispatchActionType='SET_BPM'
             payloadKey='beatsPerMinute'

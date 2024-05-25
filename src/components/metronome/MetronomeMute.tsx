@@ -1,23 +1,18 @@
-import styles from './MetronomeIcon.module.scss';
+import styles from './MetronomeIconButton.module.scss';
 import { KeyboardEvent, useContext } from 'react';
-import { ReducerContext } from '../../context/ReducerContext';
-import VolumeIcon from '../icons/metronome/VolumeIcon';
+import MuteIcon from '../icons/MuteIcon';
+import { MetronomeContext } from '../../context/MetronomeContext';
 
-const Volume = () => {
+const MetronomeMute = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;
 
-  const { state, dispatch } = useContext(ReducerContext);
-  const isMuted = state.isMuted;
+  const ctx = useContext(MetronomeContext);
+  const [isMuted, setIsMuted] = ctx.mutedState;
 
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
-    console.log('keydown');
     if (e.code === 'Enter' || e.code === 'Space') setIsMuted(!isMuted);
     if (e.code === 'ArrowUp') setIsMuted(false);
     if (e.code === 'ArrowDown') setIsMuted(true);
-  };
-
-  const setIsMuted = (muted: boolean) => {
-    dispatch({ type: 'SET_MUTED', payload: { isMuted: muted } });
   };
 
   return (
@@ -27,9 +22,9 @@ const Volume = () => {
       onKeyDown={keyDownHandler}
       tabIndex={isMobile ? -1 : 0}
     >
-      <VolumeIcon isOn={!isMuted} />
+      <MuteIcon isOn={!isMuted} />
     </div>
   );
 };
 
-export default Volume;
+export default MetronomeMute;

@@ -1,12 +1,11 @@
 import styles from './Metronome.module.scss';
 
-import { KeyboardEvent, useContext, useEffect, useState } from 'react';
-import VolumeIcon from '../components/icons/metronome/VolumeIcon';
+import { useContext, useEffect, useState } from 'react';
 import { useMetronome } from '../hooks/useMetronome';
 import { MetronomeContext } from '../context/MetronomeContext';
 import DisplaySleepComment from '../components/misc/PlayInstructions';
-import Light from '../components/metronome/Light';
-import Volume from '../components/metronome/Volume';
+import MetronomeLight from '../components/metronome/MetronomeLight';
+import MetronomeMute from '../components/metronome/MetronomeMute';
 
 const min = 20;
 const max = 300;
@@ -16,7 +15,7 @@ const Metronome = () => {
 
   const ctx = useContext(MetronomeContext);
   const [tempo, setTempo] = ctx.tempoState;
-  const [isMuted, setIsMuted] = ctx.mutedState;
+  const [isMuted] = ctx.mutedState;
   const [flashIsOn] = ctx.flashState;
 
   const [play, setPlay] = useState(false);
@@ -44,12 +43,6 @@ const Metronome = () => {
 
   const rangeHandler = (number: string) => {
     setTempo(Number(number));
-  };
-
-  const volumeKeyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.code === 'Enter' || e.code === 'Space') setIsMuted(!isMuted);
-    if (e.code === 'ArrowUp') setIsMuted(false);
-    if (e.code === 'ArrowDown') setIsMuted(true);
   };
 
   useEffect(() => {
@@ -136,7 +129,7 @@ const Metronome = () => {
               </p>
             </div>
           )}
-          <Light />
+          <MetronomeLight />
           <div
             id={'metronomeStart'}
             onClick={setPlay.bind(null, !play)}
@@ -146,7 +139,7 @@ const Metronome = () => {
           >
             {play ? 'Stop' : 'Start'}
           </div>
-          <Volume />
+          <MetronomeMute />
         </div>
       </div>
     </>

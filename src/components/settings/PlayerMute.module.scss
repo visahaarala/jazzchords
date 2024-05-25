@@ -1,8 +1,11 @@
+$size: 2.2rem;
+
 .icon {
+  align-self: center;
+  justify-self: center;
   border-radius: var(--border-radius);
-  height: 2.4rem;
-  width: 2.4rem;
-  padding: 0.2rem;
+  height: $size;
+  width: $size;
   cursor: pointer;
 
   &:focus,

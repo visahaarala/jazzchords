@@ -1,5 +1,7 @@
-// icon "settings-sharp" from
-// https://ionic.io/ionicons with MIT license
+/*
+icon "settings-sharp" from
+https://ionic.io/ionicons with MIT license
+*/
 
 const SettingsIcon = ({ color }: { color?: string }) => (
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
