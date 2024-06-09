@@ -20,15 +20,24 @@ h2
   --color-gray-dark: #bbb;
   --color-black: #fafafa;
 
-  --color-link: #59f;
-  --color-link: #39c;
+  // --color-link: #59f;
+  // --color-link: #39c;
   --color-link: #4ad;
-  --container-box-shadow: 0 0 6rem rgba(255, 255, 255, 0.01);
+  // --color-link-light: #8be; 
+  // --container-box-shadow: 0 0 8rem rgba(255, 255, 255, 0.05);
+  --container-box-shadow: 0 0 20rem rgba(0, 0, 0, 0.7);
+  // --container-border: 1px solid var(--color-white);
+  --container-border: 1px solid var(--color-gray-light);
 
-  --outline-focus: var(--color-link) solid 0.15rem;
+  --outline-focus: solid 0.15rem var(--color-link);
+  --border-hover: solid 0.15rem var(--color-link);
+  --shadow-hover: inset 0 0 0.4rem var(--color-link);
+
   @media (pointer: coarse) {
     // no focus outline on mobile devices
     --outline-focus: none;
+    --border-hover: none;
+    --shadow-hover: none;
   }
 }
 
@@ -88,6 +97,8 @@ body {
     border-radius: 0.4rem;
     overflow: hidden;
     box-shadow: var(--container-box-shadow);
+
+    border: var(--container-border);
   }
 }
 
@@ -129,8 +140,11 @@ h2 {
 
   padding: 0.7rem 1.2rem; // default padding
 
-  &:focus,
-  &:hover {
+  &:focus {
     outline: var(--outline-focus);
+  }
+
+  &:hover {
+    box-shadow: var(--shadow-hover);
   }
 }

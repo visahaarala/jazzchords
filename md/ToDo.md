@@ -2,6 +2,18 @@
 
 #### now
 
+- Player: Chord symbols unselectable
+
+- Settings: toggle click anywhere (container background) for next chord
+
+- Player: click anywhere (container background) for next chord
+
+- Mobile button click visual (now no visual cue in player)
+
+- Take example from other websites / css lessons
+
+#### maybe done
+
 - PWA, icon, etc
 
 - use chrome lighthouse

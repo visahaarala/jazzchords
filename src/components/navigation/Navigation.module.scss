@@ -6,17 +6,32 @@
 
     li {
       $size: 2.4rem;
-      padding: 0.2rem;
+      // padding: 0.2rem;
       width: $size;
       height: $size;
 
-      &:focus {
-        // FIX THIS
-        outline: var(--outline-focus);
-      }
-
       a {
         color: inherit;
+        display: block;
+        // height: 100%;
+
+        border-radius: var(--border-radius);
+
+        &:focus {
+          outline: none;
+          // outline: var(--outline-focus);
+          border-radius: 0;
+          border-bottom: 2px solid var(--color-link);
+        }
+
+        &:hover {
+          color: var(--color-link);
+          // border: var(--border-hover);
+        }
+
+        svg {
+          padding: 0.2rem;
+        }
       }
     }
   }
