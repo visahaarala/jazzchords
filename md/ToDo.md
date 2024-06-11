@@ -4,6 +4,8 @@
 
 - Player: Chord symbols unselectable
 
+- buttons height dvh when pointer coarse
+
 - Settings: toggle click anywhere (container background) for next chord
 
 - Player: click anywhere (container background) for next chord
