@@ -124,14 +124,11 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
     }
 
     /// PLAYER
-    case 'RESET_BEAT': {
+    case 'SET_BEAT': {
       return { ...state, beat: action.payload!.beat! };
     }
     case 'INCREMENT_BEAT': {
       return { ...state, beat: state.beat + 1 };
-    }
-    case 'SET_BEAT': {
-      return { ...state, beat: action.payload!.beat! };
     }
     case 'APPEND_CHORD_LIST': {
       return {

@@ -4,9 +4,7 @@ import { useContext } from 'react';
 import { ReducerContext } from '../../context/ReducerContext';
 
 const Beats = () => {
-  // const ctx = useContext(Context);
   const { state, dispatch } = useContext(ReducerContext);
-  // const numBeats = Number(ctx.beatsPerChordState[0]);
   const numBeats = Number(state.beatsPerChord);
   const beatCircles: JSX.Element[] = [];
 
@@ -17,7 +15,7 @@ const Beats = () => {
   }
 
   const clickHandler = () => {
-    dispatch({ type: 'RESET_BEAT', payload: { beat: 0 } });
+    dispatch({ type: 'SET_BEAT', payload: { beat: 0 } });
   };
 
   return (

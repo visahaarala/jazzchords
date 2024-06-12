@@ -27,7 +27,6 @@ export type ReducerActionType =
   | 'SET_MUTED'
   | 'SET_BEAT'
   | 'INCREMENT_BEAT'
-  | 'RESET_BEAT'
   | 'APPEND_CHORD_LIST'
   | 'INCREMENT_CHORD_INDEX'
   | 'DECREMENT_CHORD_INDEX'
