@@ -53,9 +53,7 @@ export function useMetronome({
       latestClick = clicksRef.current.slice(-1)[0].time;
     }
     while (latestClick < now + schedulingPeriod) {
-      // if (clicksRef.current.length) {
-        latestClick = latestClick + delay! / 1000;
-      // }
+      latestClick = latestClick + delay! / 1000;
       const osc = createOscillator(latestClick);
       clicksRef.current.push({ osc, time: latestClick });
     }
@@ -81,7 +79,10 @@ export function useMetronome({
       const loop = () => {
         if (audioContext && delay) {
           const now = audioContext.currentTime;
-          if (!previousScheduleTime || now > previousScheduleTime + schedulingInterval) {
+          if (
+            !previousScheduleTime ||
+            now > previousScheduleTime + schedulingInterval
+          ) {
             scheduleClicks();
             previousScheduleTime = now;
           }
@@ -90,7 +91,7 @@ export function useMetronome({
             clicksRef.current.length &&
             // give the visual click a small head start
             clicksRef.current[0].time < now + 0.1
-            ) {
+          ) {
             // update DOM visual click when it is time
             savedCallback.current();
             clicksRef.current = clicksRef.current.slice(1);
@@ -99,14 +100,14 @@ export function useMetronome({
         animationFrameId = requestAnimationFrame(loop);
       };
 
-      // metronome runs only when delay is not undefined
+      // metronome runs only when delay is defined
       if (delay) {
         // start audioContext from first user play button click
-        // (change in this useEffect's delay value)
+        // (a change in this useEffect's delay value)
         if (!audioContext) setAudioContext(new AudioContext());
         animationFrameId = requestAnimationFrame(loop);
       }
-      
+
       // cleanup function (whenever delay changes)
       // stop and remove clicks, cancel animationFrame
       return () => {
