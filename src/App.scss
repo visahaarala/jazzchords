@@ -89,15 +89,13 @@ body {
   flex-direction: column;
 
   @media (pointer: fine) {
+    // container card styling only on desktop (not mobile)
     max-height: 40rem;
     max-width: 30rem;
-
-    // container card styling only on desktop (not mobile)
     background-color: var(--color-white);
     border-radius: 0.4rem;
     overflow: hidden;
     box-shadow: var(--container-box-shadow);
-
     border: var(--container-border);
   }
 }
