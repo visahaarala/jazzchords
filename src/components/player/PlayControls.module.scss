@@ -1,5 +1,13 @@
 .controls {
-  height: 8rem;
+  align-self: stretch;
+
+  // height: 8rem;
+  min-height: 8rem;
+  @media (pointer: coarse) {
+    height: 20dvh;
+  }
+
+
   display: flex;
   gap: 1.5rem;
 

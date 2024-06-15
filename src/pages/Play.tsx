@@ -1,21 +1,19 @@
 import styles from './Play.module.scss';
-import Chord from '../components/chords/Chord';
-import PlayControls from '../components/player/PlayControls';
-import Beats from '../components/beats/Beats';
 import DisplaySleepComment from '../components/misc/PlayInstructions';
+import Chords from '../components/chords/Chords';
+import Beats from '../components/beats/Beats';
+import PlayControls from '../components/player/PlayControls';
 
 const Play = () => {
+
   return (
     <>
       <div className={styles.playPage}>
         <DisplaySleepComment />
-        <div className={styles.chords}>
-          <Chord size={1.4} />
-          <Chord indexOffset={1} size={0.8} contrast={50} />
-        </div>
-        <div className={styles.beats}>
+        <Chords />
+        {/* <div className={styles.beats}> */}
           <Beats />
-        </div>
+        {/* </div> */}
         <div className={styles.controls}>
           <PlayControls />
         </div>

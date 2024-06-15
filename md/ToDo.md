@@ -6,13 +6,16 @@
 
 - buttons height dvh when pointer coarse
 
-- Settings: toggle click anywhere (container background) for next chord
+- Make PWA update automatically
 
-- Player: click anywhere (container background) for next chord
+- Settings: toggle click anywhere (container background) for next chord (??)
+
+- Player: click anywhere (container background) for next chord.. or by clicking the CHORD (area)!!
 
 - Mobile button click visual (now no visual cue in player)
 
 - Take example from other websites / css lessons
+
 
 #### maybe done
 

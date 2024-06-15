@@ -1,8 +1,9 @@
 .beats {
+  align-self: center;
   margin-bottom: 1.5rem;
-  height: 1.3rem;
+  padding: 0.5rem;
   cursor: pointer;
+
   display: flex;
   gap: 0.5rem;
-  align-items: center;
 }
