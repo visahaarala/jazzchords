@@ -1,9 +1,11 @@
 .comment {
+  margin-top: -0.5rem;
+
   color: var(--color-gray-dark);
   text-align: justify;
   font-size: 0.8rem;
 
   &:not(:first-of-type) {
-    margin-top: 0.2rem;
+    margin-top: 0.5rem;
   }
 }

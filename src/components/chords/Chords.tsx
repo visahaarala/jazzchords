@@ -21,7 +21,7 @@ const Chords = () => {
   return (
     <div className={styles.chords} onClick={nextChord}>
       <Chord size={1.4} />
-      <Chord indexOffset={1} size={0.8} contrast={50} />
+      <Chord indexOffset={1} size={0.75} contrast={50} />
     </div>
   );
 };
