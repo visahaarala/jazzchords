@@ -2,4 +2,8 @@
   color: var(--color-gray-dark);
   text-align: justify;
   font-size: 0.8rem;
+
+  &:not(:first-of-type) {
+    margin-top: 0.2rem;
+  }
 }

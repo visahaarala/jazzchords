@@ -6,10 +6,15 @@ const DisplaySleepComment = () => {
   return (
     <>
       {isMobile ? (
-        <p className={styles.comment}>
-          Prevent screen timout / sleep / auto-lock from settings if necessary.
-          Turn off silent mode to hear the click.
-        </p>
+        <>
+          <p className={styles.comment}>
+            Turn off silent mode to hear the click.
+          </p>
+          <p className={styles.comment}>
+            Prevent screen timout / sleep / auto-lock from settings if
+            necessary.
+          </p>
+        </>
       ) : (
         ''
       )}
