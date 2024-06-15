@@ -19,17 +19,19 @@ const Navigation = () => {
     }
   };
 
-  const color = (name: string) => {
-    if ('/' + name === pathname) {
-      return 'var(--color-link)';
+  const color = (paths: string[]) => {
+    for (const path of paths) {
+      if ('/' + path === pathname) {
+        return 'var(--color-link)';
+      }
     }
   };
 
   const navIcons = {
-    info: <InfoIcon color={color('info')} />,
-    metronome: <MetronomeIcon color={color('metronome')} />,
-    settings: <SettingsIcon color={color('settings')} />,
-    play: <PlayIcon color={color('play')} />,
+    info: <InfoIcon color={color(['info'])} />,
+    metronome: <MetronomeIcon color={color(['metronome'])} />,
+    settings: <SettingsIcon color={color(['settings'])} />,
+    play: <PlayIcon color={color(['', 'play'])} />,
   };
 
   return (

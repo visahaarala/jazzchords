@@ -5,20 +5,13 @@ import Beats from '../components/beats/Beats';
 import PlayControls from '../components/player/PlayControls';
 
 const Play = () => {
-
   return (
-    <>
-      <div className={styles.playPage}>
-        <DisplaySleepComment />
-        <Chords />
-        {/* <div className={styles.beats}> */}
-          <Beats />
-        {/* </div> */}
-        <div className={styles.controls}>
-          <PlayControls />
-        </div>
-      </div>
-    </>
+    <div className={styles.play}>
+      <DisplaySleepComment />
+      <Chords />
+      <Beats />
+      <PlayControls />
+    </div>
   );
 };
 
