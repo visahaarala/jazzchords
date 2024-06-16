@@ -10,6 +10,8 @@ MACBOOK
 
 - Player: Chord symbols unselectable
 
+GITHUB
+
 - Make PWA update automatically
 
 - Settings: toggle click anywhere (container background) for next chord (??)
