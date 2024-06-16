@@ -4,7 +4,7 @@
 
 - iPad size increase font
 
-- iPhone size detect landscape & change layout
+- iPhone size detect landscape & change layout - make playcontrols a GRID, easier to change with CSS
 
 - Player: Chord symbols unselectable
 
