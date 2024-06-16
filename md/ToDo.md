@@ -2,6 +2,10 @@
 
 #### now
 
+- iPad size increase font
+
+- iPhone size detect landscape & change layout
+
 - Player: Chord symbols unselectable
 
 - buttons height dvh when pointer coarse
