@@ -4,8 +4,6 @@
 
 - Player: Chord symbols unselectable
 
-- buttons height dvh when pointer coarse
-
 - Make PWA update automatically
 
 - Settings: toggle click anywhere (container background) for next chord (??)
@@ -18,6 +16,8 @@
 
 
 #### maybe done
+
+- buttons height dvh when pointer coarse
 
 - PWA, icon, etc
 
