@@ -2,6 +2,8 @@
 
 #### now
 
+GITHUB
+
 - iPad size increase font
 
 - iPhone size detect landscape & change layout
