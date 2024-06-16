@@ -4,6 +4,8 @@
 
 - iPad size increase font
 
+MACBOOK
+
 - iPhone size detect landscape & change layout
 
 - Player: Chord symbols unselectable
