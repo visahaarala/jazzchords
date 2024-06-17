@@ -19,7 +19,7 @@ const Navigation = () => {
     }
   };
 
-  const navIcons = {
+    const navIcons = {
     info: <InfoIcon />,
     metronome: <MetronomeIcon />,
     settings: <SettingsIcon />,

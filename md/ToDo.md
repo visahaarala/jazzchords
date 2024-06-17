@@ -18,7 +18,6 @@
 
 - Take example from other websites / css lessons
 
-
 #### maybe done
 
 - buttons height dvh when pointer coarse
