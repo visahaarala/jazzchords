@@ -2,7 +2,7 @@
 
 #### now
 
-- change color names
+- jazzchords.singingtrumpet.com
 
 - iPad size increase font
 
