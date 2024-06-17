@@ -134,6 +134,7 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
       return {
         ...state,
         chordList: [...state.chordList, generateChords(1, state)[0]],
+        chordIndex: state.chordIndex + 1,
       };
     }
     case 'INCREMENT_CHORD_INDEX': {

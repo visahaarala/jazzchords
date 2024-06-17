@@ -1,6 +1,5 @@
 import { KeyboardEvent } from 'react';
 import styles from './PlayButton.module.scss';
-// import PlayButtonIcon from '../icons/play/PlayButtonIcon';
 
 const PlayButton = ({
   icon,

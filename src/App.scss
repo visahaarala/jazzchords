@@ -20,13 +20,8 @@ h2
   --color-gray-dark: #bbb;
   --color-black: #fafafa;
 
-  // --color-link: #59f;
-  // --color-link: #39c;
   --color-link: #4ad;
-  // --color-link-light: #8be; 
-  // --container-box-shadow: 0 0 8rem rgba(255, 255, 255, 0.05);
   --container-box-shadow: 0 0 20rem rgba(0, 0, 0, 0.7);
-  // --container-border: 1px solid var(--color-white);
   --container-border: 1px solid var(--color-gray-light);
 
   --outline-focus: solid 0.15rem var(--color-link);
@@ -138,11 +133,11 @@ h2 {
 
   padding: 0.7rem 1.2rem; // default padding
 
-  &:focus {
+  &:focus, &:hover {
     outline: var(--outline-focus);
   }
 
   &:hover {
-    box-shadow: var(--shadow-hover);
+    // box-shadow: var(--shadow-hover);
   }
 }

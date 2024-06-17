@@ -19,19 +19,17 @@ const Navigation = () => {
     }
   };
 
-  const color = (paths: string[]) => {
-    for (const path of paths) {
-      if ('/' + path === pathname) {
-        return 'var(--color-link)';
-      }
-    }
+  const navIcons = {
+    info: <InfoIcon />,
+    metronome: <MetronomeIcon />,
+    settings: <SettingsIcon />,
+    play: <PlayIcon />,
   };
 
-  const navIcons = {
-    info: <InfoIcon color={color(['info'])} />,
-    metronome: <MetronomeIcon color={color(['metronome'])} />,
-    settings: <SettingsIcon color={color(['settings'])} />,
-    play: <PlayIcon color={color(['', 'play'])} />,
+  const liStyle = (navName: string): React.CSSProperties | undefined => {
+    if ('/' + navName === pathname) {
+      return { color: 'var(--color-link)' };
+    }
   };
 
   return (
@@ -39,7 +37,7 @@ const Navigation = () => {
       <ul>
         {Object.keys(navIcons).map((key) => {
           return (
-            <li key={key}>
+            <li key={key} style={liStyle(key)}>
               <NavLink to={key} onKeyDown={(e) => keyDownHandler(e, key)}>
                 {navIcons[key as keyof typeof navIcons]}
               </NavLink>

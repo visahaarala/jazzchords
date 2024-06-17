@@ -13,8 +13,9 @@ const Chords = () => {
     if (isMobile) {
       if (chordIndex >= chordList.length - 2) {
         dispatch({ type: 'APPEND_CHORD_LIST' });
+      } else {
+        dispatch({ type: 'INCREMENT_CHORD_INDEX' });
       }
-      dispatch({ type: 'INCREMENT_CHORD_INDEX' });
     }
   };
 

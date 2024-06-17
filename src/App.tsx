@@ -1,5 +1,10 @@
 import './App.scss';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+  redirect,
+} from 'react-router-dom';
 import RootLayout from './pages/RootLayout';
 import ErrorPage from './pages/ErrorPage';
 import Play from './pages/Play';
@@ -13,7 +18,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <Play /> },
+      { index: true, loader: async () => redirect('/play') },
       { path: 'play', element: <Play /> },
       {
         path: 'metronome',

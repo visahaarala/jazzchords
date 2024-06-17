@@ -4,7 +4,7 @@
 
 A tool for practicing random jazz chords.
 
-Written with React, Typescript & SCSS.
+Written with React, Typescript & SCSS using [Vite](https://vitejs.dev).
 
 This program is a Progressive Web App. It can be installed on the home screen of mobile devices (Android, iOS).
 
@@ -47,7 +47,7 @@ Tested desktop browsers (on Mac Os X): Chrome, Safari, Opera and Firefox. Best d
 #### Detect mobile or desktop
 
 @media (pointer: coarse)
-vs. 
+vs.
 @media (pointer: fine)
 
 #### Vercel with react router
@@ -68,11 +68,8 @@ To check website quality.
 
 [Vite PWA](https://vite-pwa-org.netlify.app/guide/)
 
-[Learn PWA](https://web.dev/learn/pwa/)
-
 #### PWA icons
 
 Icons are generated from svg files in ./icons/svg folder by using [Favicon InBrowser.App](https://favicon.inbrowser.app/tools/favicon-generator).
 
 Further instructions for PWA icons in [https://vite-pwa-org.netlify.app/guide/pwa-minimal-requirements.html](https://vite-pwa-org.netlify.app/guide/pwa-minimal-requirements.html).
-
