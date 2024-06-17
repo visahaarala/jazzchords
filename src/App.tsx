@@ -1,6 +1,5 @@
 import './App.scss';
 import {
-  Navigate,
   RouterProvider,
   createBrowserRouter,
   redirect,
