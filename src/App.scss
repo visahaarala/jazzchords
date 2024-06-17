@@ -1,31 +1,25 @@
-/*
-
-Main SCSS file including also global:
-
-.container
-main
-footer
-h2
-.button
-
-*/
-
 :root {
   --border-radius: 0.3rem;
-  --transition: 0.1s all;
+  --transition: 0.5s all;
 
-  --color-one: #101418;
-  --color-gray-lighter: #333;
-  --color-gray-light: #444;
-  --color-gray-dark: #bbb;
-  --color-black: #fafafa;
+  --color-black: #101418;
+  --color-gray: #444;
+  --color-gray-light: #bbb;
+  --color-white: #fafafa;
 
   --color-link: #4ad;
-  --container-box-shadow: 0 0 20rem rgba(0, 0, 0, 0.7);
-  --container-border: 1px solid var(--color-gray-light);
+  // body: link color darkened & desaturated (https://mdigi.tools)
+  --color-body: #0e374c;
+  --color-body: #1e323c;
+  --color-body: #394951;
+  --color-body: #294552;
+  --color-body: #30424b;
+  --color-body: #304c5a;
+  
+  --container-box-shadow: 0 0 20rem rgba(0, 0, 0, 0.4);
+  --container-border: 1px solid var(--color-gray);
 
   --outline-focus: solid 0.15rem var(--color-link);
-
   @media (pointer: coarse) {
     // no focus outline on mobile devices
     --outline-focus: none;
@@ -44,37 +38,30 @@ h2
 *::after {
   box-sizing: border-box;
 }
-html {
-  font-size: 100%;
-}
 
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: var(--transition);
 
-  background-color: var(--color-one);
+  background-color: var(--color-black);
   @media (pointer: fine) {
     // container card styling only on desktop (not mobile)
-    background-color: var(--color-gray-lighter);
+    background-color: var(--color-body);
   }
 
   min-height: 80vh; // fallback for older browsers
   min-height: 100dvh;
 
   font-family: sans-serif;
-  color: var(--color-black);
+  color: var(--color-white);
   letter-spacing: 0.02rem;
 }
 
 .container {
-  position: relative;
-
-  // height: 80vh; // fallback for older browsers
   height: 100dvh;
   width: 100vw;
-
+  // position: relative;
   display: flex;
   flex-direction: column;
 
@@ -82,7 +69,7 @@ body {
     // container card styling only on desktop (not mobile)
     max-height: 40rem;
     max-width: 30rem;
-    background-color: var(--color-one);
+    background-color: var(--color-black);
     border-radius: 0.4rem;
     overflow: hidden;
     box-shadow: var(--container-box-shadow);
@@ -101,38 +88,32 @@ main {
 footer {
   flex: 0;
   padding: 1.5rem 1rem 2rem 1rem;
-  background-color: var(--color-gray-light);
-  border-top: 1px solid var(--color-gray-dark);
+  background-color: var(--color-gray);
+  border-top: 1px solid var(--color-gray-light);
 }
 
 h2 {
   font-weight: normal;
   font-size: 1.2rem;
   padding-bottom: 0.1rem;
-  color: var(--color-gray-dark);
+  color: var(--color-gray-light);
   border-bottom: 1px solid currentColor;
   margin-bottom: 2.2rem;
-
-  // for the text
   display: flex;
   justify-content: end;
 }
 
 .button {
-  background-color: var(--color-gray-light);
+  background-color: var(--color-gray);
   border-radius: var(--border-radius);
-  border: 1px solid var(--color-gray-dark);
+  border: 1px solid var(--color-gray-light);
   color: inherit;
   font-family: inherit;
   cursor: pointer;
+  padding: 0.7rem 1.2rem;
 
-  padding: 0.7rem 1.2rem; // default padding
-
-  &:focus, &:hover {
-    outline: var(--outline-focus);
-  }
-
+  &:focus,
   &:hover {
-    // box-shadow: var(--shadow-hover);
+    outline: var(--outline-focus);
   }
 }

@@ -16,16 +16,20 @@
 
         border-radius: var(--border-radius);
 
-        &:focus, &:hover {
+        &:focus,
+        &:hover {
           outline: none;
 
-          &::after {
-            margin: auto;
-            content: '';
-            display: block;
-            height: 0.1rem;
-            width: 60%;
-            background-color: var(--color-link);
+          @media (pointer: fine) {
+            // show focus only on desktop
+            &::after {
+              margin: auto;
+              content: '';
+              display: block;
+              height: 0.1rem;
+              width: 60%;
+              background-color: var(--color-link);
+            }
           }
         }
 

@@ -8,7 +8,7 @@ const LightIcon = ({ isOn }: { isOn: boolean }) => {
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
       <path
         fill='none'
-        stroke={isOn ? 'var(--color-black)' : 'var(--color-gray-dark)'}
+        stroke={isOn ? 'var(--color-white)' : 'var(--color-gray-light)'}
         strokeLinecap='round'
         strokeMiterlimit='10'
         strokeWidth={isOn ? '42' : '28'}
@@ -19,7 +19,7 @@ const LightIcon = ({ isOn }: { isOn: boolean }) => {
         cy='256'
         r='80'
         fill='none'
-        stroke={isOn ? 'var(--color-black)' : 'var(--color-gray-dark)'}
+        stroke={isOn ? 'var(--color-white)' : 'var(--color-gray-light)'}
         strokeLinecap='round'
         strokeMiterlimit='10'
         strokeWidth={isOn ? '42' : '28'}
