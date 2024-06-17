@@ -6,6 +6,8 @@
   align-items: center;
   justify-content: space-evenly;
 
-  // click this area to update chord
+  user-select: none;
+
+  // wider area to click to update chord
   align-self: stretch;
 }

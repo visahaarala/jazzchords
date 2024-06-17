@@ -25,14 +25,10 @@ h2
   --container-border: 1px solid var(--color-gray-light);
 
   --outline-focus: solid 0.15rem var(--color-link);
-  --border-hover: solid 0.15rem var(--color-link);
-  --shadow-hover: inset 0 0 0.4rem var(--color-link);
 
   @media (pointer: coarse) {
     // no focus outline on mobile devices
     --outline-focus: none;
-    --border-hover: none;
-    --shadow-hover: none;
   }
 }
 
@@ -67,7 +63,6 @@ body {
   min-height: 80vh; // fallback for older browsers
   min-height: 100dvh;
 
-  /* font */
   font-family: sans-serif;
   color: var(--color-black);
   letter-spacing: 0.02rem;
