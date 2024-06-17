@@ -8,7 +8,7 @@ const BeatCirle = ({ beatNumber }: { beatNumber: number }) => {
 
   const style: React.CSSProperties = {
     backgroundColor:
-      beat >= beatNumber ? 'var(--color-black)' : 'var(--color-white)',
+      beat >= beatNumber ? 'var(--color-black)' : 'var(--color-one)',
   };
 
   return <div className={styles.beatCircle} style={style} />;

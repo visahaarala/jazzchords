@@ -51,3 +51,9 @@ To check website quality
 Icons are generated from svg files in ./source folder by using [Favicon InBrowser.App](https://favicon.inbrowser.app/tools/favicon-generator).
 
 Further instructions for PWA icons in [https://vite-pwa-org.netlify.app/guide/pwa-minimal-requirements.html](https://vite-pwa-org.netlify.app/guide/pwa-minimal-requirements.html).
+
+#### changing a css var name in multiple files
+
+```
+grep -rl 'color-white' | xargs -I % sed -i '.bak' 's/color-white/color-one/g' %
+```

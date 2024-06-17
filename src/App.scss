@@ -14,7 +14,7 @@ h2
   --border-radius: 0.3rem;
   --transition: 0.1s all;
 
-  --color-white: #101418;
+  --color-one: #101418;
   --color-gray-lighter: #333;
   --color-gray-light: #444;
   --color-gray-dark: #bbb;
@@ -54,7 +54,7 @@ body {
   align-items: center;
   transition: var(--transition);
 
-  background-color: var(--color-white);
+  background-color: var(--color-one);
   @media (pointer: fine) {
     // container card styling only on desktop (not mobile)
     background-color: var(--color-gray-lighter);
@@ -82,7 +82,7 @@ body {
     // container card styling only on desktop (not mobile)
     max-height: 40rem;
     max-width: 30rem;
-    background-color: var(--color-white);
+    background-color: var(--color-one);
     border-radius: 0.4rem;
     overflow: hidden;
     box-shadow: var(--container-box-shadow);

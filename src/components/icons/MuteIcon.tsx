@@ -16,7 +16,7 @@ const MuteIcon = ({ isOn }: { isOn: boolean }) => {
       />
       <path
         fill='none'
-        stroke={isOn ? 'none' : 'var(--color-white)'}
+        stroke={isOn ? 'none' : 'var(--color-one)'}
         strokeLinecap='round'
         strokeMiterlimit='10'
         strokeWidth='128'
