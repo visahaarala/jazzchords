@@ -77,8 +77,8 @@ const Metronome = () => {
   });
 
   return (
-    <>
-      <div className={styles.metronome}>
+    <div className={styles.metronome}>
+      <div className={styles.top}>
         <DisplaySleepComment />
         <div
           className={`${styles.tempo} ${
@@ -90,6 +90,8 @@ const Metronome = () => {
         >
           {tempo}
         </div>
+      </div>
+      <div className={styles.bottom}>
         {isMobile ? (
           <input
             className={styles.range}
@@ -142,8 +144,8 @@ const Metronome = () => {
           </div>
           <MetronomeMute />
         </div>
-      </div>
-    </>
+      </div>{' '}
+    </div>
   );
 };
 

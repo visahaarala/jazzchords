@@ -7,10 +7,14 @@ import PlayControls from '../components/player/PlayControls';
 const Play = () => {
   return (
     <div className={styles.play}>
-      <DisplaySleepComment />
-      <Chords />
-      <Beats />
-      <PlayControls />
+      <div>
+        <DisplaySleepComment />
+        <Chords />
+        <Beats />
+      </div>
+      <div>
+        <PlayControls />
+      </div>
     </div>
   );
 };

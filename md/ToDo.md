@@ -2,7 +2,7 @@
 
 #### now
 
-- jazzchords.singingtrumpet.com
+- metronome light & mute icons FIX to icons in the icons folder
 
 - iPad size increase font
 

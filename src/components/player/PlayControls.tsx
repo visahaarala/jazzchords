@@ -77,17 +77,13 @@ const PlayControls = () => {
 
   return (
     <div className={styles.controls}>
-      <div>
-        <PlayButton
-          onClick={() => setPlay(!play)}
-          icon={play ? <PauseIcon /> : <PlayIcon />}
-          id='play' // for click light
-        />
-        <PlayButton onClick={previousHandler} icon={<PreviousIcon />} />
-      </div>
-      <div>
-        <PlayButton onClick={nextHandler} icon={<NextIcon />} />
-      </div>
+      <PlayButton
+        onClick={() => setPlay(!play)}
+        icon={play ? <PauseIcon /> : <PlayIcon />}
+        id='play' // for click light
+      />
+      <PlayButton onClick={previousHandler} icon={<PreviousIcon />} />
+      <PlayButton onClick={nextHandler} icon={<NextIcon />} />
     </div>
   );
 };

@@ -6,4 +6,8 @@
 
   display: flex;
   gap: 0.5rem;
+
+  @media (orientation: landscape) {
+    margin-bottom: 0;
+  }
 }

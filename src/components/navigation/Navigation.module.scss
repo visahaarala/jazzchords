@@ -1,8 +1,17 @@
 .navigation {
+  @media (orientation: landscape) {
+    height: 100%;
+  }
+
   ul {
     list-style: none;
     display: flex;
     justify-content: space-evenly;
+
+    @media (orientation: landscape) {
+      height: 100%;
+      flex-direction: column;
+    }
 
     li {
       $size: 2.4rem;

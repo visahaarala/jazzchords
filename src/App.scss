@@ -21,11 +21,11 @@
   --color-body: #30424b;
   --color-body: #105653;
   --color-body: #1e323c;
-  
+
   --box-shadow-container: 0 0 20rem rgba(0, 0, 0, 0.5);
-  --box-shadow-container: 0 0 20rem rgba(255, 255, 255, .8);
-  --box-shadow-metronome: inset 0 0 1rem rgba(255, 255, 255, .3);
-  
+  --box-shadow-container: 0 0 20rem rgba(255, 255, 255, 0.8);
+  --box-shadow-metronome: inset 0 0 1rem rgba(255, 255, 255, 0.3);
+
   --border-container: none;
 
   --outline-focus: solid 0.15rem var(--color-link);
@@ -84,6 +84,10 @@ body {
     box-shadow: var(--box-shadow-container);
     border: var(--border-container);
   }
+
+  @media (orientation: landscape) {
+    flex-direction: row;
+  }
 }
 
 main {
@@ -95,10 +99,14 @@ main {
 }
 
 footer {
-  flex: 0;
   padding: 1.5rem 1rem 2rem 1rem;
   background-color: var(--color-gray);
   border-top: 1px solid var(--color-gray-light);
+
+  @media (orientation: landscape) {
+    padding: 0 1rem;
+    border-top: none;
+  }
 }
 
 h2 {
@@ -110,6 +118,11 @@ h2 {
   margin-bottom: 2.2rem;
   display: flex;
   justify-content: end;
+
+  @media (orientation: landscape) and (max-height: 25em) {
+    // 25em = 400px (default: 16px/em)
+    display: none;
+  }
 }
 
 .button {
