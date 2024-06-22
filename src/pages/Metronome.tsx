@@ -56,15 +56,15 @@ const Metronome = () => {
   useMetronome({
     callBack: () => {
       if (flashIsOn) {
-        document.getElementsByTagName('body')[0].style.filter =
-          'invert(100%) hue-rotate(180deg) brightness(.5)';
+        document.getElementById('container')!.style.filter =
+          'invert(100%) hue-rotate(180deg) brightness(.8)';
       } else {
         document.getElementById('metronomeStart')!.style.filter =
           'brightness(2)';
       }
       setTimeout(() => {
         if (flashIsOn) {
-          document.getElementsByTagName('body')[0].style.filter =
+          document.getElementById('container')!.style.filter =
             'invert(0) hue-rotate(0) brightness(1)';
         } else {
           document.getElementById('metronomeStart')!.style.filter =

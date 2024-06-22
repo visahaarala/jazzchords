@@ -10,22 +10,23 @@
   --color-link: #4ad;
   // body: link color darkened & desaturated (https://mdigi.tools)
   --color-body: #294552;
-  --color-body: #1e323c;
-  --color-body: #30424b;
   --color-body: #304c5a;
   --color-body: #0e374c;
-  --color-body: #2d3539;
-  --color-body: #105653;
   --color-body: #eee;
   --color-body: #2f3737;
   --color-body: #351056;
   --color-body: #3f515a;
+  --color-body: #2d3539;
   --color-body: #394951;
-
+  --color-body: #30424b;
+  --color-body: #105653;
+  --color-body: #1e323c;
+  
   --box-shadow-container: 0 0 20rem rgba(0, 0, 0, 0.5);
+  --box-shadow-container: 0 0 20rem rgba(255, 255, 255, .8);
   --box-shadow-metronome: inset 0 0 1rem rgba(255, 255, 255, .3);
   
-  --border-container: 1px solid var(--color-gray);
+  --border-container: none;
 
   --outline-focus: solid 0.15rem var(--color-link);
   @media (pointer: coarse) {

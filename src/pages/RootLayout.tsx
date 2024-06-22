@@ -6,7 +6,7 @@ import MetronomeContextProvider from '../context/MetronomeContext';
 const RootLayout = () => (
   <MetronomeContextProvider>
     <ReducerContextProvider>
-      <div className='container'>
+      <div className='container' id='container'>
         <main>
           <h2>jazzchords</h2>
           <Outlet />
