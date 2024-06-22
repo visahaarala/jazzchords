@@ -3,7 +3,7 @@ Icon modified from "sunny-outline",
 downloaded from https://ionic.io/ionicons with MIT license.
 */
 
-const LightIcon = ({ isOn }: { isOn: boolean }) => {
+const LightIcon = ({ isOn }: { isOn?: boolean }) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
       <path

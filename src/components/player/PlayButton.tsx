@@ -19,7 +19,7 @@ const PlayButton = ({
 
   return (
     <div
-      className={`button ${styles.playButton}`}
+      className={`button`}
       onClick={onClick}
       onKeyDown={keyDownHandler}
       tabIndex={0}

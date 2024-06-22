@@ -13,9 +13,20 @@
     margin-bottom: 0.8rem;
     border-bottom: 2px solid var(--color-gray);
 
-    @media (orientation: landscape) and (max-height: 25rem) {
-      // 25rem = 400px
-      margin-top: 0;
+    @media (orientation: landscape) {
+      @media (max-height: 30rem) {
+        // 480px
+        margin-top: 1.5rem;
+      }
+      @media (max-height: 27em) {
+        // 432px
+        margin-top: 1rem;
+      }
+      @media (max-height: 21em) {
+        // 336px
+        margin-top: 0.4rem;
+        margin-bottom: 0.6rem;
+      }
     }
   }
 

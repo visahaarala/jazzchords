@@ -1,5 +1,7 @@
 .metronome {
   height: 100%;
+  // flex: 1;
+  // background-color: lightcyan;
   display: flex;
   flex-direction: column;
 
@@ -38,7 +40,7 @@
   }
 
   .bottom {
-    background-color: lightcoral;
+    // background-color: lightcoral;
 
     display: flex;
     flex-direction: column;
@@ -60,12 +62,9 @@
         width: 0.7rem;
         margin-left: 2rem;
         margin-bottom: 0;
-        background-color: blue;
-        // transform: rotate(90) translateX(2rem);
         writing-mode: vertical-rl;
         direction: rtl;
-      }  
-  
+      }
 
       &::-webkit-slider-thumb {
         appearance: none;
@@ -97,12 +96,62 @@
         }
       }
 
-      .start {
-        text-align: center;
-        grid-column: 2 / 4;    
+      .icon {
+        align-self: center;
+        justify-self: center;
+        border-radius: var(--border-radius);
+        height: 2.4rem;
+        width: 2.4rem;
+        cursor: pointer;
+
+        &:focus,
+        &:hover {
+          outline: var(--outline-focus);
+        }
       }
 
-      
+      .start {
+        grid-column: 2 / 4;
+      }
+
+      @media (orientation: landscape) {
+        grid-template-columns: repeat(2, 1fr);
+
+        .light {
+          grid-column: 1;
+          grid-row: 1;
+        }
+
+        .mute {
+          grid-column: 1;
+          grid-row: 2;
+        }
+
+        .plusfive {
+          grid-column: 2;
+          grid-row: 1;
+        }
+
+        .plusone {
+          grid-column: 3;
+          grid-row: 1;
+        }
+
+        .minusone {
+          grid-column: 3;
+          grid-row: 2;
+        }
+
+        .minusfive {
+          grid-column: 2;
+          grid-row: 2;
+        }
+
+        .start {
+          grid-row: 3;
+          grid-column: 1 / 4;
+        }
+      }
     }
   }
 }

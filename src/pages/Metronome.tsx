@@ -4,8 +4,8 @@ import { useContext, useEffect, useState } from 'react';
 import { useMetronome } from '../hooks/useMetronome';
 import { MetronomeContext } from '../context/MetronomeContext';
 import DisplaySleepComment from '../components/misc/PlayInstructions';
-import MetronomeLight from '../components/metronome/MetronomeLight';
-import MetronomeMute from '../components/metronome/MetronomeMute';
+import LightIcon from '../components/icons/LightIcon';
+import MuteIcon from '../components/icons/MuteIcon';
 
 const min = 20;
 const max = 300;
@@ -15,8 +15,8 @@ const Metronome = () => {
 
   const ctx = useContext(MetronomeContext);
   const [tempo, setTempo] = ctx.tempoState;
-  const [isMuted] = ctx.mutedState;
-  const [flashIsOn] = ctx.flashState;
+  const [isMuted, setIsmuted] = ctx.mutedState;
+  const [flashIsOn, setFlashIsOn] = ctx.flashState;
 
   const [play, setPlay] = useState(false);
   const [delay, setDelay] = useState<number>();
@@ -108,16 +108,28 @@ const Metronome = () => {
         <div className={styles.grid}>
           {isMobile ? (
             <>
-              <div onClick={tempoDown.bind(null, 5)} className='button'>
+              <div
+                onClick={tempoDown.bind(null, 5)}
+                className={`button ${styles.minusfive}`}
+              >
                 -5
               </div>
-              <div onClick={tempoDown.bind(null, 1)} className='button'>
+              <div
+                onClick={tempoDown.bind(null, 1)}
+                className={`button ${styles.minusone}`}
+              >
                 -1
               </div>
-              <div onClick={tempoUp.bind(null, 1)} className='button'>
+              <div
+                onClick={tempoUp.bind(null, 1)}
+                className={`button ${styles.plusone}`}
+              >
                 +1
               </div>
-              <div onClick={tempoUp.bind(null, 5)} className='button'>
+              <div
+                onClick={tempoUp.bind(null, 5)}
+                className={`button ${styles.plusfive}`}
+              >
                 +5
               </div>
             </>
@@ -132,7 +144,12 @@ const Metronome = () => {
               </p>
             </div>
           )}
-          <MetronomeLight />
+          <div
+            className={`${styles.icon} ${styles.light}`}
+            onClick={setFlashIsOn.bind(null, !flashIsOn)}
+          >
+            <LightIcon isOn={flashIsOn} />
+          </div>
           <div
             id={'metronomeStart'}
             onClick={setPlay.bind(null, !play)}
@@ -142,9 +159,14 @@ const Metronome = () => {
           >
             {play ? 'Stop' : 'Start'}
           </div>
-          <MetronomeMute />
+          <div
+            className={`${styles.icon} ${styles.mute}`}
+            onClick={setIsmuted.bind(null, !isMuted)}
+          >
+            <MuteIcon isOn={!isMuted} />
+          </div>
         </div>
-      </div>{' '}
+      </div>
     </div>
   );
 };
