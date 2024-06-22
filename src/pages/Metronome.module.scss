@@ -5,14 +5,22 @@
 
   .tempo {
     margin: auto;
-    width: 13rem;
+    width: 14rem;
     text-align: center;
     user-select: none;
     font-size: 6rem;
     padding: 1rem;
     border-radius: var(--border-radius);
-    &:focus {
+
+    &:focus,
+    &:hover {
       outline: var(--outline-focus);
+    }
+
+    &__play {
+      &:focus, &:hover {
+        box-shadow: var(--box-shadow-metronome);
+      }
     }
   }
 
