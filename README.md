@@ -6,11 +6,11 @@ A tool for practicing random jazz chords.
 
 This program is a Progressive Web App. It can be installed on the home screen of mobile devices (Android, iOS).
 
-Designed primarily for right handed user of a mobile phone (iPhone XS as a reference). Works both portrait & landscape.
+Designed primarily for a right-handed user of a mobile phone (iPhone XS as a reference). Works both portrait & landscape.
 
- but also works on desktop. On desktop, use (`shift`-)`tab`, `space`, `esc` and `arrow` keys for easier navigation while playing an instrument.
+On desktop, navigate with (`shift`-)`tab`, `space`, `esc` and `arrow` keys while playing an instrument.
 
-Tested desktop browsers (on Mac Os X): Chrome, Safari, Opera and Firefox. Best desktop browsers for this app seem to be Chrome and Opera.
+Tested desktop browsers (on Mac Os X): Chrome, Safari, Opera and Firefox. Chrome and Opera seem to work the best. Firefox has problems with chord layout. Safari has problems with `tab` navigation.
 
 Written with React, Typescript & SCSS using [Vite](https://vitejs.dev).
 
