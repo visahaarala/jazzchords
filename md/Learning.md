@@ -28,7 +28,7 @@ vs.
 
 #### Vercel with react router
 
-Add `vercel.json` at the root of the project:
+To use [React Router](https://reactrouter.com/en/main) with a Single Page Application, add `vercel.json` at the root of the project:
 
 ```json
 {
@@ -38,17 +38,15 @@ Add `vercel.json` at the root of the project:
 
 #### Chrome lighthouse
 
-To check website quality
+Check website quality.
 
 #### PWA
 
 [Vite PWA](https://vite-pwa-org.netlify.app/guide/)
 
-[Learn PWA](https://web.dev/learn/pwa/)
-
 #### PWA icons
 
-Icons are generated from svg files in ./source folder by using [Favicon InBrowser.App](https://favicon.inbrowser.app/tools/favicon-generator).
+Icons are generated from svg files by using [Favicon InBrowser.App](https://favicon.inbrowser.app/tools/favicon-generator).
 
 Further instructions for PWA icons in [https://vite-pwa-org.netlify.app/guide/pwa-minimal-requirements.html](https://vite-pwa-org.netlify.app/guide/pwa-minimal-requirements.html).
 
