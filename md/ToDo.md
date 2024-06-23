@@ -2,13 +2,13 @@
 
 #### now
 
+- bigger metronome buttons portrait
+
+- github info: created for right-handed
+
 - decrease font size for even smaller displays
 
 - Make PWA update automatically
-
-- button click visual cues
-
-- Take example from other websites / css lessons
 
 #### later
 
