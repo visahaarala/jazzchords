@@ -14,6 +14,6 @@
 
 - show random top note
 
-- sointuasteet
+- sointuasteet (roman numerals)
 
-- random base esim. C7/G
+- random base esim. C7/E
