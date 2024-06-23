@@ -4,16 +4,14 @@
 
 - bigger metronome buttons portrait
 
-- github info: created for right-handed
-
 - decrease font size for even smaller displays
 
-- Make PWA update automatically
+- make PWA update automatically
 
 #### later
 
 - show random top note
 
-- sointuasteet (roman numerals)
+- roman numerals
 
-- random base esim. C7/E
+- random base eg. C7/E
