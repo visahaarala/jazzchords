@@ -1,5 +1,5 @@
 import styles from './Play.module.scss';
-import DisplaySleepComment from '../components/misc/PlayInstructions';
+import DisplaySleepComment from '../components/sleepComment/DisplaySleepComment';
 import Chords from '../components/chords/Chords';
 import Beats from '../components/beats/Beats';
 import PlayControls from '../components/play/PlayControls';

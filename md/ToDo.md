@@ -6,6 +6,8 @@
 
 - decrease font size for even smaller displays
 
+- check larger mobile layout with ipad
+
 - make PWA update automatically
 
 #### later

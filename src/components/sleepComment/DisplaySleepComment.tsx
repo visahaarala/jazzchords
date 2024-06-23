@@ -1,4 +1,4 @@
-import styles from './PlayInstructions.module.scss';
+import styles from './DisplaySleepComment.module.scss';
 
 const DisplaySleepComment = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;
