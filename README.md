@@ -1,8 +1,8 @@
-# jazzchords
+# Jazz Chords
 
-[https://jazzchords.vercel.app](https://jazzchords.vercel.app)
+[https://jazzchords.singingtrumpet.com/](https://jazzchords.singingtrumpet.com/)
 
-A tool for practicing random jazz chords.
+A tool for practicing random chords.
 
 This program is a Progressive Web App. It can be installed on the home screen of mobile devices (Android, iOS).
 
