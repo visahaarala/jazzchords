@@ -93,15 +93,16 @@ const Metronome = () => {
       </div>
       <div className={styles.bottom}>
         {isMobile ? (
-          <input
-            className={styles.range}
-            tabIndex={-1}
-            type='range'
-            value={tempo}
-            onChange={(e) => rangeHandler(e.target.value)}
-            min={min}
-            max={max}
-          />
+          <div className={styles.range}>
+            <input
+              tabIndex={-1}
+              type='range'
+              value={tempo}
+              onChange={(e) => rangeHandler(e.target.value)}
+              min={min}
+              max={max}
+            />
+          </div>
         ) : (
           ''
         )}

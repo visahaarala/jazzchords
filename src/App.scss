@@ -6,26 +6,13 @@
   --color-gray: #444;
   --color-gray-light: #bbb;
   --color-white: #fafafa;
-
+  
   --color-link: #4ad;
-  // body: link color darkened & desaturated (https://mdigi.tools)
-  --color-body: #294552;
-  --color-body: #304c5a;
-  --color-body: #0e374c;
-  --color-body: #eee;
-  --color-body: #2f3737;
-  --color-body: #351056;
-  --color-body: #3f515a;
-  --color-body: #2d3539;
-  --color-body: #394951;
-  --color-body: #30424b;
-  --color-body: #105653;
+
   --color-body: #1e323c;
+  --box-shadow-container: 0 0 20rem rgba(255, 255, 255, 0.6);
 
-  --box-shadow-container: 0 0 20rem rgba(0, 0, 0, 0.5);
-  --box-shadow-container: 0 0 20rem rgba(255, 255, 255, 0.8);
   --box-shadow-metronome: inset 0 0 1rem rgba(255, 255, 255, 0.3);
-
   --border-container: none;
 
   --outline-focus: solid 0.15rem var(--color-link);
@@ -46,6 +33,31 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+html {
+  @media (pointer: coarse) {
+    @media (orientation: landscape) {
+      @media (min-height: 50em) {
+        // 800px
+        font-size: 120%;
+      }
+      @media (min-height: 70em) {
+        // 1120px
+        font-size: 140%;
+      }
+    }
+    @media (orientation: portrait) {
+      @media (min-width: 50em) {
+        // 800px
+        font-size: 120%;
+      }
+      @media (min-width: 70em) {
+        // 1120px
+        font-size: 150%;
+      }
+    }
+  }
 }
 
 body {
@@ -85,7 +97,7 @@ body {
     border: var(--border-container);
   }
 
-  @media (orientation: landscape) {
+  @media (pointer: coarse) and (orientation: landscape) {
     flex-direction: row;
   }
 }
@@ -103,9 +115,10 @@ footer {
   background-color: var(--color-gray);
   border-top: 1px solid var(--color-gray-light);
 
-  @media (orientation: landscape) {
+  @media (pointer: coarse) and (orientation: landscape) {
     padding: 0 1rem;
     border-top: none;
+    border-left: 1px solid var(--color-gray-light);
   }
 }
 
@@ -119,7 +132,7 @@ h2 {
   display: flex;
   justify-content: end;
 
-  @media (orientation: landscape) and (max-height: 25em) {
+  @media (pointer: coarse) and (orientation: landscape) and (max-height: 25em) {
     // 25em = 400px (default: 16px/em)
     display: none;
   }

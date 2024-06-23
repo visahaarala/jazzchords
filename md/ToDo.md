@@ -2,11 +2,7 @@
 
 #### now
 
-- mobile size change FOZI, detect separately for portrait & landscape, width controlling for portrait, height for landscape
-
-- iPhone size detect landscape & change layout - make playcontrols a GRID, easier to change with CSS
-
-- metronome light & mute icons FIX to icons in the icons folder
+- decrease font size for even smaller displays
 
 - Make PWA update automatically
 

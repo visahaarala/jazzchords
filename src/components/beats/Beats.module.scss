@@ -7,7 +7,7 @@
   display: flex;
   gap: 0.5rem;
 
-  @media (orientation: landscape) {
+  @media (pointer: coarse) and (orientation: landscape) {
     margin-bottom: 0;
   }
 }

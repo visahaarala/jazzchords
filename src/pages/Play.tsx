@@ -2,7 +2,7 @@ import styles from './Play.module.scss';
 import DisplaySleepComment from '../components/misc/PlayInstructions';
 import Chords from '../components/chords/Chords';
 import Beats from '../components/beats/Beats';
-import PlayControls from '../components/player/PlayControls';
+import PlayControls from '../components/play/PlayControls';
 
 const Play = () => {
   return (
@@ -12,9 +12,7 @@ const Play = () => {
         <Chords />
         <Beats />
       </div>
-      <div>
-        <PlayControls />
-      </div>
+      <PlayControls />
     </div>
   );
 };

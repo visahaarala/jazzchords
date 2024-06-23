@@ -1,16 +1,13 @@
 .metronome {
   height: 100%;
-  // flex: 1;
-  // background-color: lightcyan;
   display: flex;
   flex-direction: column;
 
-  @media (orientation: landscape) {
+  @media (pointer: coarse) and (orientation: landscape) {
     flex-direction: row;
   }
 
   .top {
-    height: 100%; // display: flex;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -40,39 +37,51 @@
   }
 
   .bottom {
-    // background-color: lightcoral;
-
     display: flex;
     flex-direction: column;
 
-    @media (orientation: landscape) {
+    @media (pointer: coarse) and (orientation: landscape) {
+      height: 100%;
       flex-direction: row-reverse;
+      flex-direction: column-reverse;
     }
 
-    input[type='range'] {
-      width: 100%;
-      appearance: none;
-      background-color: var(--color-gray);
-      border-radius: 2rem;
-      height: 0.7rem;
-      margin-bottom: 2rem;
-
-      @media (orientation: landscape) {
-        height: 100%;
-        width: 0.7rem;
-        margin-left: 2rem;
-        margin-bottom: 0;
-        writing-mode: vertical-rl;
-        direction: rtl;
-      }
-
-      &::-webkit-slider-thumb {
+    .range {
+      input[type='range'] {
+        width: 100%;
         appearance: none;
-        width: 2rem;
-        height: 2rem;
-        background-color: var(--color-black);
-        border: 2px solid var(--color-gray-light);
-        border-radius: 50%;
+        background-color: var(--color-gray);
+        border-radius: 2rem;
+        height: 0.7rem;
+        margin-bottom: 2rem;
+
+        @media (pointer: coarse) and (orientation: landscape) {
+          margin-top: 2rem;
+          margin-bottom: 0;
+        }
+
+        &::-webkit-slider-thumb {
+          appearance: none;
+          width: 2rem;
+          height: 2rem;
+          background-color: var(--color-black);
+          border: 2px solid var(--color-gray-light);
+          border-radius: 50%;
+        }
+      }
+    }
+
+    .icon {
+      align-self: center;
+      justify-self: center;
+      border-radius: var(--border-radius);
+      height: 2.4rem;
+      width: 2.4rem;
+      cursor: pointer;
+
+      &:focus,
+      &:hover {
+        outline: var(--outline-focus);
       }
     }
 
@@ -96,55 +105,46 @@
         }
       }
 
-      .icon {
-        align-self: center;
-        justify-self: center;
-        border-radius: var(--border-radius);
-        height: 2.4rem;
-        width: 2.4rem;
-        cursor: pointer;
-
-        &:focus,
-        &:hover {
-          outline: var(--outline-focus);
-        }
-      }
-
       .start {
         grid-column: 2 / 4;
       }
 
-      @media (orientation: landscape) {
-        grid-template-columns: repeat(2, 1fr);
+      @media (pointer: coarse) and (orientation: landscape) {
+        height: 100%;
+        width: 100%;
+        max-height: 16rem;
+
+        grid-template-columns: repeat(3, 1fr);
+        margin-right: 2.5rem;
 
         .light {
-          grid-column: 1;
           grid-row: 1;
+          grid-column: 1;
         }
 
         .mute {
+          grid-row: 2;
           grid-column: 1;
-          grid-row: 2;
-        }
-
-        .plusfive {
-          grid-column: 2;
-          grid-row: 1;
-        }
-
-        .plusone {
-          grid-column: 3;
-          grid-row: 1;
-        }
-
-        .minusone {
-          grid-column: 3;
-          grid-row: 2;
         }
 
         .minusfive {
+          grid-row: 1;
           grid-column: 2;
+        }
+
+        .plusfive {
+          grid-row: 1;
+          grid-column: 3;
+        }
+
+        .minusone {
           grid-row: 2;
+          grid-column: 2;
+        }
+
+        .plusone {
+          grid-row: 2;
+          grid-column: 3;
         }
 
         .start {
