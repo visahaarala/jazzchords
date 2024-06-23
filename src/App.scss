@@ -3,6 +3,7 @@
   --transition: 0.5s all;
 
   --color-black: #101418;
+  --color-gray-dark: #333;
   --color-gray: #444;
   --color-gray-light: #bbb;
   --color-white: #fafafa;
@@ -154,5 +155,10 @@ h2 {
   &:focus,
   &:hover {
     outline: var(--outline-focus);
+  }
+
+  transition: all .1s;
+  &:active {
+    background-color: var(--color-gray-dark);
   }
 }

@@ -22,13 +22,11 @@
         color: inherit;
         display: block;
         height: 100%;
-
         border-radius: var(--border-radius);
 
         &:focus,
         &:hover {
           outline: none;
-
           @media (pointer: fine) {
             // show focus only on desktop
             &::after {
