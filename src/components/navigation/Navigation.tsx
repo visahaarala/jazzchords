@@ -38,7 +38,7 @@ const Navigation = () => {
         {Object.keys(navIcons).map((key) => {
           return (
             <li key={key} style={liStyle(key)}>
-              <NavLink to={key} onKeyDown={(e) => keyDownHandler(e, key)}>
+              <NavLink to={key} onKeyDown={(e) => keyDownHandler(e, key)} aria-label={key}>
                 {navIcons[key as keyof typeof navIcons]}
               </NavLink>
             </li>
