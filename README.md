@@ -12,6 +12,6 @@ On desktop use (`shift`-)`tab`, `space`, `esc` and `arrow` keys to navigate.
 
 Tested desktop browsers (on Mac Os X): Chrome, Safari, Opera and Firefox. Chrome and Opera seem to work the best. Firefox has problems with chord layout. Safari has problems with `tab` navigation.
 
-Written with React, Typescript & SCSS using [Vite](https://vitejs.dev).
+Written with React, Typescript & SCSS using [Vite](https://vitejs.dev). Deployed at [vercel.com](vercel.com).
 
 More docs in [md folder](https://github.com/visahaarala/jazzchords/tree/main/md).
