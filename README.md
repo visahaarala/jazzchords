@@ -8,7 +8,7 @@ This program is a Progressive Web App. It can be installed on the home screen of
 
 Designed primarily for a right-handed user of a mobile phone (iPhone XS as a reference). Works both portrait & landscape.
 
-On desktop, navigate with (`shift`-)`tab`, `space`, `esc` and `arrow` keys while playing an instrument.
+On desktop use (`shift`-)`tab`, `space`, `esc` and `arrow` keys to navigate.
 
 Tested desktop browsers (on Mac Os X): Chrome, Safari, Opera and Firefox. Chrome and Opera seem to work the best. Firefox has problems with chord layout. Safari has problems with `tab` navigation.
 

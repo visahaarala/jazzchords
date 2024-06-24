@@ -7,8 +7,8 @@ import DisplaySleepComment from '../components/sleepComment/DisplaySleepComment'
 import MetronomeMute from '../components/metronome/MetronomeMute';
 import MetronomeLight from '../components/metronome/MetronomeLight';
 
-const min = 20;
-const max = 300;
+const min = 10;
+const max = 600;
 
 const Metronome = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;

@@ -12,10 +12,11 @@
 
   // body & container
   --color-body: #1e323c;
-  --box-shadow-container: 0 0 20rem rgba(255, 255, 255, 0.4);
+  --color-body: #495e51;
+  --box-shadow-container: 0 0 20rem rgba(255, 255, 255, 0.5);
   --border-container: none;
 
-  --box-shadow-metronome: inset 0 0 1rem rgba(255, 255, 255, 0.3);
+  --box-shadow-metronome: inset 0 0 1rem rgba(255, 255, 255, 0.5);
 
   --outline-focus: solid 0.15rem var(--color-link);
   @media (pointer: coarse) {
