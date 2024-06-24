@@ -56,7 +56,7 @@ const PlayControls = () => {
     callBack: () => {
       if (play) {
         const playButton = document.getElementById('play')!;
-        playButton.style.filter = 'brightness(1.4)';
+        playButton.style.filter = 'brightness(2)';
         setTimeout(() => {
           playButton.style.filter = 'brightness(1)';
           if (beatsPerChord != '∞') {
@@ -68,7 +68,7 @@ const PlayControls = () => {
               dispatch({ type: 'INCREMENT_BEAT' });
             }
           }
-        }, 50);
+        }, 100);
       }
     },
     delay: play ? (60 / Number(beatsPerMinute)) * 1000 : undefined,
