@@ -38,8 +38,17 @@
 }
 
 html {
+  @media (pointer: fine) {
+    @media (max-height: 42em) {
+      font-size: 80%;
+    }
+  }
   @media (pointer: coarse) {
     @media (orientation: landscape) {
+      @media (max-width: 38em) {
+        // 608px
+        font-size: 80%;
+      }
       @media (min-height: 50em) {
         // 800px
         font-size: 120%;
@@ -50,7 +59,10 @@ html {
       }
     }
     @media (orientation: portrait) {
-      @media (min-width: 50em) {
+      @media (max-height: 38em) {
+        font-size: 80%;
+      }
+      @media (min-width: 46em) {
         // 800px
         font-size: 120%;
       }
@@ -110,8 +122,8 @@ main {
   overflow: auto;
 
   padding: 1.5rem;
-  @media (min-height: 46em) or (pointer: fine) {
-    // min-height: 736px or not mobile
+  @media ((min-height: 46em) and (min-width: 46em)) or (pointer: fine) {
+    // min 736px x 736px or not mobile
     padding: 2rem;
   }
 }
@@ -138,9 +150,11 @@ h2 {
   display: flex;
   justify-content: end;
 
-  @media (pointer: coarse) and (orientation: landscape) and (max-height: 25em) {
-    // 25em = 400px (default: 16px/em)
-    display: none;
+  @media (pointer: coarse) {
+    @media (orientation: landscape) and (max-height: 23em) {
+      // 320px
+      display: none;
+    }
   }
 }
 
@@ -151,7 +165,7 @@ h2 {
   color: inherit;
   font-family: inherit;
   cursor: pointer;
-  padding: 0.7rem 1.2rem;
+  padding: 0.7rem 1rem;
 
   display: flex;
   align-items: center;

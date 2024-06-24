@@ -14,15 +14,15 @@
     border-bottom: 2px solid var(--color-gray);
 
     @media (orientation: landscape) {
-      @media (max-height: 30rem) {
-        // 480px
+      @media (max-height: 29rem) {
         margin-top: 1.5rem;
       }
-      @media (max-height: 27em) {
+      @media (max-height: 25em) {
         // 432px
-        margin-top: 1rem;
+        margin-top: 0.6rem;
+        margin-bottom: 0.6rem;
       }
-      @media (max-height: 21em) {
+      @media (max-height: 20em) {
         // 336px
         margin-top: 0.2rem;
         margin-bottom: 0.4rem;
