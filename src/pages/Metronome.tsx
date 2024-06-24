@@ -4,8 +4,8 @@ import { useContext, useEffect, useState } from 'react';
 import { useMetronome } from '../hooks/useMetronome';
 import { MetronomeContext } from '../context/MetronomeContext';
 import DisplaySleepComment from '../components/sleepComment/DisplaySleepComment';
-import LightIcon from '../components/icons/LightIcon';
-import MuteIcon from '../components/icons/MuteIcon';
+import MetronomeMute from '../components/metronome/MetronomeMute';
+import MetronomeLight from '../components/metronome/MetronomeLight';
 
 const min = 20;
 const max = 300;
@@ -15,8 +15,8 @@ const Metronome = () => {
 
   const ctx = useContext(MetronomeContext);
   const [tempo, setTempo] = ctx.tempoState;
-  const [isMuted, setIsmuted] = ctx.mutedState;
-  const [flashIsOn, setFlashIsOn] = ctx.flashState;
+  const [isMuted] = ctx.mutedState;
+  const [flashIsOn] = ctx.flashState;
 
   const [play, setPlay] = useState(false);
   const [delay, setDelay] = useState<number>();
@@ -145,12 +145,14 @@ const Metronome = () => {
               </p>
             </div>
           )}
-          <div
+          {/* <div
             className={`${styles.icon} ${styles.light}`}
             onClick={setFlashIsOn.bind(null, !flashIsOn)}
+            tabIndex={isMobile ? -1 : 0}
           >
             <LightIcon isOn={flashIsOn} />
-          </div>
+          </div> */}
+          <MetronomeLight />
           <div
             id={'metronomeStart'}
             onClick={setPlay.bind(null, !play)}
@@ -160,12 +162,14 @@ const Metronome = () => {
           >
             {play ? 'Stop' : 'Start'}
           </div>
-          <div
+          {/* <div
             className={`${styles.icon} ${styles.mute}`}
             onClick={setIsmuted.bind(null, !isMuted)}
+            tabIndex={isMobile ? -1 : 0}
           >
             <MuteIcon isOn={!isMuted} />
-          </div>
+          </div> */}
+          <MetronomeMute />
         </div>
       </div>
     </div>

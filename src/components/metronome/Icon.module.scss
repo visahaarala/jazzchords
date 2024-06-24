@@ -1,0 +1,13 @@
+.icon {
+  align-self: center;
+  justify-self: center;
+  border-radius: var(--border-radius);
+  height: 2.2rem;
+  width: 2.2rem;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    outline: var(--outline-focus);
+  }
+}

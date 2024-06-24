@@ -2,8 +2,6 @@
 
 #### now
 
-- bigger metronome buttons portrait
-
 - decrease font size for even smaller displays
 
 - check larger mobile layout with ipad

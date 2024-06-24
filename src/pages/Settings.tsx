@@ -44,7 +44,7 @@ const Settings = () => {
         />
       </div>
 
-      <h3>Time signature & metronome</h3>
+      <h3>Time signature & tempo</h3>
       <div>
         <Select<BeatsPerChord>
           dispatchActionType='SET_BPC'

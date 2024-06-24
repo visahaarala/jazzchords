@@ -31,7 +31,7 @@ const Info = () => (
         <div style={headerIconStyle}>
           <MetronomeIcon />
         </div>
-        A separate metronome for practicing.
+        A metronome.
       </div>
 
       <div>
