@@ -1,28 +1,27 @@
 :root {
-  --border-radius: 0.3rem;
+  --border-radius: 0.3rem; // buttons
   --transition: 0.5s all;
 
+  // colors
   --color-black: #101418;
   --color-gray-dark: #333;
   --color-gray: #444;
   --color-gray-light: #bbb;
   --color-white: #fafafa;
-  
   --color-link: #4ad;
 
+  // body & container
   --color-body: #1e323c;
   --box-shadow-container: 0 0 20rem rgba(255, 255, 255, 0.6);
+  --border-container: none;
 
   --box-shadow-metronome: inset 0 0 1rem rgba(255, 255, 255, 0.3);
-  --border-container: none;
 
   --outline-focus: solid 0.15rem var(--color-link);
   @media (pointer: coarse) {
     // no focus outline on mobile devices
     --outline-focus: none;
   }
-
-  --grid-gap: 1.5rem;
 }
 
 /* reset */
@@ -85,7 +84,6 @@ body {
 .container {
   height: 100dvh;
   width: 100vw;
-  // position: relative;
   display: flex;
   flex-direction: column;
 
@@ -109,8 +107,13 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 2rem 2rem;
   overflow: auto;
+
+  padding: 1.5rem;
+  @media (min-height: 46em) or (pointer: fine) {
+    // min-height: 736px or not mobile
+    padding: 2rem;
+  }
 }
 
 footer {
@@ -159,7 +162,7 @@ h2 {
     outline: var(--outline-focus);
   }
 
-  transition: all .1s;
+  transition: all 0.1s;
   &:active {
     background-color: var(--color-gray-dark);
   }

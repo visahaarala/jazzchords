@@ -1,6 +1,6 @@
 .controls {
   display: grid;
-  gap: var(--grid-gap);
+  gap: 1.5rem;
 
   @media (pointer: fine) or (orientation: portrait) {
     min-height: 8rem;
