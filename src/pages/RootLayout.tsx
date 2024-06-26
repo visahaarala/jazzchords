@@ -8,7 +8,7 @@ const RootLayout = () => (
     <ReducerContextProvider>
       <div className='container' id='container'>
         <main>
-          <h2>---jazzchords</h2>
+          <h2>jazzchords</h2>
           <Outlet />
         </main>
         <footer>
