@@ -4,8 +4,6 @@
 
 - check larger mobile layout with ipad
 
-- make PWA update automatically
-
 #### later
 
 - show random top note
