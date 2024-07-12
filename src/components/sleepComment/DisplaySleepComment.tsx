@@ -11,7 +11,7 @@ const DisplaySleepComment = () => {
             Turn off silent mode to hear the click.
           </p>
           <p className={styles.comment}>
-            Prevent screen timeout / sleep / auto-lock from settings if
+            Prevent screen timeout / sleep / auto-lock from device settings if
             necessary.
           </p>
         </>
