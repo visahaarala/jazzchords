@@ -1,13 +1,3 @@
-export type SearchParams = {
-  bpc: BeatsPerChord;
-  bpm: BeatsPerMinute;
-  isMuted: boolean;
-  amin: AccidentalLevel;
-  amax: AccidentalLevel;
-  dmin: DifficultyLevel;
-  dmax: DifficultyLevel;
-};
-
 export type ProgramState = {
   accidentalsMin: AccidentalLevel;
   accidentalsMax: AccidentalLevel;
