@@ -140,8 +140,7 @@ const Metronome = () => {
                 Click <code>start/stop</code> or <code>{tempo}</code>.
               </p>
               <p>
-                Use <code>Arrows</code>, <code>Space</code>, & <code>Tab</code>{' '}
-                for control.
+                Use <code>Arrows</code> & <code>Space</code> for control.
               </p>
             </div>
           )}
