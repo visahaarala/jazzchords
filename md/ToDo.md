@@ -2,7 +2,7 @@
 
 #### now
 
-- change absolute randomness to systematically (randomly) going through each key/chord before repeating any of them. When changing difficulty/keys, populate a list of keys & chords and randomly crawl through them.
+- change absolute randomness to systematically (randomly) going through each key/chord before repeating any of them
 
 #### later
 
