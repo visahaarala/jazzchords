@@ -1,4 +1,4 @@
-# Jazz Chords
+# jazzchords
 
 [https://jazzchords.singingtrumpet.com/](https://jazzchords.singingtrumpet.com/)
 
