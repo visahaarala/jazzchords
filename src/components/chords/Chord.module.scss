@@ -1,6 +1,8 @@
 .chord {
   height: 3em;
 
+  background-color: orangered;
+
   display: flex;
   align-items: start;
   font-family: Arial;
@@ -9,6 +11,9 @@
     font-size: 3em;
   }
   &__flat {
+    // margin-top: 0.2rem;
+    // margin-left: 0.2rem;
+
     margin-left: -0.25em;
     margin-right: -0.2em;
     font-size: 2.3em;

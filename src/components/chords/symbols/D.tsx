@@ -1,11 +1,11 @@
-const D = ({ height }: { height: number }) => {
+const D = ({ height }: { height?: number }) => {
   const xmin = 0;
   const ymin = 0;
 
   const svgWidth = 70;
   const svgHeight = 80;
 
-  const divWidth = `${height * (svgWidth / svgHeight)}rem`;
+  const divWidth = height ? `${height * (svgWidth / svgHeight)}rem`: undefined;
 
   return (
     <svg

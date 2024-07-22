@@ -1,11 +1,11 @@
-const F = ({ height }: { height?: number }) => {
+const Plus = ({ height }: { height?: number }) => {
   const xmin = 0;
   const ymin = 0;
 
-  const svgWidth = 60;
+  const svgWidth = 80;
   const svgHeight = 80;
 
-  const divWidth = height ? `${height * (svgWidth / svgHeight)}rem`: undefined;
+  const divWidth = height ? `${height * (svgWidth / svgHeight)}rem` : undefined;
 
   return (
     <svg
@@ -14,7 +14,7 @@ const F = ({ height }: { height?: number }) => {
       viewBox={`${xmin} ${ymin} ${svgWidth} ${svgHeight}`}
     >
       <path
-        d='M55 5 H5 V 75 M 10 40 H 47'
+        d='M0 40H80M40 0V80'
         stroke='currentColor'
         strokeWidth={10}
         fill='none'
@@ -24,4 +24,4 @@ const F = ({ height }: { height?: number }) => {
   );
 };
 
-export default F;
+export default Plus;

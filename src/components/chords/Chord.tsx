@@ -2,6 +2,14 @@ import styles from './Chord.module.scss';
 import { useContext } from 'react';
 import { ReducerContext } from '../../context/ReducerContext';
 import Bracket from './Bracket';
+import A from './symbols/A';
+import B from './symbols/B';
+import C from './symbols/C';
+import D from './symbols/D';
+import E from './symbols/E';
+import F from './symbols/F';
+import G from './symbols/G';
+import Flat from './symbols/Flat';
 
 const Chord = ({
   size,
@@ -32,6 +40,16 @@ const Chord = ({
   if (marginTop === undefined) marginTop = 0;
   if (marginBottom === undefined) marginBottom = 0;
 
+  const chars = {
+    a: <A height={3} />,
+    b: <B height={3} />,
+    c: <C height={3} />,
+    d: <D height={3} />,
+    e: <E height={3} />,
+    f: <F height={3} />,
+    g: <G height={3} />,
+  };
+
   return (
     <div
       className={styles.chord}
@@ -48,6 +66,7 @@ const Chord = ({
             char === flat ? (
               <div className={styles.chord__flat} key={char}>
                 {flat}
+                {/* <Flat height={2.8} /> */}
               </div>
             ) : char === sharp ? (
               <div className={styles.chord__sharp} key={char}>
@@ -55,7 +74,8 @@ const Chord = ({
               </div>
             ) : (
               <div className={styles.chord__base} key={char}>
-                {char}
+                {/* {char} */}
+                {chars['g']}
               </div>
             )
           )}

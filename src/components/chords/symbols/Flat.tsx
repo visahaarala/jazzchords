@@ -1,11 +1,11 @@
-const Flat = ({ height }: { height: number }) => {
+const Flat = ({ height }: { height?: number }) => {
   const xmin = 1.5;
   const ymin = 1.5;
 
   const svgWidth = 37.4;
   const svgHeight = 77.1;
 
-  const divWidth = `${height * (svgWidth / svgHeight)}rem`;
+  const divWidth = height ? `${height * (svgWidth / svgHeight)}rem`: undefined;
 
   return (
     <svg

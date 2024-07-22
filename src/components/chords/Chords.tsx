@@ -10,6 +10,7 @@ import E from './symbols/E';
 import F from './symbols/F';
 import G from './symbols/G';
 import Flat from './symbols/Flat';
+import Plus from './symbols/Plus';
 
 const Chords = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;
@@ -38,6 +39,7 @@ const Chords = () => {
         <F height={3} />
         <G height={3} />
         <Flat height={3} />
+        <Plus height={3} />
       </div>
       <Chord size={1.4} />
       {/* <Chord indexOffset={1} size={0.75} contrast={50} /> */}
