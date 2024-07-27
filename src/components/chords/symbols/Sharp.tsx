@@ -1,9 +1,9 @@
-const Flat = ({ height }: { height?: number }) => {
-  const xmin = 2.5;
-  const ymin = 2.3;
+const Sharp = ({ height }: { height?: number }) => {
+  const xmin = 0;
+  const ymin = 0;
 
-  const svgWidth = 37.4;
-  const svgHeight = 75.9;
+  const svgWidth = 40;
+  const svgHeight = 80;
 
   const divWidth = height ? `${height * (svgWidth / svgHeight)}rem`: undefined;
 
@@ -14,14 +14,21 @@ const Flat = ({ height }: { height?: number }) => {
       viewBox={`${xmin} ${ymin} ${svgWidth} ${svgHeight}`}
     >
       <path
-        d='M5 5 V73.7 C 50 50 40 14 7 43 M5 5 V73.7 C 46 50 36 20 7 43'
+        d='M11 10 V80 M29 0 V70'
         stroke='currentColor'
         strokeWidth={5}
         fill='none'
+        strokeLinecap='square'
+      />
+      <path
+        d='M0 35 L40 15 M0 65 L40 45'
+        stroke='currentColor'
+        strokeWidth={8}
+        fill='currentColor'
         strokeLinecap='square'
       />
     </svg>
   );
 };
 
-export default Flat;
+export default Sharp;

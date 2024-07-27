@@ -7,7 +7,7 @@ import {
 } from '../@types';
 import {
   accidentalLevels,
-  difficultyLevels,
+  allDifficultyLevels,
   generateChords,
 } from '../data/harmonies';
 
@@ -15,7 +15,8 @@ const initialState = (): ProgramState => {
   const state: ProgramState = {
     isMuted: false,
     difficultyMin: 'easy',
-    difficultyMax: 'medium',
+    // difficultyMax: 'medium',
+    difficultyMax: 'easy',
     accidentalsMin: '0',
     accidentalsMax: '7',
     chordList: [],
@@ -85,7 +86,7 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
         payloadKey: 'difficultyMin',
         state,
         stateKey: 'difficultyMax',
-        list: difficultyLevels,
+        list: allDifficultyLevels,
         inverse: false,
       });
     }
@@ -95,7 +96,7 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
         payloadKey: 'difficultyMax',
         state,
         stateKey: 'difficultyMin',
-        list: difficultyLevels,
+        list: allDifficultyLevels,
         inverse: true,
       });
     }

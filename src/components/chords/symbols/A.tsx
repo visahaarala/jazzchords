@@ -6,7 +6,10 @@ const A = ({ height }: { height?: number }) => {
 
   return (
     <svg
-      style={{ width: divWidth }}
+      style={{
+        width: divWidth,
+        display: 'inline-block',
+      }}
       xmlns='http://www.w3.org/2000/svg'
       viewBox={`0 0 ${svgWidth} ${svgHeight}`}
     >

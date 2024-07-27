@@ -2,223 +2,167 @@ import {
   AccidentalLevel,
   MajorOrMinor,
   DifficultyLevel,
-  Extension,
   Chord,
   ProgramState,
+  Base,
 } from '../@types';
 
-export const basesOrganized: {
+export const keysOrganized: {
   [key in AccidentalLevel]: {
     [key in MajorOrMinor]: string[];
   };
 } = {
   0: { major: ['C'], minor: ['A'] },
   1: { major: ['G', 'F'], minor: ['E', 'D'] },
-  2: { major: ['D', 'B♭'], minor: ['B', 'G'] },
-  3: { major: ['A', 'E♭'], minor: ['F♯', 'C'] },
-  4: { major: ['E', 'A♭'], minor: ['C♯', 'F'] },
-  5: { major: ['B', 'D♭'], minor: ['G♯', 'B♭'] },
-  6: { major: ['F♯', 'G♭'], minor: ['D♯', 'E♭'] },
-  7: { major: ['C♯', 'C♭'], minor: ['A♯', 'A♭'] },
+  2: { major: ['D', 'Bb'], minor: ['B', 'G'] },
+  3: { major: ['A', 'Eb'], minor: ['F#', 'C'] },
+  4: { major: ['E', 'Ab'], minor: ['C#', 'F'] },
+  5: { major: ['B', 'Db'], minor: ['G#', 'Bb'] },
+  6: { major: ['F#', 'Gb'], minor: ['D#', 'Eb'] },
+  7: { major: ['C#', 'Cb'], minor: ['A#', 'Ab'] },
 };
 
-export const accidentalLevels = Object.keys(
-  basesOrganized
-) as AccidentalLevel[];
+export const accidentalLevels = Object.keys(keysOrganized) as AccidentalLevel[];
 
 export const extensionsOrganized: {
-  [key in DifficultyLevel]: Extension[];
+  [key in DifficultyLevel]: string[];
 } = {
   easy: [
-    {
-      extension: [undefined, undefined, undefined, undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, undefined, undefined, undefined, undefined],
-      isMinor: true,
-    },
-    {
-      extension: ['o', undefined, undefined, undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, undefined, 'add9', undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, undefined, 'sus4', undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, 'maj7', undefined, undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, '6', undefined, undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, '6/9', undefined, undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, '7', undefined, undefined, undefined],
-      isMinor: true,
-    },
-    {
-      extension: [undefined, 'maj7', undefined, undefined, undefined],
-      isMinor: true,
-    },
-    {
-      extension: [undefined, '6', undefined, undefined, undefined],
-      isMinor: true,
-    },
-    {
-      extension: [undefined, '6/9', undefined, undefined, undefined],
-      isMinor: true,
-    },
-    {
-      extension: [undefined, 'maj9', undefined, undefined, undefined],
-      isMinor: true,
-    },
-    {
-      extension: [undefined, '9', undefined, undefined, undefined],
-      isMinor: true,
-    },
-    {
-      extension: [undefined, undefined, 'add9', undefined, undefined],
-      isMinor: true,
-    }, //same as add2
-    {
-      extension: [undefined, '9', undefined, undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, 'maj9', undefined, undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: ['+', undefined, undefined, undefined, undefined],
-      isMinor: false,
-    },
+    '',
+    '-',
+    'o',
+    'add9',
+    'sus4',
+    'maj7',
+    '6',
+    '69',
+    '-7',
+    '-maj7',
+    '-6',
+    '-69',
+    '-maj9',
+    '-9',
+    '-add9', // same as -add2
+    '9',
+    'maj9',
+    '+',
   ],
-  medium: [
-    { extension: ['o', '7', undefined, undefined, undefined], isMinor: false },
-    { extension: ['ø', '7', undefined, undefined, undefined], isMinor: false },
+  // medium: [
+  //   { extension: ['o', '7', undefined, undefined, undefined], isMinor: false },
+  //   { extension: ['ø', '7', undefined, undefined, undefined], isMinor: false },
 
-    {
-      extension: [undefined, '7', 'sus4', undefined, undefined],
-      isMinor: false,
-    },
+  //   {
+  //     extension: [undefined, '7', 'sus4', undefined, undefined],
+  //     isMinor: false,
+  //   },
 
-    { extension: ['ø', '9', undefined, undefined, undefined], isMinor: false },
-    {
-      extension: ['o', 'maj7', undefined, undefined, undefined],
-      isMinor: false,
-    },
-    { extension: [undefined, '7', '♭5', undefined, undefined], isMinor: false },
-    { extension: [undefined, '7', '♯5', undefined, undefined], isMinor: false },
-    { extension: [undefined, '7', '♭9', undefined, undefined], isMinor: false },
-    { extension: [undefined, '7', '♯9', undefined, undefined], isMinor: false },
-    {
-      extension: [undefined, '7', '♭5', undefined, undefined],
-      isMinor: true,
-    }, // same as halfdim7
-    {
-      extension: [undefined, 'maj7', '♯5', undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, '7', 'sus4', undefined, undefined],
-      isMinor: false,
-    },
-    { extension: [undefined, '9', '♭5', undefined, undefined], isMinor: false },
-    { extension: [undefined, '9', '♯5', undefined, undefined], isMinor: false },
-    {
-      extension: [undefined, '9', 'sus4', undefined, undefined],
-      isMinor: false,
-    }, // similar as G-7/C
-    {
-      extension: [undefined, '11', undefined, undefined, undefined],
-      isMinor: true,
-    },
-    {
-      extension: [undefined, '11', undefined, undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, '13', undefined, undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, 'maj13', undefined, undefined, undefined],
-      isMinor: false,
-    },
-  ],
-  hard: [
-    {
-      extension: [undefined, '7', '♯11', undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, 'maj7', '♯11', undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, 'maj9', '♯11', undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, '13', '♯9', undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, '9', '♯11', undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, '7', '♭13', undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, '13', '♯11', undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, '13', '♭9', undefined, undefined],
-      isMinor: false,
-    },
-    {
-      extension: [undefined, '7', '♭9sus4', undefined, undefined],
-      isMinor: false,
-    }, // similar as Gh7/C
-    {
-      extension: [undefined, '13', 'sus4', undefined, undefined],
-      isMinor: false,
-    }, // similar as B♭maj7/C
-  ],
-  painful: [
-    {
-      extension: [undefined, '7', undefined, undefined, 'alt.'],
-      isMinor: false,
-    },
-    { extension: [undefined, '7', '♯9', '♯5', undefined], isMinor: false },
-    { extension: [undefined, '7', '♯9', '♭5', undefined], isMinor: false },
-    { extension: [undefined, '7', '♯11', '♯9', undefined], isMinor: false },
-    { extension: [undefined, '7', '♯11', '♭9', undefined], isMinor: false },
-    { extension: [undefined, '7', '♭9', '♭5', undefined], isMinor: false },
-    { extension: [undefined, '7', '♭9', '♯5', undefined], isMinor: false },
-    { extension: [undefined, '7', '♯9', '♭9', undefined], isMinor: false },
-    { extension: [undefined, '7', '♭13', '♭9', undefined], isMinor: false },
-    {
-      extension: [undefined, '7', '♭13sus4', undefined, undefined],
-      isMinor: false,
-    },
-  ],
+  //   { extension: ['ø', '9', undefined, undefined, undefined], isMinor: false },
+  //   {
+  //     extension: ['o', 'maj7', undefined, undefined, undefined],
+  //     isMinor: false,
+  //   },
+  //   { extension: [undefined, '7', '♭5', undefined, undefined], isMinor: false },
+  //   { extension: [undefined, '7', '♯5', undefined, undefined], isMinor: false },
+  //   { extension: [undefined, '7', '♭9', undefined, undefined], isMinor: false },
+  //   { extension: [undefined, '7', '♯9', undefined, undefined], isMinor: false },
+  //   {
+  //     extension: [undefined, '7', '♭5', undefined, undefined],
+  //     isMinor: true,
+  //   }, // same as halfdim7
+  //   {
+  //     extension: [undefined, 'maj7', '♯5', undefined, undefined],
+  //     isMinor: false,
+  //   },
+  //   {
+  //     extension: [undefined, '7', 'sus4', undefined, undefined],
+  //     isMinor: false,
+  //   },
+  //   { extension: [undefined, '9', '♭5', undefined, undefined], isMinor: false },
+  //   { extension: [undefined, '9', '♯5', undefined, undefined], isMinor: false },
+  //   {
+  //     extension: [undefined, '9', 'sus4', undefined, undefined],
+  //     isMinor: false,
+  //   }, // similar as G-7/C
+  //   {
+  //     extension: [undefined, '11', undefined, undefined, undefined],
+  //     isMinor: true,
+  //   },
+  //   {
+  //     extension: [undefined, '11', undefined, undefined, undefined],
+  //     isMinor: false,
+  //   },
+  //   {
+  //     extension: [undefined, '13', undefined, undefined, undefined],
+  //     isMinor: false,
+  //   },
+  //   {
+  //     extension: [undefined, 'maj13', undefined, undefined, undefined],
+  //     isMinor: false,
+  //   },
+  // ],
+  // hard: [
+  //   {
+  //     extension: [undefined, '7', '♯11', undefined, undefined],
+  //     isMinor: false,
+  //   },
+  //   {
+  //     extension: [undefined, 'maj7', '♯11', undefined, undefined],
+  //     isMinor: false,
+  //   },
+  //   {
+  //     extension: [undefined, 'maj9', '♯11', undefined, undefined],
+  //     isMinor: false,
+  //   },
+  //   {
+  //     extension: [undefined, '13', '♯9', undefined, undefined],
+  //     isMinor: false,
+  //   },
+  //   {
+  //     extension: [undefined, '9', '♯11', undefined, undefined],
+  //     isMinor: false,
+  //   },
+  //   {
+  //     extension: [undefined, '7', '♭13', undefined, undefined],
+  //     isMinor: false,
+  //   },
+  //   {
+  //     extension: [undefined, '13', '♯11', undefined, undefined],
+  //     isMinor: false,
+  //   },
+  //   {
+  //     extension: [undefined, '13', '♭9', undefined, undefined],
+  //     isMinor: false,
+  //   },
+  //   {
+  //     extension: [undefined, '7', '♭9sus4', undefined, undefined],
+  //     isMinor: false,
+  //   }, // similar as Gh7/C
+  //   {
+  //     extension: [undefined, '13', 'sus4', undefined, undefined],
+  //     isMinor: false,
+  //   }, // similar as B♭maj7/C
+  // ],
+  // painful: [
+  //   {
+  //     extension: [undefined, '7', undefined, undefined, 'alt.'],
+  //     isMinor: false,
+  //   },
+  //   { extension: [undefined, '7', '♯9', '♯5', undefined], isMinor: false },
+  //   { extension: [undefined, '7', '♯9', '♭5', undefined], isMinor: false },
+  //   { extension: [undefined, '7', '♯11', '♯9', undefined], isMinor: false },
+  //   { extension: [undefined, '7', '♯11', '♭9', undefined], isMinor: false },
+  //   { extension: [undefined, '7', '♭9', '♭5', undefined], isMinor: false },
+  //   { extension: [undefined, '7', '♭9', '♯5', undefined], isMinor: false },
+  //   { extension: [undefined, '7', '♯9', '♭9', undefined], isMinor: false },
+  //   { extension: [undefined, '7', '♭13', '♭9', undefined], isMinor: false },
+  //   {
+  //     extension: [undefined, '7', '♭13sus4', undefined, undefined],
+  //     isMinor: false,
+  //   },
+  // ],
 };
 
-export const difficultyLevels = Object.keys(
+export const allDifficultyLevels = Object.keys(
   extensionsOrganized
 ) as DifficultyLevel[];
 
@@ -244,14 +188,14 @@ export const generateChords = (
     difficultyMax,
     Object.keys(extensionsOrganized) as DifficultyLevel[]
   );
-  const extensions: Extension[] = [];
+  const extensions: string[] = [];
   for (const level of difficultyLevels) {
     extensions.push(...extensionsOrganized[level]);
   }
   const accidentalsLevels = createRangeArray(
     accidentalsMin,
     accidentalsMax,
-    Object.keys(basesOrganized) as AccidentalLevel[]
+    Object.keys(keysOrganized) as AccidentalLevel[]
   );
 
   const chords: Chord[] = [];
@@ -259,6 +203,7 @@ export const generateChords = (
     // choose an extension randomly
     const randomExtensionIndex = Math.floor(Math.random() * extensions.length);
     const extension = extensions[randomExtensionIndex];
+    const isMinor = extension.includes('-');
     // choose an accidentalLevel randomly
     const randomAccidentalsLevelIndex = Math.floor(
       Math.random() * accidentalsLevels.length
@@ -266,27 +211,23 @@ export const generateChords = (
     const randomAccidentalsLevel =
       accidentalsLevels[randomAccidentalsLevelIndex];
     // choose bases for accidentalLevel & extension
-    const randomBases =
-      basesOrganized[randomAccidentalsLevel][
-        extension.isMinor ? 'minor' : 'major'
-      ];
+    const randomKeys =
+      keysOrganized[randomAccidentalsLevel][isMinor ? 'minor' : 'major'];
     // choose one of those bases
-    const randomBaseIndex = Math.floor(Math.random() * randomBases.length);
-    const base = randomBases[randomBaseIndex];
-    // create new Chord
-    const ext = extension.extension;
+    const randomBaseIndex = Math.floor(Math.random() * randomKeys.length);
+    const key = randomKeys[randomBaseIndex];
+
+    // make a number[] of notes from isMinor & extension
+    const notes: number[] = [];
+
+    // create new Chord and add it to chords list
     const newChord: Chord = {
-      base: base,
-      isMinor: extension.isMinor,
-      dim: ext[0],
-      seventh: ext[1],
-      bracket: [ext[2], ext[3]],
-      alt: ext[4],
+      base: key[0] as Base,
+      accidental: key.includes('b') ? 'flat' : key.includes('#') ? 'sharp' : undefined,
+      isMinor,
+      extension,
+      notes,
     };
-    if (newChord.seventh === '6/9') {
-      newChord.seventh = undefined;
-      newChord.sixNine = '6/9';
-    }
     chords.push(newChord);
   }
   return chords;

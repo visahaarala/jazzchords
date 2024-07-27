@@ -11,6 +11,8 @@ import F from './symbols/F';
 import G from './symbols/G';
 import Flat from './symbols/Flat';
 import Plus from './symbols/Plus';
+import Sharp from './symbols/Sharp';
+import Minor from './symbols/Minor';
 
 const Chords = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;
@@ -30,18 +32,14 @@ const Chords = () => {
 
   return (
     <div className={styles.chords} onClick={nextChord}>
-      <div style={{ display: 'flex', gap: '.2rem', flexWrap: 'wrap' }}>
+      {/* <div style={{ display: 'flex', gap: '.2rem', flexWrap: 'wrap' }}>
         <A height={3} />
         <B height={3} />
-        <C height={3} />
-        <D height={3} />
-        <E height={3} />
-        <F height={3} />
         <G height={3} />
         <Flat height={3} />
-        <Plus height={3} />
-      </div>
-      <Chord size={1.4} />
+        <Minor height={3} />
+      </div> */}
+      <Chord size={4} />
       {/* <Chord indexOffset={1} size={0.75} contrast={50} /> */}
     </div>
   );

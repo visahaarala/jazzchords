@@ -1,101 +1,136 @@
 .chord {
-  height: 3em;
-
-  background-color: orangered;
-
   display: flex;
-  align-items: start;
-  font-family: Arial;
+  height: 1.4em;
+  // background-color: blue;
+
+  & > * {
+    display: flex;
+  }
 
   &__base {
-    font-size: 3em;
+    margin-top: 0.2em;
+    & > * {
+      height: 1em;
+    }
   }
-  &__flat {
-    // margin-top: 0.2rem;
-    // margin-left: 0.2rem;
 
-    margin-left: -0.25em;
-    margin-right: -0.2em;
-    font-size: 2.3em;
+  &__accidental {
+    margin-top: 0.2em;
+    margin-left: 0.1em;
+    & > * {
+      height: 1em;
+    }
   }
-  &__sharp {
-    font-size: 2.5em;
-    margin-right: 0.05em;
-    transform: translateY(0.09em);
-  }
+
   &__minor {
-    font-size: 2.2em;
-    transform: translateY(0.33em);
-  }
-  &__dim {
-    font-size: 1.7em;
-    margin-right: 0.05em;
-    transform: translateY(-0.2em);
-  }
-  &__seventh {
-    font-size: 1.5em;
-    margin-right: 0.05em;
-  }
-  &__sixnine {
-    display: flex;
-    align-items: center;
-    font-size: 2.4em;
-    font-weight: lighter;
-    transform: translateY(0.04em);
-    margin-left: -0em;
-
-    &::before {
-      content: '6';
-      font-size: 0.6em;
-      transform: translateY(-0.53em);
-      margin-right: -0.17em;
+    height: 2em;
+    margin-top: 0.6em;
+    margin-left: 0.1em;
+    & > * {
+      margin-top: 0;
+      height: 0.6em;
     }
-    &::after {
-      content: '9';
-      font-size: 0.6em;
-      transform: translateY(0.53em);
-      margin-left: -0.17em;
-    }
-  }
-  &__brackets {
-    display: flex;
-    align-items: end;
-
-    &--double {
-      transform: translateY(-0.3em);
-    }
-
-    & .flat {
-      display: inline-block;
-      margin-right: -0.2em;
-      margin-left: -0.3em;
-      margin-top: -1em;
-      margin-bottom: -1em;
-      transform: translateY(-0.08em);
-      font-size: 0.77em;
-    }
-    & .sharp {
-      display: inline-block;
-      font-size: 0.8em;
-      margin-right: 0.02em;
-      margin-left: -0.04em;
-      transform: translateY(-0.1em);
-    }
-  }
-  &__inside-brackets {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 1.5em;
-
-    &__small {
-      font-size: 1.2em;
-    }
-  }
-  &__alt {
-    align-self: end;
-    transform: translateY(0.08em);
-    font-size: 1.5em;
-    margin-left: -0.15em;
   }
 }
+
+// .chord {
+//   height: 3em;
+
+//   background-color: orangered;
+
+//   display: flex;
+//   align-items: start;
+//   font-family: Arial;
+
+//   &__base {
+//     font-size: 3em;
+//   }
+//   &__flat {
+//     // margin-top: 0.2rem;
+//     // margin-left: 0.2rem;
+
+//     margin-left: -0.25em;
+//     margin-right: -0.2em;
+//     font-size: 2.3em;
+//   }
+//   &__sharp {
+//     font-size: 2.5em;
+//     margin-right: 0.05em;
+//     transform: translateY(0.09em);
+//   }
+//   &__minor {
+//     font-size: 2.2em;
+//     transform: translateY(0.33em);
+//   }
+//   &__dim {
+//     font-size: 1.7em;
+//     margin-right: 0.05em;
+//     transform: translateY(-0.2em);
+//   }
+//   &__seventh {
+//     font-size: 1.5em;
+//     margin-right: 0.05em;
+//   }
+//   &__sixnine {
+//     display: flex;
+//     align-items: center;
+//     font-size: 2.4em;
+//     font-weight: lighter;
+//     transform: translateY(0.04em);
+//     margin-left: -0em;
+
+//     &::before {
+//       content: '6';
+//       font-size: 0.6em;
+//       transform: translateY(-0.53em);
+//       margin-right: -0.17em;
+//     }
+//     &::after {
+//       content: '9';
+//       font-size: 0.6em;
+//       transform: translateY(0.53em);
+//       margin-left: -0.17em;
+//     }
+//   }
+//   &__brackets {
+//     display: flex;
+//     align-items: end;
+
+//     &--double {
+//       transform: translateY(-0.3em);
+//     }
+
+//     & .flat {
+//       display: inline-block;
+//       margin-right: -0.2em;
+//       margin-left: -0.3em;
+//       margin-top: -1em;
+//       margin-bottom: -1em;
+//       transform: translateY(-0.08em);
+//       font-size: 0.77em;
+//     }
+//     & .sharp {
+//       display: inline-block;
+//       font-size: 0.8em;
+//       margin-right: 0.02em;
+//       margin-left: -0.04em;
+//       transform: translateY(-0.1em);
+//     }
+//   }
+//   &__inside-brackets {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     font-size: 1.5em;
+
+//     &__small {
+//       font-size: 1.2em;
+//     }
+//   }
+//   &__alt {
+//     align-self: end;
+//     transform: translateY(0.08em);
+//     font-size: 1.5em;
+//     margin-left: -0.15em;
+//   }
+// }
