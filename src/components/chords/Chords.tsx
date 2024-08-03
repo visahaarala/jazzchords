@@ -2,17 +2,29 @@ import styles from './Chords.module.scss';
 import { useContext } from 'react';
 import { ReducerContext } from '../../context/ReducerContext';
 import Chord from './Chord';
-import A from './symbols/A';
-import B from './symbols/B';
-import C from './symbols/C';
-import D from './symbols/D';
-import E from './symbols/E';
-import F from './symbols/F';
-import G from './symbols/G';
-import Flat from './symbols/Flat';
-import Plus from './symbols/Plus';
-import Sharp from './symbols/Sharp';
-import Minor from './symbols/Minor';
+import A from './symbols/keys/A';
+import B from './symbols/keys/B';
+import C from './symbols/keys/C';
+import D from './symbols/keys/D';
+import E from './symbols/keys/E';
+import F from './symbols/keys/F';
+import G from './symbols/keys/G';
+import Flat from './symbols/extensions/Flat';
+import Plus from './symbols/extensions/Plus';
+import Sharp from './symbols/extensions/Sharp';
+import Minor from './symbols/keys/Minor';
+import Seven from './symbols/extensions/Seven';
+import Six from './symbols/extensions/Six';
+import Nine from './symbols/extensions/Nine';
+import Five from './symbols/extensions/Five';
+import Eleven from './symbols/extensions/Eleven';
+import Thirteen from './symbols/extensions/Thirteen';
+import Dim from './symbols/extensions/Dim';
+import HalfDim from './symbols/extensions/HalfDim';
+import Four from './symbols/extensions/Four';
+import Maj from './symbols/extensions/Maj';
+import Add from './symbols/extensions/Add';
+import Sus from './symbols/extensions/Sus';
 
 const Chords = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;
@@ -32,13 +44,28 @@ const Chords = () => {
 
   return (
     <div className={styles.chords} onClick={nextChord}>
-      {/* <div style={{ display: 'flex', gap: '.2rem', flexWrap: 'wrap' }}>
-        <A height={3} />
-        <B height={3} />
-        <G height={3} />
-        <Flat height={3} />
-        <Minor height={3} />
-      </div> */}
+      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+        {/* <A height={6} /> */}
+        {/* <B height={6} /> */}
+        {/* <C height={3} /> */}
+        {/* <Plus height={3} /> */}
+        {/* <Seven height={3} /> */}
+        {/* <D height={6} /> */}
+        {/* <E height={6} /> */}
+        {/* <F height={6} /> */}
+        {/* <G height={6} /> */}
+        {/* <Minor height={6} /> */}
+        {/* <Flat height={3} /> */}
+
+        {/* <Six height={3} /> */}
+        {/* <Five height={3} /> */}
+        {/* <Eleven height={3} /> */}
+        <Maj height={3} />
+        <Add height={3} />
+        <Sus height={3} />
+        {/* <Four height={3} /> */}
+        {/* <Nine height={3} /> */}
+      </div>
       <Chord size={4} />
       {/* <Chord indexOffset={1} size={0.75} contrast={50} /> */}
     </div>

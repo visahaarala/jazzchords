@@ -5,11 +5,14 @@ const Sharp = ({ height }: { height?: number }) => {
   const svgWidth = 40;
   const svgHeight = 80;
 
-  const divWidth = height ? `${height * (svgWidth / svgHeight)}rem`: undefined;
+  const divWidth = height ? `${height * (svgWidth / svgHeight)}rem` : undefined;
 
   return (
     <svg
-      style={{ width: divWidth }}
+      style={{
+        width: divWidth,
+        // backgroundColor: 'orangered',
+      }}
       xmlns='http://www.w3.org/2000/svg'
       viewBox={`${xmin} ${ymin} ${svgWidth} ${svgHeight}`}
     >

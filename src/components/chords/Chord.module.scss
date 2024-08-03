@@ -23,13 +23,17 @@
   }
 
   &__minor {
-    height: 2em;
-    margin-top: 0.6em;
+    margin-top: 0.2em;
     margin-left: 0.1em;
     & > * {
       margin-top: 0;
-      height: 0.6em;
+      height: 1em;
     }
+  }
+
+  &__extension {
+    height: 1em;
+    // background-color: green;
   }
 }
 

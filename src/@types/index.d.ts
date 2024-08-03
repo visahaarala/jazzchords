@@ -39,16 +39,16 @@ export type Range = {
 
 export type MajorOrMinor = 'major' | 'minor';
 
-export type Extension = {
-  extension: [
-    string | undefined, // dim
-    string | undefined, // 7
-    string | undefined, // brackets top
-    string | undefined, // brackets bottom
-    string | undefined // alt
-  ];
-  isMinor: boolean;
-};
+// export type Extension = {
+//   extension: [
+//     string | undefined, // dim
+//     string | undefined, // 7
+//     string | undefined, // brackets top
+//     string | undefined, // brackets bottom
+//     string | undefined // alt
+//   ];
+//   isMinor: boolean;
+// };
 
 export type Base = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G';
 
@@ -58,14 +58,13 @@ export type Chord = {
   base: Base;
   accidental: Accidental;
   isMinor: boolean;
-  extension: string;
+  extension: string[];
   notes: number[];
 };
 
 export type AccidentalLevel = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 
-export type DifficultyLevel = 'easy';
-//  | 'medium' | 'hard' | 'painful'
+export type DifficultyLevel = 'easy' | 'medium' | 'hard' | 'painful';
 
 export type BeatsPerChord =
   | '1'

@@ -4,19 +4,23 @@ const Plus = ({ height }: { height?: number }) => {
 
   const svgWidth = 40;
   const svgHeight = 40;
+  const strokeWidth = svgHeight / 10;
 
   const divWidth = height ? `${height * (svgWidth / svgHeight)}rem` : undefined;
 
   return (
     <svg
-      style={{ width: divWidth }}
+      style={{
+        width: divWidth,
+        // backgroundColor: 'orangered',
+      }}
       xmlns='http://www.w3.org/2000/svg'
       viewBox={`${xmin} ${ymin} ${svgWidth} ${svgHeight}`}
     >
       <path
         d='M0 20H40M20 0V40'
         stroke='currentColor'
-        strokeWidth={8}
+        strokeWidth={strokeWidth}
         fill='none'
         strokeLinecap='square'
       />
