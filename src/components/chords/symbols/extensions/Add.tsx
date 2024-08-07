@@ -1,15 +1,23 @@
 const Add = ({ height }: { height?: number }) => {
   const xmin = 114.5;
-  const ymin = -30;
+  const ymin = -50;
 
   const svgWidth = 210;
-  const svgHeight = 99.5;
+  const svgHeight = 119.5;
   const strokeWidth = svgHeight / 10;
 
-  const divWidth = height ? `${height * (svgWidth / svgHeight)}rem` : undefined;
+  const divWidth = height ? `${height * (svgWidth / svgHeight)}em` : undefined;
 
   const dOne = 193;
   const dTwo = dOne + 72;
+
+  const dPath = (x: number) =>
+    `M ${x + 50} -30 L ${x + 50} 50` + //
+    `C ${x + 50} 55 ${x + 50} 65 ${x + 52} 70` + //
+    `M ${x + 50} 35 C ${x + 50} 15 ${x + 40} 5 ${x + 25} 5` + //
+    `C ${x + 10} 5 ${x} 15 ${x} 35` + //
+    `C ${x} 50 ${x + 1} 64 ${x + 25} 64` + //
+    `C ${x + 35} 64 ${x + 50} 60 ${x + 50} 35`;
 
   return (
     <svg
@@ -29,30 +37,14 @@ const Add = ({ height }: { height?: number }) => {
         strokeLinecap='butt'
       />
       <path
-        d={`M ${dOne + 50} -40 L ${dOne + 50} 50 C ${dOne + 50} 55 ${
-          dOne + 50
-        } 65 ${dOne + 52} 70 M ${dOne + 50} 35 C ${dOne + 50} 15 ${
-          dOne + 40
-        } 5 ${dOne + 25} 5 C ${
-          dOne + 10
-        } 5 ${dOne} 15 ${dOne} 35 C ${dOne} 50 ${dOne + 1} 64 ${
-          dOne + 25
-        } 64 C ${dOne + 35} 64 ${dOne + 50} 60 ${dOne + 50} 35`}
+        d={dPath(dOne)}
         stroke='currentColor'
         strokeWidth={strokeWidth}
         fill='none'
         strokeLinecap='square'
       />
       <path
-        d={`M ${dTwo + 50} -40 L ${dTwo + 50} 50 C ${dTwo + 50} 55 ${
-          dTwo + 50
-        } 65 ${dTwo + 52} 70 M ${dTwo + 50} 35 C ${dTwo + 50} 15 ${
-          dTwo + 40
-        } 5 ${dTwo + 25} 5 C ${
-          dTwo + 10
-        } 5 ${dTwo} 15 ${dTwo} 35 C ${dTwo} 50 ${dTwo + 1} 64 ${
-          dTwo + 25
-        } 64 C ${dTwo + 35} 64 ${dTwo + 50} 60 ${dTwo + 50} 35`}
+        d={dPath(dTwo)}
         stroke='currentColor'
         strokeWidth={strokeWidth}
         fill='none'

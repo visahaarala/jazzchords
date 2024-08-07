@@ -1,11 +1,12 @@
 const Thirteen = ({ height }: { height?: number }) => {
-  const xmin = 3;
-  const ymin = 0;
+  const xmin = 4;
+  const ymin = 1.4;
 
-  const svgWidth = 82;
-  const svgHeight = 68;
+  const svgWidth = 79.7;
+  const svgHeight = 65.3;
+  const strokeWidth = svgHeight / 10;
 
-  const divWidth = height ? `${height * (svgWidth / svgHeight)}rem` : undefined;
+  const divWidth = height ? `${height * (svgWidth / svgHeight)}em` : undefined;
 
   return (
     <svg
@@ -19,7 +20,7 @@ const Thirteen = ({ height }: { height?: number }) => {
       <path
         d='M 27 70 L 27 0 L 7 25 M 50 19 A 14 14 0 1 1 65 33 A 15 15 0 1 1 50 48 M 65 33 L 61 33'
         stroke='currentColor'
-        strokeWidth={10}
+        strokeWidth={strokeWidth}
         strokeLinejoin='bevel'
         fill='none'
       />

@@ -25,6 +25,7 @@ import Four from './symbols/extensions/Four';
 import Maj from './symbols/extensions/Maj';
 import Add from './symbols/extensions/Add';
 import Sus from './symbols/extensions/Sus';
+import Bracket from './symbols/extensions/Bracket';
 
 const Chords = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;
@@ -49,25 +50,30 @@ const Chords = () => {
         {/* <B height={6} /> */}
         {/* <C height={3} /> */}
         {/* <Plus height={3} /> */}
-        {/* <Seven height={3} /> */}
         {/* <D height={6} /> */}
         {/* <E height={6} /> */}
         {/* <F height={6} /> */}
         {/* <G height={6} /> */}
         {/* <Minor height={6} /> */}
-        {/* <Flat height={3} /> */}
 
         {/* <Six height={3} /> */}
         {/* <Five height={3} /> */}
         {/* <Eleven height={3} /> */}
-        <Maj height={3} />
-        <Add height={3} />
-        <Sus height={3} />
+        {/* <Maj height={3} /> */}
+        {/* <Add height={3} /> */}
+        {/* <Sus height={3} /> */}
         {/* <Four height={3} /> */}
-        {/* <Nine height={3} /> */}
+        {/* <Six height={10} /> */}
+        {/* <Seven height={10} /> */}
+        {/* <Flat height={10} /> */}
+        {/* <SixNine height={10} /> */}
+        {/* <Bracket height={10} />
+        <Bracket height={10} flip />
+        <Bracket height={10} double />
+        <Bracket height={10} double flip /> */}
       </div>
-      <Chord size={4} />
-      {/* <Chord indexOffset={1} size={0.75} contrast={50} /> */}
+      <Chord size={3.7} />
+      <Chord indexOffset={1} size={2} contrast={50} />
     </div>
   );
 };

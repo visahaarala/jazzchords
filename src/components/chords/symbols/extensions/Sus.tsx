@@ -1,12 +1,12 @@
 const Sus = ({ height }: { height?: number }) => {
   const xmin = 0;
-  const ymin = -30;
+  const ymin = -50;
 
   const svgWidth = 212;
-  const svgHeight = 101;
+  const svgHeight = 121;
   const strokeWidth = svgHeight / 10;
 
-  const divWidth = height ? `${height * (svgWidth / svgHeight)}rem` : undefined;
+  const divWidth = height ? `${height * (svgWidth / svgHeight)}em` : undefined;
 
   const sCurve = (x: number) => {
     return (

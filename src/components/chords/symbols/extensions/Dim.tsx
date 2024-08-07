@@ -6,7 +6,7 @@ const Dim = ({ height }: { height?: number }) => {
   const svgHeight = 65;
   const strokeWidth = svgHeight / 10;
 
-  const divWidth = height ? `${height * (svgWidth / svgHeight)}rem` : undefined;
+  const divWidth = height ? `${height * (svgWidth / svgHeight)}em` : undefined;
 
   return (
     <svg

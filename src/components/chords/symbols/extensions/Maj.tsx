@@ -1,12 +1,12 @@
 const Maj = ({ height }: { height?: number }) => {
   const xmin = 10;
-  const ymin = -30;
+  const ymin = -50;
 
   const svgWidth = 201;
-  const svgHeight = 99.5;
+  const svgHeight = 119.5;
   const strokeWidth = svgHeight / 10;
 
-  const divWidth = height ? `${height * (svgWidth / svgHeight)}rem` : undefined;
+  const divWidth = height ? `${height * (svgWidth / svgHeight)}em` : undefined;
 
   return (
     <svg

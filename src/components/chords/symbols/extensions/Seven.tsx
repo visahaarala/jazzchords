@@ -1,13 +1,13 @@
 const Seven = ({ height }: { height?: number }) => {
-  const xmin = -1;
-  const ymin = -1;
+  const xmin = 1.5;
+  const ymin = 1.5;
 
-  const svgWidth = 52;
+  const svgWidth = 49.7;
   const svgHeight = 70;
   const strokeWidth = svgHeight / 10;
 
 
-  const divWidth = height ? `${height * (svgWidth / svgHeight)}rem` : undefined;
+  const divWidth = height ? `${height * (svgWidth / svgHeight)}em` : undefined;
 
   return (
     <svg

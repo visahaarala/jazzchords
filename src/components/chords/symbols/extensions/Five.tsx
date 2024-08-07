@@ -1,11 +1,12 @@
 const Five = ({ height }: { height?: number }) => {
-  const xmin = 1;
-  const ymin = 0;
+  const xmin = 2.5;
+  const ymin = 1.5;
 
-  const svgWidth = 50;
-  const svgHeight = 75;
+  const svgWidth = 47;
+  const svgHeight = 72.5;
+  const strokeWidth = svgHeight / 10;
 
-  const divWidth = height ? `${height * (svgWidth / svgHeight)}rem` : undefined;
+  const divWidth = height ? `${height * (svgWidth / svgHeight)}em` : undefined;
 
   return (
     <svg
@@ -19,7 +20,7 @@ const Five = ({ height }: { height?: number }) => {
       <path
         d='M 42 5 L 13 5 L 8 40 A 20 20 0 1 1 8 60 M 8 37 L 13.7 0'
         stroke='currentColor'
-        strokeWidth={10}
+        strokeWidth={strokeWidth}
         strokeLinecap='square'
         strokeLinejoin='bevel'
         fill='none'

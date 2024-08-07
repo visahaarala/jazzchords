@@ -1,7 +1,7 @@
 import styles from './Chord.module.scss';
-import { cloneElement, ReactNode, useContext } from 'react';
+import { cloneElement, useContext } from 'react';
 import { ReducerContext } from '../../context/ReducerContext';
-import Bracket from './Bracket';
+import Bracket from './symbols/extensions/Bracket';
 import A from './symbols/keys/A';
 import B from './symbols/keys/B';
 import C from './symbols/keys/C';
@@ -44,162 +44,130 @@ const Chord = ({
     return <></>;
   }
 
-
-  console.log('extension:', chord.extension);
-
   // FONT SIZE = the size of this chord
   // this value dictates all other em size parameters
   if (size === undefined) size = 1.6; // rem
 
   if (contrast === undefined) contrast = 100;
 
-  const bases: { [key in Base]: JSX.Element } = {
-    A: <A />,
-    B: <B />,
-    C: <C />,
-    D: <D />,
-    E: <E />,
-    F: <F />,
-    G: <G />,
+  const bases: { [key in Base]: (height: number) => JSX.Element } = {
+    A: (height) => <A height={height} />,
+    B: (height) => <B height={height} />,
+    C: (height) => <C height={height} />,
+    D: (height) => <D height={height} />,
+    E: (height) => <E height={height} />,
+    F: (height) => <F height={height} />,
+    G: (height) => <G height={height} />,
   };
 
-  const extensions: { [key in Extension]: JSX.Element } = {
-    b: <Flat />,
-    '#': <Sharp />,
-    '4': <Four />,
-    '5': <Five />,
-    '6': <Six />,
-    '7': <Seven />,
-    '9': <Nine />,
-    '11': <Eleven />,
-    '13': <Thirteen />,
-    o: <Dim />,
-    h: <HalfDim />,
-    '+': <HalfDim />,
-    add: <Add />,
-    sus: <Sus />,
-    maj: <Maj />,
+  const extensions: { [key in Extension]: (height: number) => JSX.Element } = {
+    b: (height) => <Flat height={height} />,
+    '#': (height) => <Sharp height={height} />,
+    '4': (height) => <Four height={height} />,
+    '5': (height) => <Five height={height} />,
+    '6': (height) => <Six height={height} />,
+    '7': (height) => <Seven height={height} />,
+    '9': (height) => <Nine height={height} />,
+    '11': (height) => <Eleven height={height} />,
+    '13': (height) => <Thirteen height={height} />,
+    '69': (height) => (
+      <div className={styles['chord__seven--sixnine']}>
+        <Six height={height} />
+        <Nine height={height} />
+      </div>
+    ),
+    o: (height) => <Dim height={height} />,
+    h: (height) => <HalfDim height={height} />,
+    '+': (height) => <HalfDim height={height} />,
+    add: (height) => <Add height={height} />,
+    sus: (height) => <Sus height={height} />,
+    maj: (height) => <Maj height={height} />,
   };
 
-  console.log(Object.keys(extensions));
-
-  const createJsxArray = (str: string): JSX.Element[] => {
-    const jsxArray: JSX.Element[] = [];
+  const createJsxArray = (str: string) => {
+    const jsxArray: {
+      key: keyof Extension;
+      element: (height: number) => JSX.Element;
+    }[] = [];
 
     while (str.length) {
       // check 69 first
-      Object.keys(extensions).forEach((e) => {
-        if (str.indexOf(e as string) === 0) {
-          jsxArray.push(extensions[e as keyof typeof extensions]);
-          str = str.slice(e.length);
-        }
-      });
+      if (str.indexOf('69') === 0) {
+        jsxArray.push({
+          key: '69' as keyof Extension,
+          element: extensions['69'],
+        });
+        str = str.slice(2);
+      } else {
+        Object.keys(extensions).forEach((e) => {
+          if (str.indexOf(e as string) === 0) {
+            jsxArray.push({
+              key: e as keyof Extension,
+              element: extensions[e as keyof typeof extensions],
+            });
+            str = str.slice(e.length);
+          }
+        });
+      }
     }
     return jsxArray;
   };
 
-  const jsxArrays: JSX.Element[][] = [];
+  const jsxArrays: {
+    key: keyof Extension;
+    element: (height: number) => JSX.Element;
+  }[][] = [];
   chord.extension.forEach((ex) => jsxArrays.push(createJsxArray(ex)));
-  // jsxArrays.push(createJsxArray('omaj9'));
 
   return (
     <div
       className={styles.chord}
       style={{ fontSize: size + 'rem', filter: `contrast(${contrast}%)` }}
     >
-      <div className={styles.chord__base}>{bases[chord.base]}</div>
+      <div className={styles.chord__base}>{bases[chord.base](1)}</div>
       {chord.accidental && (
         <div className={styles.chord__accidental}>
-          {chord.accidental === 'flat' && <Flat />}
-          {chord.accidental === 'sharp' && <Sharp />}
+          {chord.accidental === 'flat' && <Flat height={1} />}
+          {chord.accidental === 'sharp' && <Sharp height={1} />}
         </div>
       )}
       {chord.isMinor && (
         <div className={styles.chord__minor}>
-          <Minor />
+          <Minor height={1} />
         </div>
       )}
-      <div className={styles.chord__extension}>
-        {jsxArrays.map((array) =>
-          // cloneElement in order to add a key prop
-          array.map((jsx) => cloneElement(jsx, { key: Math.random() }))
-        )}
-      </div>
+      {jsxArrays.length >= 1 && (
+        <div className={styles.chord__seven}>
+          {jsxArrays[0].map((el) => {
+            return cloneElement(el.element(0.55), { key: Math.random() });
+          })}
+        </div>
+      )}
+      {jsxArrays.length > 1 && (
+        <div className={styles.chord__brackets}>
+          {jsxArrays.length === 3 ? (
+            <Bracket height={1.4} double />
+          ) : (
+            <Bracket height={0.7} />
+          )}
+          <div>
+            {jsxArrays.slice(1).map((array) => (
+              <div key={Math.random()}>
+                {array.map((el) =>
+                  cloneElement(el.element(0.55), { key: Math.random() })
+                )}
+              </div>
+            ))}
+          </div>
+          {jsxArrays.length === 3 ? (
+            <Bracket height={1.4} double flip />
+          ) : (
+            <Bracket height={0.7} flip />
+          )}
+        </div>
+      )}
     </div>
   );
-  // <div
-  //   className={styles.chord}
-  //   style={{
-  //     fontSize: size + 'rem',
-  //     marginTop: marginTop + 'rem',
-  //     marginBottom: marginBottom + 'rem',
-  //     filter: `contrast(${contrast}%)`,
-  //   }}
-  // >
-  //   {chord && (
-  //     <>
-  //       {chord.base.split('').map((char) =>
-  //         char === flat ? (
-  //           <div className={styles.chord__flat} key={char}>
-  //             {flat}
-  //             {/* <Flat height={2.8} /> */}
-  //           </div>
-  //         ) : char === sharp ? (
-  //           <div className={styles.chord__sharp} key={char}>
-  //             {sharp}
-  //           </div>
-  //         ) : (
-  //           <div className={styles.chord__base} key={char}>
-  //             {/* {char} */}
-  //             {chars['g']}
-  //           </div>
-  //         )
-  //       )}
-  //       {chord.isMinor && <div className={styles.chord__minor}>m</div>}
-  //       {chord.dim && <div className={styles.chord__dim}>{chord.dim}</div>}
-  //       {chord.seventh && (
-  //         <div className={styles.chord__seventh}>{chord.seventh}</div>
-  //       )}
-  //       {chord.sixNine && <div className={styles.chord__sixnine}>/</div>}
-  //       {chord.bracket[0] && (
-  //         <div
-  //           className={`${styles.chord__brackets} ${
-  //             chord.bracket[1] ? styles['chord__brackets--double'] : ''
-  //           } `}
-  //         >
-  //           <Bracket double={chord.bracket[1] ? true : false} />
-  //           <div
-  //             className={`${styles['chord__inside-brackets']} ${
-  //               chord.bracket[1]
-  //                 ? styles['chord__inside-brackets__small']
-  //                 : ''
-  //             }`}
-  //           >
-  //             {chord.bracket.map((part) => (
-  //               <div key={Math.random()}>
-  //                 {part?.split('').map((char) =>
-  //                   char === flat ? (
-  //                     <span className={styles.flat} key={flat}>
-  //                       {flat}
-  //                     </span>
-  //                   ) : char === sharp ? (
-  //                     <span className={styles.sharp} key={sharp}>
-  //                       {sharp}
-  //                     </span>
-  //                   ) : (
-  //                     char
-  //                   )
-  //                 )}
-  //               </div>
-  //             ))}
-  //           </div>
-  //           <Bracket double={chord.bracket[1] ? true : false} flip />
-  //         </div>
-  //       )}
-  //       {chord.alt && <div className={styles.chord__alt}>{chord.alt}</div>}
-  //     </>
-  //   )}
-  // </div>
 };
 
 export default Chord;

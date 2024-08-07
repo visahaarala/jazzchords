@@ -36,6 +36,7 @@ export const extensionsOrganized: {
     'maj7',
     '6',
     '69',
+    '7',
     '-7',
     '-maj7',
     '-6',
@@ -78,10 +79,10 @@ export const extensionsOrganized: {
     '7b13',
     '13#11',
     '13b9',
-    '13sus4',
+    // '13sus4', // don't like it
   ],
   painful: [
-    '7alt',
+    // '7alt', // not implemented yet
     '7#9b5',
     '7#9#5',
     '7#11b9',
@@ -91,7 +92,7 @@ export const extensionsOrganized: {
     '7#9b9',
     '7b13b9',
     '7b13#9',
-    '7b13sus4',
+    // '7b13sus4', // don't like it
   ],
 };
 
@@ -154,11 +155,6 @@ export const generateChords = (
     const extArray: string[] = [];
     // remove minor
     let ext: string | undefined = extension.replace('-', '');
-    // take apart 'o' and 'h'
-    if (ext.indexOf('h') === 0 || ext.indexOf('o') === 0) {
-      extArray.push(ext.substring(0, 1));
-      ext = ext.substring(1);
-    }
     // take apart 69
     if (ext.indexOf('69') === 0) {
       extArray.push('69');

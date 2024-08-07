@@ -52,6 +52,24 @@ export type MajorOrMinor = 'major' | 'minor';
 
 export type Base = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G';
 
+export type Extension =
+  | 'b'
+  | '#'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '9'
+  | '11'
+  | '13'
+  | '69'
+  | 'o'
+  | 'h'
+  | '+'
+  | 'add'
+  | 'sus'
+  | 'maj';
+
 export type Accidental = 'flat' | 'sharp' | undefined;
 
 export type Chord = {

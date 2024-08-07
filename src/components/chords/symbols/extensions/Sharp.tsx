@@ -4,8 +4,9 @@ const Sharp = ({ height }: { height?: number }) => {
 
   const svgWidth = 40;
   const svgHeight = 80;
+  const strokeWidth = svgHeight / 10;
 
-  const divWidth = height ? `${height * (svgWidth / svgHeight)}rem` : undefined;
+  const divWidth = height ? `${height * (svgWidth / svgHeight)}em` : undefined;
 
   return (
     <svg
@@ -19,14 +20,14 @@ const Sharp = ({ height }: { height?: number }) => {
       <path
         d='M11 10 V80 M29 0 V70'
         stroke='currentColor'
-        strokeWidth={5}
+        strokeWidth={strokeWidth * 0.6}
         fill='none'
         strokeLinecap='square'
       />
       <path
         d='M0 35 L40 15 M0 65 L40 45'
         stroke='currentColor'
-        strokeWidth={8}
+        strokeWidth={strokeWidth * 0.9}
         fill='currentColor'
         strokeLinecap='square'
       />
