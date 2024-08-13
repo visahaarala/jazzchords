@@ -18,6 +18,7 @@
   }
 
   &__seven {
+    // background-color: green;
     margin-top: 0.05em;
     display: flex;
     align-self: flex-start;
@@ -25,10 +26,12 @@
 
     & > svg:not(:first-child) {
       margin-left: 0.1em;
+      margin-bottom: auto; // fix '7' after 'maj'
     }
 
     &--sixnine {
-      width: 0.84em; // for centering purposes, content is positioned absolute 
+      // width for centering purposes, content is positioned absolute
+      width: 0.84em;
       position: relative;
 
       & svg {
