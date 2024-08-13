@@ -1,7 +1,5 @@
 # Issues
 
-- The chord symbol layout does not work in Firefox.
-
 - `play` functionality seems to not work on some older iPhone iOS versions due to problems with AudioContext.
 
 - Using tab to navigate on a desktop browser seems to work only partially in Safari.
