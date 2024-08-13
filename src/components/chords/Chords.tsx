@@ -45,34 +45,6 @@ const Chords = () => {
 
   return (
     <div className={styles.chords} onClick={nextChord}>
-      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-        {/* <A height={6} /> */}
-        {/* <B height={6} /> */}
-        {/* <C height={3} /> */}
-        {/* <Plus height={3} /> */}
-        {/* <D height={6} /> */}
-        {/* <E height={6} /> */}
-        {/* <F height={6} /> */}
-        {/* <G height={6} /> */}
-        {/* <Minor height={6} /> */}
-
-        {/* <Six height={3} /> */}
-        {/* <Five height={3} /> */}
-        {/* <Eleven height={3} /> */}
-        {/* <Add height={3} /> */}
-        {/* <Sus height={3} /> */}
-        {/* <Four height={3} /> */}
-        {/* <Six height={10} /> */}
-        {/* <Seven height={10} /> */}
-        {/* <Flat height={10} /> */}
-        {/* <SixNine height={10} /> */}
-        {/* <Bracket height={10} />
-        <Bracket height={10} flip />
-        <Bracket height={10} double />
-        <Bracket height={10} double flip /> */}
-        {/* <Maj height={10} /> */}
-      </div>
-      {/* <Chord size={5} /> */}
       <Chord size={3.7} />
       <Chord indexOffset={1} size={2} contrast={50} />
     </div>
