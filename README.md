@@ -10,7 +10,7 @@ Designed primarily for a right-handed user of a mobile phone (iPhone XS as a ref
 
 On a desktop use (`shift`-)`tab`, `space`, `esc` and `arrow` keys to navigate.
 
-Tested desktop browsers (on Mac Os X): Chrome, Safari, Opera and Firefox. Chrome and Opera seem to work the best. Firefox has problems with chord layout. Safari has problems with `tab` navigation.
+Tested desktop browsers (on Mac Os X): Chrome, Safari, Opera and Firefox. Safari has problems with `tab` navigation.
 
 Written with React, Typescript & SCSS using [Vite](https://vitejs.dev). Deployed at [vercel.com](vercel.com).
 
