@@ -4,7 +4,7 @@
 
 - change absolute randomness to systematically (randomly) going through each key/chord before repeating any of them
 
-- add heart symbols (on/off) on both sides of the main chord - for repeating the particular given key / chord extension more often.
+- add heart symbols (on/off) on both sides of the main chord - for repeating that particular key / chord extension more often.
 
 #### later
 
