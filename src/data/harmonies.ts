@@ -4,7 +4,7 @@ import {
   DifficultyLevel,
   Chord,
   ProgramState,
-  Base,
+  Key,
 } from '../@types';
 
 export const keysOrganized: {
@@ -186,7 +186,7 @@ export const generateChords = (
 
     // create new Chord and add it to chords list
     const newChord: Chord = {
-      base: key[0] as Base,
+      base: key[0] as Key,
       accidental: key.includes('b')
         ? 'flat'
         : key.includes('#')

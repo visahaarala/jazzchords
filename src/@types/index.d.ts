@@ -39,18 +39,7 @@ export type Range = {
 
 export type MajorOrMinor = 'major' | 'minor';
 
-// export type Extension = {
-//   extension: [
-//     string | undefined, // dim
-//     string | undefined, // 7
-//     string | undefined, // brackets top
-//     string | undefined, // brackets bottom
-//     string | undefined // alt
-//   ];
-//   isMinor: boolean;
-// };
-
-export type Base = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G';
+export type Key = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G';
 
 export type Extension =
   | 'b'
@@ -73,7 +62,7 @@ export type Extension =
 export type Accidental = 'flat' | 'sharp' | undefined;
 
 export type Chord = {
-  base: Base;
+  base: Key;
   accidental: Accidental;
   isMinor: boolean;
   extension: string[];

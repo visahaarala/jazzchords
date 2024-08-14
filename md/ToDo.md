@@ -1,5 +1,8 @@
 # TO-DO list
 
+... instead of creating generating chord objects, I should create a (randomized) list of keys and a list of extensions.
+
+
 #### now
 
 - change absolute randomness to systematically (randomly) going through each key/chord before repeating any of them

@@ -1,7 +1,7 @@
 import styles from './Select.module.scss';
 import { ProgramState, ReducerActionType } from '../../@types';
 import { useContext } from 'react';
-import { ReducerContext } from '../../context/ReducerContext';
+import { ChordsContext } from '../../context/ChordsContext';
 
 const Select = <T,>({
   dispatchActionType,
@@ -16,7 +16,7 @@ const Select = <T,>({
   description?: string;
   descriptionSingle?: string;
 }) => {
-  const { state, dispatch } = useContext(ReducerContext);
+  const { state, dispatch } = useContext(ChordsContext);
 
   const value = state[payloadKey];
 

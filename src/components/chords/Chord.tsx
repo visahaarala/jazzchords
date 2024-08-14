@@ -1,6 +1,6 @@
 import styles from './Chord.module.scss';
 import { cloneElement, useContext } from 'react';
-import { ReducerContext } from '../../context/ReducerContext';
+import { ChordsContext } from '../../context/ChordsContext';
 import Bracket from './symbols/extensions/Bracket';
 import A from './symbols/keys/A';
 import B from './symbols/keys/B';
@@ -10,7 +10,7 @@ import E from './symbols/keys/E';
 import F from './symbols/keys/F';
 import G from './symbols/keys/G';
 import Flat from './symbols/extensions/Flat';
-import { Base, Extension } from '../../@types';
+import { Key, Extension } from '../../@types';
 import Sharp from './symbols/extensions/Sharp';
 import Minor from './symbols/keys/Minor';
 import Four from './symbols/extensions/Four';
@@ -35,7 +35,7 @@ const Chord = ({
   indexOffset?: 0 | 1;
   contrast?: number; // percentage
 }) => {
-  const { state } = useContext(ReducerContext);
+  const { state } = useContext(ChordsContext);
   const { chordList, chordIndex } = state;
 
   const index = indexOffset ? chordIndex + indexOffset : chordIndex;
@@ -50,7 +50,7 @@ const Chord = ({
 
   if (contrast === undefined) contrast = 100;
 
-  const bases: { [key in Base]: (height: number) => JSX.Element } = {
+  const bases: { [key in Key]: (height: number) => JSX.Element } = {
     A: (height) => <A height={height} />,
     B: (height) => <B height={height} />,
     C: (height) => <C height={height} />,

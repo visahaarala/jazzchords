@@ -1,10 +1,10 @@
 import styles from './Beats.module.scss';
 import BeatCirle from './BeatCircle';
 import { useContext } from 'react';
-import { ReducerContext } from '../../context/ReducerContext';
+import { ChordsContext } from '../../context/ChordsContext';
 
 const Beats = () => {
-  const { state, dispatch } = useContext(ReducerContext);
+  const { state, dispatch } = useContext(ChordsContext);
   const numBeats = Number(state.beatsPerChord);
   const beatCircles: JSX.Element[] = [];
 

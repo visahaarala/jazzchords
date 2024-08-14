@@ -1,6 +1,6 @@
 import styles from './PlayControls.module.scss';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { ReducerContext } from '../../context/ReducerContext';
+import { ChordsContext } from '../../context/ChordsContext';
 import { useMetronome } from '../../hooks/useMetronome';
 import PlayButton from './PlayButton';
 import PlayIcon from '../icons/PlayIcon';
@@ -9,7 +9,7 @@ import PreviousIcon from '../icons/PreviousIcon';
 import NextIcon from '../icons/NextIcon';
 
 const PlayControls = () => {
-  const { state, dispatch } = useContext(ReducerContext);
+  const { state, dispatch } = useContext(ChordsContext);
   const {
     chordList,
     chordIndex,

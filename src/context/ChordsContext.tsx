@@ -149,7 +149,7 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
   }
 };
 
-export const ReducerContext = createContext<{
+export const ChordsContext = createContext<{
   state: ProgramState;
   dispatch: Dispatch<ReducerAction>;
 }>({
@@ -157,13 +157,13 @@ export const ReducerContext = createContext<{
   dispatch: () => {},
 });
 
-const ReducerContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
+const ChordsContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState());
   return (
-    <ReducerContext.Provider value={{ state, dispatch }}>
+    <ChordsContext.Provider value={{ state, dispatch }}>
       {children}
-    </ReducerContext.Provider>
+    </ChordsContext.Provider>
   );
 };
 
-export default ReducerContextProvider;
+export default ChordsContextProvider;

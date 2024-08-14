@@ -1,12 +1,12 @@
 import styles from './PlayerMute.module.scss';
 import { KeyboardEvent, useContext } from 'react';
-import { ReducerContext } from '../../context/ReducerContext';
+import { ChordsContext } from '../../context/ChordsContext';
 import MuteIcon from '../icons/MuteIcon';
 
 const PlayerMute = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;
 
-  const { state, dispatch } = useContext(ReducerContext);
+  const { state, dispatch } = useContext(ChordsContext);
   const isMuted = state.isMuted;
 
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {

@@ -1,10 +1,10 @@
 import styles from './BeatCircle.module.scss';
 
 import { useContext } from 'react';
-import { ReducerContext } from '../../context/ReducerContext';
+import { ChordsContext } from '../../context/ChordsContext';
 
 const BeatCirle = ({ beatNumber }: { beatNumber: number }) => {
-  const beat = useContext(ReducerContext).state.beat;
+  const beat = useContext(ChordsContext).state.beat;
 
   const style: React.CSSProperties = {
     backgroundColor:

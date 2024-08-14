@@ -18,7 +18,10 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, loader: async () => redirect('/play') },
-      { path: 'play', element: <Play /> },
+      {
+        path: 'play',
+        element: <Play />,
+      },
       {
         path: 'metronome',
         element: <Metronome />,

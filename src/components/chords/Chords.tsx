@@ -1,6 +1,6 @@
 import styles from './Chords.module.scss';
 import { useContext } from 'react';
-import { ReducerContext } from '../../context/ReducerContext';
+import { ChordsContext } from '../../context/ChordsContext';
 import Chord from './Chord';
 // import A from './symbols/keys/A';
 // import B from './symbols/keys/B';
@@ -30,7 +30,7 @@ import Chord from './Chord';
 const Chords = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;
 
-  const { state, dispatch } = useContext(ReducerContext);
+  const { state, dispatch } = useContext(ChordsContext);
   const { chordIndex, chordList } = state;
 
   const nextChord = () => {
