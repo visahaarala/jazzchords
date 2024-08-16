@@ -11,7 +11,7 @@ import NextIcon from '../icons/NextIcon';
 const PlayControls = () => {
   const { state, dispatch } = useContext(ChordsContext);
   const {
-    chordList,
+    chords: chordList,
     chordIndex,
     beatsPerMinute,
     beatsPerChord,

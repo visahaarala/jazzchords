@@ -4,7 +4,8 @@ import {
   DifficultyLevel,
   Chord,
   ProgramState,
-  Key,
+  Extension,
+  Alphabet,
 } from '../@types';
 
 export const keysOrganized: {
@@ -110,93 +111,146 @@ const createRangeArray = <T>(min: T, max: T, options: T[]) => {
   return rangeArray;
 };
 
-export const generateChords = (
-  number: number,
+export const generateKeysShuffled = (
   state: ProgramState
-): Chord[] => {
-  const { difficultyMin, difficultyMax, accidentalsMin, accidentalsMax } =
-    state;
-
-  const difficultyLevels = createRangeArray(
-    difficultyMin,
-    difficultyMax,
-    Object.keys(extensionsOrganized) as DifficultyLevel[]
-  );
-  const extensions: string[] = [];
-  for (const level of difficultyLevels) {
-    extensions.push(...extensionsOrganized[level]);
-  }
-  const accidentalsLevels = createRangeArray(
-    accidentalsMin,
-    accidentalsMax,
+): { majorsShuffled: string[]; minorsShuffled: string[] } => {
+  const accidentalLevels = createRangeArray(
+    state.accidentalsMin,
+    state.accidentalsMax,
     Object.keys(keysOrganized) as AccidentalLevel[]
   );
-
-  const chords: Chord[] = [];
-  for (let i = 0; i < number; i++) {
-    // choose an extension randomly
-    const randomExtensionIndex = Math.floor(Math.random() * extensions.length);
-    const extension = extensions[randomExtensionIndex];
-    const isMinor = extension.includes('-');
-    // choose an accidentalLevel randomly
-    const randomAccidentalsLevelIndex = Math.floor(
-      Math.random() * accidentalsLevels.length
+  // make arrays of majors & minors
+  const majors: string[] = [];
+  const minors: string[] = [];
+  for (const level of accidentalLevels) {
+    majors.push(...keysOrganized[level].major);
+    minors.push(...keysOrganized[level].minor);
+  }
+  // turn them into shuffled arrays
+  const majorsShuffled: string[] = [];
+  while (majors.length) {
+    majorsShuffled.push(
+      ...majors.splice(Math.floor(Math.random() * majors.length), 1)
     );
-    const randomAccidentalsLevel =
-      accidentalsLevels[randomAccidentalsLevelIndex];
-    // choose bases for accidentalLevel & extension
-    const randomKeys =
-      keysOrganized[randomAccidentalsLevel][isMinor ? 'minor' : 'major'];
-    // choose one of those bases
-    const randomBaseIndex = Math.floor(Math.random() * randomKeys.length);
-    const key = randomKeys[randomBaseIndex];
+  }
+  const minorsShuffled: string[] = [];
+  while (minors.length) {
+    minorsShuffled.push(
+      ...minors.splice(Math.floor(Math.random() * minors.length), 1)
+    );
+  }
+  return { majorsShuffled, minorsShuffled };
+};
+
+export const generateExtensionsShuffled = (
+  state: ProgramState
+): { extensionsShuffled: Extension[] } => {
+  const difficultyLevels = createRangeArray(
+    state.difficultyMin,
+    state.difficultyMax,
+    Object.keys(extensionsOrganized) as DifficultyLevel[]
+  );
+  const extensionTexts: string[] = [];
+  for (const level of difficultyLevels) {
+    extensionTexts.push(...extensionsOrganized[level]);
+  }
+  const extensionTextsShuffled: string[] = [];
+  while (extensionTexts.length) {
+    extensionTextsShuffled.push(
+      ...extensionTexts.splice(
+        Math.floor(Math.random() * extensionTexts.length),
+        1
+      )
+    );
+  }
+
+  const extensionsShuffled: Extension[] = [];
+  for (let ext of extensionTextsShuffled) {
+    // CHECK FOR MINOR
+    let isMinor = false;
+    if (ext.substring(0, 1) === '-') {
+      isMinor = true;
+      ext = ext.substring(1);
+    }
 
     // SPLIT CHORD EXTENSION TO ARRAY OF SEGMENTS
-    const extArray: string[] = [];
-    // remove minor
-    let ext: string | undefined = extension.replace('-', '');
+    const segments: string[] = [];
     // take apart 69
     if (ext.indexOf('69') === 0) {
-      extArray.push('69');
+      segments.push('69');
       ext = ext.substring(2);
     }
     // take apart first number (6, 7, 9, 11, 13)
     if (/[679]/.exec(ext)?.index === 0) {
-      extArray.push(ext.substring(0, 1));
+      segments.push(ext.substring(0, 1));
       ext = ext.substring(1);
     }
     if (/11|13/.exec(ext)?.index === 0) {
-      extArray.push(ext.substring(0, 2));
+      segments.push(ext.substring(0, 2));
       ext = ext.substring(2);
     }
     // split the rest by #, b and alt
-    while (ext) {
+    while (ext.length) {
       const index = ext.substring(1).search(/#|b|alt/) + 1;
       if (index > 0) {
-        extArray.push(ext.substring(0, index));
+        segments.push(ext.substring(0, index));
         ext = ext.substring(index);
       } else {
-        extArray.push(ext);
-        ext = undefined;
+        segments.push(ext);
+        ext = '';
       }
     }
+    extensionsShuffled.push({ isMinor, segments });
+  }
+  return { extensionsShuffled };
+};
 
-    // make a number[] of notes from isMinor & extension
-    const notes: number[] = [];
-
-    // create new Chord and add it to chords list
-    const newChord: Chord = {
-      base: key[0] as Key,
+export const generateChords = ({
+  number,
+  state,
+  append,
+}: {
+  number: number;
+  state: ProgramState;
+  append?: boolean;
+}): {
+  chords: Chord[];
+  extensionsShuffled: Extension[];
+  majorsShuffled: string[];
+  minorsShuffled: string[];
+} => {
+  const chords: Chord[] = append ? state.chords : [];
+  const extensionsShuffled = [...state.extensionsShuffled];
+  const majorsShuffled = [...state.majorsShuffled];
+  const minorsShuffled = [...state.minorsShuffled];
+  for (let i = 0; i < number; i++) {
+    // pick an extension and rotate the array
+    const extension = extensionsShuffled.splice(0, 1)[0];
+    extensionsShuffled.push(extension);
+    // check if it's major/minor, pick a key and rotate the major/minor array
+    let key = '';
+    if (extension.isMinor) {
+      key = minorsShuffled.splice(0, 1)[0];
+      minorsShuffled.push(key);
+    } else {
+      key = majorsShuffled.splice(0, 1)[0];
+      majorsShuffled.push(key);
+    }
+    chords.push({
+      base: key[0] as Alphabet,
       accidental: key.includes('b')
         ? 'flat'
         : key.includes('#')
         ? 'sharp'
         : undefined,
-      isMinor,
-      extension: extArray,
-      notes,
-    };
-    chords.push(newChord);
+      extension,
+    });
   }
-  return chords;
+
+  return {
+    chords,
+    extensionsShuffled,
+    majorsShuffled,
+    minorsShuffled,
+  };
 };

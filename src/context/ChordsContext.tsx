@@ -9,22 +9,37 @@ import {
   accidentalLevels,
   allDifficultyLevels,
   generateChords,
+  generateExtensionsShuffled,
+  generateKeysShuffled,
 } from '../data/harmonies';
 
 const initialState = (): ProgramState => {
-  const state: ProgramState = {
+  let state: ProgramState = {
     isMuted: false,
     difficultyMin: 'easy',
     difficultyMax: 'medium',
     accidentalsMin: '0',
     accidentalsMax: '7',
-    chordList: [],
     chordIndex: 0,
     beatsPerChord: '4',
     beatsPerMinute: '60',
     beat: 0,
+    // generate these below
+    majorsShuffled: [],
+    minorsShuffled: [],
+    extensionsShuffled: [],
+    chords: [],
   };
-  return { ...state, chordList: generateChords(2, state) };
+  state = {
+    ...state,
+    ...generateKeysShuffled(state),
+    ...generateExtensionsShuffled(state),
+  };
+  state = {
+    ...state,
+    ...generateChords({ number: 2, state }),
+  };
+  return state;
 };
 
 const getStateWithUpdatedRangeAndChords = <T,>({
@@ -50,16 +65,22 @@ const getStateWithUpdatedRangeAndChords = <T,>({
   if (inverse !== payloadValueIsGreateThanStateValue) {
     newStateValue = payloadValue;
   }
-  const newState = {
+  let newState = {
     ...state,
     [payloadKey]: payloadValue,
     [stateKey]: newStateValue,
   };
-  return {
+  newState = {
     ...newState,
-    chordList: generateChords(2, newState),
+    ...generateKeysShuffled(newState),
+    ...generateExtensionsShuffled(newState),
+  };
+  newState = {
+    ...newState,
+    ...generateChords({ number: 2, state: newState }),
     chordIndex: 0,
   };
+  return newState;
 };
 
 const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
@@ -80,6 +101,9 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
       return { ...state, isMuted: action.payload!.isMuted! };
     }
     case 'SET_DIFFICULTY_MIN': {
+      // first create a random list of available extensions
+      // reset the favorites list
+
       return getStateWithUpdatedRangeAndChords<DifficultyLevel>({
         action,
         payloadKey: 'difficultyMin',
@@ -100,6 +124,7 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
       });
     }
     case 'SET_ACCIDENTALS_MIN': {
+      console.log('SET_ACCIDENTALS_MIN');
       return getStateWithUpdatedRangeAndChords<AccidentalLevel>({
         action,
         payloadKey: 'accidentalsMin',
@@ -131,9 +156,10 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
       return { ...state, beat: state.beat + 1 };
     }
     case 'APPEND_CHORD_LIST': {
+      console.log('context: append chord list');
       return {
         ...state,
-        chordList: [...state.chordList, generateChords(1, state)[0]],
+        ...generateChords({ number: 1, state, append: true }),
         chordIndex: state.chordIndex + 1,
       };
     }

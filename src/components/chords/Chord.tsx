@@ -10,7 +10,7 @@ import E from './symbols/keys/E';
 import F from './symbols/keys/F';
 import G from './symbols/keys/G';
 import Flat from './symbols/extensions/Flat';
-import { Key, Extension } from '../../@types';
+import { Alphabet, ExtensionText } from '../../@types';
 import Sharp from './symbols/extensions/Sharp';
 import Minor from './symbols/keys/Minor';
 import Four from './symbols/extensions/Four';
@@ -36,7 +36,7 @@ const Chord = ({
   contrast?: number; // percentage
 }) => {
   const { state } = useContext(ChordsContext);
-  const { chordList, chordIndex } = state;
+  const { chords: chordList, chordIndex } = state;
 
   const index = indexOffset ? chordIndex + indexOffset : chordIndex;
   const chord = chordList[index];
@@ -50,7 +50,7 @@ const Chord = ({
 
   if (contrast === undefined) contrast = 100;
 
-  const bases: { [key in Key]: (height: number) => JSX.Element } = {
+  const bases: { [key in Alphabet]: (height: number) => JSX.Element } = {
     A: (height) => <A height={height} />,
     B: (height) => <B height={height} />,
     C: (height) => <C height={height} />,
@@ -60,7 +60,10 @@ const Chord = ({
     G: (height) => <G height={height} />,
   };
 
-  const extensions: { [key in Extension]: (height: number) => JSX.Element } = {
+  const extensions: {
+    // [key in ExtensionText]: (height: number) => JSX.Element;
+    [key: string]: (height: number) => JSX.Element;
+  } = {
     b: (height) => <Flat height={height} />,
     '#': (height) => <Sharp height={height} />,
     '4': (height) => <Four height={height} />,
@@ -86,7 +89,7 @@ const Chord = ({
 
   const createJsxArray = (str: string) => {
     const jsxArray: {
-      key: keyof Extension;
+      key: keyof ExtensionText;
       element: (height: number) => JSX.Element;
     }[] = [];
 
@@ -94,7 +97,7 @@ const Chord = ({
       // check 69 first
       if (str.indexOf('69') === 0) {
         jsxArray.push({
-          key: '69' as keyof Extension,
+          key: '69' as keyof ExtensionText,
           element: extensions['69'],
         });
         str = str.slice(2);
@@ -102,7 +105,7 @@ const Chord = ({
         Object.keys(extensions).forEach((e) => {
           if (str.indexOf(e as string) === 0) {
             jsxArray.push({
-              key: e as keyof Extension,
+              key: e as keyof ExtensionText,
               element: extensions[e as keyof typeof extensions],
             });
             str = str.slice(e.length);
@@ -114,10 +117,12 @@ const Chord = ({
   };
 
   const jsxArrays: {
-    key: keyof Extension;
+    key: keyof ExtensionText;
     element: (height: number) => JSX.Element;
   }[][] = [];
-  chord.extension.forEach((ex) => jsxArrays.push(createJsxArray(ex)));
+  chord.extension.segments.forEach((segment) =>
+    jsxArrays.push(createJsxArray(segment))
+  );
 
   return (
     <div
@@ -131,7 +136,7 @@ const Chord = ({
           {chord.accidental === 'sharp' && <Sharp height={1} />}
         </div>
       )}
-      {chord.isMinor && (
+      {chord.extension.isMinor && (
         <div className={styles.chord__minor}>
           <Minor height={1} />
         </div>

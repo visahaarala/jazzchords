@@ -1,9 +1,17 @@
+export type Extension = { isMinor: boolean; segments: string[] };
+
 export type ProgramState = {
   accidentalsMin: AccidentalLevel;
   accidentalsMax: AccidentalLevel;
   difficultyMin: DifficultyLevel;
   difficultyMax: DifficultyLevel;
-  chordList: Chord[];
+  majorsShuffled: string[];
+  minorsShuffled: string[];
+  // keysShuffled: { majors: string[]; minors: string[] };
+  extensionsShuffled: Extension[];
+  // favoriteKeys: Key[]; // maybe never implement this...
+  // favoriteExtensions: string[];
+  chords: Chord[];
   chordIndex: number;
   beatsPerChord: BeatsPerChord;
   beatsPerMinute: BeatsPerMinute;
@@ -39,9 +47,9 @@ export type Range = {
 
 export type MajorOrMinor = 'major' | 'minor';
 
-export type Key = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G';
+export type Alphabet = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G';
 
-export type Extension =
+export type ExtensionText =
   | 'b'
   | '#'
   | '4'
@@ -62,11 +70,12 @@ export type Extension =
 export type Accidental = 'flat' | 'sharp' | undefined;
 
 export type Chord = {
-  base: Key;
+  base: Alphabet;
   accidental: Accidental;
-  isMinor: boolean;
-  extension: string[];
-  notes: number[];
+  extension: Extension;
+  // isMinor: boolean;
+  // extension: string[];
+  // notes: number[]; // LATER
 };
 
 export type AccidentalLevel = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';

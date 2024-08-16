@@ -31,7 +31,7 @@ const Chords = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;
 
   const { state, dispatch } = useContext(ChordsContext);
-  const { chordIndex, chordList } = state;
+  const { chordIndex, chords: chordList } = state;
 
   const nextChord = () => {
     if (isMobile) {
