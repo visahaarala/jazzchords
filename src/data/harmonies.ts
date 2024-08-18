@@ -219,7 +219,7 @@ export const generateChords = ({
   majorsShuffled: string[];
   minorsShuffled: string[];
 } => {
-  const chords: Chord[] = append ? state.chords : [];
+  const chords: Chord[] = append ? [...state.chords] : [];
   const extensionsShuffled = [...state.extensionsShuffled];
   const majorsShuffled = [...state.majorsShuffled];
   const minorsShuffled = [...state.minorsShuffled];
