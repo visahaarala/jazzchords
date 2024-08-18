@@ -156,7 +156,6 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
       return { ...state, beat: state.beat + 1 };
     }
     case 'APPEND_CHORD_LIST': {
-      console.log('context: append chord list');
       return {
         ...state,
         ...generateChords({ number: 1, state, append: true }),
