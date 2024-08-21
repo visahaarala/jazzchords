@@ -82,7 +82,10 @@ const PlayControls = () => {
         icon={play ? <PauseIcon /> : <PlayIcon />}
         id='play' // for click light
       />
-      <PlayButton onClick={previousHandler} icon={<PreviousIcon />} />
+      <PlayButton
+        onClick={previousHandler}
+        icon={<PreviousIcon disabled={state.chordIndex === 0} />}
+      />
       <PlayButton onClick={nextHandler} icon={<NextIcon />} />
     </div>
   );
