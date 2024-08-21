@@ -35,11 +35,11 @@ const Chord = ({
   indexOffset?: 0 | 1;
   contrast?: number; // percentage
 }) => {
-  const { state } = useContext(ChordsContext);
-  const { chords: chordList, chordIndex } = state;
+  const { state, dispatch } = useContext(ChordsContext);
+  const { chords, chordIndex } = state;
 
   const index = indexOffset ? chordIndex + indexOffset : chordIndex;
-  const chord = chordList[index];
+  const chord = chords[index];
   if (!chord) {
     return <></>;
   }
@@ -124,16 +124,28 @@ const Chord = ({
     jsxArrays.push(createJsxArray(segment))
   );
 
+  const isMobile = matchMedia('(pointer:coarse)').matches;
+  const nextChord = () => {
+    if (isMobile) {
+      if (chordIndex >= chords.length - 2) {
+        dispatch({ type: 'APPEND_CHORD_LIST' });
+      } else {
+        dispatch({ type: 'INCREMENT_CHORD_INDEX' });
+      }
+    }
+  };
+
   return (
     <div
       className={styles.chord}
       style={{ fontSize: size + 'rem', filter: `contrast(${contrast}%)` }}
+      onClick={nextChord}
     >
-      <div className={styles.chord__base}>{bases[chord.base](1)}</div>
-      {chord.accidental && (
+      <div className={styles.chord__base}>{bases[chord.key.base](1)}</div>
+      {chord.key.accidental && (
         <div className={styles.chord__accidental}>
-          {chord.accidental === 'flat' && <Flat height={1} />}
-          {chord.accidental === 'sharp' && <Sharp height={1} />}
+          {chord.key.accidental === 'flat' && <Flat height={1} />}
+          {chord.key.accidental === 'sharp' && <Sharp height={1} />}
         </div>
       )}
       {chord.extension.isMinor && (

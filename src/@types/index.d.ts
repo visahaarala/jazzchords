@@ -1,14 +1,17 @@
 export type Extension = { isMinor: boolean; segments: string[] };
 
+export type FreshAndUsed<T> = { fresh: T[]; used: T[] };
+
 export type ProgramState = {
   accidentalsMin: AccidentalLevel;
   accidentalsMax: AccidentalLevel;
   difficultyMin: DifficultyLevel;
   difficultyMax: DifficultyLevel;
-  majorsShuffled: string[];
-  minorsShuffled: string[];
-  // keysShuffled: { majors: string[]; minors: string[] };
-  extensionsShuffled: Extension[];
+  majorsShuffled: FreshAndUsed<string>;
+  minorsShuffled: FreshAndUsed<string>;
+  extensionsShuffled: FreshAndUsed<Extension>;
+  keyLocked: boolean;
+  extensionLocked: boolean;
   // favoriteKeys: Key[]; // maybe never implement this...
   // favoriteExtensions: string[];
   chords: Chord[];
@@ -31,6 +34,7 @@ export type ReducerActionType =
   | 'SET_DIFFICULTY_MIN'
   | 'SET_DIFFICULTY_MAX'
   | 'SET_DIFFICULTY_MAX'
+  | 'SWITCH_EXTENSION_LOCK'
   | 'SET_ACCIDENTALS_MIN'
   | 'SET_ACCIDENTALS_MAX'
   | 'RESET_SETTINGS';
@@ -69,10 +73,13 @@ export type ExtensionText =
 
 export type Accidental = 'flat' | 'sharp' | undefined;
 
+export type Key = { base: Alphabet; accidental: Accidental };
+
 export type Chord = {
-  base: Alphabet;
-  accidental: Accidental;
+  key: Key;
   extension: Extension;
+  // base: Alphabet;
+  // accidental: Accidental;
   // isMinor: boolean;
   // extension: string[];
   // notes: number[]; // LATER

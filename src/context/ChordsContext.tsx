@@ -24,10 +24,12 @@ const initialState = (): ProgramState => {
     beatsPerChord: '4',
     beatsPerMinute: '60',
     beat: 0,
+    keyLocked: false,
+    extensionLocked: false,
     // generate these below
-    majorsShuffled: [],
-    minorsShuffled: [],
-    extensionsShuffled: [],
+    majorsShuffled: { fresh: [], used: [] },
+    minorsShuffled: { fresh: [], used: [] },
+    extensionsShuffled: { fresh: [], used: [] },
     chords: [],
   };
   state = {
@@ -167,6 +169,19 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
     }
     case 'DECREMENT_CHORD_INDEX': {
       return { ...state, chordIndex: state.chordIndex - 1 };
+    }
+    case 'SWITCH_EXTENSION_LOCK': {
+      const chords = state.chords.slice(state.chordIndex, state.chordIndex + 2);
+      console.log(chords);
+      if (state.chords.length >= 2) {
+        chords[1].extension = chords[0].extension;
+      }
+      return {
+        ...state,
+        chords,
+        extensionLocked: !state.extensionLocked,
+        chordIndex: 0,
+      };
     }
     default: {
       return state;

@@ -6,6 +6,7 @@ import {
   ProgramState,
   Extension,
   Alphabet,
+  FreshAndUsed,
 } from '../@types';
 
 export const keysOrganized: {
@@ -111,9 +112,21 @@ const createRangeArray = <T>(min: T, max: T, options: T[]) => {
   return rangeArray;
 };
 
+const shuffleArray = <T>(array: T[]): T[] => {
+  const orig: T[] = [...array];
+  const mixed: T[] = [];
+  while (orig.length) {
+    mixed.push(...orig.splice(Math.floor(Math.random() * orig.length), 1));
+  }
+  return mixed;
+};
+
 export const generateKeysShuffled = (
   state: ProgramState
-): { majorsShuffled: string[]; minorsShuffled: string[] } => {
+): {
+  majorsShuffled: FreshAndUsed<string>;
+  minorsShuffled: FreshAndUsed<string>;
+} => {
   const accidentalLevels = createRangeArray(
     state.accidentalsMin,
     state.accidentalsMax,
@@ -127,24 +140,20 @@ export const generateKeysShuffled = (
     minors.push(...keysOrganized[level].minor);
   }
   // turn them into shuffled arrays
-  const majorsShuffled: string[] = [];
-  while (majors.length) {
-    majorsShuffled.push(
-      ...majors.splice(Math.floor(Math.random() * majors.length), 1)
-    );
-  }
-  const minorsShuffled: string[] = [];
-  while (minors.length) {
-    minorsShuffled.push(
-      ...minors.splice(Math.floor(Math.random() * minors.length), 1)
-    );
-  }
+  const majorsShuffled: FreshAndUsed<string> = {
+    fresh: shuffleArray(majors),
+    used: [],
+  };
+  const minorsShuffled: FreshAndUsed<string> = {
+    fresh: shuffleArray(minors),
+    used: [],
+  };
   return { majorsShuffled, minorsShuffled };
 };
 
 export const generateExtensionsShuffled = (
   state: ProgramState
-): { extensionsShuffled: Extension[] } => {
+): { extensionsShuffled: FreshAndUsed<Extension> } => {
   const difficultyLevels = createRangeArray(
     state.difficultyMin,
     state.difficultyMax,
@@ -154,17 +163,8 @@ export const generateExtensionsShuffled = (
   for (const level of difficultyLevels) {
     extensionTexts.push(...extensionsOrganized[level]);
   }
-  const extensionTextsShuffled: string[] = [];
-  while (extensionTexts.length) {
-    extensionTextsShuffled.push(
-      ...extensionTexts.splice(
-        Math.floor(Math.random() * extensionTexts.length),
-        1
-      )
-    );
-  }
-
-  const extensionsShuffled: Extension[] = [];
+  const extensionTextsShuffled: string[] = shuffleArray(extensionTexts);
+  const extensionsShuffled: FreshAndUsed<Extension> = { fresh: [], used: [] };
   for (let ext of extensionTextsShuffled) {
     // CHECK FOR MINOR
     let isMinor = false;
@@ -172,7 +172,6 @@ export const generateExtensionsShuffled = (
       isMinor = true;
       ext = ext.substring(1);
     }
-
     // SPLIT CHORD EXTENSION TO ARRAY OF SEGMENTS
     const segments: string[] = [];
     // take apart 69
@@ -200,7 +199,7 @@ export const generateExtensionsShuffled = (
         ext = '';
       }
     }
-    extensionsShuffled.push({ isMinor, segments });
+    extensionsShuffled.fresh.push({ isMinor, segments });
   }
   return { extensionsShuffled };
 };
@@ -215,34 +214,67 @@ export const generateChords = ({
   append?: boolean;
 }): {
   chords: Chord[];
-  extensionsShuffled: Extension[];
-  majorsShuffled: string[];
-  minorsShuffled: string[];
+  extensionsShuffled: FreshAndUsed<Extension>;
+  majorsShuffled: FreshAndUsed<string>;
+  minorsShuffled: FreshAndUsed<string>;
 } => {
   const chords: Chord[] = append ? [...state.chords] : [];
-  const extensionsShuffled = [...state.extensionsShuffled];
-  const majorsShuffled = [...state.majorsShuffled];
-  const minorsShuffled = [...state.minorsShuffled];
+  const extensionsShuffled: FreshAndUsed<Extension> = {
+    fresh: [...state.extensionsShuffled.fresh],
+    used: [...state.extensionsShuffled.used],
+  };
+  const majorsShuffled: FreshAndUsed<string> = {
+    fresh: [...state.majorsShuffled.fresh],
+    used: [...state.majorsShuffled.used],
+  };
+  const minorsShuffled: FreshAndUsed<string> = {
+    fresh: [...state.minorsShuffled.fresh],
+    used: [...state.minorsShuffled.used],
+  };
   for (let i = 0; i < number; i++) {
-    // pick an extension and rotate the array
-    const extension = extensionsShuffled.splice(0, 1)[0];
-    extensionsShuffled.push(extension);
+    let extension: Extension;
+    if (state.extensionLocked && chords.length >= 2) {
+      // if extension is locked, keep repeating the same extension
+      extension = state.chords.slice(-1)[0].extension;
+    } else {
+      // SHUFFLE NEW FRESH ARRAYS IF NECESSARY
+      if (!extensionsShuffled.fresh.length) {
+        extensionsShuffled.fresh = shuffleArray(extensionsShuffled.used);
+        extensionsShuffled.used = [];
+      }
+      // if extension / key is not locked
+      // splice the first fresh and push it to used
+      extension = extensionsShuffled.fresh.splice(0, 1)[0];
+      extensionsShuffled.used.push(extension);
+    }
+
+    // SHUFFLE NEW FRESH ARRAYS IF NECESSARY
+    if (!majorsShuffled.fresh.length) {
+      majorsShuffled.fresh = shuffleArray(majorsShuffled.used);
+      majorsShuffled.used = [];
+    }
+    if (!minorsShuffled.fresh.length) {
+      minorsShuffled.fresh = shuffleArray(minorsShuffled.used);
+      minorsShuffled.used = [];
+    }
     // check if it's major/minor, pick a key and rotate the major/minor array
     let key = '';
     if (extension.isMinor) {
-      key = minorsShuffled.splice(0, 1)[0];
-      minorsShuffled.push(key);
+      key = minorsShuffled.fresh.splice(0, 1)[0];
+      minorsShuffled.used.push(key);
     } else {
-      key = majorsShuffled.splice(0, 1)[0];
-      majorsShuffled.push(key);
+      key = majorsShuffled.fresh.splice(0, 1)[0];
+      majorsShuffled.used.push(key);
     }
     chords.push({
-      base: key[0] as Alphabet,
-      accidental: key.includes('b')
-        ? 'flat'
-        : key.includes('#')
-        ? 'sharp'
-        : undefined,
+      key: {
+        base: key[0] as Alphabet,
+        accidental: key.includes('b')
+          ? 'flat'
+          : key.includes('#')
+          ? 'sharp'
+          : undefined,
+      },
       extension,
     });
   }
