@@ -13,7 +13,6 @@ const Lock = ({
     <path
       d='M17 55 V 90 H 83 V 55z'
       fill='currentColor'
-      strokeLinejoin='round'
     />
     <path
       d={
@@ -24,7 +23,6 @@ const Lock = ({
       strokeWidth={10}
       fill='none'
       stroke='currentColor'
-      strokeLinecap='butt'
     />
   </svg>
 );

@@ -65,7 +65,7 @@ const Info = () => (
         <div>
           Use lock
           <div style={textIconStyle}>
-            <Lock />
+            <Lock isLocked />
           </div>
           to practice a particular chord extension.
         </div>
