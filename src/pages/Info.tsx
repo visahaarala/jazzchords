@@ -5,6 +5,7 @@ import MetronomeIcon from '../components/icons/MetronomeIcon';
 import PlayIcon from '../components/icons/PlayIcon';
 import NextIcon from '../components/icons/NextIcon';
 import PreviousIcon from '../components/icons/PreviousIcon';
+import Lock from '../components/icons/Lock';
 
 const headerIconStyle: React.CSSProperties = {
   display: 'inline-block',
@@ -42,23 +43,32 @@ const Info = () => (
       </div>
 
       <div>
-        <div style={headerIconStyle}>
-          <PlayIcon />
+        <div>
+          <div style={headerIconStyle}>
+            <PlayIcon />
+          </div>
+          Jazzchords player &mdash; randomly generate and go back and forth
+          between chords using the
+          <div style={textIconStyle}>
+            <NextIcon />
+          </div>
+          and
+          <div style={textIconStyle}>
+            <PreviousIcon />
+          </div>
+          buttons, or play
+          <div style={textIconStyle}>
+            <PlayIcon />
+          </div>
+          through random chords.
         </div>
-        Jazzchords player &mdash; randomly generate and go back and forth
-        between chords using the
-        <div style={textIconStyle}>
-          <NextIcon />
+        <div>
+          Use lock
+          <div style={textIconStyle}>
+            <Lock />
+          </div>
+          to practice a particular chord extension.
         </div>
-        and
-        <div style={textIconStyle}>
-          <PreviousIcon />
-        </div>
-        buttons, or play
-        <div style={textIconStyle}>
-          <PlayIcon />
-        </div>
-        through random chords.
       </div>
 
       <div>
