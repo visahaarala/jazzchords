@@ -126,7 +126,6 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
       });
     }
     case 'SET_ACCIDENTALS_MIN': {
-      console.log('SET_ACCIDENTALS_MIN');
       return getStateWithUpdatedRangeAndChords<AccidentalLevel>({
         action,
         payloadKey: 'accidentalsMin',
@@ -172,7 +171,6 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
     }
     case 'SWITCH_EXTENSION_LOCK': {
       const chords = state.chords.slice(state.chordIndex, state.chordIndex + 2);
-      console.log(chords);
       if (state.chords.length >= 2) {
         chords[1].extension = chords[0].extension;
       }
