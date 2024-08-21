@@ -84,7 +84,8 @@ const PlayControls = () => {
       />
       <PlayButton
         onClick={previousHandler}
-        icon={<PreviousIcon disabled={state.chordIndex === 0} />}
+        disabled={state.chordIndex === 0}
+        icon={<PreviousIcon />}
       />
       <PlayButton onClick={nextHandler} icon={<NextIcon />} />
     </div>

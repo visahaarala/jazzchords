@@ -5,10 +5,12 @@ const PlayButton = ({
   icon,
   onClick,
   id,
+  disabled,
 }: {
   icon: JSX.Element;
   onClick: () => void;
   id?: string;
+  disabled?: boolean;
 }) => {
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
     const code = e.code;
@@ -24,6 +26,7 @@ const PlayButton = ({
       onKeyDown={keyDownHandler}
       tabIndex={0}
       id={id}
+      style={disabled ? { filter: 'contrast(70%) brightness(.75)' } : {}}
     >
       <div className={styles.icon}>{icon}</div>
     </div>
