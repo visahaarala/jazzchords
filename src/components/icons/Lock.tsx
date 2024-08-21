@@ -9,11 +9,9 @@ const Lock = ({
     xmlns='http://www.w3.org/2000/svg'
     viewBox='16 4 68 87'
     onClick={onClick}
+    style={{ color: 'yellow' }}
   >
-    <path
-      d='M17 55 V 90 H 83 V 55z'
-      fill='currentColor'
-    />
+    <path d='M17 55 V 90 H 83 V 55z' fill='currentColor' />
     <path
       d={
         !isLocked
