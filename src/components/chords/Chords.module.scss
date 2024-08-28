@@ -23,15 +23,15 @@
       position: relative;
       display: flex;
       align-items: center;
-      justify-content: end;
+      justify-content: space-between;
 
       &:nth-child(2) {
-        width: 17rem;
+        width: 15.8rem;
 
         & > svg {
           cursor: pointer;
           padding: 0.2rem;
-          width: 1.9rem;
+          width: 1.5rem;
         }
       }
     }

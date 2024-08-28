@@ -144,8 +144,8 @@ const Chord = ({
       <div className={styles.chord__base}>{bases[chord.key.base](1)}</div>
       {chord.key.accidental && (
         <div className={styles.chord__accidental}>
-          {chord.key.accidental === 'flat' && <Flat height={1} />}
-          {chord.key.accidental === 'sharp' && <Sharp height={1} />}
+          {chord.key.accidental === 'b' && <Flat height={1} />}
+          {chord.key.accidental === '#' && <Sharp height={1} />}
         </div>
       )}
       {chord.extension.isMinor && (

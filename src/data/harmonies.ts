@@ -233,7 +233,7 @@ export const generateChords = ({
   };
   for (let i = 0; i < number; i++) {
     let extension: Extension;
-    if (state.extensionLocked && chords.length >= 2) {
+    if (state.extensionLocked) {
       // if extension is locked, keep repeating the same extension
       extension = state.chords.slice(-1)[0].extension;
     } else {
@@ -248,31 +248,37 @@ export const generateChords = ({
       extensionsShuffled.used.push(extension);
     }
 
-    // SHUFFLE NEW FRESH ARRAYS IF NECESSARY
-    if (!majorsShuffled.fresh.length) {
-      majorsShuffled.fresh = shuffleArray(majorsShuffled.used);
-      majorsShuffled.used = [];
-    }
-    if (!minorsShuffled.fresh.length) {
-      minorsShuffled.fresh = shuffleArray(minorsShuffled.used);
-      minorsShuffled.used = [];
-    }
-    // check if it's major/minor, pick a key and rotate the major/minor array
-    let key = '';
-    if (extension.isMinor) {
-      key = minorsShuffled.fresh.splice(0, 1)[0];
-      minorsShuffled.used.push(key);
+    let keyString: string;
+    if (state.keyLocked) {
+      const lastKey = state.chords.slice(-1)[0].key;
+      keyString = lastKey.base + lastKey.accidental;
     } else {
-      key = majorsShuffled.fresh.splice(0, 1)[0];
-      majorsShuffled.used.push(key);
+      // SHUFFLE NEW FRESH ARRAYS IF NECESSARY
+      if (!majorsShuffled.fresh.length) {
+        majorsShuffled.fresh = shuffleArray(majorsShuffled.used);
+        majorsShuffled.used = [];
+      }
+      if (!minorsShuffled.fresh.length) {
+        minorsShuffled.fresh = shuffleArray(minorsShuffled.used);
+        minorsShuffled.used = [];
+      }
+      // check if it's major/minor, pick a key and rotate the major/minor array
+      if (extension.isMinor) {
+        keyString = minorsShuffled.fresh.splice(0, 1)[0];
+        minorsShuffled.used.push(keyString);
+      } else {
+        keyString = majorsShuffled.fresh.splice(0, 1)[0];
+        majorsShuffled.used.push(keyString);
+      }
     }
+
     chords.push({
       key: {
-        base: key[0] as Alphabet,
-        accidental: key.includes('b')
-          ? 'flat'
-          : key.includes('#')
-          ? 'sharp'
+        base: keyString[0] as Alphabet,
+        accidental: keyString.includes('b')
+          ? 'b'
+          : keyString.includes('#')
+          ? '#'
           : undefined,
       },
       extension,

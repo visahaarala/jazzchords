@@ -169,9 +169,21 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
     case 'DECREMENT_CHORD_INDEX': {
       return { ...state, chordIndex: state.chordIndex - 1 };
     }
+    case 'SWITCH_KEY_LOCK': {
+      const chords = state.chords.slice(state.chordIndex, state.chordIndex + 2);
+      if (!state.keyLocked) {
+        chords[1].key = chords[0].key;
+      }
+      return {
+        ...state,
+        chords,
+        keyLocked: !state.keyLocked,
+        chordIndex: 0,
+      };
+    }
     case 'SWITCH_EXTENSION_LOCK': {
       const chords = state.chords.slice(state.chordIndex, state.chordIndex + 2);
-      if (state.chords.length >= 2) {
+      if (!state.extensionLocked) {
         chords[1].extension = chords[0].extension;
       }
       return {

@@ -12,8 +12,6 @@ export type ProgramState = {
   extensionsShuffled: FreshAndUsed<Extension>;
   keyLocked: boolean;
   extensionLocked: boolean;
-  // favoriteKeys: Key[]; // maybe never implement this...
-  // favoriteExtensions: string[];
   chords: Chord[];
   chordIndex: number;
   beatsPerChord: BeatsPerChord;
@@ -34,6 +32,7 @@ export type ReducerActionType =
   | 'SET_DIFFICULTY_MIN'
   | 'SET_DIFFICULTY_MAX'
   | 'SET_DIFFICULTY_MAX'
+  | 'SWITCH_KEY_LOCK'
   | 'SWITCH_EXTENSION_LOCK'
   | 'SET_ACCIDENTALS_MIN'
   | 'SET_ACCIDENTALS_MAX'
@@ -71,7 +70,7 @@ export type ExtensionText =
   | 'sus'
   | 'maj';
 
-export type Accidental = 'flat' | 'sharp' | undefined;
+export type Accidental = 'b' | '#' | undefined;
 
 export type Key = { base: Alphabet; accidental: Accidental };
 
