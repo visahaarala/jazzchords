@@ -9,6 +9,7 @@ import MetronomeLight from '../components/metronome/MetronomeLight';
 
 const min = 10;
 const max = 600;
+export const flashTempoLimit = 120;
 
 const Metronome = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;
@@ -16,7 +17,7 @@ const Metronome = () => {
   const ctx = useContext(MetronomeContext);
   const [tempo, setTempo] = ctx.tempoState;
   const [isMuted] = ctx.mutedState;
-  const [flashIsOn] = ctx.flashState;
+  const [flashIsOn, setFlashIsOn] = ctx.flashState;
 
   const [play, setPlay] = useState(false);
   const [delay, setDelay] = useState<number>();
@@ -36,6 +37,9 @@ const Metronome = () => {
   const tempoUp = (number: number) => {
     const newTempo = tempo + number > max ? max : tempo + number;
     setTempo(newTempo);
+    if (newTempo > flashTempoLimit) {
+      setFlashIsOn(false);
+    }
   };
 
   const tempoDown = (number: number) => {
@@ -43,8 +47,12 @@ const Metronome = () => {
     setTempo(newTempo);
   };
 
-  const rangeHandler = (number: string) => {
-    setTempo(Number(number));
+  const rangeHandler = (tempoString: string) => {
+    const tempo = Number(tempoString);
+    setTempo(tempo);
+    if (tempo > flashTempoLimit) {
+      setFlashIsOn(false);
+    }
   };
 
   useEffect(() => {
@@ -58,20 +66,17 @@ const Metronome = () => {
   useMetronome({
     callBack: () => {
       if (flashIsOn) {
-        document.getElementById('container')!.style.filter =
-          'invert(100%) hue-rotate(180deg) brightness(.8)';
+        // no flash if tempo more than 120bpm
+        document.getElementById('main')!.style.boxShadow =
+          'inset 0 0 20rem #444';
       } else {
         document.getElementById('metronomeStart')!.style.filter =
-          'brightness(2)';
+          'brightness(1.5)';
       }
       setTimeout(() => {
-        if (flashIsOn) {
-          document.getElementById('container')!.style.filter =
-            'invert(0) hue-rotate(0) brightness(1)';
-        } else {
-          document.getElementById('metronomeStart')!.style.filter =
-            'brightness(1)';
-        }
+        document.getElementById('main')!.style.boxShadow = 'none';
+        document.getElementById('metronomeStart')!.style.filter =
+          'brightness(1)';
       }, 100);
     },
     delay,
@@ -146,14 +151,7 @@ const Metronome = () => {
               </p>
             </div>
           )}
-          {/* <div
-            className={`${styles.icon} ${styles.light}`}
-            onClick={setFlashIsOn.bind(null, !flashIsOn)}
-            tabIndex={isMobile ? -1 : 0}
-          >
-            <LightIcon isOn={flashIsOn} />
-          </div> */}
-          <MetronomeLight />    
+          <MetronomeLight />
           <div
             id={'metronomeStart'}
             onClick={setPlay.bind(null, !play)}
@@ -163,13 +161,6 @@ const Metronome = () => {
           >
             {play ? 'Stop' : 'Start'}
           </div>
-          {/* <div
-            className={`${styles.icon} ${styles.mute}`}
-            onClick={setIsmuted.bind(null, !isMuted)}
-            tabIndex={isMobile ? -1 : 0}
-          >
-            <MuteIcon isOn={!isMuted} />
-          </div> */}
           <MetronomeMute />
         </div>
       </div>

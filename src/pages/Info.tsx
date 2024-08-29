@@ -6,6 +6,7 @@ import PlayIcon from '../components/icons/PlayIcon';
 import NextIcon from '../components/icons/NextIcon';
 import PreviousIcon from '../components/icons/PreviousIcon';
 import Lock from '../components/icons/Lock';
+import { flashTempoLimit } from './Metronome';
 
 const headerIconStyle: React.CSSProperties = {
   display: 'inline-block',
@@ -31,7 +32,7 @@ const Info = () => (
       <div style={headerIconStyle}>
         <MetronomeIcon />
       </div>
-      A metronome.
+      A metronome. Flash not available in tempos over {flashTempoLimit}bpm.
     </div>
 
     <div>

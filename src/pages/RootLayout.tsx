@@ -7,7 +7,7 @@ const RootLayout = () => (
   <MetronomeContextProvider>
     <ChordsContextProvider>
       <div className='container' id='container'>
-        <main>
+        <main id='main'>
           <h2>jazzchords</h2>
           <Outlet />
         </main>
