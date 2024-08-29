@@ -1,5 +1,5 @@
 import styles from './Chords.module.scss';
-import { KeyboardEvent, Reducer, useContext } from 'react';
+import { KeyboardEvent, useContext } from 'react';
 import { ChordsContext } from '../../context/ChordsContext';
 import Chord from './Chord';
 import Lock from '../icons/Lock';
