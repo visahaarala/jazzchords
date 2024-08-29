@@ -54,8 +54,4 @@ Further instructions for PWA icons in [https://vite-pwa-org.netlify.app/guide/pw
 
 ```
 grep -rl 'color-white' | xargs -I % sed -i '.bak' 's/color-white/color-one/g' %
-```
-
-#### safari tab index problem
-
-Safari browser now allow tab indexing for svgs.
+```'
