@@ -10,17 +10,14 @@ const Navigation = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const keyDownHandler = (
-    e: KeyboardEvent<HTMLAnchorElement>,
-    target: string
-  ) => {
+  const keyDownHandler = (e: KeyboardEvent<HTMLLIElement>, target: string) => {
     if (e.code === 'Space') {
       e.preventDefault();
       navigate(target);
     }
   };
 
-    const navIcons = {
+  const navIcons = {
     info: <InfoIcon />,
     metronome: <MetronomeIcon />,
     settings: <SettingsIcon />,
@@ -30,6 +27,8 @@ const Navigation = () => {
   const liStyle = (navName: string): React.CSSProperties | undefined => {
     if ('/' + navName === pathname) {
       return { color: 'var(--color-link)' };
+    } else {
+      return { color: 'currentColor' };
     }
   };
 
@@ -38,8 +37,18 @@ const Navigation = () => {
       <ul>
         {Object.keys(navIcons).map((key) => {
           return (
-            <li key={key} style={liStyle(key)}>
-              <NavLink to={key} onKeyDown={(e) => keyDownHandler(e, key)} aria-label={key}>
+            <li
+              key={key}
+              style={liStyle(key)}
+              tabIndex={0}
+              onKeyDown={(e) => keyDownHandler(e, key)}
+            >
+              <NavLink
+                to={key}
+                style={liStyle(key)}
+                aria-label={key}
+                tabIndex={-1}
+              >
                 {navIcons[key as keyof typeof navIcons]}
               </NavLink>
             </li>

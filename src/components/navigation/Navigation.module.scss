@@ -18,30 +18,24 @@
       width: $size;
       height: $size;
 
-      a {
-        color: inherit;
-        display: block;
-        height: 100%;
-        border-radius: var(--border-radius);
+      svg {
+        padding: 0.15rem;
+      }
 
-        &:focus,
-        &:hover {
-          outline: none;
-          @media (pointer: fine) {
-            // show focus only on desktop
-            &::after {
-              margin: auto;
-              content: '';
-              display: block;
-              height: 0.1rem;
-              width: 60%;
-              background-color: currentColor;
-            }
+      border-radius: var(--border-radius);
+      &:focus,
+      &:hover {
+        outline: none;
+        @media (pointer: fine) {
+          // show underline only on desktop
+          &::after {
+            margin: auto;
+            content: '';
+            display: block;
+            height: 0.1rem;
+            width: 60%;
+            background-color: currentColor;
           }
-        }
-
-        svg {
-          padding: 0.2rem;
         }
       }
     }

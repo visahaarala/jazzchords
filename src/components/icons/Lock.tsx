@@ -1,29 +1,6 @@
-import { KeyboardEvent } from 'react';
-
-const Lock = ({
-  isLocked,
-  onClick,
-  tabIndex,
-}: {
-  isLocked?: boolean;
-  onClick?: () => void;
-  tabIndex?: boolean;
-}) => {
-  const keyDownHandler = (e: KeyboardEvent<SVGSVGElement>) => {
-    if ((e.code === 'Space' || e.code === 'Enter') && onClick) {
-      e.preventDefault();
-      onClick();
-    }
-  };
-
+const Lock = ({ isLocked }: { isLocked?: boolean }) => {
   return (
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='16 4 68 87'
-      onClick={onClick}
-      onKeyDown={(e) => keyDownHandler(e)}
-      tabIndex={tabIndex ? 0 : undefined}
-    >
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='16 4 68 87'>
       <path d='M17 55 V 90 H 83 V 55z' fill='currentColor' />
       <path
         d={

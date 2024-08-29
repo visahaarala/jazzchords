@@ -26,60 +26,58 @@ const textIconStyle: React.CSSProperties = {
 };
 
 const Info = () => (
-  <>
-    <div className={styles.info}>
+  <div className={styles.info}>
+    <div>
+      <div style={headerIconStyle}>
+        <MetronomeIcon />
+      </div>
+      A metronome.
+    </div>
+
+    <div>
+      <div style={headerIconStyle}>
+        <SettingsIcon />
+      </div>
+      Settings for the jazzchords player.
+    </div>
+
+    <div>
       <div>
         <div style={headerIconStyle}>
-          <MetronomeIcon />
+          <PlayIcon />
         </div>
-        A metronome.
+        Jazzchords player &mdash; randomly generate and go back and forth
+        between chords using the
+        <div style={textIconStyle}>
+          <NextIcon />
+        </div>
+        and
+        <div style={textIconStyle}>
+          <PreviousIcon />
+        </div>
+        buttons, or play
+        <div style={textIconStyle}>
+          <PlayIcon />
+        </div>
+        through random chords.
       </div>
-
       <div>
-        <div style={headerIconStyle}>
-          <SettingsIcon />
+        Use lock
+        <div style={textIconStyle}>
+          <Lock isLocked />
         </div>
-        Settings for the jazzchords player.
-      </div>
-
-      <div>
-        <div>
-          <div style={headerIconStyle}>
-            <PlayIcon />
-          </div>
-          Jazzchords player &mdash; randomly generate and go back and forth
-          between chords using the
-          <div style={textIconStyle}>
-            <NextIcon />
-          </div>
-          and
-          <div style={textIconStyle}>
-            <PreviousIcon />
-          </div>
-          buttons, or play
-          <div style={textIconStyle}>
-            <PlayIcon />
-          </div>
-          through random chords.
-        </div>
-        <div>
-          Use lock
-          <div style={textIconStyle}>
-            <Lock isLocked />
-          </div>
-          to practice a particular chord extension.
-        </div>
-      </div>
-
-      <div>
-        More info at{' '}
-        <a href='https://github.com/visahaarala/jazzchords/blob/main/README.md'>
-          GitHub
-        </a>
-        .
+        to practice a particular chord key / extension.
       </div>
     </div>
-  </>
+
+    <div>
+      More info at{' '}
+      <a href='https://github.com/visahaarala/jazzchords/blob/main/README.md'>
+        GitHub
+      </a>
+      .
+    </div>
+  </div>
 );
 
 export default Info;
