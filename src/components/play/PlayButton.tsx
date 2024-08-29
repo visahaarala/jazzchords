@@ -15,6 +15,7 @@ const PlayButton = ({
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
     const code = e.code;
     if (code === 'Space' || code === 'Enter') {
+      e.preventDefault();
       onClick();
     }
   };

@@ -1,6 +1,6 @@
 import styles from './Metronome.module.scss';
 
-import { useContext, useEffect, useState } from 'react';
+import { KeyboardEvent, useContext, useEffect, useState } from 'react';
 import { useMetronome } from '../hooks/useMetronome';
 import { MetronomeContext } from '../context/MetronomeContext';
 import DisplaySleepComment from '../components/sleepComment/DisplaySleepComment';
@@ -21,8 +21,10 @@ const Metronome = () => {
   const [play, setPlay] = useState(false);
   const [delay, setDelay] = useState<number>();
 
-  const keyDownHandler = (code: string) => {
+  const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
+    const code = e.code;
     if (code === 'Space' || code === 'Enter') {
+      e.preventDefault();
       setPlay(!play);
     }
     if (code === 'ArrowUp') tempoUp(10);
@@ -85,7 +87,7 @@ const Metronome = () => {
             play && !isMobile ? styles.tempo__play : ''
           }`}
           tabIndex={!isMobile ? 0 : -1}
-          onKeyDown={(e) => keyDownHandler(e.code)}
+          onKeyDown={(e) => keyDownHandler(e)}
           onClick={!isMobile ? setPlay.bind(null, !play) : () => {}}
         >
           {tempo}
@@ -151,11 +153,11 @@ const Metronome = () => {
           >
             <LightIcon isOn={flashIsOn} />
           </div> */}
-          <MetronomeLight />
+          <MetronomeLight />    
           <div
             id={'metronomeStart'}
             onClick={setPlay.bind(null, !play)}
-            onKeyDown={(e) => keyDownHandler(e.code)}
+            onKeyDown={(e) => keyDownHandler(e)}
             className={`button ${styles.start}`}
             tabIndex={isMobile ? -1 : 0}
           >

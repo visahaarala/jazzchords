@@ -30,8 +30,19 @@
 
         & > svg {
           cursor: pointer;
-          padding: 0.2rem;
-          width: 1.5rem;
+          padding: 0.4rem;
+          width: 1.9rem;
+          
+          // same as .button
+          border-radius: var(--border-radius);
+          &:focus,
+          &:hover {
+            outline: var(--outline-focus);
+          }
+
+          &:active {
+            color: var(--color-gray-light);
+          }
         }
       }
     }

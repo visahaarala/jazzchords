@@ -10,7 +10,10 @@ const PlayerMute = () => {
   const isMuted = state.isMuted;
 
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.code === 'Enter' || e.code === 'Space') setIsMuted(!isMuted);
+    if (e.code === 'Enter' || e.code === 'Space') {
+      e.preventDefault();
+      setIsMuted(!isMuted);
+    }
     if (e.code === 'ArrowUp') setIsMuted(false);
     if (e.code === 'ArrowDown') setIsMuted(true);
   };
@@ -28,7 +31,7 @@ const PlayerMute = () => {
     >
       <MuteIcon isOn={!isMuted} />
     </div>
-  );  
+  );
 };
 
 export default PlayerMute;

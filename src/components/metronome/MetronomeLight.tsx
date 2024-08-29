@@ -10,7 +10,10 @@ const MetronomeLight = () => {
   const [flashIsOn, setFlashIsOn] = ctx.flashState;
 
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.code === 'Enter' || e.code === 'Space') setFlashIsOn(!flashIsOn);
+    if (e.code === 'Enter' || e.code === 'Space') {
+      e.preventDefault();
+      setFlashIsOn(!flashIsOn);
+    }
     if (e.code === 'ArrowUp') setFlashIsOn(true);
     if (e.code === 'ArrowDown') setFlashIsOn(false);
   };
@@ -24,7 +27,7 @@ const MetronomeLight = () => {
     >
       <LightIcon isOn={flashIsOn} />
     </div>
-  );  
+  );
 };
 
 export default MetronomeLight;

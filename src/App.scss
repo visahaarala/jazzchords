@@ -12,8 +12,10 @@
 
   // body & container
   --color-body: #1e222c;
-  --box-shadow-container: 0 0 20rem rgba(255, 255, 255, 0.35);
+  --box-shadow-container: 0 0 20rem rgba(255, 255, 255, 0.15);
   --border-container: none;
+  --border-container: solid 1px #ccc;
+  --border-container: solid 2px var(--color-gray);
 
   --box-shadow-metronome: inset 0 0 1rem rgba(255, 255, 255, 0.5);
 
@@ -171,12 +173,13 @@ h2 {
   align-items: center;
   justify-content: center;
 
+  transition: all 0.1s;
+
   &:focus,
   &:hover {
     outline: var(--outline-focus);
   }
 
-  transition: all 0.1s;
   &:active {
     background-color: var(--color-gray-dark);
   }

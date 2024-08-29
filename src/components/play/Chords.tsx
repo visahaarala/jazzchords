@@ -7,10 +7,6 @@ import Lock from '../icons/Lock';
 const Chords = () => {
   const { state, dispatch } = useContext(ChordsContext);
 
-  // const switchExtensionLock = () => {
-  //   dispatch({ type: 'SWITCH_EXTENSION_LOCK' });
-  // };
-
   return (
     <div className={styles.chords}>
       <div className={styles.extensionLock}>
@@ -19,10 +15,12 @@ const Chords = () => {
           <Lock
             isLocked={state.keyLocked}
             onClick={dispatch.bind(null, { type: 'SWITCH_KEY_LOCK' })}
+            tabIndex
           />
           <Lock
             isLocked={state.extensionLocked}
             onClick={dispatch.bind(null, { type: 'SWITCH_EXTENSION_LOCK' })}
+            tabIndex
           />
         </div>
       </div>

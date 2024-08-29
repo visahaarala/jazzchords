@@ -15,6 +15,7 @@ const Navigation = () => {
     target: string
   ) => {
     if (e.code === 'Space') {
+      e.preventDefault();
       navigate(target);
     }
   };

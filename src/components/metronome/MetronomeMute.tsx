@@ -6,13 +6,14 @@ import { MetronomeContext } from '../../context/MetronomeContext';
 const MetronomeMute = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;
 
-
   const ctx = useContext(MetronomeContext);
   const [isMuted, setIsMuted] = ctx.mutedState;
 
-
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.code === 'Enter' || e.code === 'Space') setIsMuted(!isMuted);
+    if (e.code === 'Enter' || e.code === 'Space') {
+      e.preventDefault();
+      setIsMuted(!isMuted);
+    }
     if (e.code === 'ArrowUp') setIsMuted(false);
     if (e.code === 'ArrowDown') setIsMuted(true);
   };
@@ -26,7 +27,7 @@ const MetronomeMute = () => {
     >
       <MuteIcon isOn={!isMuted} />
     </div>
-  );  
+  );
 };
 
 export default MetronomeMute;
