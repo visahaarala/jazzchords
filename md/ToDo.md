@@ -2,6 +2,10 @@
 
 #### now
 
+- klikkipallot on/off
+
+- navigation undersccore blue
+
 #### later
 
 - random top note

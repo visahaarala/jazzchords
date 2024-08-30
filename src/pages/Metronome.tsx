@@ -9,7 +9,9 @@ import MetronomeLight from '../components/metronome/MetronomeLight';
 
 const min = 10;
 const max = 600;
-export const flashTempoLimit = 120;
+
+// no flash if tempo greater than:
+export const flashTempoLimit = 180;
 
 const Metronome = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;
@@ -66,7 +68,6 @@ const Metronome = () => {
   useMetronome({
     callBack: () => {
       if (flashIsOn) {
-        // no flash if tempo more than 120bpm
         document.getElementById('main')!.style.boxShadow =
           'inset 0 0 20rem #444';
       } else {
