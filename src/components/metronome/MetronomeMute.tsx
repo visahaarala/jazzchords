@@ -1,6 +1,6 @@
 import styles from './Icon.module.scss';
 import { KeyboardEvent, useContext } from 'react';
-import MuteIcon from '../icons/MuteIcon';
+import MuteIcon from '../svg/icons/MuteIcon';
 import { MetronomeContext } from '../../context/MetronomeContext';
 
 const MetronomeMute = () => {

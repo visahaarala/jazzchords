@@ -1,10 +1,10 @@
 import styles from './Navigation.module.scss';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { KeyboardEvent } from 'react';
-import SettingsIcon from '../icons/SettingsIcon';
-import InfoIcon from '../icons/InfoIcon';
-import MetronomeIcon from '../icons/MetronomeIcon';
-import PlayIcon from '../icons/PlayIcon';
+import SettingsIcon from '../svg/icons/SettingsIcon';
+import InfoIcon from '../svg/icons/InfoIcon';
+import MetronomeIcon from '../svg/icons/MetronomeIcon';
+import PlayIcon from '../svg/icons/PlayIcon';
 
 const Navigation = () => {
   const navigate = useNavigate();

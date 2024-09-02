@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './Info.module.scss';
-import SettingsIcon from '../components/icons/SettingsIcon';
-import MetronomeIcon from '../components/icons/MetronomeIcon';
-import PlayIcon from '../components/icons/PlayIcon';
-import NextIcon from '../components/icons/NextIcon';
-import PreviousIcon from '../components/icons/PreviousIcon';
-import Lock from '../components/icons/Lock';
+import SettingsIcon from '../components/svg/icons/SettingsIcon';
+import MetronomeIcon from '../components/svg/icons/MetronomeIcon';
+import PlayIcon from '../components/svg/icons/PlayIcon';
+import NextIcon from '../components/svg/icons/NextIcon';
+import PreviousIcon from '../components/svg/icons/PreviousIcon';
+import Lock from '../components/svg/icons/Lock';
 import { flashTempoLimit } from './Metronome';
 
 const headerIconStyle: React.CSSProperties = {

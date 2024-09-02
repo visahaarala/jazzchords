@@ -7,11 +7,11 @@ import {
 } from '../@types';
 import {
   accidentalLevels,
-  allDifficultyLevels,
+  difficultyLevels,
   generateChords,
   generateExtensionsShuffled,
   generateKeysShuffled,
-} from '../data/harmonies';
+} from '../data/chordFunctions';
 
 const initialState = (): ProgramState => {
   let state: ProgramState = {
@@ -111,7 +111,7 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
         payloadKey: 'difficultyMin',
         state,
         stateKey: 'difficultyMax',
-        list: allDifficultyLevels,
+        list: difficultyLevels,
         inverse: false,
       });
     }
@@ -121,7 +121,7 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
         payloadKey: 'difficultyMax',
         state,
         stateKey: 'difficultyMin',
-        list: allDifficultyLevels,
+        list: difficultyLevels,
         inverse: true,
       });
     }

@@ -1,6 +1,6 @@
 import styles from './Icon.module.scss';
 import { KeyboardEvent, useContext } from 'react';
-import LightIcon from '../icons/LightIcon';
+import LightIcon from '../svg/icons/LightIcon';
 import { MetronomeContext } from '../../context/MetronomeContext';
 import { flashTempoLimit } from '../../pages/Metronome';
 

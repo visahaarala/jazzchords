@@ -2,7 +2,7 @@ import styles from './Chords.module.scss';
 import { KeyboardEvent, useContext } from 'react';
 import { ChordsContext } from '../../context/ChordsContext';
 import Chord from './Chord';
-import Lock from '../icons/Lock';
+import Lock from '../svg/icons/Lock';
 import { ReducerActionType } from '../../@types';
 
 const Chords = () => {

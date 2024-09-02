@@ -1,6 +1,6 @@
 import styles from './Settings.module.scss';
 
-import { accidentalLevels, allDifficultyLevels } from '../data/harmonies';
+import { accidentalLevels, difficultyLevels } from '../data/chordFunctions';
 import Select from '../components/settings/Select';
 import {
   AccidentalLevel,
@@ -34,13 +34,13 @@ const Settings = () => {
         <Select<DifficultyLevel>
           dispatchActionType='SET_DIFFICULTY_MIN'
           payloadKey='difficultyMin'
-          options={allDifficultyLevels}
+          options={difficultyLevels}
         />
         <span>&mdash;</span>
         <Select<DifficultyLevel>
           dispatchActionType='SET_DIFFICULTY_MAX'
           payloadKey='difficultyMax'
-          options={allDifficultyLevels}
+          options={difficultyLevels}
         />
       </div>
 

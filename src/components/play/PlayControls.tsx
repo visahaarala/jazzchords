@@ -3,10 +3,10 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { ChordsContext } from '../../context/ChordsContext';
 import { useMetronome } from '../../hooks/useMetronome';
 import PlayButton from './PlayButton';
-import PlayIcon from '../icons/PlayIcon';
-import PauseIcon from '../icons/PauseIcon';
-import PreviousIcon from '../icons/PreviousIcon';
-import NextIcon from '../icons/NextIcon';
+import PlayIcon from '../svg/icons/PlayIcon';
+import PauseIcon from '../svg/icons/PauseIcon';
+import PreviousIcon from '../svg/icons/PreviousIcon';
+import NextIcon from '../svg/icons/NextIcon';
 
 const PlayControls = () => {
   const { state, dispatch } = useContext(ChordsContext);
