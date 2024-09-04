@@ -94,7 +94,7 @@ const Metronome = () => {
           }`}
           tabIndex={!isMobile ? 0 : -1}
           onKeyDown={(e) => keyDownHandler(e)}
-          onClick={!isMobile ? setPlay.bind(null, !play) : () => {}}
+          onClick={setPlay.bind(null, !play)}
         >
           {tempo}
         </div>
