@@ -8,13 +8,11 @@ const Select = <T,>({
   payloadKey,
   options,
   description,
-  descriptionSingle,
 }: {
   dispatchActionType: ReducerActionType;
   payloadKey: keyof ProgramState;
   options: T[];
   description?: string;
-  descriptionSingle?: string;
 }) => {
   const { state, dispatch } = useContext(ChordsContext);
 
@@ -34,9 +32,7 @@ const Select = <T,>({
       {options.map((option) => (
         <option value={option as string} key={option as string}>
           {option as string}{' '}
-          {descriptionSingle && (option as string) === '1'
-            ? descriptionSingle
-            : description}
+          {description}
         </option>
       ))}
     </select>
