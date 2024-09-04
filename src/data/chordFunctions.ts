@@ -65,6 +65,45 @@ export const generateKeysShuffled = (
   return { majorsShuffled, minorsShuffled };
 };
 
+export const decipherExtension = (
+  ext: string
+): { isMinor: boolean; segments: string[] } => {
+  // CHECK FOR MINOR
+  let isMinor = false;
+  if (ext.substring(0, 1) === '-') {
+    isMinor = true;
+    ext = ext.substring(1);
+  }
+  // SPLIT CHORD EXTENSION TO ARRAY OF SEGMENTS
+  const segments: string[] = [];
+  // take apart 69
+  if (ext.indexOf('69') === 0) {
+    segments.push('69');
+    ext = ext.substring(2);
+  }
+  // take apart first number (6, 7, 9, 11, 13)
+  if (/[679]/.exec(ext)?.index === 0) {
+    segments.push(ext.substring(0, 1));
+    ext = ext.substring(1);
+  }
+  if (/11|13/.exec(ext)?.index === 0) {
+    segments.push(ext.substring(0, 2));
+    ext = ext.substring(2);
+  }
+  // split the rest by #, b and alt
+  while (ext.length) {
+    const index = ext.substring(1).search(/#|b|alt/) + 1;
+    if (index > 0) {
+      segments.push(ext.substring(0, index));
+      ext = ext.substring(index);
+    } else {
+      segments.push(ext);
+      ext = '';
+    }
+  }
+  return { isMinor, segments };
+};
+
 export const generateExtensionsShuffled = (
   state: ProgramState
 ): { extensionsShuffled: FreshAndUsed<Extension> } => {
@@ -80,40 +119,7 @@ export const generateExtensionsShuffled = (
   const extensionTextsShuffled: string[] = shuffleArray(extensionTexts);
   const extensionsShuffled: FreshAndUsed<Extension> = { fresh: [], used: [] };
   for (let ext of extensionTextsShuffled) {
-    // CHECK FOR MINOR
-    let isMinor = false;
-    if (ext.substring(0, 1) === '-') {
-      isMinor = true;
-      ext = ext.substring(1);
-    }
-    // SPLIT CHORD EXTENSION TO ARRAY OF SEGMENTS
-    const segments: string[] = [];
-    // take apart 69
-    if (ext.indexOf('69') === 0) {
-      segments.push('69');
-      ext = ext.substring(2);
-    }
-    // take apart first number (6, 7, 9, 11, 13)
-    if (/[679]/.exec(ext)?.index === 0) {
-      segments.push(ext.substring(0, 1));
-      ext = ext.substring(1);
-    }
-    if (/11|13/.exec(ext)?.index === 0) {
-      segments.push(ext.substring(0, 2));
-      ext = ext.substring(2);
-    }
-    // split the rest by #, b and alt
-    while (ext.length) {
-      const index = ext.substring(1).search(/#|b|alt/) + 1;
-      if (index > 0) {
-        segments.push(ext.substring(0, index));
-        ext = ext.substring(index);
-      } else {
-        segments.push(ext);
-        ext = '';
-      }
-    }
-    extensionsShuffled.fresh.push({ isMinor, segments });
+    extensionsShuffled.fresh.push(decipherExtension(ext));
   }
   return { extensionsShuffled };
 };

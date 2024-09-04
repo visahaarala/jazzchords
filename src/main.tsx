@@ -7,3 +7,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <App />
   </React.StrictMode>
 );
+
+//////////////////////////
+// TESTING NOTES
+//////////////////////////
+console.log('--- TESTING ---');
+// import { printNotes } from './data/notesInChord.ts';
+// printNotes();
+import { runDoodling } from './data/doodling.ts';
+runDoodling();

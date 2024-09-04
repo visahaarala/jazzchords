@@ -38,11 +38,10 @@ export const extensionsOrganized: {
     '9',
     'maj9',
     '+',
-  ],
-  medium: [
     'o7',
     'h7',
-    '7sus4',
+  ],
+  medium: [
     'h9',
     'omaj7',
     '7b5',
