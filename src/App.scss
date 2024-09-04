@@ -95,28 +95,6 @@ body {
   letter-spacing: 0.02rem;
 }
 
-.container {
-  height: 100dvh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-
-  @media (pointer: fine) {
-    // container card styling only on desktop (not mobile)
-    max-height: 40rem;
-    max-width: 30rem;
-    background-color: var(--color-black);
-    border-radius: 0.4rem;
-    overflow: hidden;
-    box-shadow: var(--box-shadow-container);
-    border: var(--border-container);
-  }
-
-  @media (pointer: coarse) and (orientation: landscape) {
-    flex-direction: row;
-  }
-}
-
 main {
   flex: 1;
   display: flex;

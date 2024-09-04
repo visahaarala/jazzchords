@@ -15,7 +15,11 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
-    errorElement: <ErrorPage />,
+    errorElement: (
+      <RootLayout title='top secret'>
+        <ErrorPage />
+      </RootLayout>
+    ),
     children: [
       { index: true, loader: async () => redirect('/play') },
       {
