@@ -4,10 +4,6 @@
 
 - klikkipallot on/off
 
-- md explain the need for symbol svgs and link svg symbols folder
-
-- link harmonies file to readme to show easy / medium / ...
-
 - random top note
 
 #### later
