@@ -8,9 +8,9 @@
 
 - link harmonies file to readme to show easy / medium / ...
 
-#### later
-
 - random top note
+
+#### later
 
 - roman numerals
 
