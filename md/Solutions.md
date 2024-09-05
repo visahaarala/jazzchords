@@ -14,4 +14,4 @@ Chord extensions (ie. 7#9b13) are organized in to four groups - easy, medium, ha
 
 There are small differences in how some browsers display for ex. the Arial font that was originally used in the program. A CSS layout design for a chord (C7b9) that looks perfect in Chrome, Safari and Opera would be totally off in Firefox or other browsers.
 
-[SVGs](https://github.com/visahaarala/jazzchords/tree/main/src/components/svg) are used as a solution for this (creating those SVGs was a good workout for the brain). Now the chord symbols should (hopefully) look exactly the same across all browsers.
+[SVGs](https://github.com/visahaarala/jazzchords/tree/main/src/components/svg) are used as a solution for this (a good workout for the brain, creating those SVGs). Now the chord symbols should (hopefully) look exactly the same across all browsers.
