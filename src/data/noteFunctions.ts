@@ -1,5 +1,4 @@
 import { Alphabet, Extension, Key, Note } from '../@types';
-import { decipherExtension } from './chordFunctions';
 
 //
 // From a chord extension
