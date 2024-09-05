@@ -7,6 +7,28 @@
   align-items: center;
   justify-content: space-evenly;
 
+  .now {
+    // background-color: red;
+  }
+
+  .next {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    // background-color: green;
+
+    p {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+    span {
+      margin-left: .3rem;
+      font-size: 1.3rem;
+    }
+  }
+
   .extensionLock {
     position: absolute;
     top: 0;
@@ -35,7 +57,7 @@
             padding: 0.4rem;
             width: 1.9rem;
           }
-          
+
           cursor: pointer;
           // same as .button
           border-radius: var(--border-radius);

@@ -205,10 +205,13 @@ export const generateChords = ({
 
     const notes = getNotes(key, extension);
 
+    const randomTop = notes[Math.floor(Math.random() * notes.length)].noteName;
+
     chords.push({
       key,
       extension,
       notes,
+      randomTop,
     });
   }
 

@@ -1,8 +1,8 @@
 import styles from './Play.module.scss';
 import DisplaySleepComment from '../components/sleepComment/DisplaySleepComment';
 import Chords from '../components/play/Chords';
-import Beats from '../components/beats/Beats';
 import PlayControls from '../components/play/PlayControls';
+import Beats from '../components/play/Beats';
 
 const Play = () => {
   return (

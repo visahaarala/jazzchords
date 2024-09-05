@@ -32,7 +32,7 @@ const Info = () => (
       <div style={headerIconStyle}>
         <MetronomeIcon />
       </div>
-      A metronome. Flash not available in tempos over {flashTempoLimit}bpm.
+      A metronome.
     </div>
 
     <div>

@@ -8,11 +8,6 @@ import { ReducerActionType } from '../../@types';
 const Chords = () => {
   const { state, dispatch } = useContext(ChordsContext);
 
-  console.log(
-    'notes:',
-    state.chords.slice(-2)[0].notes.map((n) => n.noteName)
-  );
-
   const onClick = (type: ReducerActionType) => {
     dispatch({ type });
   };
@@ -27,8 +22,22 @@ const Chords = () => {
     }
   };
 
+  /// TESTING
+  const notes = state.chords[state.chordIndex].notes;
+  const randomNote = notes[Math.floor(Math.random() * notes.length)];
+
   return (
     <div className={styles.chords}>
+      <div className={styles.now}>
+        <Chord size={3.3} />
+      </div>
+      <div className={styles.next}>
+        <p style={{ filter: 'contrast(.5)' }}>
+          random top note:
+          <span>{state.chords[state.chordIndex + 1].randomTop}</span>
+        </p>
+        <Chord indexOffset={1} size={1.8} contrast={50} />
+      </div>
       <div className={styles.extensionLock}>
         <div style={{ fontSize: '3.7rem', height: '1.4em' }}></div>
         <div style={{ fontSize: '2rem', height: '1.4em' }}>
@@ -48,8 +57,6 @@ const Chords = () => {
           </div>
         </div>
       </div>
-      <Chord size={3.7} />
-      <Chord indexOffset={1} size={2} contrast={50} />
     </div>
   );
 };
