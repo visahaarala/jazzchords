@@ -22,21 +22,17 @@ const Chords = () => {
     }
   };
 
-  /// TESTING
-  const notes = state.chords[state.chordIndex].notes;
-  const randomNote = notes[Math.floor(Math.random() * notes.length)];
-
   return (
     <div className={styles.chords}>
       <div className={styles.now}>
         <Chord size={3.3} />
       </div>
       <div className={styles.next}>
-        <p style={{ filter: 'contrast(.5)' }}>
+        <p>
           random top note:
           <span>{state.chords[state.chordIndex + 1].randomTop}</span>
         </p>
-        <Chord indexOffset={1} size={1.8} contrast={50} />
+        <Chord indexOffset={1} size={1.8} />
       </div>
       <div className={styles.extensionLock}>
         <div style={{ fontSize: '3.7rem', height: '1.4em' }}></div>

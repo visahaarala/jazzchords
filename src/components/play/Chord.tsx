@@ -29,11 +29,9 @@ import Maj from '../svg/symbols/extensions/Maj';
 const Chord = ({
   size,
   indexOffset,
-  contrast,
 }: {
   size?: number; // rem
   indexOffset?: 0 | 1;
-  contrast?: number; // percentage
 }) => {
   const { state, dispatch } = useContext(ChordsContext);
   const { chords, chordIndex } = state;
@@ -47,8 +45,6 @@ const Chord = ({
   // FONT SIZE = the size of this chord
   // this value dictates all other em size parameters
   if (size === undefined) size = 1.6; // rem
-
-  if (contrast === undefined) contrast = 100;
 
   const bases: { [key in Alphabet]: (height: number) => JSX.Element } = {
     A: (height) => <A height={height} />,
@@ -138,7 +134,7 @@ const Chord = ({
   return (
     <div
       className={styles.chord}
-      style={{ fontSize: size + 'rem', filter: `contrast(${contrast}%)` }}
+      style={{ fontSize: size + 'rem' }}
       onClick={nextChord}
     >
       <div className={styles.chord__base}>{bases[chord.key.base](1)}</div>
