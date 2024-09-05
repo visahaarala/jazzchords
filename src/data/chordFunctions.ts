@@ -6,9 +6,11 @@ import {
   Extension,
   Alphabet,
   FreshAndUsed,
+  Key,
 } from '../@types';
 
 import { keysOrganized, extensionsOrganized } from './chordData';
+import { getNotes } from './noteFunctions';
 
 export const accidentalLevels = Object.keys(keysOrganized) as AccidentalLevel[];
 
@@ -192,16 +194,21 @@ export const generateChords = ({
       }
     }
 
+    const key: Key = {
+      base: keyString[0] as Alphabet,
+      accidental: keyString.includes('b')
+        ? 'b'
+        : keyString.includes('#')
+        ? '#'
+        : undefined,
+    };
+
+    const notes = getNotes(key, extension);
+
     chords.push({
-      key: {
-        base: keyString[0] as Alphabet,
-        accidental: keyString.includes('b')
-          ? 'b'
-          : keyString.includes('#')
-          ? '#'
-          : undefined,
-      },
+      key,
       extension,
+      notes,
     });
   }
 

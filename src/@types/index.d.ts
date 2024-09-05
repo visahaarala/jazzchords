@@ -74,14 +74,12 @@ export type Accidental = 'b' | '#' | undefined;
 
 export type Key = { base: Alphabet; accidental: Accidental };
 
+export type Note = { noteName: string; octave: number };
+
 export type Chord = {
   key: Key;
   extension: Extension;
-  // base: Alphabet;
-  // accidental: Accidental;
-  // isMinor: boolean;
-  // extension: string[];
-  // notes: number[]; // LATER
+  notes: Note[];
 };
 
 export type AccidentalLevel = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';

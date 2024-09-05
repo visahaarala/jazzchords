@@ -37,9 +37,11 @@ export const extensionsOrganized: {
     '-add9',
     '9',
     'maj9',
-    '+',
     'o7',
     'h7',
+    // FIX THESE (visual)
+    // '+'
+    // '+7'
   ],
   medium: [
     'h9',

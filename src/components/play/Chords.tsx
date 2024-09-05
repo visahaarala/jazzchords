@@ -8,6 +8,11 @@ import { ReducerActionType } from '../../@types';
 const Chords = () => {
   const { state, dispatch } = useContext(ChordsContext);
 
+  console.log(
+    'notes:',
+    state.chords.slice(-2)[0].notes.map((n) => n.noteName)
+  );
+
   const onClick = (type: ReducerActionType) => {
     dispatch({ type });
   };
