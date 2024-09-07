@@ -1,12 +1,9 @@
 import React from 'react';
 import styles from './Info.module.scss';
-import SettingsIcon from '../components/svg/icons/SettingsIcon';
 import MetronomeIcon from '../components/svg/icons/MetronomeIcon';
 import PlayIcon from '../components/svg/icons/PlayIcon';
-import NextIcon from '../components/svg/icons/NextIcon';
-import PreviousIcon from '../components/svg/icons/PreviousIcon';
-import Lock from '../components/svg/icons/Lock';
-import { flashTempoLimit } from './Metronome';
+import Lock from '../components/svg/icons/LockIcon';
+import NotesIcon from '../components/svg/icons/NotesIcon';
 
 const headerIconStyle: React.CSSProperties = {
   display: 'inline-block',
@@ -30,16 +27,9 @@ const Info = () => (
   <div className={styles.info}>
     <div>
       <div style={headerIconStyle}>
-        <MetronomeIcon />
+        <NotesIcon />
       </div>
-      A metronome.
-    </div>
-
-    <div>
-      <div style={headerIconStyle}>
-        <SettingsIcon />
-      </div>
-      Settings for the jazzchords player.
+      Learn about notes in different chords.
     </div>
 
     <div>
@@ -47,28 +37,20 @@ const Info = () => (
         <div style={headerIconStyle}>
           <PlayIcon />
         </div>
-        Jazzchords player &mdash; randomly generate and go back and forth
-        between chords using the
-        <div style={textIconStyle}>
-          <NextIcon />
-        </div>
-        and
-        <div style={textIconStyle}>
-          <PreviousIcon />
-        </div>
-        buttons, or play
-        <div style={textIconStyle}>
-          <PlayIcon />
-        </div>
-        through random chords.
-      </div>
-      <div>
-        Use lock
+        Practice randomly generated chords. <br />
+        Use locks
         <div style={textIconStyle}>
           <Lock isLocked />
         </div>
-        to practice a particular chord key / extension.
+        to practice a particular key and/or extension.
       </div>
+    </div>
+
+    <div>
+      <div style={headerIconStyle}>
+        <MetronomeIcon />
+      </div>
+      A metronome.
     </div>
 
     <div>

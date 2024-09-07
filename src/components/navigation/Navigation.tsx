@@ -1,10 +1,10 @@
 import styles from './Navigation.module.scss';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { KeyboardEvent } from 'react';
-import SettingsIcon from '../svg/icons/SettingsIcon';
 import InfoIcon from '../svg/icons/InfoIcon';
 import MetronomeIcon from '../svg/icons/MetronomeIcon';
 import PlayIcon from '../svg/icons/PlayIcon';
+import NotesIcon from '../svg/icons/NotesIcon';
 
 const Navigation = () => {
   const navigate = useNavigate();
@@ -19,9 +19,9 @@ const Navigation = () => {
 
   const navIcons = {
     info: <InfoIcon />,
-    metronome: <MetronomeIcon />,
-    settings: <SettingsIcon />,
+    notes: <NotesIcon />,
     play: <PlayIcon />,
+    metronome: <MetronomeIcon />,
   };
 
   const liStyle = (navName: string): React.CSSProperties | undefined => {

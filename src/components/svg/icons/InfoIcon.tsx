@@ -1,5 +1,9 @@
 const InfoIcon = () => (
-  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    viewBox='0 0 20 20'
+    // style={{ backgroundColor: 'orangered', padding: 0 }}
+  >
     <path
       d='M6 9h4v8.5 m-5.5 0 h 11'
       strokeWidth='3.3'
