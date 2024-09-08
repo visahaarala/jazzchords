@@ -1,6 +1,6 @@
 import { Extension } from '../../@types';
 import { extensionsOrganized } from '../../data/chordData';
-import { extensionToString, stringToExtension } from '../../data/chordFunctions';
+import { extensionToString, stringToExtension } from '../../functions/chordFunctions';
 import Select from '../misc/Select';
 
 const ExtensionSelect = () => {

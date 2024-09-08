@@ -10,7 +10,7 @@ import {
   Accidental,
 } from '../@types';
 
-import { keysOrganized, extensionsOrganized } from './chordData';
+import { keysOrganized, extensionsOrganized } from '../data/chordData';
 import { getNotes } from './noteFunctions';
 
 export const accidentalLevels = Object.keys(keysOrganized) as AccidentalLevel[];

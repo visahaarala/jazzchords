@@ -12,9 +12,9 @@ import {
   generateChords,
   generateExtensionsShuffled,
   generateKeysShuffled,
-} from '../data/chordFunctions';
+} from '../functions/chordFunctions';
 import { keysOrganized } from '../data/chordData';
-import { changeEnharmonically } from '../data/noteFunctions';
+import { changeEnharmonically } from '../functions/noteFunctions';
 
 const initialState = (): ProgramState => {
   let state: ProgramState = {

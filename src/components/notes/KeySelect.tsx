@@ -1,5 +1,5 @@
 import { Accidental, Alphabet, Key } from '../../@types';
-import { keyToString, stringToKey } from '../../data/chordFunctions';
+import { keyToString, stringToKey } from '../../functions/chordFunctions';
 import Select from '../misc/Select';
 
 const KeySelect = () => {

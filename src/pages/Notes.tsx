@@ -6,7 +6,7 @@ import ChordSymbol from '../components/chord/ChordSymbol';
 import { Chord } from '../@types';
 import { useContext } from 'react';
 import { ChordsContext } from '../context/ChordsContext';
-import { getNotes } from '../data/noteFunctions';
+import { getNotes } from '../functions/noteFunctions';
 
 const Notes = () => {
   const { state } = useContext(ChordsContext);

@@ -1,6 +1,6 @@
 import styles from './Settings.module.scss';
 
-import { accidentalLevels, difficultyLevels } from '../../../data/chordFunctions';
+import { accidentalLevels, difficultyLevels } from '../../../functions/chordFunctions';
 import Select from '../../misc/Select';
 import {
   AccidentalLevel,
