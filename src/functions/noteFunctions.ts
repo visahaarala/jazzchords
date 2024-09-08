@@ -206,7 +206,6 @@ const generateNoteNames = (
 export const getNotes = (key: Key, extension: Extension) => {
   const relativeChord = generateRelativeChord(extension);
   const relativeNoteData = generateRelativeNoteData(relativeChord);
-  console.log(relativeNoteData);
   const notes = generateNoteNames(key, relativeNoteData);
   return notes;
 };
