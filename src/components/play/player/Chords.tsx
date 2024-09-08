@@ -1,8 +1,6 @@
 import styles from './Chords.module.scss';
 import { KeyboardEvent, useContext } from 'react';
-import ChordsContextProvider, {
-  ChordsContext,
-} from '../../../context/ChordsContext';
+import { ChordsContext } from '../../../context/ChordsContext';
 import ChordSymbol from '../../chord/ChordSymbol';
 import Lock from '../../svg/icons/LockIcon';
 import { ReducerActionType } from '../../../@types';
