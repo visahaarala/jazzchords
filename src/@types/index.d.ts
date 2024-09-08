@@ -29,13 +29,12 @@ export type ReducerActionType =
   | 'APPEND_CHORD_LIST'
   | 'INCREMENT_CHORD_INDEX'
   | 'DECREMENT_CHORD_INDEX'
-  | 'SET_DIFFICULTY_MIN'
-  | 'SET_DIFFICULTY_MAX'
-  | 'SET_DIFFICULTY_MAX'
   | 'SWITCH_KEY_LOCK'
   | 'SWITCH_EXTENSION_LOCK'
   | 'SET_ACCIDENTALS_MIN'
   | 'SET_ACCIDENTALS_MAX'
+  | 'SET_DIFFICULTY_MIN'
+  | 'SET_DIFFICULTY_MAX'
   | 'RESET_SETTINGS';
 
 export type ReducerAction = {
@@ -80,7 +79,7 @@ export type Chord = {
   key: Key;
   extension: Extension;
   notes: Note[];
-  randomTop: string;
+  randomTopNote: string;
 };
 
 export type AccidentalLevel = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';

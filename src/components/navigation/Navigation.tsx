@@ -5,6 +5,7 @@ import InfoIcon from '../svg/icons/InfoIcon';
 import MetronomeIcon from '../svg/icons/MetronomeIcon';
 import PlayIcon from '../svg/icons/PlayIcon';
 import NotesIcon from '../svg/icons/NotesIcon';
+import SettingsIcon from '../svg/icons/SettingsIcon';
 
 const Navigation = () => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const Navigation = () => {
     info: <InfoIcon />,
     notes: <NotesIcon />,
     play: <PlayIcon />,
+    settings: <SettingsIcon />,
     metronome: <MetronomeIcon />,
   };
 

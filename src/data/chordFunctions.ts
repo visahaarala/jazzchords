@@ -211,7 +211,7 @@ export const generateChords = ({
       key,
       extension,
       notes,
-      randomTop,
+      randomTopNote: randomTop,
     });
   }
 

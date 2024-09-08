@@ -1,5 +1,6 @@
 import { Alphabet, Extension, Key, Note } from '../@types';
 
+/////////////////////////////////////////
 //
 // From a chord extension
 // -> generate an array of relative notes
@@ -115,6 +116,7 @@ const generateRelativeChord = (extension: Extension): string[] => {
   return chord;
 };
 
+/////////////////////////////////////////
 //
 // From an array of relative notes
 // -> generate an array of actual note names
@@ -147,7 +149,7 @@ const accidentals: { [key in AccidentalOffset]: string } = {
 
 type RelativeNoteData = { noteNumber: number; offset: number };
 
-const generateNoteData = (chord: string[]): RelativeNoteData[] => {
+const generateRelativeNoteData = (chord: string[]): RelativeNoteData[] => {
   const noteData: RelativeNoteData[] = [];
   for (let note of chord) {
     let offset = 0;
@@ -202,7 +204,7 @@ const generateNoteNames = (
 
 export const getNotes = (key: Key, extension: Extension) => {
   const relativeChord = generateRelativeChord(extension);
-  const noteData = generateNoteData(relativeChord);
-  const notes = generateNoteNames(key, noteData);
+  const relativeNoteData = generateRelativeNoteData(relativeChord);
+  const notes = generateNoteNames(key, relativeNoteData);
   return notes;
 };

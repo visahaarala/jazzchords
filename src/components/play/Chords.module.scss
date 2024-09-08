@@ -9,6 +9,7 @@
 
   .now {
     // background-color: red;
+    // top note notation positioning?
   }
 
   .next {
@@ -16,8 +17,7 @@
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    filter: contrast(.6);
-    // background-color: green;
+    color: var(--color-gray-light);
 
     p {
       display: flex;

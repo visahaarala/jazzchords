@@ -30,7 +30,7 @@ const Chords = () => {
       <div className={styles.next}>
         <p>
           random top note:
-          <span>{state.chords[state.chordIndex + 1].randomTop}</span>
+          <span>{state.chords[state.chordIndex + 1].randomTopNote}</span>
         </p>
         <Chord indexOffset={1} size={1.8} />
       </div>
