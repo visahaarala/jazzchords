@@ -29,13 +29,14 @@ const initialState = (): ProgramState => {
     beat: 0,
     keyLocked: false,
     extensionLocked: false,
+    notationKey: { base: 'C', accidental: undefined },
+    notationExtension: { isMinor: false, segments: [] },
+
     // generate these below
     majorsShuffled: { fresh: [], used: [] },
     minorsShuffled: { fresh: [], used: [] },
     extensionsShuffled: { fresh: [], used: [] },
     chords: [],
-    notationKey: { base: 'C', accidental: undefined },
-    notationExtension: { isMinor: false, segments: [] },
   };
   state = {
     ...state,

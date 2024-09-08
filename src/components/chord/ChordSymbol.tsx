@@ -1,4 +1,5 @@
-import styles from './Chord.module.scss';
+import styles from './ChordSymbol.module.scss';
+
 import { cloneElement } from 'react';
 import Bracket from '../svg/symbols/extensions/Bracket';
 import A from '../svg/symbols/keys/A';

@@ -2,6 +2,8 @@
 
 #### now
 
+- fix 7#9b9 notes order
+
 - klikkipallot on/off
 
 - random top note
