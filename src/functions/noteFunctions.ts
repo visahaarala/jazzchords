@@ -90,12 +90,11 @@ const modifyChord = ({
   }
 };
 
-const organizeChord = (chord: string[]) => {
-  chord.sort((a, b) => {
-    const anum = Number(a.replace('#', '').replace('b', ''));
-    const bnum = Number(b.replace('#', '').replace('b', ''));
-    return anum - bnum;
-  });
+const sortPoints = (chord: string): number => {
+  let points = Number(chord.replace(/\D/g, '')) * 10;
+  if (chord.includes('#')) points += 5;
+  if (chord.includes('b')) points -= 5;
+  return points;
 };
 
 // turn chord extension into an array of relative notes
@@ -112,7 +111,9 @@ const generateRelativeChord = (extension: Extension): string[] => {
     const instruction = getSegmentInstruction(segment);
     modifyChord({ chord, instruction });
   }
-  organizeChord(chord);
+  chord.sort((a, b) => {
+    return sortPoints(a) - sortPoints(b);
+  });
   return chord;
 };
 
@@ -205,6 +206,7 @@ const generateNoteNames = (
 export const getNotes = (key: Key, extension: Extension) => {
   const relativeChord = generateRelativeChord(extension);
   const relativeNoteData = generateRelativeNoteData(relativeChord);
+  console.log(relativeNoteData);
   const notes = generateNoteNames(key, relativeNoteData);
   return notes;
 };

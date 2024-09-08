@@ -2,13 +2,13 @@
 
 #### now
 
-- fix 7#9b9 notes order
+- visual representation of notation for learning
 
-- klikkipallot on/off
+#### later
 
 - random top note
 
-#### later
+- klikkipallot on/off
 
 - roman numerals
 
