@@ -1,7 +1,7 @@
 import styles from './PlayerMute.module.scss';
 import { KeyboardEvent, useContext } from 'react';
-import { ChordsContext } from '../../context/ChordsContext';
-import MuteIcon from '../svg/icons/MuteIcon';
+import { ChordsContext } from '../../../context/ChordsContext';
+import MuteIcon from '../../svg/icons/MuteIcon';
 
 const PlayerMute = () => {
   const isMobile = matchMedia('(pointer:coarse)').matches;

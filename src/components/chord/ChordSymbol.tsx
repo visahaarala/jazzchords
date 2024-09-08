@@ -1,6 +1,5 @@
 import styles from './Chord.module.scss';
-import { cloneElement, useContext } from 'react';
-import { ChordsContext } from '../../context/ChordsContext';
+import { cloneElement } from 'react';
 import Bracket from '../svg/symbols/extensions/Bracket';
 import A from '../svg/symbols/keys/A';
 import B from '../svg/symbols/keys/B';
@@ -10,7 +9,7 @@ import E from '../svg/symbols/keys/E';
 import F from '../svg/symbols/keys/F';
 import G from '../svg/symbols/keys/G';
 import Flat from '../svg/symbols/extensions/Flat';
-import { Alphabet, ExtensionText } from '../../@types';
+import { Alphabet, Chord, ExtensionText } from '../../@types';
 import Sharp from '../svg/symbols/extensions/Sharp';
 import Minor from '../svg/symbols/keys/Minor';
 import Four from '../svg/symbols/extensions/Four';
@@ -26,22 +25,13 @@ import Add from '../svg/symbols/extensions/Add';
 import Sus from '../svg/symbols/extensions/Sus';
 import Maj from '../svg/symbols/extensions/Maj';
 
-const Chord = ({
+const ChordSymbol = ({
   size,
-  indexOffset,
+  chord,
 }: {
   size?: number; // rem
-  indexOffset?: 0 | 1;
+  chord: Chord;
 }) => {
-  const { state, dispatch } = useContext(ChordsContext);
-  const { chords, chordIndex } = state;
-
-  const index = indexOffset ? chordIndex + indexOffset : chordIndex;
-  const chord = chords[index];
-  if (!chord) {
-    return <></>;
-  }
-
   // FONT SIZE = the size of this chord
   // this value dictates all other em size parameters
   if (size === undefined) size = 1.6; // rem
@@ -120,22 +110,22 @@ const Chord = ({
     jsxArrays.push(createJsxArray(segment))
   );
 
-  const isMobile = matchMedia('(pointer:coarse)').matches;
-  const nextChord = () => {
-    if (isMobile) {
-      if (chordIndex >= chords.length - 2) {
-        dispatch({ type: 'APPEND_CHORD_LIST' });
-      } else {
-        dispatch({ type: 'INCREMENT_CHORD_INDEX' });
-      }
-    }
-  };
+  // const isMobile = matchMedia('(pointer:coarse)').matches;
+  // const nextChord = () => {
+  //   if (isMobile) {
+  //     if (chordIndex >= chords.length - 2) {
+  //       dispatch({ type: 'APPEND_CHORD_LIST' });
+  //     } else {
+  //       dispatch({ type: 'INCREMENT_CHORD_INDEX' });
+  //     }
+  //   }
+  // };
 
   return (
     <div
       className={styles.chord}
       style={{ fontSize: size + 'rem' }}
-      onClick={nextChord}
+      // onClick={nextChord}
     >
       <div className={styles.chord__base}>{bases[chord.key.base](1)}</div>
       {chord.key.accidental && (
@@ -183,4 +173,4 @@ const Chord = ({
   );
 };
 
-export default Chord;
+export default ChordSymbol;

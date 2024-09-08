@@ -7,6 +7,7 @@ import {
   Alphabet,
   FreshAndUsed,
   Key,
+  Accidental,
 } from '../@types';
 
 import { keysOrganized, extensionsOrganized } from './chordData';
@@ -67,9 +68,7 @@ export const generateKeysShuffled = (
   return { majorsShuffled, minorsShuffled };
 };
 
-export const decipherExtension = (
-  ext: string
-): { isMinor: boolean; segments: string[] } => {
+export const stringToExtension = (ext: string): Extension => {
   // CHECK FOR MINOR
   let isMinor = false;
   if (ext.substring(0, 1) === '-') {
@@ -106,6 +105,10 @@ export const decipherExtension = (
   return { isMinor, segments };
 };
 
+export const extensionToString = (ext: Extension): string => {
+  return (ext.isMinor ? '-' : '') + ext.segments.join('');
+};
+
 export const generateExtensionsShuffled = (
   state: ProgramState
 ): { extensionsShuffled: FreshAndUsed<Extension> } => {
@@ -121,7 +124,7 @@ export const generateExtensionsShuffled = (
   const extensionTextsShuffled: string[] = shuffleArray(extensionTexts);
   const extensionsShuffled: FreshAndUsed<Extension> = { fresh: [], used: [] };
   for (let ext of extensionTextsShuffled) {
-    extensionsShuffled.fresh.push(decipherExtension(ext));
+    extensionsShuffled.fresh.push(stringToExtension(ext));
   }
   return { extensionsShuffled };
 };
@@ -220,5 +223,16 @@ export const generateChords = ({
     extensionsShuffled,
     majorsShuffled,
     minorsShuffled,
+  };
+};
+
+export const keyToString = (option: Key): string => {
+  return option.base + (option.accidental ? option.accidental : '');
+};
+
+export const stringToKey = (key: string): Key => {
+  return {
+    base: key[0] as Alphabet,
+    accidental: key[1] as Accidental,
   };
 };

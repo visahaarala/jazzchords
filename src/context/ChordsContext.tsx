@@ -2,6 +2,7 @@ import { Dispatch, FC, ReactNode, createContext, useReducer } from 'react';
 import {
   AccidentalLevel,
   DifficultyLevel,
+  MajorOrMinor,
   ProgramState,
   ReducerAction,
 } from '../@types';
@@ -12,6 +13,8 @@ import {
   generateExtensionsShuffled,
   generateKeysShuffled,
 } from '../data/chordFunctions';
+import { keysOrganized } from '../data/chordData';
+import { changeEnharmonically } from '../data/noteFunctions';
 
 const initialState = (): ProgramState => {
   let state: ProgramState = {
@@ -31,6 +34,8 @@ const initialState = (): ProgramState => {
     minorsShuffled: { fresh: [], used: [] },
     extensionsShuffled: { fresh: [], used: [] },
     chords: [],
+    notationKey: { base: 'C', accidental: undefined },
+    notationExtension: { isMinor: false, segments: [] },
   };
   state = {
     ...state,
@@ -193,6 +198,58 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
         chordIndex: 0,
       };
     }
+
+    // NOTATION
+    case 'SET_NOTATION_KEY': {
+      // Check that Key exists in minor/major
+      // and change extension if necessary
+      const notationKey = action.payload!.notationKey!;
+      const keyString =
+        notationKey.base +
+        (notationKey.accidental ? notationKey.accidental : '');
+      const extension = state.notationExtension;
+      const majorOrMinor: MajorOrMinor = extension.isMinor ? 'minor' : 'major';
+      let keyExists = false;
+      for (const accidentalLevel of Object.keys(keysOrganized)) {
+        const keys =
+          keysOrganized[accidentalLevel as AccidentalLevel][majorOrMinor];
+        if (keys.includes(keyString)) {
+          keyExists = true;
+        }
+      }
+      return {
+        ...state,
+        notationKey,
+        notationExtension: keyExists
+          ? extension
+          : { isMinor: !extension.isMinor, segments: [] },
+      };
+    }
+
+    case 'SET_NOTATION_EXTENSION': {
+      // Check that Key exists in minor/major
+      // and change Key enharmonically if necessary
+      const notationExtension = action.payload!.notationExtension!;
+      const key = state.notationKey;
+      const keyString = key.base + (key.accidental ? key.accidental : '');
+      const majorOrMinor: MajorOrMinor = notationExtension.isMinor
+        ? 'minor'
+        : 'major';
+      let keyExists = false;
+      for (const accidentalLevel of Object.keys(keysOrganized)) {
+        const keys =
+          keysOrganized[accidentalLevel as AccidentalLevel][majorOrMinor];
+        if (keys.includes(keyString)) {
+          keyExists = true;
+        }
+      }
+      return {
+        ...state,
+        notationKey: keyExists ? key : changeEnharmonically(key),
+        notationExtension,
+      };
+    }
+
     default: {
       return state;
     }

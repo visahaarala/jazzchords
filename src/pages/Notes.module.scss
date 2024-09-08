@@ -1,0 +1,22 @@
+.notes {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .notation {
+    margin: auto;
+    // flex: 1;
+
+    background-color: orangered;
+  }
+
+  .select {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+
+    & > select {
+      font-size: 1rem;
+    }
+  }
+}

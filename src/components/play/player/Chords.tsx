@@ -1,9 +1,9 @@
 import styles from './Chords.module.scss';
 import { KeyboardEvent, useContext } from 'react';
-import { ChordsContext } from '../../context/ChordsContext';
-import Chord from './Chord';
-import Lock from '../svg/icons/LockIcon';
-import { ReducerActionType } from '../../@types';
+import { ChordsContext } from '../../../context/ChordsContext';
+import ChordSymbol from '../../chord/ChordSymbol';
+import Lock from '../../svg/icons/LockIcon';
+import { ReducerActionType } from '../../../@types';
 
 const Chords = () => {
   const { state, dispatch } = useContext(ChordsContext);
@@ -22,17 +22,19 @@ const Chords = () => {
     }
   };
 
+  
+
   return (
     <div className={styles.chords}>
       <div className={styles.now}>
-        <Chord size={3.3} />
+        <ChordSymbol size={3.3} />
       </div>
       <div className={styles.next}>
         <p>
           random top note:
           <span>{state.chords[state.chordIndex + 1].randomTopNote}</span>
         </p>
-        <Chord indexOffset={1} size={1.8} />
+        <ChordSymbol indexOffset={1} size={1.8} />
       </div>
       <div className={styles.extensionLock}>
         <div style={{ fontSize: '3.7rem', height: '1.4em' }}></div>

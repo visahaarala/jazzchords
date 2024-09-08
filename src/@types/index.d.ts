@@ -3,6 +3,7 @@ export type Extension = { isMinor: boolean; segments: string[] };
 export type FreshAndUsed<T> = { fresh: T[]; used: T[] };
 
 export type ProgramState = {
+  // PLAYER
   accidentalsMin: AccidentalLevel;
   accidentalsMax: AccidentalLevel;
   difficultyMin: DifficultyLevel;
@@ -18,9 +19,14 @@ export type ProgramState = {
   beatsPerMinute: BeatsPerMinute;
   beat: number;
   isMuted: boolean;
+
+  // NOTATION
+  notationKey: Key;
+  notationExtension: Extension;
 };
 
 export type ReducerActionType =
+  // PLAYER
   | 'SET_BPC'
   | 'SET_BPM'
   | 'SET_MUTED'
@@ -35,7 +41,11 @@ export type ReducerActionType =
   | 'SET_ACCIDENTALS_MAX'
   | 'SET_DIFFICULTY_MIN'
   | 'SET_DIFFICULTY_MAX'
-  | 'RESET_SETTINGS';
+  | 'RESET_SETTINGS'
+
+  // NOTATION
+  | 'SET_NOTATION_KEY'
+  | 'SET_NOTATION_EXTENSION';
 
 export type ReducerAction = {
   type: ReducerActionType;

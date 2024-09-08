@@ -1,7 +1,7 @@
 import styles from './BeatCircle.module.scss';
 
 import { useContext } from 'react';
-import { ChordsContext } from '../../context/ChordsContext';
+import { ChordsContext } from '../../../context/ChordsContext';
 
 const BeatCirle = ({ beatNumber }: { beatNumber: number }) => {
   const beat = useContext(ChordsContext).state.beat;

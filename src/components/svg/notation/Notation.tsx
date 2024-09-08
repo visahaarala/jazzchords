@@ -1,7 +1,18 @@
-import { Note } from '../../../@types';
+import { useContext } from 'react';
+import { ChordsContext } from '../../../context/ChordsContext';
+import { extensionToString, keyToString } from '../../../data/chordFunctions';
 
-const Notation = ({ notes }: { notes: Note[] }) => {
-  return <p>{notes.map((note) => note.noteName + note.octave + ' ')}</p>;
+const Notation = () => {
+  const { state } = useContext(ChordsContext);
+  const key = state.notationKey;
+  const extension = state.notationExtension;
+
+  return (
+    <p>
+      {keyToString(key)}
+      {extensionToString(extension)}
+    </p>
+  );
 };
 
 export default Notation;

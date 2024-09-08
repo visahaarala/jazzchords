@@ -1,4 +1,4 @@
-import { Alphabet, Extension, Key, Note } from '../@types';
+import { Accidental, Alphabet, Extension, Key, Note } from '../@types';
 
 /////////////////////////////////////////
 //
@@ -207,4 +207,41 @@ export const getNotes = (key: Key, extension: Extension) => {
   const relativeNoteData = generateRelativeNoteData(relativeChord);
   const notes = generateNoteNames(key, relativeNoteData);
   return notes;
+};
+
+export const changeEnharmonically = (key: Key): Key => {
+  if (!key.accidental) return key; // already a white key, no change needed
+
+  // offset from current base
+  const offset = key.accidental === '#' ? 1 : -1;
+
+  // noteindex of the current note
+  const noteIndex = whiteKeysIndex[key.base] + offset;
+
+  // find new base alphabet
+  const oldBaseIndex = whiteKeys.indexOf(key.base);
+  const newBaseIndex = (oldBaseIndex + offset + 7) % 7;
+  const newBase = whiteKeys[newBaseIndex];
+
+  // find new accidental
+  const newBaseNoteIndex = whiteKeysIndex[newBase];
+  const newOffset = noteIndex - newBaseNoteIndex;
+  const newAccidental =
+    newOffset === 0 ? undefined : accidentals[newOffset as AccidentalOffset];
+
+  return {
+    base: newBase,
+    accidental: newAccidental as Accidental,
+  };
+};
+
+export const keyToString = (option: Key): string => {
+  return option.base + (option.accidental ? option.accidental : '');
+};
+
+export const stringToKey = (key: string): Key => {
+  return {
+    base: key[0] as Alphabet,
+    accidental: key[1] as Accidental,
+  };
 };

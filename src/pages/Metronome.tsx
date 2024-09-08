@@ -3,7 +3,7 @@ import styles from './Metronome.module.scss';
 import { KeyboardEvent, useContext, useEffect, useState } from 'react';
 import { useMetronome } from '../hooks/useMetronome';
 import { MetronomeContext } from '../context/MetronomeContext';
-import DisplaySleepComment from '../components/sleepComment/DisplaySleepComment';
+import DisplaySleepComment from '../components/misc/DisplaySleepComment';
 import MetronomeMute from '../components/metronome/MetronomeMute';
 import MetronomeLight from '../components/metronome/MetronomeLight';
 

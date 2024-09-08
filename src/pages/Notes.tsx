@@ -1,24 +1,22 @@
-// import { Alphabet } from '../@types';
-import { Alphabet } from '../@types';
+import ExtensionSelect from '../components/notes/ExtensionSelect';
+import KeySelect from '../components/notes/KeySelect';
 import styles from './Notes.module.scss';
+import Notation from '../components/svg/notation/Notation';
+import ChordSymbol from '../components/chord/ChordSymbol';
 
 const Notes = () => {
-  // make a list of all possible keys...
-  // const keys: Alphabet[] = ['A','B','C','D','E','F','G'];
-
-  const initialArray = ['a', 'b', 'c'] as const;
-
-  type ArrType = typeof initialArray[number];
-
-  const newArray: ArrType[] = ['a']
-
-  // console.log(initialArray[0]);
-
-  initialArray.forEach(item => console.log(item));
-
   return (
     <div className={styles.notes}>
-      <select />
+      <div className={styles.notation}>
+        <Notation />
+      </div>
+      <div className={styles.chord}>
+        <ChordSymbol />
+      </div>
+      <div className={styles.select}>
+        <KeySelect />
+        <ExtensionSelect />
+      </div>
     </div>
   );
 };

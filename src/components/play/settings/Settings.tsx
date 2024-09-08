@@ -1,15 +1,15 @@
 import styles from './Settings.module.scss';
 
-import { accidentalLevels, difficultyLevels } from '../../data/chordFunctions';
-import Select from '../settings/Select';
+import { accidentalLevels, difficultyLevels } from '../../../data/chordFunctions';
+import Select from '../../misc/Select';
 import {
   AccidentalLevel,
   BeatsPerChord,
   BeatsPerMinute,
   DifficultyLevel,
-} from '../../@types';
-import { bpcOptions, bpmOptions } from '../../data/beats';
-import PlayerMute from '../settings/PlayerMute';
+} from '../../../@types';
+import { bpcOptions, bpmOptions } from '../../../data/beats';
+import PlayerMute from './PlayerMute';
 
 const Settings = () => {
   return (
