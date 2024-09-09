@@ -1,10 +1,8 @@
 import { Note } from '../../../@types';
 import {
-  noteIndex,
   stringToKey,
   whiteKeys,
 } from '../../../functions/noteFunctions';
-import Flat from './Flat';
 import GClefCurve from './GClefCurve';
 import LedgerLine from './Ledgerline';
 import NoteEllipse from './Note';
@@ -21,7 +19,7 @@ const Notation = ({ notes }: { notes: Note[] }) => {
     // if G or above, drop an octave
     whiteKeys.indexOf(stringToKey(notes[0].noteName).base) >= 4 ? true : false;
 
-  const noteIndices = notes.map((note) => noteIndex(note));
+  // const noteIndices = notes.map((note) => noteIndex(note));
 
   const ledgerLines = (): Note[] => {
     const ledgerLines: Note[] = [];
