@@ -1,6 +1,6 @@
 const GClefCurve = () => {
   type CurvePoint = {
-    // curve point point
+    // curve point
     x: number;
     y: number;
     // relative shooting direction
@@ -64,7 +64,7 @@ const GClefCurve = () => {
     }
     return curve;
   };
-  
+
   return (
     <path
       d={gClefCurve(gCurvePointsOne) + gClefCurve(gCurvePointsTwo)}

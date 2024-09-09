@@ -176,6 +176,12 @@ const getNoteName = (alphabetIndex: number, noteIndex: number): string => {
   return alphabet + accidental;
 };
 
+export const noteToIndex = (note: Note) => {
+  // console.log('noteToIndex', note);
+  const key = stringToKey(note.noteName);
+  return whiteKeys.indexOf(key.base) + note.octave * 7;
+};
+
 const generateNoteNames = (
   key: Key,
   relativeNoteData: RelativeNoteData[]
@@ -190,7 +196,6 @@ const generateNoteNames = (
         )
       );
   const baseAlphabetIndex = whiteKeys.indexOf(base);
-  console.log(baseAlphabetIndex);
   const baseNoteIndex = whiteKeysIndex[base] + accidentalIndex;
   const notes: Note[] = [];
   const chordScale = [0, 2, 4, 5, 7, 9, 10];
@@ -199,20 +204,18 @@ const generateNoteNames = (
     const octave = Math.floor(alphabetIndex / 7);
     const noteIndex = baseNoteIndex + chordScale[(noteNumber - 1) % 7] + offset;
     const noteName = getNoteName(alphabetIndex, noteIndex);
+    const newNote = { noteName, octave, hasNoteBelow: false };
 
-    //////////////////////////////////////////////
-    // IMPLEMENT THIS
-    const hasNoteBelow = false;
-    //////////////////////////////////////////////
-
-    notes.push({ noteName, octave, hasNoteBelow });
+    // check if there is a note right below
+    const prevNote = notes.slice(-1)[0];
+    if (prevNote) {
+      if (noteToIndex(prevNote) === noteToIndex(newNote) - 1) {
+        newNote.hasNoteBelow = true;
+      }
+    }
+    notes.push(newNote);
   }
   return notes;
-};
-
-export const noteIndex = (note: Note) => {
-  const key = stringToKey(note.noteName);
-  return whiteKeys.indexOf(key.base) + note.octave * 7;
 };
 
 export const getNotes = (key: Key, extension: Extension) => {

@@ -83,7 +83,9 @@ export type Accidental = 'b' | '#' | undefined;
 
 export type Key = { base: Alphabet; accidental: Accidental };
 
-export type Note = { noteName: string; octave: number, hasNoteBelow: boolean };
+export type Note = { noteName: string; octave: number; hasNoteBelow: boolean };
+
+export type LedgerLineType = { index: number; hasNoteBelow: boolean };
 
 export type Chord = {
   key: Key;

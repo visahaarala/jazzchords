@@ -26,7 +26,7 @@ const initialState = (): ProgramState => {
     accidentalsMax: '7',
     chordIndex: 0,
     beatsPerChord: '4',
-    beatsPerMinute: '60',
+    beatsPerMinute: '86',
     beat: 0,
     keyLocked: false,
     extensionLocked: false,
