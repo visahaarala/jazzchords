@@ -18,6 +18,7 @@ import { changeEnharmonically } from '../functions/noteFunctions';
 
 const initialState = (): ProgramState => {
   let state: ProgramState = {
+    // player
     isMuted: false,
     difficultyMin: 'easy',
     difficultyMax: 'medium',
@@ -29,10 +30,12 @@ const initialState = (): ProgramState => {
     beat: 0,
     keyLocked: false,
     extensionLocked: false,
+
+    // notation
     notationKey: { base: 'C', accidental: undefined },
     notationExtension: { isMinor: false, segments: [] },
 
-    // generate these below
+    // player: generate these below
     majorsShuffled: { fresh: [], used: [] },
     minorsShuffled: { fresh: [], used: [] },
     extensionsShuffled: { fresh: [], used: [] },

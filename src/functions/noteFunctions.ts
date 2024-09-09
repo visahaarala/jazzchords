@@ -126,7 +126,7 @@ const generateRelativeChord = (extension: Extension): string[] => {
 // now becomes ['D', 'F#', 'Ab', 'C']
 //
 
-const whiteKeys: Alphabet[] = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+export const whiteKeys: Alphabet[] = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
 const whiteKeysIndex: { [key in Alphabet]: number } = {
   C: 0,
@@ -190,17 +190,29 @@ const generateNoteNames = (
         )
       );
   const baseAlphabetIndex = whiteKeys.indexOf(base);
+  console.log(baseAlphabetIndex);
   const baseNoteIndex = whiteKeysIndex[base] + accidentalIndex;
   const notes: Note[] = [];
   const chordScale = [0, 2, 4, 5, 7, 9, 10];
   for (const { noteNumber, offset } of relativeNoteData) {
     const alphabetIndex = baseAlphabetIndex + noteNumber - 1;
-    const octave = Math.floor((noteNumber - 1) / 7) + 1;
+    const octave = Math.floor(alphabetIndex / 7);
     const noteIndex = baseNoteIndex + chordScale[(noteNumber - 1) % 7] + offset;
     const noteName = getNoteName(alphabetIndex, noteIndex);
-    notes.push({ noteName, octave });
+
+    //////////////////////////////////////////////
+    // IMPLEMENT THIS
+    const hasNoteBelow = false;
+    //////////////////////////////////////////////
+
+    notes.push({ noteName, octave, hasNoteBelow });
   }
   return notes;
+};
+
+export const noteIndex = (note: Note) => {
+  const key = stringToKey(note.noteName);
+  return whiteKeys.indexOf(key.base) + note.octave * 7;
 };
 
 export const getNotes = (key: Key, extension: Extension) => {
