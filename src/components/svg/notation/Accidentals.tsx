@@ -1,5 +1,5 @@
 import { Note } from '../../../@types';
-import { noteToIndex } from '../../../functions/noteFunctions';
+import { noteToWhiteKeyIndex } from '../../../functions/noteFunctions';
 
 const Accidentals = ({
   notes,
@@ -26,7 +26,7 @@ const Accidentals = ({
   ) => {
     const notesForNextSlot: Note[] = [];
     for (const note of notes) {
-      const noteIndex = noteToIndex(note);
+      const noteIndex = noteToWhiteKeyIndex(note);
       const noteName = note.noteName;
       const accidental = noteName.slice(1);
       const slot = slots[slotIndex];

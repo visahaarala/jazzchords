@@ -2,11 +2,13 @@
 
 #### now
 
-- make chord player settings button all CSS
+- random top note
+
+- add settings links in navigation with a slash?
 
 #### later
 
-- random top note
+- progressive app installation info dropdown (detect os, be specific), pure CSS??
 
 - make chord playable
 

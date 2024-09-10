@@ -1,22 +1,34 @@
 import styles from './Play.module.scss';
 import SettingsIcon from '../components/svg/icons/SettingsIcon';
 import Player from '../components/play/player/Player';
-import { useState } from 'react';
 import Settings from '../components/play/settings/Settings';
+import { useState } from 'react';
 
 const Play = () => {
   const [showSettings, setShowSettings] = useState(false);
 
-  const toggleSettings = () => {
-    setShowSettings(!showSettings);
+  const keyPressHandler = (code: string) => {
+    if (code === 'Space' || code === 'Enter') {
+      setShowSettings(!showSettings);
+    }
   };
 
   return (
     <div className={styles.play}>
-      <div className={styles.settingsIcon} onClick={toggleSettings}>
+      <div
+        className={'iconButton ' + styles.settingsButton}
+        onClick={() => setShowSettings(!showSettings)}
+        onKeyDown={(e) => keyPressHandler(e.code)}
+        tabIndex={0}
+        style={
+          showSettings
+            ? { transform: 'rotate(20deg)', transition: 'transform .2s' }
+            : { transition: 'transform .2s' }
+        }
+      >
         <SettingsIcon />
       </div>
-      {showSettings ? <Settings /> : <Player />}
+      {!showSettings ? <Player /> : <Settings />}
     </div>
   );
 };

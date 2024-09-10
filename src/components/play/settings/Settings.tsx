@@ -23,7 +23,7 @@ const Settings = () => {
         <Select<RandomTopNoteMode>
           dispatchActionType='SET_RANDOM_TOP_NOTE_MODE'
           payloadKey='randomTopNoteMode'
-          options={['none', 'notation', 'note name']}
+          options={['hide', 'show']}
         />
       </div>
 

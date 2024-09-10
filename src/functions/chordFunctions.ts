@@ -11,7 +11,7 @@ import {
 } from '../@types';
 
 import { keysOrganized, extensionsOrganized } from '../data/chordData';
-import { getNotes } from './noteFunctions';
+import { getNotes, noteToWhiteKeyIndex } from './noteFunctions';
 
 export const accidentalLevels = Object.keys(keysOrganized) as AccidentalLevel[];
 
@@ -208,7 +208,10 @@ export const generateChords = ({
 
     const notes = getNotes(key, extension);
 
-    const randomTop = notes[Math.floor(Math.random() * notes.length)].noteName;
+    const randomTop = {
+      ...notes[Math.floor(Math.random() * notes.length)],
+      hasNoteBelow: false,
+    };
 
     chords.push({
       key,

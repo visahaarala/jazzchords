@@ -1,29 +1,67 @@
 import { Note } from '../../../@types';
-import { stringToKey, whiteKeys } from '../../../functions/noteFunctions';
+import {
+  noteToWhiteKeyIndex,
+  stringToKey,
+  whiteKeys,
+} from '../../../functions/noteFunctions';
 import Accidentals from './Accidentals';
 import GClefCurve from './GClefCurve';
 import LedgerLines from './LedgerLines';
 import Notes from './Notes';
 import StaffLines from './StaffLines';
 
-const Notation = ({ notes }: { notes: Note[] }) => {
+const Notation = ({
+  notes,
+  minWhiteKeyIndex,
+  maxWhiteKeyIndex,
+  randomOctave,
+}: {
+  notes: Note[];
+  minWhiteKeyIndex?: number;
+  maxWhiteKeyIndex?: number;
+  randomOctave?: boolean;
+}) => {
+  const oneNote = notes.length === 1;
+
   const yListStaff = [-20, -10, 0, 10, 20];
   const noteBelowOffsetX = 12;
-  const notesCx = 103;
+  const notesCx = oneNote ? 75 : 103;
   const yLowC = 30; // the low C
 
   const dropOctave =
     // if base is G or above, drop an octave
     whiteKeys.indexOf(stringToKey(notes[0].noteName).base) >= 4 ? true : false;
 
-  const adjustedNotes = notes.map((note) => {
+  let adjustedNotes = notes.map((note) => {
     return { ...note, octave: dropOctave ? note.octave - 1 : note.octave };
   });
+
+  if (randomOctave) {
+    for (const note of adjustedNotes) {
+      note.octave += Math.floor(Math.random() * 3) - 1;
+    }
+  }
+
+  if (minWhiteKeyIndex) {
+    for (const note of adjustedNotes) {
+      while (noteToWhiteKeyIndex(note) < minWhiteKeyIndex) {
+        note.octave++;
+      }
+    }
+  }
+
+  if (maxWhiteKeyIndex) {
+    for (const note of adjustedNotes) {
+      while (noteToWhiteKeyIndex(note) > maxWhiteKeyIndex) {
+        note.octave--;
+      }
+    }
+  }
 
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 -60 140 120'
+      viewBox={oneNote ? '0 -60 90 120' : '0 -60 140 120'}
       // style={{ backgroundColor: 'orangered' }}
     >
       <StaffLines x={10} yList={yListStaff} h={120} />

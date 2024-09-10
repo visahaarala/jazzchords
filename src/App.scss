@@ -142,6 +142,20 @@ h2 {
   }
 }
 
+.iconButton {
+  cursor: pointer;
+  // same as .button
+  border-radius: var(--border-radius);
+  &:focus,
+  &:hover {
+    outline: var(--outline-focus);
+  }
+
+  &:active {
+    color: var(--color-gray-light);
+  }
+}
+
 .button {
   background-color: var(--color-gray);
   border-radius: var(--border-radius);

@@ -1,5 +1,5 @@
 import { Note } from '../../../@types';
-import { noteToIndex } from '../../../functions/noteFunctions';
+import { noteToWhiteKeyIndex } from '../../../functions/noteFunctions';
 
 const LedgerLines = ({
   notes,
@@ -10,12 +10,12 @@ const LedgerLines = ({
   noteBelowOffsetX: number;
   notesCx: number;
 }) => {
-  const noteIndices = notes.map((note) => noteToIndex(note));
+  const noteIndices = notes.map((note) => noteToWhiteKeyIndex(note));
 
   const ledgerLines = (): { index: number; hasNoteBelow: boolean }[] => {
     // add all notes for hasNoteBelow information
     const rs = notes.map((note) => ({
-      index: noteToIndex(note),
+      index: noteToWhiteKeyIndex(note),
       hasNoteBelow: note.hasNoteBelow,
     }));
 

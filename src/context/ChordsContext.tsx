@@ -24,7 +24,7 @@ const initialState = (): ProgramState => {
     difficultyMax: 'medium',
     accidentalsMin: '0',
     accidentalsMax: '7',
-    randomTopNoteMode: 'none',
+    randomTopNoteMode: 'show',
     chordIndex: 0,
     beatsPerChord: '4',
     beatsPerMinute: '86',

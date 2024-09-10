@@ -7,69 +7,38 @@
   align-items: center;
   justify-content: space-evenly;
 
-  .now {
-    // top note notation positioning?
+  .now,
+  .next {
+    display: flex;
+    // flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+
+    .chord {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
   }
 
   .next {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
+    width: 90%;
     color: var(--color-gray-light);
-
-    p {
-      display: flex;
-      align-items: center;
-      font-size: 0.9rem;
-    }
-    span {
-      margin-left: 0.3rem;
-      font-size: 1.3rem;
-    }
-  }
-
-  .extensionLock {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
-    & > div {
-      position: relative;
+    .lock {
+      color: var(--color-white);
       display: flex;
+      justify-content: center;
       align-items: center;
-      justify-content: space-between;
+      width: 2rem;
+      height: 2rem;
+      padding: 0.5rem;
 
-      &:nth-child(2) {
-        width: 15.8rem;
-
-        & > div {
-          display: flex;
-
-          & > svg {
-            padding: 0.4rem;
-            width: 1.9rem;
-          }
-
-          cursor: pointer;
-          // same as .button
-          border-radius: var(--border-radius);
-          &:focus,
-          &:hover {
-            outline: var(--outline-focus);
-          }
-
-          &:active {
-            color: var(--color-gray-light);
-          }
-        }
+      &:active {
+        color: var(--color-gray-light);
       }
     }
   }

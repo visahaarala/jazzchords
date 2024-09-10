@@ -176,7 +176,7 @@ const getNoteName = (alphabetIndex: number, noteIndex: number): string => {
   return alphabet + accidental;
 };
 
-export const noteToIndex = (note: Note) => {
+export const noteToWhiteKeyIndex = (note: Note) => {
   // console.log('noteToIndex', note);
   const key = stringToKey(note.noteName);
   return whiteKeys.indexOf(key.base) + note.octave * 7;
@@ -209,7 +209,7 @@ const generateNoteNames = (
     // check if there is a note right below
     const prevNote = notes.slice(-1)[0];
     if (prevNote) {
-      if (noteToIndex(prevNote) === noteToIndex(newNote) - 1) {
+      if (noteToWhiteKeyIndex(prevNote) === noteToWhiteKeyIndex(newNote) - 1) {
         newNote.hasNoteBelow = true;
       }
     }

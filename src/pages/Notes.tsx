@@ -7,6 +7,7 @@ import { Chord } from '../@types';
 import { useContext } from 'react';
 import { ChordsContext } from '../context/ChordsContext';
 import { getNotes } from '../functions/noteFunctions';
+import SettingsIcon from '../components/svg/icons/SettingsIcon';
 
 const Notes = () => {
   const { state } = useContext(ChordsContext);
@@ -22,6 +23,9 @@ const Notes = () => {
 
   return (
     <div className={styles.notes}>
+      <div className="settingsIcon">
+        <SettingsIcon />
+      </div>
       <div className={styles.notes__chord}>
         <ChordSymbol chord={chord} size={2.5} />
         <div className={styles.notes__chord__notation}>

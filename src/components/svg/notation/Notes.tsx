@@ -1,5 +1,5 @@
 import { Note } from '../../../@types';
-import { noteToIndex } from '../../../functions/noteFunctions';
+import { noteToWhiteKeyIndex } from '../../../functions/noteFunctions';
 
 const Notes = ({
   notes,
@@ -13,7 +13,7 @@ const Notes = ({
   notesCx: number;
 }) =>
   notes.map((note) => {
-    const cy = yLowC - noteToIndex(note) * 5;
+    const cy = yLowC - noteToWhiteKeyIndex(note) * 5;
     let cx = notesCx;
     if (note.hasNoteBelow) cx += noteBelowOffsetX;
     const rxFactors = [0.9, 1, 1.15, 1.3];
