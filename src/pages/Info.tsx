@@ -23,8 +23,22 @@ const textIconStyle: React.CSSProperties = {
   transform: 'translateY(.15rem)',
 };
 
+const isMobile = matchMedia('(pointer:coarse)').matches;
+
+const isStandaone = matchMedia('(display-mode: standalone)').matches;
+
 const Info = () => (
   <div className={styles.info}>
+    {isMobile && (
+      <div>
+        Install this{' '}
+        <a href='https://en.wikipedia.org/wiki/Progressive_web_app'>
+          progressive web app
+        </a>{' '}
+        for easier access and use.
+      </div>
+    )}
+
     <div>
       <div style={headerIconStyle}>
         <NotesIcon />
@@ -52,6 +66,14 @@ const Info = () => (
       </div>
       A metronome.
     </div>
+
+    {isMobile && (
+      <div>
+        Turn off silent mode to hear the click. <br />
+        Prevent screen timeout / sleep / auto-lock from device settings if
+        necessary.
+      </div>
+    )}
 
     <div>
       More info at{' '}

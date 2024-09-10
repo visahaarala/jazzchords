@@ -1,21 +1,22 @@
 import styles from './Play.module.scss';
-import DisplaySleepComment from '../components/misc/DisplaySleepComment';
-import Chords from '../components/play/player/Chords';
-import PlayControls from '../components/play/player/PlayControls';
-import Beats from '../components/play/player/Beats';
-
-// TOGGLE PLAYER / SETTINGS FROM HERE
-// using the settings icon
+import SettingsIcon from '../components/svg/icons/SettingsIcon';
+import Player from '../components/play/player/Player';
+import { useState } from 'react';
+import Settings from '../components/play/settings/Settings';
 
 const Play = () => {
+  const [showSettings, setShowSettings] = useState(false);
+
+  const toggleSettings = () => {
+    setShowSettings(!showSettings);
+  };
+
   return (
     <div className={styles.play}>
-      <div>
-        <DisplaySleepComment />
-        <Chords />
-        <Beats />
+      <div className={styles.settingsIcon} onClick={toggleSettings}>
+        <SettingsIcon />
       </div>
-      <PlayControls />
+      {showSettings ? <Settings /> : <Player />}
     </div>
   );
 };

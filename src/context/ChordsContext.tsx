@@ -24,6 +24,7 @@ const initialState = (): ProgramState => {
     difficultyMax: 'medium',
     accidentalsMin: '0',
     accidentalsMax: '7',
+    randomTopNoteMode: 'none',
     chordIndex: 0,
     beatsPerChord: '4',
     beatsPerMinute: '86',
@@ -33,7 +34,7 @@ const initialState = (): ProgramState => {
 
     // notation
     notationKey: { base: 'C', accidental: undefined },
-    notationExtension: { isMinor: false, segments: [] },
+    notationExtension: { isMinor: false, segments: ['7'] },
 
     // player: generate these below
     majorsShuffled: { fresh: [], used: [] },
@@ -158,6 +159,7 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
       return initialState();
     }
 
+    //
     /// PLAYER
     case 'SET_BEAT': {
       return { ...state, beat: action.payload!.beat! };
@@ -202,7 +204,14 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
         chordIndex: 0,
       };
     }
+    case 'SET_RANDOM_TOP_NOTE_MODE': {
+      return {
+        ...state,
+        randomTopNoteMode: action.payload!.randomTopNoteMode!,
+      };
+    }
 
+    //
     // NOTATION
     case 'SET_NOTATION_KEY': {
       // Check that Key exists in minor/major
@@ -229,7 +238,6 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
           : { isMinor: !extension.isMinor, segments: [] },
       };
     }
-
     case 'SET_NOTATION_EXTENSION': {
       // Check that Key exists in minor/major
       // and change Key enharmonically if necessary

@@ -22,13 +22,13 @@ const Notes = () => {
 
   return (
     <div className={styles.notes}>
-      <div className={styles.notation}>
-        <Notation notes={chord.notes} />
-      </div>
-      <div className={styles.chord}>
+      <div className={styles.notes__chord}>
         <ChordSymbol chord={chord} size={2.5} />
+        <div className={styles.notes__chord__notation}>
+          <Notation notes={chord.notes} />
+        </div>
       </div>
-      <div className={styles.select}>
+      <div className={styles.notes__select}>
         <KeySelect />
         <ExtensionSelect />
       </div>

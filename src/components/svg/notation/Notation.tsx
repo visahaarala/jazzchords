@@ -7,11 +7,9 @@ import Notes from './Notes';
 import StaffLines from './StaffLines';
 
 const Notation = ({ notes }: { notes: Note[] }) => {
-  console.log(notes.map((note) => note.noteName));
-
   const yListStaff = [-20, -10, 0, 10, 20];
   const noteBelowOffsetX = 12;
-  const notesCx = 100;
+  const notesCx = 103;
   const yLowC = 30; // the low C
 
   const dropOctave =
@@ -26,7 +24,7 @@ const Notation = ({ notes }: { notes: Note[] }) => {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 -60 140 120'
-      style={{ backgroundColor: 'orangered' }}
+      // style={{ backgroundColor: 'orangered' }}
     >
       <StaffLines x={10} yList={yListStaff} h={120} />
       <GClefCurve />

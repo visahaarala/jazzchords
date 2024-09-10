@@ -1,7 +1,11 @@
 .settings {
+  height: 100%;
+
   margin-top: auto;
   display: flex;
   flex-direction: column;
+
+  overflow: scroll;
 
   h3 {
     align-self: stretch;
@@ -17,23 +21,28 @@
       @media (max-height: 29rem) {
         margin-top: 1.5rem;
       }
-      @media (max-height: 25em) {
-        // 432px
-        margin-top: 0.6rem;
-        margin-bottom: 0.6rem;
-      }
-      @media (max-height: 20em) {
-        // 336px
-        margin-top: 0.2rem;
-        margin-bottom: 0.4rem;
-      }
+      // @media (max-height: 25em) {
+      //   // 432px
+      //   margin-top: 0.6rem;
+      //   margin-bottom: 0.6rem;
+      // }
+      // @media (max-height: 20em) {
+      //   // 336px
+      //   margin-top: 0.2rem;
+      //   margin-bottom: 0.4rem;
+      // }
     }
   }
 
   & > div {
     align-self: end;
+    align-self: start;
     display: flex;
     align-items: center;
     gap: 1rem;
+  }
+
+  & > *:first-child {
+    margin-top: auto;
   }
 }

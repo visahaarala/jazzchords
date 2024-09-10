@@ -1,13 +1,9 @@
 .beats {
   align-self: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   padding: 0.5rem;
   cursor: pointer;
 
   display: flex;
-  gap: 0.5rem;
-
-  @media (pointer: coarse) and (orientation: landscape) {
-    margin-bottom: 0;
-  }
+  gap: 0.3rem;
 }

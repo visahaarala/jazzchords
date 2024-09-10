@@ -1,12 +1,16 @@
 import styles from './Settings.module.scss';
 
-import { accidentalLevels, difficultyLevels } from '../../../functions/chordFunctions';
+import {
+  accidentalLevels,
+  difficultyLevels,
+} from '../../../functions/chordFunctions';
 import Select from '../../misc/Select';
 import {
   AccidentalLevel,
   BeatsPerChord,
   BeatsPerMinute,
   DifficultyLevel,
+  RandomTopNoteMode,
 } from '../../../@types';
 import { bpcOptions, bpmOptions } from '../../../data/beats';
 import PlayerMute from './PlayerMute';
@@ -14,6 +18,15 @@ import PlayerMute from './PlayerMute';
 const Settings = () => {
   return (
     <div className={styles.settings}>
+      <h3>Random top note</h3>
+      <div>
+        <Select<RandomTopNoteMode>
+          dispatchActionType='SET_RANDOM_TOP_NOTE_MODE'
+          payloadKey='randomTopNoteMode'
+          options={['none', 'notation', 'note name']}
+        />
+      </div>
+
       <h3>Key signature (♯ / ♭)</h3>
       <div>
         <Select<AccidentalLevel>

@@ -22,7 +22,6 @@ const Navigation = () => {
     info: <InfoIcon />,
     notes: <NotesIcon />,
     play: <PlayIcon />,
-    settings: <SettingsIcon />,
     metronome: <MetronomeIcon />,
   };
 

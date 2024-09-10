@@ -1,16 +1,6 @@
 .comment {
-  margin-top: -0.5rem;
-
+  margin-top: -1rem;
   color: var(--color-gray-light);
   text-align: start;
   font-size: 0.65rem;
-
-  &:not(:first-of-type) {
-    margin-top: 0.5rem;
-  }
-
-  @media (orientation: landscape) {
-    margin-top: 0;
-    margin-right: 2rem;
-  }
 }

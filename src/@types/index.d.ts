@@ -2,12 +2,15 @@ export type Extension = { isMinor: boolean; segments: string[] };
 
 export type FreshAndUsed<T> = { fresh: T[]; used: T[] };
 
+export type RandomTopNoteMode = 'notation' | 'note name' | 'none';
+
 export type ProgramState = {
   // PLAYER
   accidentalsMin: AccidentalLevel;
   accidentalsMax: AccidentalLevel;
   difficultyMin: DifficultyLevel;
   difficultyMax: DifficultyLevel;
+  randomTopNoteMode: RandomTopNoteMode;
   majorsShuffled: FreshAndUsed<string>;
   minorsShuffled: FreshAndUsed<string>;
   extensionsShuffled: FreshAndUsed<Extension>;
@@ -41,6 +44,7 @@ export type ReducerActionType =
   | 'SET_ACCIDENTALS_MAX'
   | 'SET_DIFFICULTY_MIN'
   | 'SET_DIFFICULTY_MAX'
+  | 'SET_RANDOM_TOP_NOTE_MODE'
   | 'RESET_SETTINGS'
 
   // NOTATION

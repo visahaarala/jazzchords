@@ -87,7 +87,6 @@ const Metronome = () => {
   return (
     <div className={styles.metronome}>
       <div className={styles.top}>
-        <DisplaySleepComment />
         <div
           className={`${styles.tempo} ${
             play && !isMobile ? styles.tempo__play : ''
