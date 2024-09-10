@@ -5,8 +5,13 @@
   .settingsIcon {
     position: absolute;
     z-index: 1;
-    width: 2rem;
-    bottom: 0.5rem;
-    right: 1rem;
+    width: 4rem;
+    height: 2rem;
+    padding: 0 1rem;
+    top: 0;
+    right: 0;
+
+    background-color: var(--color-black);
+    box-shadow: 0 0 .5rem .5rem var(--color-black);
   }
 }
