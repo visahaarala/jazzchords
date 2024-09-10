@@ -24,6 +24,8 @@
     // no focus outline on mobile devices
     --outline-focus: none;
   }
+
+  --button-padding: 0.7rem 1rem;
 }
 
 /* reset */
@@ -145,7 +147,7 @@ h2 {
   color: inherit;
   font-family: inherit;
   cursor: pointer;
-  padding: 0.7rem 1rem;
+  padding: var(--button-padding);
 
   display: flex;
   align-items: center;
@@ -160,5 +162,10 @@ h2 {
 
   &:active {
     background-color: var(--color-gray-dark);
+  }
+
+  &__disabled {
+    background-color: var(--color-gray-dark);
+    color: var(--color-gray-light);
   }
 }

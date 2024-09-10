@@ -1,5 +1,9 @@
 .select {
   min-width: 3rem;
   padding: 0.7rem 1rem;
-  font-size: 0.9rem;
+  padding: var(--button-padding);
+  
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
 }

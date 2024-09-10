@@ -22,12 +22,11 @@ const PlayButton = ({
 
   return (
     <div
-      className={`button`}
+      className={`button ${disabled && 'button__disabled'}`}
       onClick={onClick}
       onKeyDown={keyDownHandler}
       tabIndex={0}
       id={id}
-      style={disabled ? { filter: 'contrast(70%) brightness(.75)' } : {}}
     >
       <div className={styles.icon}>{icon}</div>
     </div>

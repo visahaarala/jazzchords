@@ -10,7 +10,6 @@ import Play from './pages/Play';
 import Info from './pages/Info';
 import Metronome from './pages/Metronome';
 import Notes from './pages/Notes';
-// import Settings from './components/play/settings/Settings';
 
 const router = createBrowserRouter([
   {
@@ -27,10 +26,6 @@ const router = createBrowserRouter([
         path: 'play',
         element: <Play />,
       },
-      // {
-      //   path: 'settings',
-      //   element: <Settings />,
-      // },
       {
         path: 'metronome',
         element: <Metronome />,

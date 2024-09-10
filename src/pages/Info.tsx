@@ -29,13 +29,13 @@ const isStandaone = matchMedia('(display-mode: standalone)').matches;
 
 const Info = () => (
   <div className={styles.info}>
-    {isMobile && (
+    {isMobile && !isStandaone && (
       <div>
-        Install this{' '}
+        This{' '}
         <a href='https://en.wikipedia.org/wiki/Progressive_web_app'>
           progressive web app
         </a>{' '}
-        for easier access and use.
+        can be installed for easier access and use.
       </div>
     )}
 

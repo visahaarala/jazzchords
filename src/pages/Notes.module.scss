@@ -23,6 +23,11 @@
     display: flex;
     gap: 1rem;
 
+    & > select {
+      font-size: 1.1rem;
+      padding: var(--button-padding);
+    }
+
     @media (pointer: coarse) and (orientation: landscape) {
       margin-top: auto;
       flex-direction: column-reverse;
