@@ -25,6 +25,7 @@ import HalfDim from '../svg/symbols/extensions/HalfDim';
 import Add from '../svg/symbols/extensions/Add';
 import Sus from '../svg/symbols/extensions/Sus';
 import Maj from '../svg/symbols/extensions/Maj';
+import Plus from '../svg/symbols/extensions/Plus';
 
 const ChordSymbol = ({
   size,
@@ -68,7 +69,7 @@ const ChordSymbol = ({
     ),
     o: (height) => <Dim height={height} />,
     h: (height) => <HalfDim height={height} />,
-    '+': (height) => <HalfDim height={height} />,
+    '+': (height) => <Plus height={height} />,
     add: (height) => <Add height={height} />,
     sus: (height) => <Sus height={height} />,
     maj: (height) => <Maj height={height} />,

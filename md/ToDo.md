@@ -2,7 +2,7 @@
 
 #### now
 
-- random top note
+- random top note range
 
 - add settings links in navigation with a slash?
 

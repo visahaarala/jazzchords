@@ -14,6 +14,8 @@ type SegmentInstruction = {
 };
 
 const segmentInstructions: { [key: string]: SegmentInstruction } = {
+  r3: { remove: ['3'] },
+  r5: { remove: ['5'] },
   o: {
     remove: ['3', '5'],
     add: ['b3', 'b5'],
@@ -26,11 +28,14 @@ const segmentInstructions: { [key: string]: SegmentInstruction } = {
   add9: { add: ['9'] },
   maj7: { add: ['#7'] },
   // not necessary to remove minor third in -11
-  '11': { add: ['7', '9', '11'], remove: ['3'] },
+  // '11': { add: ['7', '9', '11'], remove: ['3'] },
   b13: { add: ['b13'], remove: ['5'] },
 };
 
-const getSegmentInstruction = (segment: string): SegmentInstruction => {
+const getSegmentInstruction = (
+  segment: string
+  // isMinor: boolean
+): SegmentInstruction => {
   if (segmentInstructions[segment]) {
     return segmentInstructions[segment];
   }
@@ -50,7 +55,10 @@ const getSegmentInstruction = (segment: string): SegmentInstruction => {
   return { add: [segment] };
 };
 
-const breakUpSegmentCombos = (segments: string[]): string[] => {
+const breakUpSegmentCombos = (
+  segments: string[],
+  isMinor: boolean
+): string[] => {
   const combos: { [key: string]: string[] } = {
     h7: ['o', '7'],
     o7: ['o', '6'],
@@ -62,6 +70,7 @@ const breakUpSegmentCombos = (segments: string[]): string[] => {
     omaj7: ['o', '#7'],
     '13': ['7', '9', '13'],
     maj13: ['#7', '9', '13'],
+    11: isMinor ? ['7', '9', '11'] : ['r3', '7', '9', '11'],
   };
   return segments.map((s) => (combos[s] ? combos[s] : s)).flat();
 };
@@ -106,9 +115,12 @@ const generateRelativeChord = (extension: Extension): string[] => {
   if (isMinor) {
     modifyChord({ chord, instruction: { remove: ['3'], add: ['b3'] } });
   }
-  segments = breakUpSegmentCombos(segments);
+  segments = breakUpSegmentCombos(segments, isMinor);
   for (const segment of segments) {
-    const instruction = getSegmentInstruction(segment);
+    const instruction = getSegmentInstruction(
+      segment
+      // isMinor
+    );
     modifyChord({ chord, instruction });
   }
   chord.sort((a, b) => {

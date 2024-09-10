@@ -24,7 +24,8 @@ const initialState = (): ProgramState => {
     difficultyMax: 'medium',
     accidentalsMin: '0',
     accidentalsMax: '7',
-    randomTopNoteMode: 'show',
+    showRandomTopNote: true,
+    randomTopNoteIndexRange: { min: 7, max: 14 }, // C2 to C3
     chordIndex: 0,
     beatsPerChord: '4',
     beatsPerMinute: '86',
@@ -204,10 +205,10 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
         chordIndex: 0,
       };
     }
-    case 'SET_RANDOM_TOP_NOTE_MODE': {
+    case 'TOGGLE_SHOW_RANDOM_TOP_NOTE': {
       return {
         ...state,
-        randomTopNoteMode: action.payload!.randomTopNoteMode!,
+        showRandomTopNote: !state.showRandomTopNote,
       };
     }
 

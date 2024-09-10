@@ -10,15 +10,8 @@
   .now,
   .next {
     display: flex;
-    // flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-
-    .chord {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
   }
 
   .next {

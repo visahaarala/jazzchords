@@ -19,33 +19,29 @@ export const extensionsOrganized: {
   [key in DifficultyLevel]: string[];
 } = {
   easy: [
-    'add9',
-    'sus4',
-
-    'maj7',
-    '6',
-    '69',
-    '7',
-    '-7',
-    '-maj7',
-    '-6',
-    '-69',
-    '-maj9',
-
-    // just to check sorting
     '',
     '-',
     'o',
-
-    '-9',
-    '-add9',
-    '9',
-    'maj9',
     'o7',
     'h7',
+    'sus4',
+    '6',
+    '-6',
+    '69',
+    '-69',
+    '7',
+    '-7',
+    'maj7',
+    '-maj7',
+    '-9',
+    '-maj9',
+    '9',
+    'maj9',
+    'add9',
+    '-add9',
     // FIX THESE (visual)
-    // '+'
-    // '+7'
+    '+',
+    '+7'
   ],
   medium: [
     'h9',
@@ -63,7 +59,9 @@ export const extensionsOrganized: {
     '-11',
     '11',
     '13',
+    '-13',
     'maj13',
+    '-maj13',
   ],
   hard: [
     '7#11',

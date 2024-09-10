@@ -20,8 +20,9 @@ const ExtensionSelect = () => {
     if (segments[0]) {
       const s1 = segments[0];
       // numbers in 10000s
-      if (s1.includes('o')) points += -200000;
-      if (s1.includes('h')) points += -100000;
+      if (s1.includes('o')) points += -300000;
+      if (s1.includes('h')) points += -200000;
+      if (s1.includes('+')) points += -100000;
       try {
         let e1Num = Number(s1.replace(/\D/g, ''));
         if (e1Num === 69) e1Num = 6.9;

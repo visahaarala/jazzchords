@@ -10,21 +10,17 @@ import {
   BeatsPerChord,
   BeatsPerMinute,
   DifficultyLevel,
-  RandomTopNoteMode,
 } from '../../../@types';
 import { bpcOptions, bpmOptions } from '../../../data/beats';
 import PlayerMute from './PlayerMute';
+import OnOffToggle from '../../misc/OnOffToggle';
 
 const Settings = () => {
   return (
     <div className={styles.settings}>
       <h3>Random top note</h3>
       <div>
-        <Select<RandomTopNoteMode>
-          dispatchActionType='SET_RANDOM_TOP_NOTE_MODE'
-          payloadKey='randomTopNoteMode'
-          options={['hide', 'show']}
-        />
+        <OnOffToggle dispatchType='TOGGLE_SHOW_RANDOM_TOP_NOTE' stateKey='showRandomTopNote' />
       </div>
 
       <h3>Key signature (♯ / ♭)</h3>
