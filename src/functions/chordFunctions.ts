@@ -11,7 +11,7 @@ import {
 } from '../@types';
 
 import { keysOrganized, extensionsOrganized } from '../data/chordData';
-import { getNotes, noteToWhiteKeyIndex } from './noteFunctions';
+import { getNotes } from './noteFunctions';
 
 export const accidentalLevels = Object.keys(keysOrganized) as AccidentalLevel[];
 
