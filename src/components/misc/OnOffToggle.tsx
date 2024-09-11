@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { KeyboardEvent, useContext } from 'react';
 import styles from './OnOffToggle.module.scss';
 import { ChordsContext } from '../../context/ChordsContext';
 import { ProgramState, ReducerActionType } from '../../@types';
@@ -16,8 +16,10 @@ const OnOffToggle = ({
     dispatch({ type: dispatchType });
   };
 
-  const keyHandler = (code: string) => {
+  const keyHandler = (e: KeyboardEvent<HTMLDivElement>) => {
+    const code = e.code;
     if (code === 'Space' || code === 'Enter') {
+      e.preventDefault();
       toggler();
     }
   }
@@ -28,7 +30,7 @@ const OnOffToggle = ({
         state[stateKey] && styles.toggle__checked
       }`}
       onClick={toggler}
-      onKeyDown={(e) => keyHandler(e.code)}
+      onKeyDown={(e) => keyHandler(e)}
       tabIndex={0}
     />
   );

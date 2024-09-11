@@ -24,6 +24,8 @@ export const extensionsOrganized: {
     'o',
     'o7',
     'h7',
+    '+',
+    '+7',
     'sus4',
     '6',
     '-6',
@@ -39,9 +41,6 @@ export const extensionsOrganized: {
     'maj9',
     'add9',
     '-add9',
-    // FIX THESE (visual)
-    '+',
-    '+7'
   ],
   medium: [
     'h9',
@@ -82,12 +81,9 @@ export const extensionsOrganized: {
     '7#11#9',
     '7b9b5',
     '7b9#5',
-    // '7#9b9',
-    '7b13#9',
-
-    // just to check sorting
+    // '7#9b9', // not implemented yet
     '7b13b9',
-
+    '7b13#9',
     // '7b13sus4', // don't like it
   ],
 };

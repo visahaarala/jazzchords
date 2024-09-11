@@ -28,7 +28,7 @@ const initialState = (): ProgramState => {
     accidentalsMin: '0',
     accidentalsMax: '7',
     showRandomTopNote: false,
-    showNextChord: false,
+    showNextChord: true,
     randomTopNoteMin: 'G1',
     randomTopNoteMax: 'G2',
     chordIndex: 0,
