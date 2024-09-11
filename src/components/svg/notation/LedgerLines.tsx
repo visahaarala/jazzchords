@@ -39,8 +39,6 @@ const LedgerLines = ({
     return rs;
   };
 
-  console.log(noteIndices, ledgerLines());
-
   return ledgerLines().map((ledgerLine) => {
     const index = ledgerLine.index;
     let y = 30 - index * 5;

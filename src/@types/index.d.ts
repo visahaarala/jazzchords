@@ -5,6 +5,7 @@ export type ProgramState = {
   difficultyMin: DifficultyLevel;
   difficultyMax: DifficultyLevel;
   showRandomTopNote: boolean;
+  showNextChord: boolean;
   randomTopNoteMin: RandomTopNote;
   randomTopNoteMax: RandomTopNote;
   majorsShuffled: FreshAndUsed<string>;
@@ -18,6 +19,7 @@ export type ProgramState = {
   beatsPerMinute: BeatsPerMinute;
   beat: number;
   isMuted: boolean;
+  viewPlaySettings: boolean;
 
   // NOTATION
   notationKey: Key;
@@ -44,10 +46,12 @@ export type ReducerActionType =
   | 'SET_ACCIDENTALS_MAX'
   | 'SET_DIFFICULTY_MIN'
   | 'SET_DIFFICULTY_MAX'
-  | 'TOGGLE_SHOW_RANDOM_TOP_NOTE'
   | 'SET_RANDOM_TOP_NOTE_MIN'
   | 'SET_RANDOM_TOP_NOTE_MAX'
   | 'RESET_SETTINGS'
+  | 'TOGGLE_SHOW_RANDOM_TOP_NOTE'
+  | 'TOGGLE_SHOW_NEXT_CHORD'
+  | 'TOGGLE_VIEW_PLAY_SETTINGS'
 
   // NOTATION
   | 'SET_NOTATION_KEY'
@@ -56,11 +60,6 @@ export type ReducerActionType =
 export type ReducerAction = {
   type: ReducerActionType;
   payload?: Partial<ProgramState>;
-};
-
-export type Range<T> = {
-  min: T;
-  max: T;
 };
 
 export type MajorOrMinor = 'major' | 'minor';

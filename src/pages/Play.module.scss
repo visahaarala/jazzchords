@@ -1,19 +1,28 @@
 .play {
   height: 100%;
-  position: relative;
+  // position: relative;
 
   .settingsButton {
-    position: absolute;
-    top: 0;
-    right: 1rem;
-    z-index: 1;
     width: 2.4rem;
     height: 2.4rem;
     padding: 0.2rem;
     border-radius: 50%;
 
+    position: absolute;
+    z-index: 1;
+
+    // footer: 5rem, main padding: 1.5rem
+    bottom: 6.5rem; 
+    right: 1.5rem;
+
     transform: all 1s;
 
+    background-color: black;
     box-shadow: 0 0 1rem 1rem var(--color-black);
+
+    @media (pointer: coarse) and (orientation: landscape) {
+      bottom: 1.5rem;
+      right: 6.5rem;
+    }  
   }
 }

@@ -35,7 +35,7 @@ const Info = () => (
         <a href='https://en.wikipedia.org/wiki/Progressive_web_app'>
           progressive web app
         </a>{' '}
-        can be installed for easier access and use.
+        can be installed on home screen for easier use.
       </div>
     )}
 
@@ -74,6 +74,8 @@ const Info = () => (
         necessary.
       </div>
     )}
+
+    {!isMobile && <div>Use tab, space and arrows to navigate.</div>}
 
     <div>
       More info at{' '}

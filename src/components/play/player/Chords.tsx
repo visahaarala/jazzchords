@@ -47,12 +47,14 @@ const Chords = () => {
           <Lock isLocked={state.keyLocked} />
         </div>
 
-        <ChordDisplay
-          indexOffset={1}
-          size={1.8}
-          minWhiteKeyIndex={minWhiteKeyIndex}
-          maxWhiteKeyIndex={maxWhiteKeyIndex}
-        />
+        {state.showNextChord && (
+          <ChordDisplay
+            indexOffset={1}
+            size={1.8}
+            minWhiteKeyIndex={minWhiteKeyIndex}
+            maxWhiteKeyIndex={maxWhiteKeyIndex}
+          />
+        )}
 
         <div
           className={`iconButton ${styles.lock}`}

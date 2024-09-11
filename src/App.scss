@@ -96,6 +96,29 @@ body {
   letter-spacing: 0.02rem;
 }
 
+.container {
+  height: 100dvh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  position: relative; // for settings icon
+
+  @media (pointer: fine) {
+    // container card styling only on desktop (not mobile)
+    max-height: 45rem;
+    max-width: 30rem;
+    background-color: var(--color-black);
+    border-radius: 0.4rem;
+    overflow: hidden;
+    box-shadow: var(--box-shadow-container);
+    border: var(--border-container);
+  }
+
+  @media (pointer: coarse) and (orientation: landscape) {
+    flex-direction: row;
+  }
+}
+
 main {
   flex: 1;
   display: flex;
@@ -105,16 +128,19 @@ main {
   padding: 1.5rem;
   @media ((min-height: 46em) and (min-width: 46em)) or (pointer: fine) {
     // min 736px x 736px or not mobile
-    padding: 2rem;
+    // padding: 2rem;
   }
 }
 
 footer {
-  padding: 1.5rem 1rem 2rem 1rem;
+  padding: 1rem;
+  height: 5rem;
   background-color: var(--color-gray);
   border-top: 1px solid var(--color-gray-light);
 
   @media (pointer: coarse) and (orientation: landscape) {
+    height: unset;
+    width: 5rem;
     padding: 0 1rem;
     border-top: none;
     border-left: 1px solid var(--color-gray-light);

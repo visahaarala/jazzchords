@@ -5,27 +5,28 @@ import InfoIcon from '../svg/icons/InfoIcon';
 import MetronomeIcon from '../svg/icons/MetronomeIcon';
 import PlayIcon from '../svg/icons/PlayIcon';
 import NotesIcon from '../svg/icons/NotesIcon';
-import SettingsIcon from '../svg/icons/SettingsIcon';
 
 const Navigation = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const keyDownHandler = (e: KeyboardEvent<HTMLLIElement>, target: string) => {
+  const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>, target: string) => {
     if (e.code === 'Space') {
       e.preventDefault();
       navigate(target);
     }
   };
 
-  const navIcons = {
+  type NavIcon = { [key: string]: JSX.Element, };
+
+  const navLinks: NavIcon = {
     info: <InfoIcon />,
     notes: <NotesIcon />,
     play: <PlayIcon />,
     metronome: <MetronomeIcon />,
   };
 
-  const liStyle = (navName: string): React.CSSProperties | undefined => {
+  const linkStyle = (navName: string): React.CSSProperties | undefined => {
     if ('/' + navName === pathname) {
       return { color: 'var(--color-link)' };
     } else {
@@ -34,28 +35,26 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={styles.navigation}>
-      <ul>
-        {Object.keys(navIcons).map((key) => {
-          return (
-            <li
-              key={key}
-              style={liStyle(key)}
-              tabIndex={0}
-              onKeyDown={(e) => keyDownHandler(e, key)}
+    <nav className={styles.nav}>
+      {Object.keys(navLinks).map((key) => {
+        return (
+          <div
+            className={styles.nav__link}
+            tabIndex={0}
+            key={key}
+            onKeyDown={(e) => keyDownHandler(e, key)}
+          >
+            <NavLink
+              to={key}
+              style={linkStyle(key)}
+              aria-label={key}
+              tabIndex={-1}
             >
-              <NavLink
-                to={key}
-                style={liStyle(key)}
-                aria-label={key}
-                tabIndex={-1}
-              >
-                {navIcons[key as keyof typeof navIcons]}
-              </NavLink>
-            </li>
-          );
-        })}
-      </ul>
+              {navLinks[key as keyof typeof navLinks]}
+            </NavLink>
+          </div>
+        );
+      })}
     </nav>
   );
 };

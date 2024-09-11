@@ -27,7 +27,8 @@ const initialState = (): ProgramState => {
     difficultyMax: 'medium',
     accidentalsMin: '0',
     accidentalsMax: '7',
-    showRandomTopNote: true,
+    showRandomTopNote: false,
+    showNextChord: false,
     randomTopNoteMin: 'G1',
     randomTopNoteMax: 'G2',
     chordIndex: 0,
@@ -36,6 +37,7 @@ const initialState = (): ProgramState => {
     beat: 0,
     keyLocked: false,
     extensionLocked: false,
+    viewPlaySettings: false,
 
     // notation
     notationKey: { base: 'C', accidental: undefined },
@@ -241,6 +243,18 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
         ...state,
         randomTopNoteMax: action.payload!.randomTopNoteMax!,
         randomTopNoteMin: randomTopNotes[minIndex],
+      };
+    }
+    case 'TOGGLE_VIEW_PLAY_SETTINGS': {
+      return {
+        ...state,
+        viewPlaySettings: !state.viewPlaySettings,
+      };
+    }
+    case 'TOGGLE_SHOW_NEXT_CHORD': {
+      return {
+        ...state,
+        showNextChord: !state.showNextChord,
       };
     }
 

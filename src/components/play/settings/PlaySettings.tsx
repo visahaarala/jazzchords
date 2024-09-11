@@ -1,4 +1,4 @@
-import styles from './Settings.module.scss';
+import styles from './PlaySettings.module.scss';
 
 import {
   accidentalLevels,
@@ -18,7 +18,7 @@ import { randomTopNotes } from '../../../functions/noteFunctions';
 import { useContext } from 'react';
 import { ChordsContext } from '../../../context/ChordsContext';
 
-const Settings = () => {
+const PlaySettings = () => {
   const isOn = useContext(ChordsContext).state.showRandomTopNote;
 
   return (
@@ -29,7 +29,7 @@ const Settings = () => {
           dispatchType='TOGGLE_SHOW_RANDOM_TOP_NOTE'
           stateKey='showRandomTopNote'
         />
-        <span className={!isOn ? styles.disabled : ''}>Range:</span>
+        <span className={styles.space} />
         <Select<string>
           dispatchActionType='SET_RANDOM_TOP_NOTE_MIN'
           payloadKey='randomTopNoteMin'
@@ -91,8 +91,16 @@ const Settings = () => {
           options={accidentalLevels}
         />
       </div>
+
+      <h3>Show next chord</h3>
+      <div>
+        <OnOffToggle
+          dispatchType='TOGGLE_SHOW_NEXT_CHORD'
+          stateKey='showNextChord'
+        />
+      </div>
     </div>
   );
 };
 
-export default Settings;
+export default PlaySettings;
