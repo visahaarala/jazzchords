@@ -7,6 +7,7 @@ const RootLayout = ({
   children,
   title,
 }: {
+  // to have ErrorPage inside RootLayout
   children?: JSX.Element;
   title?: string;
 }) => (
