@@ -10,6 +10,7 @@ const Select = <T,>({
   description,
   optionToString,
   stringToOption,
+  disabled,
 }: {
   dispatchActionType: ReducerActionType;
   payloadKey: keyof ProgramState;
@@ -17,6 +18,7 @@ const Select = <T,>({
   description?: string;
   optionToString?: (option: T) => string;
   stringToOption?: (optionString: string) => T;
+  disabled?: boolean;
 }) => {
   const { state, dispatch } = useContext(ChordsContext);
 
@@ -37,6 +39,7 @@ const Select = <T,>({
       value={optionToString ? optionToString(value as T) : (value as string)}
       onChange={(e) => changeHandler(e.target.value)}
       className={`button ${styles.select}`}
+      disabled={disabled ? true : false}
     >
       {options.map((option) => {
         const optionString = optionToString

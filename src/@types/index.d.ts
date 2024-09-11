@@ -1,7 +1,3 @@
-export type Extension = { isMinor: boolean; segments: string[] };
-
-export type FreshAndUsed<T> = { fresh: T[]; used: T[] };
-
 export type ProgramState = {
   // PLAYER
   accidentalsMin: AccidentalLevel;
@@ -9,8 +5,8 @@ export type ProgramState = {
   difficultyMin: DifficultyLevel;
   difficultyMax: DifficultyLevel;
   showRandomTopNote: boolean;
-  randomTopNoteMin: string;
-  randomTopNoteMax: string;
+  randomTopNoteMin: RandomTopNote;
+  randomTopNoteMax: RandomTopNote;
   majorsShuffled: FreshAndUsed<string>;
   minorsShuffled: FreshAndUsed<string>;
   extensionsShuffled: FreshAndUsed<Extension>;
@@ -27,6 +23,10 @@ export type ProgramState = {
   notationKey: Key;
   notationExtension: Extension;
 };
+
+export type Extension = { isMinor: boolean; segments: string[] };
+
+export type FreshAndUsed<T> = { fresh: T[]; used: T[] };
 
 export type ReducerActionType =
   // PLAYER
@@ -89,7 +89,11 @@ export type Accidental = 'b' | '#' | undefined;
 
 export type Key = { base: Alphabet; accidental: Accidental };
 
-export type Note = { noteName: string; octaveIndex: number; hasNoteBelow?: boolean };
+export type Note = {
+  noteName: string;
+  octaveIndex: number;
+  hasNoteBelow?: boolean;
+};
 
 export type Chord = {
   key: Key;
@@ -148,3 +152,20 @@ export type BeatsPerMinute =
   | '216'
   | '238'
   | '262';
+
+export type RandomTopNote =
+  | 'C1'
+  | 'D1'
+  | 'E1'
+  | 'F1'
+  | 'G1'
+  | 'A1'
+  | 'B1'
+  | 'C2'
+  | 'D2'
+  | 'E2'
+  | 'F2'
+  | 'G2'
+  | 'A2'
+  | 'B2'
+  | 'C3';

@@ -2,11 +2,15 @@
 
 #### now
 
-- random top note range
+- why are locks not showing on iPhone?  
 
 - add settings links in navigation with a slash?
 
 #### later
+
+- metronome UI might not be so godd.. Maybe a range slider that works as a nudge tool, starting from center.. further right/left means faster changes? .. have to figure out something new!
+
+- accidentals.. first slot read notes from top to bottom, second slot from bottom to top, third slot top to bottom, etc.. result more pleasing to the eye
 
 - progressive app installation info dropdown (detect os, be specific), pure CSS??
 

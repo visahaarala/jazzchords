@@ -1,4 +1,4 @@
-import { Accidental, Alphabet, Extension, Key, Note } from '../@types';
+import { Accidental, Alphabet, Extension, Key, Note, RandomTopNote } from '../@types';
 
 /////////////////////////////////////////
 //
@@ -274,7 +274,7 @@ export const stringToKey = (key: string): Key => {
 };
 
 // make this USECALLBACK
-export const randomTopNotes = [
+export const randomTopNotes: RandomTopNote[] = [
   'C1',
   'D1',
   'E1',

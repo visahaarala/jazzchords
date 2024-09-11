@@ -3,7 +3,7 @@
   height: 2rem;
   border-radius: 1rem;
   background-color: var(--color-black);
-  outline: var(--border-button);
+  border: var(--border-button);
   position: relative;
   cursor: pointer;
 
@@ -13,7 +13,7 @@
     position: absolute;
     top: 0.05rem;
     left: 0.05rem;
-    height: 1.9rem;
+    height: calc(1.9rem - 1px);
     transition: all 0.1s;
   }
 
@@ -24,7 +24,7 @@
   }
 
   &:after {
-    width: 1.9rem;
+    width: calc(1.9rem - 1px);
     border-radius: 50%;
     background-color: var(--color-white);
   }
@@ -37,5 +37,10 @@
     &:after {
       transform: translateX(1.2rem);
     }
+  }
+
+  &:focus,
+  &:hover {
+    outline: var(--outline-focus);
   }
 }

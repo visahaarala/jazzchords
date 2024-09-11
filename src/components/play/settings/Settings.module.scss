@@ -1,10 +1,8 @@
 .settings {
   height: 100%;
-
   margin-top: auto;
   display: flex;
   flex-direction: column;
-
   overflow: auto;
 
   h3 {
@@ -24,9 +22,12 @@
     }
   }
 
+  .disabled {
+    color: var(--color-gray-light);
+  }
+
   & > div {
     align-self: end;
-    align-self: start;
     display: flex;
     align-items: center;
     gap: 1rem;

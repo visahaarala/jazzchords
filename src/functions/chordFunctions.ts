@@ -213,6 +213,11 @@ export const generateChords = ({
       hasNoteBelow: false,
     };
 
+    // to spread random top notes more randmly and evenly 
+    // between more or less C1 and C3
+    // octaveIndex will be adjusted to a given range in Notation.tsx
+    randomTop.octaveIndex = Math.floor(Math.random() * 4) - 1;
+
     chords.push({
       key,
       extension,

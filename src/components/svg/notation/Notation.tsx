@@ -14,12 +14,10 @@ const Notation = ({
   notes,
   minWhiteKeyIndex,
   maxWhiteKeyIndex,
-  randomOctave,
 }: {
   notes: Note[];
   minWhiteKeyIndex?: number;
   maxWhiteKeyIndex?: number;
-  randomOctave?: boolean;
 }) => {
   const oneNote = notes.length === 1;
 
@@ -38,12 +36,6 @@ const Notation = ({
       octaveIndex: dropOctave ? note.octaveIndex - 1 : note.octaveIndex,
     };
   });
-
-  if (randomOctave) {
-    for (const note of adjustedNotes) {
-      note.octaveIndex += Math.floor(Math.random() * 3) - 1;
-    }
-  }
 
   if (minWhiteKeyIndex !== undefined) {
     for (const note of adjustedNotes) {

@@ -15,8 +15,12 @@ import { bpcOptions, bpmOptions } from '../../../data/beats';
 import PlayerMute from './PlayerMute';
 import OnOffToggle from '../../misc/OnOffToggle';
 import { randomTopNotes } from '../../../functions/noteFunctions';
+import { useContext } from 'react';
+import { ChordsContext } from '../../../context/ChordsContext';
 
 const Settings = () => {
+  const isOn = useContext(ChordsContext).state.showRandomTopNote;
+
   return (
     <div className={styles.settings}>
       <h3>Random top note</h3>
@@ -25,32 +29,36 @@ const Settings = () => {
           dispatchType='TOGGLE_SHOW_RANDOM_TOP_NOTE'
           stateKey='showRandomTopNote'
         />
-        Range:
+        <span className={!isOn ? styles.disabled : ''}>Range:</span>
         <Select<string>
           dispatchActionType='SET_RANDOM_TOP_NOTE_MIN'
           payloadKey='randomTopNoteMin'
           options={randomTopNotes.slice(0, -7)}
+          disabled={!isOn}
         />
         <span>&mdash;</span>
         <Select<string>
           dispatchActionType='SET_RANDOM_TOP_NOTE_MAX'
           payloadKey='randomTopNoteMax'
           options={randomTopNotes.slice(7)}
+          disabled={!isOn}
         />
       </div>
 
-      <h3>Key signature (♯ / ♭)</h3>
+      <h3>Time signature & tempo</h3>
       <div>
-        <Select<AccidentalLevel>
-          dispatchActionType='SET_ACCIDENTALS_MIN'
-          payloadKey='accidentalsMin'
-          options={accidentalLevels}
+        <Select<BeatsPerChord>
+          dispatchActionType='SET_BPC'
+          payloadKey='beatsPerChord'
+          options={bpcOptions}
+          description='/ 4'
         />
-        <span>&mdash;</span>
-        <Select<AccidentalLevel>
-          dispatchActionType='SET_ACCIDENTALS_MAX'
-          payloadKey='accidentalsMax'
-          options={accidentalLevels}
+        <PlayerMute />
+        <Select<BeatsPerMinute>
+          dispatchActionType='SET_BPM'
+          payloadKey='beatsPerMinute'
+          options={bpmOptions}
+          description='bpm'
         />
       </div>
 
@@ -69,20 +77,18 @@ const Settings = () => {
         />
       </div>
 
-      <h3>Time signature & tempo</h3>
+      <h3>Key signature (♯ / ♭)</h3>
       <div>
-        <Select<BeatsPerChord>
-          dispatchActionType='SET_BPC'
-          payloadKey='beatsPerChord'
-          options={bpcOptions}
-          description='/ 4'
+        <Select<AccidentalLevel>
+          dispatchActionType='SET_ACCIDENTALS_MIN'
+          payloadKey='accidentalsMin'
+          options={accidentalLevels}
         />
-        <PlayerMute />
-        <Select<BeatsPerMinute>
-          dispatchActionType='SET_BPM'
-          payloadKey='beatsPerMinute'
-          options={bpmOptions}
-          description='bpm'
+        <span>&mdash;</span>
+        <Select<AccidentalLevel>
+          dispatchActionType='SET_ACCIDENTALS_MAX'
+          payloadKey='accidentalsMax'
+          options={accidentalLevels}
         />
       </div>
     </div>

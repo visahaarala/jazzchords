@@ -25,7 +25,6 @@ const Chords = () => {
 
   const minWhiteKeyIndex = randomTopNoteToKeyIndex(state.randomTopNoteMin);
   const maxWhiteKeyIndex = randomTopNoteToKeyIndex(state.randomTopNoteMax);
-  const randomOctave = true;
 
   return (
     <div className={styles.chords}>
@@ -35,7 +34,6 @@ const Chords = () => {
           size={2.8}
           minWhiteKeyIndex={minWhiteKeyIndex}
           maxWhiteKeyIndex={maxWhiteKeyIndex}
-          randomOctave={randomOctave}
         />
       </div>
 
@@ -54,7 +52,6 @@ const Chords = () => {
           size={1.8}
           minWhiteKeyIndex={minWhiteKeyIndex}
           maxWhiteKeyIndex={maxWhiteKeyIndex}
-          randomOctave={randomOctave}
         />
 
         <div

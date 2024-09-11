@@ -16,12 +16,20 @@ const OnOffToggle = ({
     dispatch({ type: dispatchType });
   };
 
+  const keyHandler = (code: string) => {
+    if (code === 'Space' || code === 'Enter') {
+      toggler();
+    }
+  }
+
   return (
     <div
       className={`${styles.toggle} ${
         state[stateKey] && styles.toggle__checked
       }`}
       onClick={toggler}
+      onKeyDown={(e) => keyHandler(e.code)}
+      tabIndex={0}
     />
   );
 };

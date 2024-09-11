@@ -12,25 +12,34 @@ const LedgerLines = ({
 }) => {
   const noteIndices = notes.map((note) => noteToWhiteKeyIndex(note));
 
-  const ledgerLines = (): { index: number; hasNoteBelow: boolean }[] => {
+  const ledgerLines = (): { index: number; hasNoteBelow?: boolean }[] => {
     // add all notes for hasNoteBelow information
     const rs = notes.map((note) => ({
       index: noteToWhiteKeyIndex(note),
       hasNoteBelow: note.hasNoteBelow,
     }));
 
-    // add missing even indices in between highest & lowest
-    const highest = noteIndices.splice(-1)[0];
+    const highest = noteIndices.slice(-1)[0];
     const lowest = noteIndices[0];
-    let index = Math.floor((lowest + 1) / 2) * 2;
-    while (index <= highest) {
-      if (!rs.map((ll) => ll.index).includes(index)) {
-        rs.push({ index, hasNoteBelow: false });
+
+    // add missing even indices from 12 to the highest
+    for (let i = 12; i <= highest; i += 2) {
+      if (!rs.map((ll) => ll.index).includes(i)) {
+        rs.push({ index: i, hasNoteBelow: false });
       }
-      index += 2;
     }
+
+    // add missing even indices from 0 to the lowest
+    for (let i = 0; i >= lowest; i -= 2) {
+      if (!rs.map((ll) => ll.index).includes(i)) {
+        rs.push({ index: i, hasNoteBelow: false });
+      }
+    }
+
     return rs;
   };
+
+  console.log(noteIndices, ledgerLines());
 
   return ledgerLines().map((ledgerLine) => {
     const index = ledgerLine.index;
