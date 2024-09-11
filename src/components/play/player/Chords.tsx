@@ -2,7 +2,7 @@ import styles from './Chords.module.scss';
 import { KeyboardEvent, useContext } from 'react';
 import { ChordsContext } from '../../../context/ChordsContext';
 import Lock from '../../svg/icons/LockIcon';
-import { Note, ReducerActionType } from '../../../@types';
+import { ReducerActionType } from '../../../@types';
 import ChordDisplay from './ChordDisplay';
 import { randomTopNoteToKeyIndex } from '../../../functions/noteFunctions';
 
