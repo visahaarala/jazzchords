@@ -14,13 +14,29 @@ import {
 import { bpcOptions, bpmOptions } from '../../../data/beats';
 import PlayerMute from './PlayerMute';
 import OnOffToggle from '../../misc/OnOffToggle';
+import { randomTopNotes } from '../../../functions/noteFunctions';
 
 const Settings = () => {
   return (
     <div className={styles.settings}>
       <h3>Random top note</h3>
       <div>
-        <OnOffToggle dispatchType='TOGGLE_SHOW_RANDOM_TOP_NOTE' stateKey='showRandomTopNote' />
+        <OnOffToggle
+          dispatchType='TOGGLE_SHOW_RANDOM_TOP_NOTE'
+          stateKey='showRandomTopNote'
+        />
+        Range:
+        <Select<string>
+          dispatchActionType='SET_RANDOM_TOP_NOTE_MIN'
+          payloadKey='randomTopNoteMin'
+          options={randomTopNotes.slice(0, -7)}
+        />
+        <span>&mdash;</span>
+        <Select<string>
+          dispatchActionType='SET_RANDOM_TOP_NOTE_MAX'
+          payloadKey='randomTopNoteMax'
+          options={randomTopNotes.slice(7)}
+        />
       </div>
 
       <h3>Key signature (♯ / ♭)</h3>

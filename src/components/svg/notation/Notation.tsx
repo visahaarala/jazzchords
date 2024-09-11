@@ -33,27 +33,30 @@ const Notation = ({
     whiteKeys.indexOf(stringToKey(notes[0].noteName).base) >= 4 ? true : false;
 
   let adjustedNotes = notes.map((note) => {
-    return { ...note, octave: dropOctave ? note.octave - 1 : note.octave };
+    return {
+      ...note,
+      octaveIndex: dropOctave ? note.octaveIndex - 1 : note.octaveIndex,
+    };
   });
 
   if (randomOctave) {
     for (const note of adjustedNotes) {
-      note.octave += Math.floor(Math.random() * 3) - 1;
+      note.octaveIndex += Math.floor(Math.random() * 3) - 1;
     }
   }
 
-  if (minWhiteKeyIndex) {
+  if (minWhiteKeyIndex !== undefined) {
     for (const note of adjustedNotes) {
       while (noteToWhiteKeyIndex(note) < minWhiteKeyIndex) {
-        note.octave++;
+        note.octaveIndex++;
       }
     }
   }
 
-  if (maxWhiteKeyIndex) {
+  if (maxWhiteKeyIndex !== undefined) {
     for (const note of adjustedNotes) {
       while (noteToWhiteKeyIndex(note) > maxWhiteKeyIndex) {
-        note.octave--;
+        note.octaveIndex--;
       }
     }
   }
@@ -62,7 +65,6 @@ const Notation = ({
     <svg
       xmlns='http://www.w3.org/2000/svg'
       viewBox={oneNote ? '0 -60 90 120' : '0 -60 140 120'}
-      // style={{ backgroundColor: 'orangered' }}
     >
       <StaffLines x={10} yList={yListStaff} h={120} />
       <GClefCurve />

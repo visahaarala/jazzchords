@@ -2,9 +2,9 @@ import styles from './Chords.module.scss';
 import { KeyboardEvent, useContext } from 'react';
 import { ChordsContext } from '../../../context/ChordsContext';
 import Lock from '../../svg/icons/LockIcon';
-import { ReducerActionType } from '../../../@types';
-import { noteToWhiteKeyIndex } from '../../../functions/noteFunctions';
+import { Note, ReducerActionType } from '../../../@types';
 import ChordDisplay from './ChordDisplay';
+import { randomTopNoteToKeyIndex } from '../../../functions/noteFunctions';
 
 const Chords = () => {
   const { state, dispatch } = useContext(ChordsContext);
@@ -23,19 +23,9 @@ const Chords = () => {
     }
   };
 
-  // make these modifiable in settings
-  const minWhiteKeyIndex = 7; // middle C
-  const maxWhiteKeyIndex = 14; // high C
-  const randomOctave = undefined;
-
-  console.log(
-    'noteToIndex G0:',
-    noteToWhiteKeyIndex({ noteName: 'G', octave: 0, hasNoteBelow: false })
-  );
-  console.log(
-    'noteToIndex G1:',
-    noteToWhiteKeyIndex({ noteName: 'G', octave: 1, hasNoteBelow: false })
-  );
+  const minWhiteKeyIndex = randomTopNoteToKeyIndex(state.randomTopNoteMin);
+  const maxWhiteKeyIndex = randomTopNoteToKeyIndex(state.randomTopNoteMax);
+  const randomOctave = true;
 
   return (
     <div className={styles.chords}>
@@ -48,6 +38,7 @@ const Chords = () => {
           randomOctave={randomOctave}
         />
       </div>
+
       <div className={styles.next}>
         <div
           className={`iconButton ${styles.lock}`}
@@ -57,6 +48,7 @@ const Chords = () => {
         >
           <Lock isLocked={state.keyLocked} />
         </div>
+
         <ChordDisplay
           indexOffset={1}
           size={1.8}
@@ -64,6 +56,7 @@ const Chords = () => {
           maxWhiteKeyIndex={maxWhiteKeyIndex}
           randomOctave={randomOctave}
         />
+
         <div
           className={`iconButton ${styles.lock}`}
           onClick={() => onClick('SWITCH_EXTENSION_LOCK')}

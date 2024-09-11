@@ -14,7 +14,10 @@ import {
   generateKeysShuffled,
 } from '../functions/chordFunctions';
 import { keysOrganized } from '../data/chordData';
-import { changeEnharmonically } from '../functions/noteFunctions';
+import {
+  changeEnharmonically,
+  randomTopNotes,
+} from '../functions/noteFunctions';
 
 const initialState = (): ProgramState => {
   let state: ProgramState = {
@@ -25,7 +28,8 @@ const initialState = (): ProgramState => {
     accidentalsMin: '0',
     accidentalsMax: '7',
     showRandomTopNote: true,
-    randomTopNoteIndexRange: { min: 7, max: 14 }, // C2 to C3
+    randomTopNoteMin: 'C2',
+    randomTopNoteMax: 'C3',
     chordIndex: 0,
     beatsPerChord: '4',
     beatsPerMinute: '86',
@@ -209,6 +213,34 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
       return {
         ...state,
         showRandomTopNote: !state.showRandomTopNote,
+      };
+    }
+    case 'SET_RANDOM_TOP_NOTE_MIN': {
+      const minIndex = randomTopNotes.indexOf(
+        action.payload!.randomTopNoteMin!
+      );
+      let maxIndex = randomTopNotes.indexOf(state.randomTopNoteMax);
+      if (minIndex + 7 > maxIndex) {
+        maxIndex = minIndex + 7;
+      }
+      return {
+        ...state,
+        randomTopNoteMin: action.payload!.randomTopNoteMin!,
+        randomTopNoteMax: randomTopNotes[maxIndex],
+      };
+    }
+    case 'SET_RANDOM_TOP_NOTE_MAX': {
+      const maxIndex = randomTopNotes.indexOf(
+        action.payload!.randomTopNoteMax!
+      );
+      let minIndex = randomTopNotes.indexOf(state.randomTopNoteMin!);
+      if (maxIndex - 7 < minIndex) {
+        minIndex = maxIndex - 7;
+      }
+      return {
+        ...state,
+        randomTopNoteMax: action.payload!.randomTopNoteMax!,
+        randomTopNoteMin: randomTopNotes[minIndex],
       };
     }
 

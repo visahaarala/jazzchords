@@ -9,7 +9,8 @@ export type ProgramState = {
   difficultyMin: DifficultyLevel;
   difficultyMax: DifficultyLevel;
   showRandomTopNote: boolean;
-  randomTopNoteIndexRange: Range<number>;
+  randomTopNoteMin: string;
+  randomTopNoteMax: string;
   majorsShuffled: FreshAndUsed<string>;
   minorsShuffled: FreshAndUsed<string>;
   extensionsShuffled: FreshAndUsed<Extension>;
@@ -44,7 +45,8 @@ export type ReducerActionType =
   | 'SET_DIFFICULTY_MIN'
   | 'SET_DIFFICULTY_MAX'
   | 'TOGGLE_SHOW_RANDOM_TOP_NOTE'
-  | 'SET_RANDOM_TOP_NOTE_RANGE'
+  | 'SET_RANDOM_TOP_NOTE_MIN'
+  | 'SET_RANDOM_TOP_NOTE_MAX'
   | 'RESET_SETTINGS'
 
   // NOTATION
@@ -87,7 +89,7 @@ export type Accidental = 'b' | '#' | undefined;
 
 export type Key = { base: Alphabet; accidental: Accidental };
 
-export type Note = { noteName: string; octave: number; hasNoteBelow: boolean };
+export type Note = { noteName: string; octaveIndex: number; hasNoteBelow?: boolean };
 
 export type Chord = {
   key: Key;

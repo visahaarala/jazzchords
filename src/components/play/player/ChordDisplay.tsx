@@ -16,8 +16,8 @@ const ChordDisplay = ({
   minWhiteKeyIndex?: number;
   maxWhiteKeyIndex?: number;
   randomOctave?: boolean;
-}): JSX.Element => {
-  const {state} = useContext(ChordsContext);
+}) => {
+  const { state } = useContext(ChordsContext);
   const { chords, chordIndex, showRandomTopNote } = state;
 
   const index = chordIndex + indexOffset;

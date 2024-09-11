@@ -189,9 +189,8 @@ const getNoteName = (alphabetIndex: number, noteIndex: number): string => {
 };
 
 export const noteToWhiteKeyIndex = (note: Note) => {
-  // console.log('noteToIndex', note);
   const key = stringToKey(note.noteName);
-  return whiteKeys.indexOf(key.base) + note.octave * 7;
+  return whiteKeys.indexOf(key.base) + note.octaveIndex * 7;
 };
 
 const generateNoteNames = (
@@ -213,10 +212,10 @@ const generateNoteNames = (
   const chordScale = [0, 2, 4, 5, 7, 9, 10];
   for (const { noteNumber, offset } of relativeNoteData) {
     const alphabetIndex = baseAlphabetIndex + noteNumber - 1;
-    const octave = Math.floor(alphabetIndex / 7);
+    const octaveIndex = Math.floor(alphabetIndex / 7);
     const noteIndex = baseNoteIndex + chordScale[(noteNumber - 1) % 7] + offset;
     const noteName = getNoteName(alphabetIndex, noteIndex);
-    const newNote = { noteName, octave, hasNoteBelow: false };
+    const newNote: Note = { noteName, octaveIndex, hasNoteBelow: false };
 
     // check if there is a note right below
     const prevNote = notes.slice(-1)[0];
@@ -272,4 +271,28 @@ export const stringToKey = (key: string): Key => {
     base: key[0] as Alphabet,
     accidental: key[1] as Accidental,
   };
+};
+
+// make this USECALLBACK
+export const randomTopNotes = [
+  'C1',
+  'D1',
+  'E1',
+  'F1',
+  'G1',
+  'A1',
+  'B1',
+  'C2',
+  'D2',
+  'E2',
+  'F2',
+  'G2',
+  'A2',
+  'B2',
+  'C3',
+];
+
+export const randomTopNoteToKeyIndex = (rtn: string): number => {
+  const note: Note = { noteName: rtn[0], octaveIndex: Number(rtn[1]) - 1 };
+  return noteToWhiteKeyIndex(note);
 };

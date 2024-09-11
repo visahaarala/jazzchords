@@ -10,8 +10,6 @@ const OnOffToggle = ({
   dispatchType: ReducerActionType;
   stateKey: keyof ProgramState;
 }): JSX.Element => {
-  console.log('repaint');
-
   const { state, dispatch } = useContext(ChordsContext);
 
   const toggler = () => {
