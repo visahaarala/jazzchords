@@ -14,7 +14,7 @@ const KeySelect = () => {
       })
     )
     .flat()
-    // there are no such keys like Fb, E# or B#
+    // there are no such keys as Fb, E# or B#
     .filter((key) => !(key.base === 'F' && key.accidental === 'b'))
     .filter((key) => !(key.base === 'E' && key.accidental === '#'))
     .filter((key) => !(key.base === 'B' && key.accidental === '#'));
