@@ -112,17 +112,6 @@ const ChordSymbol = ({
     jsxArrays.push(createJsxArray(segment))
   );
 
-  // const isMobile = matchMedia('(pointer:coarse)').matches;
-  // const nextChord = () => {
-  //   if (isMobile) {
-  //     if (chordIndex >= chords.length - 2) {
-  //       dispatch({ type: 'APPEND_CHORD_LIST' });
-  //     } else {
-  //       dispatch({ type: 'INCREMENT_CHORD_INDEX' });
-  //     }
-  //   }
-  // };
-
   return (
     <div
       className={styles.chord}
