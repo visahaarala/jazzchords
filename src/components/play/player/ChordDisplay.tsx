@@ -9,16 +9,14 @@ const ChordDisplay = ({
   size,
   minWhiteKeyIndex,
   maxWhiteKeyIndex,
-  randomOctave,
 }: {
   indexOffset: number;
   size: number;
   minWhiteKeyIndex?: number;
   maxWhiteKeyIndex?: number;
-  randomOctave?: boolean;
 }) => {
   const { state } = useContext(ChordsContext);
-  const { chords, chordIndex, showRandomTopNote } = state;
+  const { chords, chordIndex, showRandomTopNote, playerClef } = state;
 
   const index = chordIndex + indexOffset;
   const topNote = chords[index].randomTopNote;
@@ -26,14 +24,13 @@ const ChordDisplay = ({
     return (
       <div className={styles.chord}>
         <ChordSymbol chord={chords[index]} size={size * 0.8} />
-        <div style={{ width: size * 2.5 + 'rem' }}>
-          <Notation
-            notes={[topNote]}
-            minWhiteKeyIndex={minWhiteKeyIndex}
-            maxWhiteKeyIndex={maxWhiteKeyIndex}
-            randomOctave={randomOctave}
-          />
-        </div>
+        <Notation
+          notes={[topNote]}
+          clef={playerClef}
+          width={size * 2.5}
+          minWhiteKeyIndex={minWhiteKeyIndex}
+          maxWhiteKeyIndex={maxWhiteKeyIndex}
+        />
       </div>
     );
   } else {

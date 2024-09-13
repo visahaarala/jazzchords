@@ -22,7 +22,15 @@
   }
 
   .space {
-    margin-right: 1rem;
+    margin-right: -0.4rem;
+  }
+
+  span {
+    user-select: none;
+  }
+
+  .disabled {
+    color: var(--color-gray);
   }
 
   & > div {

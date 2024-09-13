@@ -2,17 +2,24 @@
   min-width: 3rem;
   padding: 0.7rem 1rem;
   padding: var(--button-padding);
-  
+
   color: inherit;
   font-family: inherit;
   font-size: inherit;
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     outline: var(--outline-focus);
   }
 
   &:disabled {
     background-color: var(--color-gray-dark);
     color: var(--color-gray-light);
+
+    &:focus,
+    &:hover {
+      outline: none;
+      cursor: default;
+    }
   }
 }

@@ -1,4 +1,4 @@
-const GClefCurve = () => {
+const TrebleClefPath = () => {
   type CurvePoint = {
     // curve point
     x: number;
@@ -10,7 +10,7 @@ const GClefCurve = () => {
     bf: number;
   };
 
-  const gCurvePointsOne: CurvePoint[] = [
+  const curvePointsOne: CurvePoint[] = [
     { x: 30, y: 13, dx: -10, dy: -5, bf: 1 },
     { x: 33, y: 0.5, dx: 4, dy: 0, bf: 1 },
     { x: 40, y: 10, dx: 0, dy: 5, bf: 1 },
@@ -26,7 +26,7 @@ const GClefCurve = () => {
     { x: 24, y: 27, dx: 0, dy: -3, bf: 1 },
   ];
 
-  const gCurvePointsTwo: CurvePoint[] = [
+  const curvePointsTwo: CurvePoint[] = [
     { x: 30, y: 13, dx: -10, dy: -5, bf: 1 },
     { x: 33, y: -0.5, dx: 6, dy: 0, bf: 1 },
     { x: 41, y: 10, dx: 0, dy: 5, bf: 1 },
@@ -42,7 +42,7 @@ const GClefCurve = () => {
     { x: 25, y: 27, dx: 0, dy: -3, bf: 1 },
   ];
 
-  const gClefCurve = (curvePoints: CurvePoint[]): string => {
+  const curve = (curvePoints: CurvePoint[]): string => {
     let curve = '';
 
     let prevDx = 0;
@@ -67,7 +67,7 @@ const GClefCurve = () => {
 
   return (
     <path
-      d={gClefCurve(gCurvePointsOne) + gClefCurve(gCurvePointsTwo)}
+      d={curve(curvePointsOne) + curve(curvePointsTwo)}
       fill='none'
       stroke='currentColor'
       strokeWidth={1.5}
@@ -76,4 +76,4 @@ const GClefCurve = () => {
   );
 };
 
-export default GClefCurve;
+export default TrebleClefPath;

@@ -281,6 +281,11 @@ export const stringToKey = (key: string): Key => {
 };
 
 export const randomTopNotes: RandomTopNote[] = [
+  'E0',
+  'F0',
+  'G0',
+  'A0',
+  'B0',
   'C1',
   'D1',
   'E1',

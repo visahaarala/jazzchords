@@ -27,10 +27,12 @@ const initialState = (): ProgramState => {
     difficultyMax: 'medium',
     accidentalsMin: '0',
     accidentalsMax: '7',
-    showRandomTopNote: false,
     showNextChord: true,
+    showRandomTopNote: false,
     randomTopNoteMin: 'G1',
     randomTopNoteMax: 'G2',
+    playerClef: 'treble',
+    notesClef: 'treble',
     chordIndex: 0,
     beatsPerChord: '4',
     beatsPerMinute: '86',
@@ -255,6 +257,28 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
       return {
         ...state,
         showNextChord: !state.showNextChord,
+      };
+    }
+    case 'SET_PLAYER_CLEF': {
+      // fix randomTopNotes
+      const clef = action.payload!.playerClef!;
+      const offset = clef ==='treble' ? +5 : -5
+      const newMinIndex = randomTopNotes.indexOf(state.randomTopNoteMin) + offset;
+      const newMaxIndex = randomTopNotes.indexOf(state.randomTopNoteMax) + offset;
+      const newMinNote = randomTopNotes[newMinIndex];
+      const newMaxNote = randomTopNotes[newMaxIndex];
+
+      return {
+        ...state,
+        randomTopNoteMin: newMinNote,
+        randomTopNoteMax: newMaxNote,
+        playerClef: action.payload!.playerClef!,
+      };
+    }
+    case 'SET_NOTES_CLEF': {
+      return {
+        ...state,
+        notesClef: action.payload!.notesClef!,
       };
     }
 

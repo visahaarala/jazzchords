@@ -1,4 +1,4 @@
-const Lock = ({ isLocked }: { isLocked?: boolean }) => {
+const LockIcon = ({ isLocked }: { isLocked?: boolean }) => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='16 4 68 87'>
       <path d='M17 55 V 90 H 83 V 55z' fill='currentColor' />
@@ -16,4 +16,4 @@ const Lock = ({ isLocked }: { isLocked?: boolean }) => {
   );
 };
 
-export default Lock;
+export default LockIcon;

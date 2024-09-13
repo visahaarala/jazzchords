@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Info.module.scss';
 import MetronomeIcon from '../components/svg/icons/MetronomeIcon';
 import PlayIcon from '../components/svg/icons/PlayIcon';
-import Lock from '../components/svg/icons/LockIcon';
+import LockIcon from '../components/svg/icons/LockIcon';
 import NotesIcon from '../components/svg/icons/NotesIcon';
 
 const headerIconStyle: React.CSSProperties = {
@@ -54,7 +54,7 @@ const Info = () => (
         Practice randomly generated chords. <br />
         Use locks
         <div style={textIconStyle}>
-          <Lock isLocked />
+          <LockIcon isLocked />
         </div>
         to practice a particular key and/or extension.
       </div>

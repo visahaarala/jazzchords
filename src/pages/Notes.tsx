@@ -7,13 +7,14 @@ import { Chord } from '../@types';
 import { useContext } from 'react';
 import { ChordsContext } from '../context/ChordsContext';
 import { getNotes } from '../functions/noteFunctions';
-import SettingsIcon from '../components/svg/icons/SettingsIcon';
+import ClefSelector from '../components/misc/ClefSelector';
 
 const Notes = () => {
   const { state } = useContext(ChordsContext);
 
   const key = state.notationKey;
   const extension = state.notationExtension;
+  const clef = state.notesClef;
 
   const chord: Chord = {
     key,
@@ -23,18 +24,14 @@ const Notes = () => {
 
   return (
     <div className={styles.notes}>
-      <div className="settingsIcon">
-        <SettingsIcon />
-      </div>
       <div className={styles.notes__chord}>
         <ChordSymbol chord={chord} size={2.5} />
-        <div className={styles.notes__chord__notation}>
-          <Notation notes={chord.notes} />
-        </div>
+        <Notation notes={chord.notes} clef={clef} width={15} />
       </div>
       <div className={styles.notes__select}>
         <KeySelect />
         <ExtensionSelect />
+        <ClefSelector dispatchType='SET_NOTES_CLEF' payloadKey='notesClef' />
       </div>
     </div>
   );

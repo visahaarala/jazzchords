@@ -2,7 +2,11 @@
 
 #### now
 
-- why are locks not showing on iPhone?.. not showing on safari either
+- Clef selector
+
+- Top notes & notation for bass clef too
+
+- miscFunctions.ts onKeyDown check space, use that function allover the program
 
 #### later
 
@@ -12,9 +16,7 @@
 
 - metronome UI might not be so godd.. Maybe a range slider that works as a nudge tool, starting from center.. further right/left means faster changes? .. have to figure out something new! something to do with PointerEvent
 
-- accidentals.. first slot read notes from top to bottom, second slot from bottom to top, third slot top to bottom, etc.. result more pleasing to the eye
-
-- progressive app installation info dropdown (detect os, be specific), pure CSS??
+- progressive app installation info dropdown (detect OS, be specific), pure CSS??
 
 - browser agnostic [PWA install button](https://plainenglish.io/blog/create-a-browser-agnostic-pwa-install-button), or just browser-specific instructions ??
 

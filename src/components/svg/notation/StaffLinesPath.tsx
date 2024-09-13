@@ -1,4 +1,4 @@
-const StaffLines = ({
+const StaffLinesPath = ({
   x,
   yList,
   h,
@@ -17,4 +17,4 @@ const StaffLines = ({
     />
   ));
 
-export default StaffLines;
+export default StaffLinesPath;

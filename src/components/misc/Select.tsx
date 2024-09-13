@@ -38,7 +38,7 @@ const Select = <T,>({
       id={payloadKey}
       value={optionToString ? optionToString(value as T) : (value as string)}
       onChange={(e) => changeHandler(e.target.value)}
-      className={`button ${styles.select}`}
+      className={`button ${styles.select} ${disabled && styles.disabled}`}
       disabled={disabled ? true : false}
     >
       {options.map((option) => {

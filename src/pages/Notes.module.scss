@@ -14,10 +14,6 @@
     flex-direction: column;
     align-items: center;
     margin: auto;
-
-    &__notation {
-      width: 15rem;
-    }
   }
 
   &__select {
@@ -25,7 +21,6 @@
     gap: 1rem;
 
     & > select {
-      // font-size: 1.1rem;
       padding: var(--button-padding);
     }
 

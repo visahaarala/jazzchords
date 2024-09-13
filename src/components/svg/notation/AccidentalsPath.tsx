@@ -1,7 +1,7 @@
 import { Note } from '../../../@types';
 import { noteToWhiteKeyIndex } from '../../../functions/noteFunctions';
 
-const Accidentals = ({
+const AccidentalsPath = ({
   notes,
   yLowC,
   notesCx,
@@ -133,4 +133,4 @@ const Accidentals = ({
   });
 };
 
-export default Accidentals;
+export default AccidentalsPath;

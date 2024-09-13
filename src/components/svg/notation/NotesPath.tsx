@@ -1,7 +1,7 @@
 import { Note } from '../../../@types';
 import { noteToWhiteKeyIndex } from '../../../functions/noteFunctions';
 
-const Notes = ({
+const NotesPath = ({
   notes,
   yLowC,
   noteBelowOffsetX,
@@ -33,4 +33,4 @@ const Notes = ({
     });
   });
 
-export default Notes;
+export default NotesPath;

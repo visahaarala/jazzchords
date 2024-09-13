@@ -1,16 +1,23 @@
-import { Note } from '../../../@types';
+import { Clef, Note } from '../../../@types';
 import { noteToWhiteKeyIndex } from '../../../functions/noteFunctions';
 
-const LedgerLines = ({
+const LedgerLinesPath = ({
   notes,
+  clef,
   noteBelowOffsetX,
   notesCx,
+  yLowC,
 }: {
   notes: Note[];
+  clef: Clef;
   noteBelowOffsetX: number;
   notesCx: number;
+  yLowC: number;
 }) => {
   const noteIndices = notes.map((note) => noteToWhiteKeyIndex(note));
+
+  const lowestLedgerIndexAboveStaff = clef === 'treble' ? 12 : 14;
+  const highestLedgerIndexBelowStaff = clef === 'treble' ? 0 : 2;
 
   const ledgerLines = (): { index: number; hasNoteBelow?: boolean }[] => {
     // add all notes for hasNoteBelow information
@@ -36,12 +43,14 @@ const LedgerLines = ({
       }
     }
 
+    console.log(rs.map(r => r.index));
+
     return rs;
   };
 
   return ledgerLines().map((ledgerLine) => {
     const index = ledgerLine.index;
-    let y = 30 - index * 5;
+    let y = yLowC - index * 5;
     // place ledger line in every other height, continuing staff
     if (y > 0) {
       y = Math.floor(y / 10) * 10;
@@ -54,7 +63,7 @@ const LedgerLines = ({
       cx += noteBelowOffsetX;
     }
     const halfWidth = 10;
-    if (index <= 0 || index >= 12) {
+    if (index <= highestLedgerIndexBelowStaff || index >= lowestLedgerIndexAboveStaff) {
       return (
         <path
           key={index}
@@ -69,4 +78,4 @@ const LedgerLines = ({
   });
 };
 
-export default LedgerLines;
+export default LedgerLinesPath;

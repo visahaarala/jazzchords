@@ -1,36 +1,47 @@
-import { Note } from '../../../@types';
+import { Clef, Note } from '../../../@types';
 import {
   noteToWhiteKeyIndex,
   stringToKey,
   whiteKeys,
 } from '../../../functions/noteFunctions';
-import Accidentals from './Accidentals';
-import GClefCurve from './GClefCurve';
-import LedgerLines from './LedgerLines';
-import Notes from './Notes';
-import StaffLines from './StaffLines';
+import AccidentalsPath from './AccidentalsPath';
+import TrebleClefPath from './TrebleClefPath';
+import NotesPath from './NotesPath';
+import StaffLinesPath from './StaffLinesPath';
+import LedgerLinesPath from './LedgerLinesPath';
+import BassClefPath from './BassClefPath';
 
 const Notation = ({
   notes,
+  clef,
+  width,
   minWhiteKeyIndex,
   maxWhiteKeyIndex,
 }: {
   notes: Note[];
+  clef: Clef;
+  width: number;
   minWhiteKeyIndex?: number;
   maxWhiteKeyIndex?: number;
 }) => {
   const oneNote = notes.length === 1;
-
   const yListStaff = [-20, -10, 0, 10, 20];
   const noteBelowOffsetX = 12;
   const notesCx = oneNote ? 75 : 103;
-  const yLowC = 30; // the low C
+  const yLowC = clef === 'treble' ? 30 : 5; // the low C
+
+  const dropOctaveTresholdWhiteKeyIndex = clef === 'treble' ? 4 : 3;
 
   const dropOctave =
-    // if base is G or above, drop an octave
-    whiteKeys.indexOf(stringToKey(notes[0].noteName).base) >= 4 ? true : false;
+    // if base is at or above treshold, drop an octave
+    whiteKeys.indexOf(stringToKey(notes[0].noteName).base) >=
+    dropOctaveTresholdWhiteKeyIndex
+      ? true
+      : false;
 
   let adjustedNotes = notes.map((note) => {
+    if (oneNote) return note;
+
     return {
       ...note,
       octaveIndex: dropOctave ? note.octaveIndex - 1 : note.octaveIndex,
@@ -54,25 +65,35 @@ const Notation = ({
   }
 
   return (
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox={oneNote ? '0 -60 90 120' : '0 -60 140 120'}
-    >
-      <StaffLines x={10} yList={yListStaff} h={120} />
-      <GClefCurve />
-      <Notes
-        notes={adjustedNotes}
-        yLowC={yLowC}
-        noteBelowOffsetX={noteBelowOffsetX}
-        notesCx={notesCx}
-      />
-      <LedgerLines
-        notes={adjustedNotes}
-        notesCx={notesCx}
-        noteBelowOffsetX={noteBelowOffsetX}
-      />
-      <Accidentals notes={adjustedNotes} yLowC={yLowC} notesCx={notesCx} />
-    </svg>
+    <div style={{ width: width + 'rem' }}>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        viewBox={oneNote ? '10 -55 80 110' : '10 -80 120 140'}
+        // style={{ backgroundColor: 'orangered' }}
+      >
+        <StaffLinesPath x={10} yList={yListStaff} h={oneNote ? 90 : 120} />
+        {clef === 'bass' && <BassClefPath />}
+        {clef === 'treble' && <TrebleClefPath />}
+        <NotesPath
+          notes={adjustedNotes}
+          yLowC={yLowC}
+          noteBelowOffsetX={noteBelowOffsetX}
+          notesCx={notesCx}
+        />
+        <LedgerLinesPath
+          notes={adjustedNotes}
+          clef={clef}
+          yLowC={yLowC}
+          notesCx={notesCx}
+          noteBelowOffsetX={noteBelowOffsetX}
+        />
+        <AccidentalsPath
+          notes={adjustedNotes}
+          yLowC={yLowC}
+          notesCx={notesCx}
+        />
+      </svg>
+    </div>
   );
 };
 

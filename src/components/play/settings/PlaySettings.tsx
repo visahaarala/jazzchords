@@ -9,6 +9,7 @@ import {
   AccidentalLevel,
   BeatsPerChord,
   BeatsPerMinute,
+  Clef,
   DifficultyLevel,
 } from '../../../@types';
 import { bpcOptions, bpmOptions } from '../../../data/beats';
@@ -17,9 +18,10 @@ import OnOffToggle from '../../misc/OnOffToggle';
 import { randomTopNotes } from '../../../functions/noteFunctions';
 import { useContext } from 'react';
 import { ChordsContext } from '../../../context/ChordsContext';
+import ClefSelector from '../../misc/ClefSelector';
 
 const PlaySettings = () => {
-  const isOn = useContext(ChordsContext).state.showRandomTopNote;
+  const { showRandomTopNote, playerClef } = useContext(ChordsContext).state;
 
   return (
     <div className={styles.settings}>
@@ -33,16 +35,32 @@ const PlaySettings = () => {
         <Select<string>
           dispatchActionType='SET_RANDOM_TOP_NOTE_MIN'
           payloadKey='randomTopNoteMin'
-          options={randomTopNotes.slice(0, -7)}
-          disabled={!isOn}
+          options={
+            playerClef === 'treble'
+              ? randomTopNotes.slice(5, -7)
+              : randomTopNotes.slice(0, -(7 + 5))
+          }
+          disabled={!showRandomTopNote}
         />
         <span>&mdash;</span>
         <Select<string>
           dispatchActionType='SET_RANDOM_TOP_NOTE_MAX'
           payloadKey='randomTopNoteMax'
-          options={randomTopNotes.slice(7)}
-          disabled={!isOn}
+          options={playerClef === 'treble' ? randomTopNotes.slice(7 + 5): randomTopNotes.slice(7, -5)}
+          disabled={!showRandomTopNote}
         />
+        <span className={styles.space} />
+        <ClefSelector
+          dispatchType='SET_PLAYER_CLEF'
+          payloadKey='playerClef'
+          disabled={!showRandomTopNote}
+        />
+        {/* <Select<Clef>
+          dispatchActionType='SET_PLAYER_CLEF'
+          payloadKey='playerClef'
+          options={['bass', 'treble']}
+          disabled={!showTopNote}
+        /> */}
       </div>
 
       <h3>Time signature & tempo</h3>

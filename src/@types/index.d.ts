@@ -4,10 +4,12 @@ export type ProgramState = {
   accidentalsMax: AccidentalLevel;
   difficultyMin: DifficultyLevel;
   difficultyMax: DifficultyLevel;
-  showRandomTopNote: boolean;
   showNextChord: boolean;
+  showRandomTopNote: boolean;
   randomTopNoteMin: RandomTopNote;
   randomTopNoteMax: RandomTopNote;
+  playerClef: Clef;
+  notesClef: Clef;
   majorsShuffled: FreshAndUsed<string>;
   minorsShuffled: FreshAndUsed<string>;
   extensionsShuffled: FreshAndUsed<Extension>;
@@ -25,6 +27,8 @@ export type ProgramState = {
   notationKey: Key;
   notationExtension: Extension;
 };
+
+export type Clef = 'bass' | 'treble';
 
 export type Extension = { isMinor: boolean; segments: string[] };
 
@@ -48,10 +52,12 @@ export type ReducerActionType =
   | 'SET_DIFFICULTY_MAX'
   | 'SET_RANDOM_TOP_NOTE_MIN'
   | 'SET_RANDOM_TOP_NOTE_MAX'
-  | 'RESET_SETTINGS'
   | 'TOGGLE_SHOW_RANDOM_TOP_NOTE'
+  | 'SET_PLAYER_CLEF'
+  | 'SET_NOTES_CLEF'
   | 'TOGGLE_SHOW_NEXT_CHORD'
   | 'TOGGLE_VIEW_PLAY_SETTINGS'
+  | 'RESET_SETTINGS'
 
   // NOTATION
   | 'SET_NOTATION_KEY'
@@ -153,6 +159,11 @@ export type BeatsPerMinute =
   | '262';
 
 export type RandomTopNote =
+  | 'E0'
+  | 'F0'
+  | 'G0'
+  | 'A0'
+  | 'B0'
   | 'C1'
   | 'D1'
   | 'E1'
