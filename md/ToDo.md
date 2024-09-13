@@ -10,6 +10,8 @@ Bass & treble clef. Middle C is `C4`. Bass clef C in the middle of staff is `C3`
 
 ### make chord playable
 
+Elementary Audio
+
 ### metronome UI
 
 ..might not be so good.. Maybe a range slider that works as a nudge tool, starting from center.. further right/left means faster changes? .. have to figure out something new! something to do with PointerEvent
