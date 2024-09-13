@@ -26,6 +26,10 @@ browser agnostic [PWA install button](https://plainenglish.io/blog/create-a-brow
 
 check with actual mouse (touchpad touch gestures do not tell the whole truth)
 
+## update README.MD
+
+... before publishing, check the texts are up to date
+
 ### other
 
 - klikkipallot on/off
