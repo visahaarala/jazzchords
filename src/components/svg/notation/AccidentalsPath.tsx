@@ -16,14 +16,14 @@ const AccidentalsPath = ({
     noteIndex: number;
   };
 
-  type AccidentalSlotsType = { width: number; accidentals: AccidentalData[] };
+  type AccidentalSlotType = { width: number; accidentals: AccidentalData[] };
 
   // recursive function for sorting accidentals to slots
   const sortToSlots = (
     slotIndex: number,
-    slots: AccidentalSlotsType[],
+    slots: AccidentalSlotType[],
     notes: Note[]
-  ) => {
+  ): AccidentalSlotType[] => {
     const notesForNextSlot: Note[] = [];
     for (const note of notes) {
       const noteIndex = noteToWhiteKeyIndex(note);

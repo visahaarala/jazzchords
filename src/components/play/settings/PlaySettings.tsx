@@ -9,7 +9,6 @@ import {
   AccidentalLevel,
   BeatsPerChord,
   BeatsPerMinute,
-  Clef,
   DifficultyLevel,
 } from '../../../@types';
 import { bpcOptions, bpmOptions } from '../../../data/beats';
@@ -55,12 +54,6 @@ const PlaySettings = () => {
           payloadKey='playerClef'
           disabled={!showRandomTopNote}
         />
-        {/* <Select<Clef>
-          dispatchActionType='SET_PLAYER_CLEF'
-          payloadKey='playerClef'
-          options={['bass', 'treble']}
-          disabled={!showTopNote}
-        /> */}
       </div>
 
       <h3>Time signature & tempo</h3>
