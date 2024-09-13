@@ -2,21 +2,29 @@
 
 ## now
 
-#### Octave naming
+### Octave naming
 
 Bass & treble clef. Middle C is `C4`. Bass clef C in the middle of staff is `C3`. Just to be logical with octave naming and random top note range choosing for each clef.
 
 ## later
 
-- make chord playable
+### make chord playable
 
-- metronome UI might not be so good.. Maybe a range slider that works as a nudge tool, starting from center.. further right/left means faster changes? .. have to figure out something new! something to do with PointerEvent
+### metronome UI
 
-- progressive app installation info dropdown (detect OS, be specific), pure CSS??
+..might not be so good.. Maybe a range slider that works as a nudge tool, starting from center.. further right/left means faster changes? .. have to figure out something new! something to do with PointerEvent
 
-- browser agnostic [PWA install button](https://plainenglish.io/blog/create-a-browser-agnostic-pwa-install-button), or just browser-specific instructions ??
+### progressive app installation
 
-- check click visuals with actual mouse (touchpad touch gestures do not tell the whole truth)
+info dropdown (detect OS, be specific), pure CSS??
+
+browser agnostic [PWA install button](https://plainenglish.io/blog/create-a-browser-agnostic-pwa-install-button), or just browser-specific instructions ??
+
+### click visuals 
+
+check with actual mouse (touchpad touch gestures do not tell the whole truth)
+
+### other
 
 - klikkipallot on/off
 
