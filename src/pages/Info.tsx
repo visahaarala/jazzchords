@@ -1,12 +1,9 @@
 import React from 'react';
 import styles from './Info.module.scss';
-import SettingsIcon from '../components/svg/icons/SettingsIcon';
 import MetronomeIcon from '../components/svg/icons/MetronomeIcon';
 import PlayIcon from '../components/svg/icons/PlayIcon';
-import NextIcon from '../components/svg/icons/NextIcon';
-import PreviousIcon from '../components/svg/icons/PreviousIcon';
-import Lock from '../components/svg/icons/Lock';
-import { flashTempoLimit } from './Metronome';
+import LockIcon from '../components/svg/icons/LockIcon';
+import NotesIcon from '../components/svg/icons/NotesIcon';
 
 const headerIconStyle: React.CSSProperties = {
   display: 'inline-block',
@@ -26,20 +23,27 @@ const textIconStyle: React.CSSProperties = {
   transform: 'translateY(.15rem)',
 };
 
+const isMobile = matchMedia('(pointer:coarse)').matches;
+
+const isStandaone = matchMedia('(display-mode: standalone)').matches;
+
 const Info = () => (
   <div className={styles.info}>
-    <div>
-      <div style={headerIconStyle}>
-        <MetronomeIcon />
+    {isMobile && !isStandaone && (
+      <div>
+        This{' '}
+        <a href='https://en.wikipedia.org/wiki/Progressive_web_app'>
+          progressive web app
+        </a>{' '}
+        can be installed on home screen for easier use.
       </div>
-      A metronome. Flash not available in tempos over {flashTempoLimit}bpm.
-    </div>
+    )}
 
     <div>
       <div style={headerIconStyle}>
-        <SettingsIcon />
+        <NotesIcon />
       </div>
-      Settings for the jazzchords player.
+      Learn about notes in different chords.
     </div>
 
     <div>
@@ -47,29 +51,31 @@ const Info = () => (
         <div style={headerIconStyle}>
           <PlayIcon />
         </div>
-        Jazzchords player &mdash; randomly generate and go back and forth
-        between chords using the
+        Practice randomly generated chords. <br />
+        Use locks
         <div style={textIconStyle}>
-          <NextIcon />
+          <LockIcon isLocked />
         </div>
-        and
-        <div style={textIconStyle}>
-          <PreviousIcon />
-        </div>
-        buttons, or play
-        <div style={textIconStyle}>
-          <PlayIcon />
-        </div>
-        through random chords.
-      </div>
-      <div>
-        Use lock
-        <div style={textIconStyle}>
-          <Lock isLocked />
-        </div>
-        to practice a particular chord key / extension.
+        to practice a particular key and/or extension.
       </div>
     </div>
+
+    <div>
+      <div style={headerIconStyle}>
+        <MetronomeIcon />
+      </div>
+      A metronome.
+    </div>
+
+    {isMobile && (
+      <div>
+        Turn off silent mode to hear the click. <br />
+        Prevent screen timeout / sleep / auto-lock from device settings if
+        necessary.
+      </div>
+    )}
+
+    {!isMobile && <div>Use tab, space and arrows to navigate.</div>}
 
     <div>
       More info at{' '}

@@ -1,0 +1,52 @@
+.settings {
+  height: 100%;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    align-self: stretch;
+    display: flex;
+    justify-content: start;
+    font-weight: normal;
+    font-size: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    border-bottom: 2px solid var(--color-gray);
+
+    @media (orientation: landscape) {
+      @media (max-height: 29rem) {
+        margin-top: 1.5rem;
+      }
+    }
+  }
+
+  .space {
+    margin-right: -0.4rem;
+  }
+
+  span {
+    user-select: none;
+  }
+
+  .disabled {
+    color: var(--color-gray);
+  }
+
+  & > div {
+    align-self: start;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    margin-left: 0.15rem;
+  }
+
+  & > *:first-child {
+    margin-top: auto;
+  }
+
+  & > *:last-child {
+    padding-bottom: 0.3rem;
+  }
+}

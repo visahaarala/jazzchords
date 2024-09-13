@@ -1,0 +1,37 @@
+.chords {
+  margin: auto 0;
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  .now,
+  .next {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .next {
+    width: 90%;
+    color: var(--color-gray-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .lock {
+      // background-color: orangered;
+      color: var(--color-white);
+      display: flex;
+      width: 2.5rem;
+      height: 2.5rem;
+      padding: 0.5rem;
+
+      &:active {
+        color: var(--color-gray-light);
+      }
+    }
+  }
+}

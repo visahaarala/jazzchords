@@ -3,7 +3,6 @@ import styles from './Metronome.module.scss';
 import { KeyboardEvent, useContext, useEffect, useState } from 'react';
 import { useMetronome } from '../hooks/useMetronome';
 import { MetronomeContext } from '../context/MetronomeContext';
-import DisplaySleepComment from '../components/sleepComment/DisplaySleepComment';
 import MetronomeMute from '../components/metronome/MetronomeMute';
 import MetronomeLight from '../components/metronome/MetronomeLight';
 
@@ -87,7 +86,6 @@ const Metronome = () => {
   return (
     <div className={styles.metronome}>
       <div className={styles.top}>
-        <DisplaySleepComment />
         <div
           className={`${styles.tempo} ${
             play && !isMobile ? styles.tempo__play : ''

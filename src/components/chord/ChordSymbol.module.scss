@@ -1,0 +1,90 @@
+.chord {
+  display: flex;
+  height: 1.4em;
+  // background-color: orangered;
+
+  &__base {
+    margin-top: 0.2em;
+  }
+
+  &__accidental {
+    margin-top: 0.2em;
+    margin-left: 0.1em;
+  }
+
+  &__minor {
+    margin-top: 0.2em;
+    margin-left: 0.1em;
+  }
+
+  &__seven {
+    margin-top: 0.05em;
+    display: flex;
+    align-self: flex-start;
+    margin-left: 0.1em;
+
+    & > svg:not(:first-child) {
+      margin-left: 0.1em;
+      margin-bottom: auto; // fix '7' after 'maj'
+    }
+
+    &--sixnine {
+      // width for centering purposes, content is positioned absolute
+      width: 0.84em;
+      position: relative;
+
+      & svg {
+        position: absolute;
+
+        &:first-child {
+          top: 0;
+          left: 0;
+        }
+
+        &:nth-child(2) {
+          top: 0.75em;
+          left: 0.46em;
+        }
+      }
+
+      &:after {
+        background-color: currentColor;
+        position: absolute;
+        top: 0em;
+        left: 0.4em;
+        content: '';
+        width: 0.04em;
+        height: 1.28em;
+        transform: rotate(30deg);
+      }
+    }
+  }
+
+  &__brackets {
+    margin-left: 0.1em;
+    display: flex;
+    align-self: flex-start;
+
+    & > div {
+      // max height: 1.4em - 2*0.05em = 1.3em
+      // 2x extension height: 2* .55em = 1.1em
+      // gap: .2em
+
+      margin: 0.05em 0.04em;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2em;
+      align-self: flex-start;
+
+      & > div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        & svg:not(:first-child) {
+          margin-left: 0.1em;
+        }
+      }
+    }
+  }
+}

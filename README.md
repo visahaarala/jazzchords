@@ -2,7 +2,7 @@
 
 [https://jazzchords.singingtrumpet.com/](https://jazzchords.singingtrumpet.com/)
 
-A tool for practicing random chords. Designed primarily for a right-handed user of a mobile phone (iPhone XS as a reference). Works both portrait & landscape.
+A tool for practicing random chords. Designed primarily for use with a mobile phone (iPhone XS as a reference). Works both portrait & landscape.
 
 This program is a Progressive Web App. It should be installable on the home screen of a mobile device.
 

@@ -2,6 +2,7 @@ import { Dispatch, FC, ReactNode, createContext, useReducer } from 'react';
 import {
   AccidentalLevel,
   DifficultyLevel,
+  MajorOrMinor,
   ProgramState,
   ReducerAction,
 } from '../@types';
@@ -11,22 +12,40 @@ import {
   generateChords,
   generateExtensionsShuffled,
   generateKeysShuffled,
-} from '../data/chordFunctions';
+} from '../functions/chordFunctions';
+import { keysOrganized } from '../data/chordData';
+import {
+  changeEnharmonically,
+  randomTopNotes,
+} from '../functions/noteFunctions';
 
 const initialState = (): ProgramState => {
   let state: ProgramState = {
+    // player
     isMuted: false,
     difficultyMin: 'easy',
     difficultyMax: 'medium',
     accidentalsMin: '0',
     accidentalsMax: '7',
+    showNextChord: true,
+    showRandomTopNote: false,
+    randomTopNoteMin: 'G1',
+    randomTopNoteMax: 'G2',
+    playerClef: 'treble',
+    notesClef: 'treble',
     chordIndex: 0,
     beatsPerChord: '4',
-    beatsPerMinute: '60',
+    beatsPerMinute: '86',
     beat: 0,
     keyLocked: false,
     extensionLocked: false,
-    // generate these below
+    viewPlaySettings: false,
+
+    // notation
+    notationKey: { base: 'C', accidental: undefined },
+    notationExtension: { isMinor: false, segments: ['7'] },
+
+    // player: generate these below
     majorsShuffled: { fresh: [], used: [] },
     minorsShuffled: { fresh: [], used: [] },
     extensionsShuffled: { fresh: [], used: [] },
@@ -149,6 +168,7 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
       return initialState();
     }
 
+    //
     /// PLAYER
     case 'SET_BEAT': {
       return { ...state, beat: action.payload!.beat! };
@@ -193,6 +213,126 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
         chordIndex: 0,
       };
     }
+    case 'TOGGLE_SHOW_RANDOM_TOP_NOTE': {
+      return {
+        ...state,
+        showRandomTopNote: !state.showRandomTopNote,
+      };
+    }
+    case 'SET_RANDOM_TOP_NOTE_MIN': {
+      const minIndex = randomTopNotes.indexOf(
+        action.payload!.randomTopNoteMin!
+      );
+      let maxIndex = randomTopNotes.indexOf(state.randomTopNoteMax);
+      if (minIndex + 7 > maxIndex) {
+        maxIndex = minIndex + 7;
+      }
+      return {
+        ...state,
+        randomTopNoteMin: action.payload!.randomTopNoteMin!,
+        randomTopNoteMax: randomTopNotes[maxIndex],
+      };
+    }
+    case 'SET_RANDOM_TOP_NOTE_MAX': {
+      const maxIndex = randomTopNotes.indexOf(
+        action.payload!.randomTopNoteMax!
+      );
+      let minIndex = randomTopNotes.indexOf(state.randomTopNoteMin!);
+      if (maxIndex - 7 < minIndex) {
+        minIndex = maxIndex - 7;
+      }
+      return {
+        ...state,
+        randomTopNoteMax: action.payload!.randomTopNoteMax!,
+        randomTopNoteMin: randomTopNotes[minIndex],
+      };
+    }
+    case 'TOGGLE_VIEW_PLAY_SETTINGS': {
+      return {
+        ...state,
+        viewPlaySettings: !state.viewPlaySettings,
+      };
+    }
+    case 'TOGGLE_SHOW_NEXT_CHORD': {
+      return {
+        ...state,
+        showNextChord: !state.showNextChord,
+      };
+    }
+    case 'SET_PLAYER_CLEF': {
+      // fix randomTopNotes
+      const clef = action.payload!.playerClef!;
+      const offset = clef ==='treble' ? +5 : -5
+      const newMinIndex = randomTopNotes.indexOf(state.randomTopNoteMin) + offset;
+      const newMaxIndex = randomTopNotes.indexOf(state.randomTopNoteMax) + offset;
+      const newMinNote = randomTopNotes[newMinIndex];
+      const newMaxNote = randomTopNotes[newMaxIndex];
+
+      return {
+        ...state,
+        randomTopNoteMin: newMinNote,
+        randomTopNoteMax: newMaxNote,
+        playerClef: action.payload!.playerClef!,
+      };
+    }
+    case 'SET_NOTES_CLEF': {
+      return {
+        ...state,
+        notesClef: action.payload!.notesClef!,
+      };
+    }
+
+    //
+    // NOTATION
+    case 'SET_NOTATION_KEY': {
+      // Check that Key exists in minor/major
+      // and change extension if necessary
+      const notationKey = action.payload!.notationKey!;
+      const keyString =
+        notationKey.base +
+        (notationKey.accidental ? notationKey.accidental : '');
+      const extension = state.notationExtension;
+      const majorOrMinor: MajorOrMinor = extension.isMinor ? 'minor' : 'major';
+      let keyExists = false;
+      for (const accidentalLevel of Object.keys(keysOrganized)) {
+        const keys =
+          keysOrganized[accidentalLevel as AccidentalLevel][majorOrMinor];
+        if (keys.includes(keyString)) {
+          keyExists = true;
+        }
+      }
+      return {
+        ...state,
+        notationKey,
+        notationExtension: keyExists
+          ? extension
+          : { isMinor: !extension.isMinor, segments: [] },
+      };
+    }
+    case 'SET_NOTATION_EXTENSION': {
+      // Check that Key exists in minor/major
+      // and change Key enharmonically if necessary
+      const notationExtension = action.payload!.notationExtension!;
+      const key = state.notationKey;
+      const keyString = key.base + (key.accidental ? key.accidental : '');
+      const majorOrMinor: MajorOrMinor = notationExtension.isMinor
+        ? 'minor'
+        : 'major';
+      let keyExists = false;
+      for (const accidentalLevel of Object.keys(keysOrganized)) {
+        const keys =
+          keysOrganized[accidentalLevel as AccidentalLevel][majorOrMinor];
+        if (keys.includes(keyString)) {
+          keyExists = true;
+        }
+      }
+      return {
+        ...state,
+        notationKey: keyExists ? key : changeEnharmonically(key),
+        notationExtension,
+      };
+    }
+
     default: {
       return state;
     }

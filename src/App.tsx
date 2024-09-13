@@ -7,9 +7,10 @@ import {
 import RootLayout from './pages/RootLayout';
 import ErrorPage from './pages/ErrorPage';
 import Play from './pages/Play';
-import Settings from './pages/Settings';
 import Info from './pages/Info';
 import Metronome from './pages/Metronome';
+import Notes from './pages/Notes';
+import PlaySettings from './components/play/settings/PlaySettings';
 
 const router = createBrowserRouter([
   {
@@ -21,18 +22,22 @@ const router = createBrowserRouter([
       </RootLayout>
     ),
     children: [
-      { index: true, loader: async () => redirect('/play') },
+      { index: true, loader: async () => redirect('/info') },
       {
         path: 'play',
         element: <Play />,
+      },
+      {
+        path: 'playSettings',
+        element: <PlaySettings />,
       },
       {
         path: 'metronome',
         element: <Metronome />,
       },
       {
-        path: 'settings',
-        element: <Settings />,
+        path: 'notes',
+        element: <Notes />,
       },
       {
         path: 'info',

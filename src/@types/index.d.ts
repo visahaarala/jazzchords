@@ -1,12 +1,15 @@
-export type Extension = { isMinor: boolean; segments: string[] };
-
-export type FreshAndUsed<T> = { fresh: T[]; used: T[] };
-
 export type ProgramState = {
+  // PLAYER
   accidentalsMin: AccidentalLevel;
   accidentalsMax: AccidentalLevel;
   difficultyMin: DifficultyLevel;
   difficultyMax: DifficultyLevel;
+  showNextChord: boolean;
+  showRandomTopNote: boolean;
+  randomTopNoteMin: RandomTopNote;
+  randomTopNoteMax: RandomTopNote;
+  playerClef: Clef;
+  notesClef: Clef;
   majorsShuffled: FreshAndUsed<string>;
   minorsShuffled: FreshAndUsed<string>;
   extensionsShuffled: FreshAndUsed<Extension>;
@@ -18,9 +21,21 @@ export type ProgramState = {
   beatsPerMinute: BeatsPerMinute;
   beat: number;
   isMuted: boolean;
+  viewPlaySettings: boolean;
+
+  // NOTATION
+  notationKey: Key;
+  notationExtension: Extension;
 };
 
+export type Clef = 'bass' | 'treble';
+
+export type Extension = { isMinor: boolean; segments: string[] };
+
+export type FreshAndUsed<T> = { fresh: T[]; used: T[] };
+
 export type ReducerActionType =
+  // PLAYER
   | 'SET_BPC'
   | 'SET_BPM'
   | 'SET_MUTED'
@@ -29,23 +44,28 @@ export type ReducerActionType =
   | 'APPEND_CHORD_LIST'
   | 'INCREMENT_CHORD_INDEX'
   | 'DECREMENT_CHORD_INDEX'
-  | 'SET_DIFFICULTY_MIN'
-  | 'SET_DIFFICULTY_MAX'
-  | 'SET_DIFFICULTY_MAX'
   | 'SWITCH_KEY_LOCK'
   | 'SWITCH_EXTENSION_LOCK'
   | 'SET_ACCIDENTALS_MIN'
   | 'SET_ACCIDENTALS_MAX'
-  | 'RESET_SETTINGS';
+  | 'SET_DIFFICULTY_MIN'
+  | 'SET_DIFFICULTY_MAX'
+  | 'SET_RANDOM_TOP_NOTE_MIN'
+  | 'SET_RANDOM_TOP_NOTE_MAX'
+  | 'TOGGLE_SHOW_RANDOM_TOP_NOTE'
+  | 'SET_PLAYER_CLEF'
+  | 'SET_NOTES_CLEF'
+  | 'TOGGLE_SHOW_NEXT_CHORD'
+  | 'TOGGLE_VIEW_PLAY_SETTINGS'
+  | 'RESET_SETTINGS'
+
+  // NOTATION
+  | 'SET_NOTATION_KEY'
+  | 'SET_NOTATION_EXTENSION';
 
 export type ReducerAction = {
   type: ReducerActionType;
   payload?: Partial<ProgramState>;
-};
-
-export type Range = {
-  min: number;
-  max: number;
 };
 
 export type MajorOrMinor = 'major' | 'minor';
@@ -74,14 +94,17 @@ export type Accidental = 'b' | '#' | undefined;
 
 export type Key = { base: Alphabet; accidental: Accidental };
 
+export type Note = {
+  noteName: string;
+  octaveIndex: number;
+  hasNoteBelow?: boolean;
+};
+
 export type Chord = {
   key: Key;
   extension: Extension;
-  // base: Alphabet;
-  // accidental: Accidental;
-  // isMinor: boolean;
-  // extension: string[];
-  // notes: number[]; // LATER
+  notes: Note[];
+  randomTopNote?: Note;
 };
 
 export type AccidentalLevel = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
@@ -134,3 +157,25 @@ export type BeatsPerMinute =
   | '216'
   | '238'
   | '262';
+
+export type RandomTopNote =
+  | 'E0'
+  | 'F0'
+  | 'G0'
+  | 'A0'
+  | 'B0'
+  | 'C1'
+  | 'D1'
+  | 'E1'
+  | 'F1'
+  | 'G1'
+  | 'A1'
+  | 'B1'
+  | 'C2'
+  | 'D2'
+  | 'E2'
+  | 'F2'
+  | 'G2'
+  | 'A2'
+  | 'B2'
+  | 'C3';

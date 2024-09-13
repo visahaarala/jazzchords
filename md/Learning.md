@@ -23,7 +23,7 @@
 #### Detect mobile or desktop
 
 @media (pointer: coarse)
-vs. 
+vs.
 @media (pointer: fine)
 
 #### Vercel with react router
@@ -54,4 +54,8 @@ Further instructions for PWA icons in [https://vite-pwa-org.netlify.app/guide/pw
 
 ```
 grep -rl 'color-white' | xargs -I % sed -i '.bak' 's/color-white/color-one/g' %
-```'
+```
+
+#### Notes in chords
+
+[https://www.chordatlas.com](https://www.chordatlas.com)

@@ -1,0 +1,46 @@
+.toggle {
+  width: 3.2rem;
+  height: 2rem;
+  border-radius: 1rem;
+  background-color: var(--color-black);
+  border: var(--border-button);
+  position: relative;
+  cursor: pointer;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0.05rem;
+    left: 0.05rem;
+    height: calc(1.9rem - 1px);
+    transition: all 0.1s;
+  }
+
+  &:before {
+    width: 0.95rem;
+    border-radius: 1rem 0 0 1rem;
+    background-color: var(--color-gray);
+  }
+
+  &:after {
+    width: calc(1.9rem - 1px);
+    border-radius: 50%;
+    background-color: var(--color-white);
+  }
+
+  &__checked {
+    &:before {
+      width: 2.3rem;
+    }
+
+    &:after {
+      transform: translateX(1.2rem);
+    }
+  }
+
+  &:focus,
+  &:hover {
+    outline: var(--outline-focus);
+  }
+}

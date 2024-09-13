@@ -3,7 +3,7 @@ const Plus = ({ height }: { height?: number }) => {
   const ymin = 0;
 
   const svgWidth = 40;
-  const svgHeight = 40;
+  const svgHeight = 58;
   const strokeWidth = svgHeight / 10;
 
   const divWidth = height ? `${height * (svgWidth / svgHeight)}em` : undefined;
@@ -12,7 +12,6 @@ const Plus = ({ height }: { height?: number }) => {
     <svg
       style={{
         width: divWidth,
-        // backgroundColor: 'orangered',
       }}
       xmlns='http://www.w3.org/2000/svg'
       viewBox={`${xmin} ${ymin} ${svgWidth} ${svgHeight}`}

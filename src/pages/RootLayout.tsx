@@ -2,18 +2,18 @@ import { Outlet } from 'react-router-dom';
 import Navigation from '../components/navigation/Navigation';
 import ChordsContextProvider from '../context/ChordsContext';
 import MetronomeContextProvider from '../context/MetronomeContext';
-import styles from './RootLayout.module.scss';
 
 const RootLayout = ({
   children,
   title,
 }: {
+  // to have ErrorPage inside RootLayout
   children?: JSX.Element;
   title?: string;
 }) => (
   <MetronomeContextProvider>
     <ChordsContextProvider>
-      <div className={styles.container} id='container'>
+      <div className='container' id='container'>
         <main id='main'>
           <h2>{title ? title : 'jazzchords'}</h2>
           {children ? children : <Outlet />}
