@@ -1,12 +1,12 @@
 # TO-DO list
 
-#### now
+## now
 
-##### Octave naming
+#### Octave naming
 
 Bass & treble clef. Middle C is `C4`. Bass clef C in the middle of staff is `C3`. Just to be logical with octave naming and random top note range choosing for each clef.
 
-#### later
+## later
 
 - make chord playable
 
