@@ -43,8 +43,6 @@ const LedgerLinesPath = ({
       }
     }
 
-    console.log(rs.map(r => r.index));
-
     return rs;
   };
 

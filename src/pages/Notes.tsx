@@ -26,7 +26,7 @@ const Notes = () => {
     <div className={styles.notes}>
       <div className={styles.notes__chord}>
         <ChordSymbol chord={chord} size={2.5} />
-        <Notation notes={chord.notes} clef={clef} width={15} />
+        <Notation notes={chord.notes} clef={clef} width={12} />
       </div>
       <div className={styles.notes__select}>
         <KeySelect />

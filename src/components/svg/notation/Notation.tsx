@@ -31,7 +31,6 @@ const Notation = ({
   const yLowC = clef === 'treble' ? 30 : 5; // the low C
 
   const dropOctaveTresholdWhiteKeyIndex = clef === 'treble' ? 4 : 3;
-
   const dropOctave =
     // if base is at or above treshold, drop an octave
     whiteKeys.indexOf(stringToKey(notes[0].noteName).base) >=
@@ -39,9 +38,8 @@ const Notation = ({
       ? true
       : false;
 
-  let adjustedNotes = notes.map((note) => {
+  const adjustedNotes = notes.map((note) => {
     if (oneNote) return note;
-
     return {
       ...note,
       octaveIndex: dropOctave ? note.octaveIndex - 1 : note.octaveIndex,
@@ -69,7 +67,6 @@ const Notation = ({
       <svg
         xmlns='http://www.w3.org/2000/svg'
         viewBox={oneNote ? '10 -55 80 110' : '10 -80 120 140'}
-        // style={{ backgroundColor: 'orangered' }}
       >
         <StaffLinesPath x={10} yList={yListStaff} h={oneNote ? 90 : 120} />
         {clef === 'bass' && <BassClefPath />}
