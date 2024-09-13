@@ -24,26 +24,12 @@ const KeySelect = () => {
     .filter((key) => !(key.base === 'B' && key.accidental === '#'))
     .reverse();
 
-  // let optionsByClef: { base: Alphabet; accidental: Accidental }[] = keyOptions;
-
-  // if (clef === 'treble') {
-  //   const startIndex = keyOptions
-  //     .map((opt) => opt.base + opt.accidental)
-  //     .indexOf('F#');
-  //   console.log('startIndex', startIndex);
-  //   optionsByClef = [
-  //     ...keyOptions.slice(startIndex),
-  //     ...keyOptions.slice(0, startIndex),
-  //   ];
-  // }
-
   const optionsByClef = (
     firstOption: string
   ): { base: Alphabet; accidental: Accidental }[] => {
     const startIndex = keyOptions
       .map((opt) => opt.base + (opt.accidental ? opt.accidental : ''))
       .indexOf(firstOption);
-    console.log('startIndex', startIndex);
     return [
       ...keyOptions.slice(startIndex),
       ...keyOptions.slice(0, startIndex),

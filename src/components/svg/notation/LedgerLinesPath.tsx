@@ -16,8 +16,8 @@ const LedgerLinesPath = ({
 }) => {
   const noteIndices = notes.map((note) => noteToWhiteKeyIndex(note));
 
-  const lowestLedgerIndexAboveStaff = clef === 'treble' ? 12 : 14;
-  const highestLedgerIndexBelowStaff = clef === 'treble' ? 0 : 2;
+  const lowestLedgerIndexAboveStaff = clef === 'treble' ? 12 : 7;
+  const highestLedgerIndexBelowStaff = clef === 'treble' ? 0 : -5;
 
   const ledgerLines = (): { index: number; hasNoteBelow?: boolean }[] => {
     // add all notes for hasNoteBelow information
@@ -30,14 +30,14 @@ const LedgerLinesPath = ({
     const lowest = noteIndices[0];
 
     // add missing even indices from 12 to the highest
-    for (let i = 12; i <= highest; i += 2) {
+    for (let i = lowestLedgerIndexAboveStaff; i <= highest; i += 2) {
       if (!rs.map((ll) => ll.index).includes(i)) {
         rs.push({ index: i, hasNoteBelow: false });
       }
     }
 
     // add missing even indices from 0 to the lowest
-    for (let i = 0; i >= lowest; i -= 2) {
+    for (let i = highestLedgerIndexBelowStaff; i >= lowest; i -= 2) {
       if (!rs.map((ll) => ll.index).includes(i)) {
         rs.push({ index: i, hasNoteBelow: false });
       }
