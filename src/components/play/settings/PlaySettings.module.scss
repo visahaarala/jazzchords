@@ -1,6 +1,4 @@
 .settings {
-  height: 100%;
-  margin-top: auto;
   display: flex;
   flex-direction: column;
 
@@ -18,6 +16,10 @@
       @media (max-height: 29rem) {
         margin-top: 1.5rem;
       }
+    }
+
+    &:first-child {
+      margin-top: 0;
     }
   }
 
@@ -40,10 +42,6 @@
     gap: 1rem;
     font-size: 0.9rem;
     margin-left: 0.15rem;
-  }
-
-  & > *:first-child {
-    margin-top: auto;
   }
 
   & > *:last-child {
