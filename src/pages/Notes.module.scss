@@ -18,15 +18,18 @@
 
   &__select {
     display: flex;
-    gap: 1rem;
+    align-items: end; // g-clef in landscape
+    gap: var(--gap-small);
 
     & > select {
       padding: var(--button-padding);
+      align-self: stretch;
     }
 
     @media (pointer: coarse) and (orientation: landscape) {
       margin-top: auto;
       flex-direction: column-reverse;
+      gap: var(--gap-medium);
     }
   }
 }

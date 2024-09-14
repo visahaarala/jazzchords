@@ -41,7 +41,6 @@
     flex-direction: column;
 
     @media (pointer: coarse) and (orientation: landscape) {
-      height: 100%;
       flex-direction: row-reverse;
       flex-direction: column-reverse;
     }
@@ -74,7 +73,7 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+      gap: var(--gap-small);
 
       .text {
         grid-column: 1 / 5;
@@ -94,15 +93,10 @@
         grid-column: 2 / 4;
       }
 
-      @media (pointer: coarse) and (orientation: portrait) {
-        height: 18dvh;
-        max-height: 8rem;
-      }
-
       @media (pointer: coarse) and (orientation: landscape) {
-        height: 100%;
         width: 100%;
         max-height: 16rem;
+        gap: var(--gap-medium) var(--gap-small);
 
         grid-template-columns: repeat(3, 1fr);
         margin-right: 2.5rem;
