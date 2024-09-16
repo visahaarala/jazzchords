@@ -2,7 +2,7 @@ import styles from './Play.module.scss';
 import SettingsIcon from '../components/svg/icons/SettingsIcon';
 import Player from '../components/play/player/Player';
 import PlaySettings from '../components/play/settings/PlaySettings';
-import { useContext } from 'react';
+import { KeyboardEvent, useContext } from 'react';
 import { ChordsContext } from '../context/ChordsContext';
 
 const Play = () => {
@@ -13,8 +13,9 @@ const Play = () => {
     dispatch({ type: 'TOGGLE_VIEW_PLAY_SETTINGS' });
   };
 
-  const keyPressHandler = (code: string) => {
-    if (code === 'Space' || code === 'Enter') {
+  const keyPressHandler = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.code === 'Space' || e.code === 'Enter') {
+      e.preventDefault();
       toggleSettings();
     }
   };
@@ -25,15 +26,10 @@ const Play = () => {
       <div
         className={'iconButton ' + styles.settingsButton}
         onClick={toggleSettings}
-        onKeyDown={(e) => keyPressHandler(e.code)}
+        onKeyDown={(e) => keyPressHandler(e)}
         tabIndex={0}
-        style={
-          viewSettings
-            ? { transform: 'rotate(20deg)', transition: 'transform .2s' }
-            : { transition: 'transform .2s' }
-        }
       >
-        <SettingsIcon />
+        <SettingsIcon rotate={viewSettings} />
       </div>
     </div>
   );

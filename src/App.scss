@@ -171,6 +171,17 @@ h2 {
 }
 
 .iconButton {
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  justify-content: center; // the svg within
+  height: 2.2rem;
+  width: 2.2rem;
+  padding: 0.1rem;
+}
+
+.button,
+.iconButton {
   cursor: pointer;
   // same as .button
   border-radius: var(--border-radius);
@@ -180,13 +191,16 @@ h2 {
   }
 
   &:active {
+    transform: translateY(0.02rem) scale(0.96);
+  }
+
+  &__disabled {
     color: var(--color-gray-light);
   }
 }
 
 .button {
   background-color: var(--color-gray);
-  border-radius: var(--border-radius);
   border: var(--border-button);
   color: inherit;
   font-family: inherit;
@@ -197,19 +211,7 @@ h2 {
   align-items: center;
   justify-content: center;
 
-  transition: all 0.1s;
-
-  &:focus,
-  &:hover {
-    outline: var(--outline-focus);
-  }
-
-  &:active {
-    background-color: var(--color-gray-dark);
-  }
-
   &__disabled {
     background-color: var(--color-gray-dark);
-    color: var(--color-gray-light);
   }
 }

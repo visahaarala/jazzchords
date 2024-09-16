@@ -26,7 +26,7 @@ const OnOffToggle = ({
 
   return (
     <div
-      className={`${styles.toggle} ${
+      className={`iconButton ${styles.toggle} ${
         state[stateKey] && styles.toggle__checked
       }`}
       onClick={toggler}

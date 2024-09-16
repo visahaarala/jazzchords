@@ -3,9 +3,9 @@
   height: 2rem;
   border-radius: 1rem;
   background-color: var(--color-black);
-  border: var(--border-button);
   position: relative;
-  cursor: pointer;
+
+  border: var(--border-button);
 
   &:before,
   &:after {
@@ -13,7 +13,7 @@
     position: absolute;
     top: 0.05rem;
     left: 0.05rem;
-    height: calc(1.9rem - 1px);
+    height: calc(1.9rem - 2px);
     transition: all 0.1s;
   }
 
@@ -24,23 +24,18 @@
   }
 
   &:after {
-    width: calc(1.9rem - 1px);
+    width: calc(1.9rem - 2px);
     border-radius: 50%;
     background-color: var(--color-white);
   }
 
   &__checked {
     &:before {
-      width: 2.3rem;
+      width: 2.17rem;
     }
 
     &:after {
       transform: translateX(1.2rem);
     }
-  }
-
-  &:focus,
-  &:hover {
-    outline: var(--outline-focus);
   }
 }

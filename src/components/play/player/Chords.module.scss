@@ -22,16 +22,9 @@
     justify-content: space-between;
 
     .lock {
-      // background-color: orangered;
       color: var(--color-white);
-      display: flex;
-      width: 2.5rem;
-      height: 2.5rem;
-      padding: 0.5rem;
-
-      &:active {
-        color: var(--color-gray-light);
-      }
+      // a little extra padding
+      padding: 0.3rem; 
     }
   }
 }

@@ -3,26 +3,20 @@
   // position: relative;
 
   .settingsButton {
-    width: 2.4rem;
-    height: 2.4rem;
-    padding: 0.2rem;
-    border-radius: 50%;
-
-    position: absolute;
     z-index: 1;
 
+    // shadow for gently covering horizontal lines
+    background-color: var(--color-black);
+    box-shadow: 0 0 0.8rem 0.8rem var(--color-black);
+
+    position: absolute;
     // footer: 5rem, main padding: 1.5rem
-    bottom: 6.5rem; 
+    bottom: 6.5rem;
     right: 1.5rem;
-
-    transform: all 1s;
-
-    background-color: black;
-    box-shadow: 0 0 1rem 1rem var(--color-black);
-
     @media (pointer: coarse) and (orientation: landscape) {
+      // in landscape: "footer" on the right side
       bottom: 1.5rem;
       right: 6.5rem;
-    }  
+    }
   }
 }

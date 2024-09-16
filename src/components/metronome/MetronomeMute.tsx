@@ -1,4 +1,3 @@
-import styles from './Icon.module.scss';
 import { KeyboardEvent, useContext } from 'react';
 import MuteIcon from '../svg/icons/MuteIcon';
 import { MetronomeContext } from '../../context/MetronomeContext';
@@ -20,7 +19,7 @@ const MetronomeMute = () => {
 
   return (
     <div
-      className={styles.icon}
+      className={`iconButton ${isMuted && 'iconButton__disabled'}`}
       onClick={setIsMuted.bind(null, !isMuted)}
       onKeyDown={keyDownHandler}
       tabIndex={isMobile ? -1 : 0}

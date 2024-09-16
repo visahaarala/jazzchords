@@ -1,4 +1,3 @@
-import styles from './Icon.module.scss';
 import { KeyboardEvent, useContext } from 'react';
 import LightIcon from '../svg/icons/LightIcon';
 import { MetronomeContext } from '../../context/MetronomeContext';
@@ -32,7 +31,7 @@ const MetronomeLight = () => {
 
   return (
     <div
-      className={styles.icon}
+      className={`iconButton ${!flashIsOn && 'iconButton__disabled'}`}
       onClick={flashHandler}
       onKeyDown={keyDownHandler}
       tabIndex={isMobile ? -1 : 0}

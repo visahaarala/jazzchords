@@ -1,4 +1,3 @@
-import styles from './PlayerMute.module.scss';
 import { KeyboardEvent, useContext } from 'react';
 import { ChordsContext } from '../../../context/ChordsContext';
 import MuteIcon from '../../svg/icons/MuteIcon';
@@ -24,7 +23,7 @@ const PlayerMute = () => {
 
   return (
     <div
-      className={styles.icon}
+      className={`iconButton ${isMuted && 'iconButton__disabled'}`}
       onClick={setIsMuted.bind(null, !isMuted)}
       onKeyDown={keyDownHandler}
       tabIndex={isMobile ? -1 : 0}
