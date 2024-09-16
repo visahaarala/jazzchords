@@ -12,13 +12,6 @@
     transform: translateY(-50%) translateX(-50%);
   }
 
-  cursor: pointer;
-  border-radius: var(--border-radius);
-  &:focus,
-  &:hover {
-    outline: var(--outline-focus);
-  }
-
   &__disabled {
     color: var(--color-gray-light);
     cursor: default;

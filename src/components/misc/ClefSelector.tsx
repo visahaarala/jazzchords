@@ -37,7 +37,9 @@ const ClefSelector = ({
 
   return (
     <div
-      className={`${styles.selector} ${disabled && styles.selector__disabled}`}
+      className={`iconButton ${styles.selector} ${
+        disabled && styles.selector__disabled
+      }`}
       onClick={toggle}
       onKeyDown={(e) => keyHandler(e)}
       tabIndex={disabled ? -1 : 0}
