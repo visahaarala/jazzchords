@@ -20,10 +20,6 @@ const KeySelect = () => {
     .filter((key) => !(key.base === 'B' && key.accidental === '#'))
     .reverse();
 
-  console.log(
-    keyOptions.map((ko) => ko.base + (ko.accidental ? ko.accidental : ''))
-  );
-
   return (
     <Select
       dispatchActionType='SET_NOTATION_KEY'

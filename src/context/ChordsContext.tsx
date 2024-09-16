@@ -43,7 +43,7 @@ const initialState = (): ProgramState => {
 
     // notation
     notationKey: { base: 'C', accidental: undefined },
-    notationExtension: { isMinor: false, segments: ['7'] },
+    notationExtension: { isMinor: false, segments: [] },
 
     // player: generate these below
     majorsShuffled: { fresh: [], used: [] },
