@@ -57,6 +57,7 @@ export const extensionsOrganized: {
     '9sus4',
     '-11',
     '11',
+    '-add11',
     '13',
     '-13',
     'maj13',

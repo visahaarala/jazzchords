@@ -24,23 +24,28 @@ const KeySelect = () => {
     .filter((key) => !(key.base === 'B' && key.accidental === '#'))
     .reverse();
 
-  const optionsByClef = (
-    firstOption: string
-  ): { base: Alphabet; accidental: Accidental }[] => {
-    const startIndex = keyOptions
-      .map((opt) => opt.base + (opt.accidental ? opt.accidental : ''))
-      .indexOf(firstOption);
-    return [
-      ...keyOptions.slice(startIndex),
-      ...keyOptions.slice(0, startIndex),
-    ];
-  };
+  console.log(
+    keyOptions.map((ko) => ko.base + (ko.accidental ? ko.accidental : ''))
+  );
+
+  // const optionsByClef = (
+  //   firstOption: string
+  // ): { base: Alphabet; accidental: Accidental }[] => {
+  //   const startIndex = keyOptions
+  //     .map((opt) => opt.base + (opt.accidental ? opt.accidental : ''))
+  //     .indexOf(firstOption);
+  //   return [
+  //     ...keyOptions.slice(startIndex),
+  //     ...keyOptions.slice(0, startIndex),
+  //   ];
+  // };
 
   return (
     <Select
       dispatchActionType='SET_NOTATION_KEY'
       payloadKey='notationKey'
-      options={optionsByClef(clef === 'treble' ? 'F#' : 'E')}
+      // options={optionsByClef(clef === 'treble' ? 'F#' : 'E')}
+      options={keyOptions}
       optionToString={keyToString}
       stringToOption={stringToKey}
     />

@@ -33,6 +33,7 @@ const segmentInstructions: { [key: string]: SegmentInstruction } = {
   },
   '+': { remove: ['5'], add: ['#5'] },
   add9: { add: ['9'] },
+  add11: { add: ['11'] },
   maj7: { add: ['#7'] },
   // not necessary to remove minor third in -11
   // '11': { add: ['7', '9', '11'], remove: ['3'] },
