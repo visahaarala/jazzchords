@@ -2,12 +2,6 @@
 
 ## now
 
-### extensions in notes
-
-Depending on key (ie. D#, Cb) show only major/minor extensions in selectbox. 
-
-If same extension exists (ie. 7 or 9), use that when having to change from major to minor?
-
 ### Octave naming
 
 Bass & treble clef. Middle C is `C4`. Bass clef C in the middle of staff is `C3`. Just to be logical with octave naming and random top note range choosing for each clef.
