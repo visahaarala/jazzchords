@@ -2,9 +2,23 @@
 
 ## now
 
+### settings iconbutton shadow
+
+Use clip-path to stop right side from shadowing scrollbar in mobile landscape.
+
+### extensions in notes
+
+Depending on key (ie. D#, Cb) show only major/minor extensions in selectbox. 
+
+If same extension exists (ie. 7 or 9), use that when having to change from major to minor?
+
 ### sound & light iconbuttons to .iconButton
 
 Should they work the same as clefselector and settings, displaying &:active state somehow?
+
+### on/off toggle visual
+
+Display &:active state
 
 ### Octave naming
 
