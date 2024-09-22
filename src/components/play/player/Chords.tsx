@@ -4,7 +4,6 @@ import { ChordsContext } from '../../../context/ChordsContext';
 import LockIcon from '../../svg/icons/LockIcon';
 import { ReducerActionType } from '../../../@types';
 import ChordDisplay from './ChordDisplay';
-import { randomTopNoteToKeyIndex } from '../../../functions/noteFunctions';
 
 const Chords = () => {
   const { state, dispatch } = useContext(ChordsContext);
@@ -23,18 +22,10 @@ const Chords = () => {
     }
   };
 
-  const minWhiteKeyIndex = randomTopNoteToKeyIndex(state.randomTopNoteMin);
-  const maxWhiteKeyIndex = randomTopNoteToKeyIndex(state.randomTopNoteMax);
-
   return (
     <div className={styles.chords}>
       <div className={styles.now}>
-        <ChordDisplay
-          indexOffset={0}
-          size={2.5}
-          minWhiteKeyIndex={minWhiteKeyIndex}
-          maxWhiteKeyIndex={maxWhiteKeyIndex}
-        />
+        <ChordDisplay indexOffset={0} size={2.5} />
       </div>
 
       <div className={styles.next}>
@@ -47,14 +38,7 @@ const Chords = () => {
           <LockIcon isLocked={state.keyLocked} />
         </div>
 
-        {state.showNextChord && (
-          <ChordDisplay
-            indexOffset={1}
-            size={1.5}
-            minWhiteKeyIndex={minWhiteKeyIndex}
-            maxWhiteKeyIndex={maxWhiteKeyIndex}
-          />
-        )}
+        {state.showNextChord && <ChordDisplay indexOffset={1} size={1.5} />}
 
         <div
           className={`iconButton ${styles.lock}`}

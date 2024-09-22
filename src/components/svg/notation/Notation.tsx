@@ -28,16 +28,20 @@ const Notation = ({
   const yListStaff = [-20, -10, 0, 10, 20];
   const noteBelowOffsetX = 12;
   const notesCx = oneNote ? 75 : 103;
-  const yLowC = clef === 'treble' ? 30 : 5; // the low C
 
+  // treble clef C below staff
+  // same note as bass clef C above staff
+  // or "C4" in scientific/international octave names
+  const yLowC = clef === 'treble' ? 30 : -30;
+
+  //
+  // if noteName is at or above treshold, drop an octave
   const dropOctaveTresholdWhiteKeyIndex = clef === 'treble' ? 4 : 3;
   const dropOctave =
-    // if base is at or above treshold, drop an octave
     whiteKeys.indexOf(stringToKey(notes[0].noteName).base) >=
     dropOctaveTresholdWhiteKeyIndex
       ? true
       : false;
-
   const adjustedNotes = notes.map((note) => {
     if (oneNote) return note;
     return {

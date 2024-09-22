@@ -22,8 +22,8 @@ const KeySelect = () => {
 
   return (
     <Select
-      dispatchActionType='SET_NOTATION_KEY'
-      payloadKey='notationKey'
+      dispatchActionType='SET_NOTES_KEY'
+      payloadKey='notesKey'
       options={keyOptions}
       optionToString={keyToString}
       stringToOption={stringToKey}

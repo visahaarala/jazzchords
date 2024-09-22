@@ -2,10 +2,6 @@
 
 ## now
 
-### Octave naming
-
-Bass & treble clef. Middle C is `C4`. Bass clef C in the middle of staff is `C3`. Just to be logical with octave naming and random top note range choosing for each clef.
-
 ## later
 
 ### progressive app installation
@@ -22,9 +18,9 @@ browser agnostic [PWA install button](https://plainenglish.io/blog/create-a-brow
 
 Elementary Audio
 
-### click visuals 
+### whiteKeyIndex
 
-check with actual mouse (touchpad touch gestures do not tell the whole truth)
+Use of that term whiteKeyIndex is not coherent throughout the app. Sometimes it means the index of the array ['C', 'D', 'E', ...], and sometimes it means the index of whitekeys in the whole keyboard. And where is the zero value, at middle C. Have to clarify this at some point.
 
 ## update README.MD
 

@@ -282,29 +282,37 @@ export const stringToKey = (key: string): Key => {
 };
 
 export const randomTopNotes: RandomTopNote[] = [
-  'E0',
-  'F0',
-  'G0',
-  'A0',
-  'B0',
-  'C1',
-  'D1',
-  'E1',
-  'F1',
-  'G1',
-  'A1',
-  'B1',
-  'C2',
-  'D2',
-  'E2',
-  'F2',
-  'G2',
-  'A2',
-  'B2',
-  'C3',
+  'E', // E below bass clef staff
+  'F',
+  'G',
+  'A',
+  'B',
+  'c', // bass clef middle C
+  'd',
+  'e',
+  'f',
+  'g',
+  'a',
+  'b',
+  'c1', // "low C", octave index = 0
+  'd1',
+  'e1',
+  'f1',
+  'g1',
+  'a1',
+  'b1',
+  'c2',
+  'd2',
+  'e2',
+  'f2',
+  'g2',
+  'a2',
+  'b2',
+  'c3', // high C above treble clef staff
 ];
 
-export const randomTopNoteToKeyIndex = (rtn: string): number => {
-  const note: Note = { noteName: rtn[0], octaveIndex: Number(rtn[1]) - 1 };
+export const randomTopNoteToKeyIndex = (rtn: RandomTopNote): number => {
+  const octaveIndex = Math.floor((randomTopNotes.indexOf(rtn) - 12) / 7);
+  const note: Note = { noteName: rtn[0].toUpperCase(), octaveIndex };
   return noteToWhiteKeyIndex(note);
 };

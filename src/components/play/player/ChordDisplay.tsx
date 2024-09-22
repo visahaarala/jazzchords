@@ -3,40 +3,48 @@ import styles from './ChordDisplay.module.scss';
 import { ChordsContext } from '../../../context/ChordsContext';
 import ChordSymbol from '../../chord/ChordSymbol';
 import Notation from '../../svg/notation/Notation';
+import { randomTopNoteToKeyIndex } from '../../../functions/noteFunctions';
 
 const ChordDisplay = ({
   indexOffset,
   size,
-  minWhiteKeyIndex,
-  maxWhiteKeyIndex,
 }: {
   indexOffset: number;
   size: number;
-  minWhiteKeyIndex?: number;
-  maxWhiteKeyIndex?: number;
 }) => {
-  const { state } = useContext(ChordsContext);
-  const { chords, chordIndex, showRandomTopNote, playerClef } = state;
+  const {
+    chords,
+    chordIndex,
+    showRandomTopNote,
+    playerClef,
+    randomTopNoteMin,
+    randomTopNoteMax,
+  } = useContext(ChordsContext).state;
 
-  const index = chordIndex + indexOffset;
-  const topNote = chords[index].randomTopNote;
-  if (topNote && showRandomTopNote) {
+  const thisChordIndex = chordIndex + indexOffset;
+
+  if (showRandomTopNote) {
+    let topNote = chords[thisChordIndex].randomTopNote;
+    if (playerClef === 'bass') {
+      topNote = { ...topNote, octaveIndex: topNote.octaveIndex - 1 };
+    }
+
     return (
       <div className={styles.chord}>
-        <ChordSymbol chord={chords[index]} size={size * 0.8} />
+        <ChordSymbol chord={chords[thisChordIndex]} size={size * 0.8} />
         <Notation
           notes={[topNote]}
           clef={playerClef}
           width={size * 2.5}
-          minWhiteKeyIndex={minWhiteKeyIndex}
-          maxWhiteKeyIndex={maxWhiteKeyIndex}
+          minWhiteKeyIndex={randomTopNoteToKeyIndex(randomTopNoteMin)}
+          maxWhiteKeyIndex={randomTopNoteToKeyIndex(randomTopNoteMax)}
         />
       </div>
     );
   } else {
     return (
       <div className={styles.chord}>
-        <ChordSymbol chord={chords[index]} size={size} />
+        <ChordSymbol chord={chords[thisChordIndex]} size={size} />
       </div>
     );
   }

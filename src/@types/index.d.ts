@@ -9,7 +9,6 @@ export type ProgramState = {
   randomTopNoteMin: RandomTopNote;
   randomTopNoteMax: RandomTopNote;
   playerClef: Clef;
-  notesClef: Clef;
   majorsShuffled: FreshAndUsed<string>;
   minorsShuffled: FreshAndUsed<string>;
   extensionsShuffled: FreshAndUsed<Extension>;
@@ -24,8 +23,9 @@ export type ProgramState = {
   viewPlaySettings: boolean;
 
   // NOTATION
-  notationKey: Key;
-  notationExtension: Extension;
+  notesClef: Clef;
+  notesKey: Key;
+  notesExtension: Extension;
 };
 
 export type Clef = 'bass' | 'treble';
@@ -54,14 +54,14 @@ export type ReducerActionType =
   | 'SET_RANDOM_TOP_NOTE_MAX'
   | 'TOGGLE_SHOW_RANDOM_TOP_NOTE'
   | 'SET_PLAYER_CLEF'
-  | 'SET_NOTES_CLEF'
   | 'TOGGLE_SHOW_NEXT_CHORD'
   | 'TOGGLE_VIEW_PLAY_SETTINGS'
   | 'RESET_SETTINGS'
 
   // NOTATION
-  | 'SET_NOTATION_KEY'
-  | 'SET_NOTATION_EXTENSION';
+  | 'SET_NOTES_CLEF'
+  | 'SET_NOTES_KEY'
+  | 'SET_NOTES_EXTENSION';
 
 export type ReducerAction = {
   type: ReducerActionType;
@@ -104,7 +104,7 @@ export type Chord = {
   key: Key;
   extension: Extension;
   notes: Note[];
-  randomTopNote?: Note;
+  randomTopNote: Note;
 };
 
 export type AccidentalLevel = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
@@ -158,24 +158,61 @@ export type BeatsPerMinute =
   | '238'
   | '262';
 
+// export type RandomTopNote =
+//   | 'E2' // E below bass clef staff
+//   | 'F2'
+//   | 'G2'
+//   | 'A2'
+//   | 'B2'
+//   | 'C3' // bass clef middle C
+//   | 'D3'
+//   | 'E3'
+//   | 'F3'
+//   | 'G3'
+//   | 'A3'
+//   | 'B3'
+//   | 'C3'
+//   | 'C4' // "low C"
+//   | 'D4'
+//   | 'E4'
+//   | 'F4'
+//   | 'G4'
+//   | 'A4'
+//   | 'B4'
+//   | 'C5'
+//   | 'D5'
+//   | 'E5'
+//   | 'F5'
+//   | 'G5'
+//   | 'A5'
+//   | 'B5'
+//   | 'C6'; // high C above treble clef staff
+
 export type RandomTopNote =
-  | 'E0'
-  | 'F0'
-  | 'G0'
-  | 'A0'
-  | 'B0'
-  | 'C1'
-  | 'D1'
-  | 'E1'
-  | 'F1'
-  | 'G1'
-  | 'A1'
-  | 'B1'
-  | 'C2'
-  | 'D2'
-  | 'E2'
-  | 'F2'
-  | 'G2'
-  | 'A2'
-  | 'B2'
-  | 'C3';
+  | 'E' // E below bass clef staff
+  | 'F'
+  | 'G'
+  | 'A'
+  | 'B'
+  | 'c' // bass clef middle C
+  | 'd'
+  | 'e'
+  | 'f'
+  | 'g'
+  | 'a'
+  | 'b'
+  | 'c1' // "low C"
+  | 'd1'
+  | 'e1'
+  | 'f1'
+  | 'g1'
+  | 'a1'
+  | 'b1'
+  | 'c2'
+  | 'd2'
+  | 'e2'
+  | 'f2'
+  | 'g2'
+  | 'a2'
+  | 'b2'
+  | 'c3'; // high C above treble clef staff

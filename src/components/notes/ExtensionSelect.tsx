@@ -73,8 +73,8 @@ const ExtensionSelect = () => {
 
   return (
     <Select
-      dispatchActionType='SET_NOTATION_EXTENSION'
-      payloadKey='notationExtension'
+      dispatchActionType='SET_NOTES_EXTENSION'
+      payloadKey='notesExtension'
       options={[...minors, ...majors]}
       optionToString={extensionToString}
       stringToOption={stringToExtension}

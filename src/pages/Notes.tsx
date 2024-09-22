@@ -12,8 +12,8 @@ import ClefSelector from '../components/misc/ClefSelector';
 const Notes = () => {
   const { state } = useContext(ChordsContext);
 
-  const key = state.notationKey;
-  const extension = state.notationExtension;
+  const key = state.notesKey;
+  const extension = state.notesExtension;
   const clef = state.notesClef;
 
   const chord: Chord = {
@@ -21,6 +21,14 @@ const Notes = () => {
     extension,
     notes: getNotes(key, extension),
   };
+
+  // if it's bass clef, take notes down an octave
+  if (clef === 'bass') {
+    chord.notes = chord.notes.map((n) => ({
+      ...n,
+      octaveIndex: n.octaveIndex - 1,
+    }));
+  }
 
   return (
     <div className={styles.notes}>

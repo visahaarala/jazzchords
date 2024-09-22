@@ -213,10 +213,16 @@ export const generateChords = ({
       hasNoteBelow: false,
     };
 
-    // to spread random top notes more randmly and evenly 
-    // between more or less C1 and C3
-    // octaveIndex will be adjusted to a given range in Notation.tsx
-    randomTop.octaveIndex = Math.floor(Math.random() * 4) - 1;
+    // to spread random top notes more randmly and evenly
+    // all over c - c4
+    // (reaching one octave below and above c1 - c3)
+    // octaveIndex will then be adjusted to a given range in Notation.tsx
+    //
+    // ... an ugly solution. Should be fixed later.
+    // Maybe so that randomTop has no octaveIndex, it could
+    // be just randomTopName. The random octaveIndex then  
+    // could be later calculated acoording to top note range
+    randomTop.octaveIndex = Math.floor(Math.random() * 6) - 2;
 
     chords.push({
       key,

@@ -22,6 +22,9 @@ import ClefSelector from '../../misc/ClefSelector';
 const PlaySettings = () => {
   const { showRandomTopNote, playerClef } = useContext(ChordsContext).state;
 
+  // number of random top notes
+  const nr = randomTopNotes.length;
+
   return (
     <div className={styles.settings}>
       <h3>Random top note</h3>
@@ -35,9 +38,10 @@ const PlaySettings = () => {
           dispatchActionType='SET_RANDOM_TOP_NOTE_MIN'
           payloadKey='randomTopNoteMin'
           options={
+            // 7 represents an octave, 14 two octaves
             playerClef === 'treble'
-              ? randomTopNotes.slice(5, -7)
-              : randomTopNotes.slice(0, -(7 + 5))
+              ? randomTopNotes.slice(7 + 5, -7)
+              : randomTopNotes.slice(0, -(14 + 5))
           }
           disabled={!showRandomTopNote}
         />
@@ -45,7 +49,12 @@ const PlaySettings = () => {
         <Select<string>
           dispatchActionType='SET_RANDOM_TOP_NOTE_MAX'
           payloadKey='randomTopNoteMax'
-          options={playerClef === 'treble' ? randomTopNotes.slice(7 + 5): randomTopNotes.slice(7, -5)}
+          options={
+            // 7 represents an octave, 14 two octaves
+            playerClef === 'treble'
+              ? randomTopNotes.slice(14 + 5)
+              : randomTopNotes.slice(7, -(7 + 5))
+          }
           disabled={!showRandomTopNote}
         />
         <span className={styles.space} />

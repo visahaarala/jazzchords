@@ -16,8 +16,8 @@ const LedgerLinesPath = ({
 }) => {
   const noteIndices = notes.map((note) => noteToWhiteKeyIndex(note));
 
-  const lowestLedgerIndexAboveStaff = clef === 'treble' ? 12 : 7;
-  const highestLedgerIndexBelowStaff = clef === 'treble' ? 0 : -5;
+  const lowestLedgerIndexAboveStaff = clef === 'treble' ? 12 : 0;
+  const highestLedgerIndexBelowStaff = clef === 'treble' ? 0 : -12;
 
   const ledgerLines = (): { index: number; hasNoteBelow?: boolean }[] => {
     // add all notes for hasNoteBelow information
@@ -61,7 +61,10 @@ const LedgerLinesPath = ({
       cx += noteBelowOffsetX;
     }
     const halfWidth = 10;
-    if (index <= highestLedgerIndexBelowStaff || index >= lowestLedgerIndexAboveStaff) {
+    if (
+      index <= highestLedgerIndexBelowStaff ||
+      index >= lowestLedgerIndexAboveStaff
+    ) {
       return (
         <path
           key={index}

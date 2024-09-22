@@ -29,10 +29,9 @@ const initialState = (): ProgramState => {
     accidentalsMax: '7',
     showNextChord: true,
     showRandomTopNote: false,
-    randomTopNoteMin: 'G1',
-    randomTopNoteMax: 'G2',
+    randomTopNoteMin: 'g1',
+    randomTopNoteMax: 'g2',
     playerClef: 'treble',
-    notesClef: 'treble',
     chordIndex: 0,
     beatsPerChord: '4',
     beatsPerMinute: '86',
@@ -42,8 +41,9 @@ const initialState = (): ProgramState => {
     viewPlaySettings: false,
 
     // notation
-    notationKey: { base: 'C', accidental: undefined },
-    notationExtension: { isMinor: false, segments: ['7'] },
+    notesClef: 'treble',
+    notesKey: { base: 'C', accidental: undefined },
+    notesExtension: { isMinor: false, segments: ['7'] },
 
     // player: generate these below
     majorsShuffled: { fresh: [], used: [] },
@@ -262,9 +262,12 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
     case 'SET_PLAYER_CLEF': {
       // fix randomTopNotes
       const clef = action.payload!.playerClef!;
-      const offset = clef ==='treble' ? +5 : -5
-      const newMinIndex = randomTopNotes.indexOf(state.randomTopNoteMin) + offset;
-      const newMaxIndex = randomTopNotes.indexOf(state.randomTopNoteMax) + offset;
+      // 7 represents an octave, 7+5 is an octave and a sixth
+      const offset = clef === 'treble' ? +(7 + 5) : -(7 + 5);
+      const newMinIndex =
+        randomTopNotes.indexOf(state.randomTopNoteMin) + offset;
+      const newMaxIndex =
+        randomTopNotes.indexOf(state.randomTopNoteMax) + offset;
       const newMinNote = randomTopNotes[newMinIndex];
       const newMaxNote = randomTopNotes[newMaxIndex];
 
@@ -275,23 +278,17 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
         playerClef: action.payload!.playerClef!,
       };
     }
-    case 'SET_NOTES_CLEF': {
-      return {
-        ...state,
-        notesClef: action.payload!.notesClef!,
-      };
-    }
 
     //
     // NOTATION
-    case 'SET_NOTATION_KEY': {
+    case 'SET_NOTES_KEY': {
       // Check that Key exists in minor/major
       // and change extension if necessary
-      const notationKey = action.payload!.notationKey!;
+      const notationKey = action.payload!.notesKey!;
       const keyString =
         notationKey.base +
         (notationKey.accidental ? notationKey.accidental : '');
-      const extension = state.notationExtension;
+      const extension = state.notesExtension;
       const majorOrMinor: MajorOrMinor = extension.isMinor ? 'minor' : 'major';
       let keyExists = false;
       for (const accidentalLevel of Object.keys(keysOrganized)) {
@@ -303,17 +300,17 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
       }
       return {
         ...state,
-        notationKey,
-        notationExtension: keyExists
+        notesKey: notationKey,
+        notesExtension: keyExists
           ? extension
           : { isMinor: !extension.isMinor, segments: [] },
       };
     }
-    case 'SET_NOTATION_EXTENSION': {
+    case 'SET_NOTES_EXTENSION': {
       // Check that Key exists in minor/major
       // and change Key enharmonically if necessary
-      const notationExtension = action.payload!.notationExtension!;
-      const key = state.notationKey;
+      const notationExtension = action.payload!.notesExtension!;
+      const key = state.notesKey;
       const keyString = key.base + (key.accidental ? key.accidental : '');
       const majorOrMinor: MajorOrMinor = notationExtension.isMinor
         ? 'minor'
@@ -328,8 +325,14 @@ const reducer = (state: ProgramState, action: ReducerAction): ProgramState => {
       }
       return {
         ...state,
-        notationKey: keyExists ? key : changeEnharmonically(key),
-        notationExtension,
+        notesKey: keyExists ? key : changeEnharmonically(key),
+        notesExtension: notationExtension,
+      };
+    }
+    case 'SET_NOTES_CLEF': {
+      return {
+        ...state,
+        notesClef: action.payload!.notesClef!,
       };
     }
 
