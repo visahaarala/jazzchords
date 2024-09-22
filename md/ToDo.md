@@ -22,6 +22,15 @@ Elementary Audio
 
 Use of that term whiteKeyIndex is not coherent throughout the app. Sometimes it means the index of the array ['C', 'D', 'E', ...], and sometimes it means the index of whitekeys in the whole keyboard. And where is the zero value, at middle C. Have to clarify this at some point.
 
+### randomTop note octaveNumber
+
+.. fix randomizing.
+
+- Calculate octave not when creating the note but when displaying?
+- If octave not set, calculate a new randomTop and update Chord details?
+- If clef/range changed, reset all randomnote information?
+- Min range set to a 7th instead of an octave?
+
 ## update README.MD
 
 ... before publishing, check the texts are up to date
