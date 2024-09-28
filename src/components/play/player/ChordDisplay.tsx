@@ -23,8 +23,9 @@ const ChordDisplay = ({
 
   const thisChordIndex = chordIndex + indexOffset;
 
-  if (showRandomTopNote) {
-    let topNote = chords[thisChordIndex].randomTopNote;
+  let topNote = chords[thisChordIndex].randomTopNote;
+
+  if (topNote && showRandomTopNote) {
     if (playerClef === 'bass') {
       topNote = { ...topNote, octaveIndex: topNote.octaveIndex - 1 };
     }
