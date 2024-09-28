@@ -22,9 +22,6 @@ import ClefSelector from '../../misc/ClefSelector';
 const PlaySettings = () => {
   const { showRandomTopNote, playerClef } = useContext(ChordsContext).state;
 
-  // number of random top notes
-  const nr = randomTopNotes.length;
-
   return (
     <div className={styles.settings}>
       <h3>Random top note</h3>
