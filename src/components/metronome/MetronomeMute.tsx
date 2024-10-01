@@ -23,6 +23,7 @@ const MetronomeMute = () => {
       onClick={setIsMuted.bind(null, !isMuted)}
       onKeyDown={keyDownHandler}
       tabIndex={isMobile ? -1 : 0}
+      aria-label='metronomeMute'
     >
       <MuteIcon isOn={!isMuted} />
     </div>

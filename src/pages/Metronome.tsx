@@ -107,6 +107,7 @@ const Metronome = () => {
               onChange={(e) => rangeHandler(e.target.value)}
               min={min}
               max={max}
+              aria-label='tempo slider'
             />
           </div>
         ) : (
@@ -118,24 +119,28 @@ const Metronome = () => {
               <div
                 onClick={tempoDown.bind(null, 5)}
                 className={`button ${styles.minusfive}`}
+                aria-label='minus five'
               >
                 -5
               </div>
               <div
                 onClick={tempoDown.bind(null, 1)}
                 className={`button ${styles.minusone}`}
+                aria-label='minus one'
               >
                 -1
               </div>
               <div
                 onClick={tempoUp.bind(null, 1)}
                 className={`button ${styles.plusone}`}
+                aria-label='plus one'
               >
                 +1
               </div>
               <div
                 onClick={tempoUp.bind(null, 5)}
                 className={`button ${styles.plusfive}`}
+                aria-label='plus five'
               >
                 +5
               </div>
@@ -157,6 +162,7 @@ const Metronome = () => {
             onKeyDown={(e) => keyDownHandler(e)}
             className={`button ${styles.start}`}
             tabIndex={isMobile ? -1 : 0}
+            aria-label='start'
           >
             {play ? 'Stop' : 'Start'}
           </div>
