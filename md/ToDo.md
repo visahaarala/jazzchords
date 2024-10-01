@@ -2,11 +2,10 @@
 
 ## now
 
-### progressive app installation
+### progressive app installation instructions
 
-info dropdown (detect OS, be specific), pure CSS??
-
-browser agnostic [PWA install button](https://plainenglish.io/blog/create-a-browser-agnostic-pwa-install-button), or just browser-specific instructions ??
+- iPhone done
+- android etc. not yet..
 
 ### change play icon to C7 or some chord
 
