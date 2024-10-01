@@ -50,23 +50,6 @@ const ClefSelector = ({
       <div className={styles.selector__clef}>
         <TrebleClefIcon hide={!(clef === 'treble')} height={2} />
       </div>
-
-      {/* <div
-        className={`${styles.clef} ${disabled && styles.clefs__disabled} ${
-          useBassClef && styles.clefs__hide
-        }`}
-      >
-      </div> */}
-      {/* <div
-        className={`${styles.clef} ${disabled && styles.clefs__disabled} ${
-          !useBassClef && styles.clefs__hide
-        }`}
-        onClick={toggle}
-        onKeyDown={(e) => keyHandler(e)}
-        tabIndex={disabled ? -1 : 0}
-      >
-        <BassClefIcon height={size} scaleX={1} />
-      </div> */}
     </div>
   );
 };

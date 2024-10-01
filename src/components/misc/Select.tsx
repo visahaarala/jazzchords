@@ -40,6 +40,7 @@ const Select = <T,>({
       onChange={(e) => changeHandler(e.target.value)}
       className={`button ${styles.select} ${disabled && styles.disabled}`}
       disabled={disabled ? true : false}
+      aria-label={payloadKey}
     >
       {options.map((option) => {
         const optionString = optionToString
