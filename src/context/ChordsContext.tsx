@@ -38,7 +38,7 @@ const initialState = (): ProgramState => {
     beat: 0,
     keyLocked: false,
     extensionLocked: false,
-    viewPlaySettings: false,
+    viewPlaySettings: true,
 
     // notation
     notesClef: 'treble',
