@@ -2,13 +2,11 @@
 
 [https://jazzchords.singingtrumpet.com/](https://jazzchords.singingtrumpet.com/)
 
-A tool for practicing random chords. Designed primarily for use with a mobile phone (iPhone XS as a reference). Works both portrait & landscape.
+A tool for practicing random chords.
 
-This program is a Progressive Web App. It should be installable on the home screen of a mobile device.
+Designed primarily for a mobile phone (iPhone XS as a reference). On a desktop use (`shift`-)`tab`, `space`, `esc` and `arrow` keys to navigate. Tested browsers (on Mac Os X): Chrome, Safari, Opera and Firefox.
 
-On a desktop use (`shift`-)`tab`, `space`, `esc` and `arrow` keys to navigate.
-
-Tested browsers (on Mac Os X): Chrome, Safari, Opera and Firefox.
+This program is a [progressive web app](https://en.wikipedia.org/wiki/Progressive_web_app) that can be installed on mobile devices.
 
 Written with React, Typescript & SCSS using [Vite](https://vitejs.dev). Deployed at [vercel.com](vercel.com).
 
