@@ -71,7 +71,6 @@ const Notation = ({
       <svg
         xmlns='http://www.w3.org/2000/svg'
         viewBox={oneNote ? '10 -55 80 110' : '10 -80 125 140'}
-        style={{ backgroundColor: 'orangered' }}
       >
         <StaffLinesPath x={10} yList={yListStaff} h={oneNote ? 90 : 125} />
         {clef === 'bass' && <BassClefPath />}
