@@ -3,59 +3,30 @@ import MetronomeIcon from '../components/svg/icons/MetronomeIcon';
 import PlayIcon from '../components/svg/icons/PlayIcon';
 import LockIcon from '../components/svg/icons/LockIcon';
 import NotesIcon from '../components/svg/icons/NotesIcon';
-import { useState } from 'react';
+import ShareIcon from '../components/svg/icons/ShareIcon';
 
 const isMobile = matchMedia('(pointer:coarse)').matches;
 
 const isStandaone = matchMedia('(display-mode: standalone)').matches;
 
 const Info = () => {
-  const [showDropDown, setShowDropDown] = useState(false);
+  const isIphone = navigator.userAgent.includes('iPhone');
 
   return (
     <div className={styles.info}>
       {isMobile && !isStandaone && (
-        <div className={styles.pwa}>
-          <div className={styles.pwa__header}>
-            <div className={styles.pwa__header__description}>
-              This{' '}
-              {/* <a href='https://en.wikipedia.org/wiki/Progressive_web_app'>
-              </a>{' '} */}
-              progressive web app can be installed on home screen for easier
-              use.
-              <br />
-            </div>
-            <div className={styles.pwa__header__toggle}>
-              <input
-                type='checkbox'
-                checked={showDropDown}
-                onChange={setShowDropDown.bind(null, !showDropDown)}
-              />
-              <span />
-            </div>
-          </div>
-          {/* {showDropDown && ( */}
-          <div
-            className={`${styles.pwa__dropdown} ${
-              showDropDown && styles.pwa__dropdown__visible
-            }`}
-          >
-            <div>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Perferendis quos pariatur cupiditate error cumque molestiae sunt.
-              Voluptas quaerat obcaecati pariatur saepe, eos quidem. Architecto,
-              officiis molestiae. Alias voluptas vero voluptatibus corrupti nam
-              commodi illo vel id, dignissimos ad quasi, sit voluptatem
-              nesciunt, dolor enim ullam perferendis blanditiis. Natus quasi est
-              animi totam quos. Reiciendis officiis nulla ut perspiciatis
-              voluptas dolore numquam autem quos commodi, sunt odit minus
-              incidunt, excepturi ipsa aperiam quaerat consequatur! In fugit
-              corporis ex ipsum beatae repellat magnam eum quibusdam suscipit
-              sit consequatur eius dignissimos est labore eaque, sed quidem at
-              nihil voluptates illo omnis? Doloremque, explicabo?
-            </div>
-          </div>
-          {/* )} */}
+        <div>
+          This progressive web app can be installed for easier use.
+          {isIphone && (
+            <>
+              {' '}
+              Just tap
+              <span className={styles.icon__share}>
+                <ShareIcon />
+              </span>
+              and then "Add to Home Screen".
+            </>
+          )}
         </div>
       )}
 

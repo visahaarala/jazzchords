@@ -10,6 +10,14 @@ browser agnostic [PWA install button](https://plainenglish.io/blog/create-a-brow
 
 ### change play icon to C7 or some chord
 
+### mobile or not ?
+
+Use Navigator.maxTouchPoints to detect if the user's device has a touchscreen
+
+Fix previous pointer: coarse implementations?
+
+... and move isMobile to a global exported isMobile variable
+
 ## later
 
 ### metronome UI
