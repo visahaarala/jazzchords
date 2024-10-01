@@ -27,7 +27,7 @@ const Notation = ({
   const oneNote = notes.length === 1;
   const yListStaff = [-20, -10, 0, 10, 20];
   const noteBelowOffsetX = 12;
-  const notesCx = oneNote ? 75 : 108;
+  const notesCx = oneNote ? 75 : 118;
 
   // treble clef C below staff
   // same note as bass clef C above staff
@@ -70,9 +70,9 @@ const Notation = ({
     <div style={{ width: width + 'rem' }}>
       <svg
         xmlns='http://www.w3.org/2000/svg'
-        viewBox={oneNote ? '10 -55 80 110' : '10 -80 125 140'}
+        viewBox={oneNote ? '10 -55 80 110' : '10 -80 140 140'}
       >
-        <StaffLinesPath x={10} yList={yListStaff} h={oneNote ? 90 : 125} />
+        <StaffLinesPath x={10} yList={yListStaff} h={oneNote ? 90 : 140} />
         {clef === 'bass' && <BassClefPath />}
         {clef === 'treble' && <TrebleClefPath />}
         <NotesPath
