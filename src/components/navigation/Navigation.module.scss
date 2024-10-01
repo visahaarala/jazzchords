@@ -9,12 +9,12 @@
   }
 
   &__link {
-    $size: 2.2rem;
+    $size: 2rem;
     width: $size;
     height: $size;
 
     svg {
-      // padding: 0.15rem;
+      // background-color: orangered;
     }
 
     border-radius: var(--border-radius);
@@ -29,7 +29,8 @@
           content: '';
           display: block;
           height: 0.1rem;
-          width: 60%;
+          margin-top: 0.3rem;
+          width: 70%;
           background-color: var(--color-link);
         }
       }

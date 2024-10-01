@@ -1,7 +1,7 @@
 const NotesIcon = () => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    viewBox='2 5 90 90'
+    viewBox='2 3 90 90'
     //
     // style={{ backgroundColor: 'orangered' }}
   >
