@@ -35,7 +35,6 @@ const MetronomeLight = () => {
       onClick={flashHandler}
       onKeyDown={keyDownHandler}
       tabIndex={isMobile ? -1 : 0}
-      aria-label='metronomeLight'
     >
       <LightIcon isOn={flashIsOn} />
     </div>
