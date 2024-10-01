@@ -3,8 +3,111 @@
     line-height: 1.6;
     font-size: 1rem;
 
-    & + div { // to ignore first one
+    & + div {
+      // to ignore first one
       margin-top: 1.4rem;
+    }
+  }
+
+  .pwa {
+    &__header {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      &__description {
+        flex: 1;
+      }
+      &__toggle {
+        line-height: 0;
+        height: 2.5rem;
+        width: 2.5rem;
+        position: relative;
+        input {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          opacity: 0;
+        }
+        span {
+          position: absolute;
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+          border: 1px solid var(--color-gray);
+          border-radius: 50%;
+          &::before,
+          &::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            content: '';
+            width: 50%;
+            height: 0.15rem;
+            background-color: var(--color-white);
+            background-color: var(--color-gray-light);
+            transition: all 0.5s;
+          }
+          &::before {
+            transform: translateX(-50%);
+          }
+          &::after {
+            transform: translateX(-50%) rotate(90deg);
+          }
+        }
+        input:checked ~ span::before {
+          transform: translateX(-50%) rotate(90deg);
+          opacity: 0;
+        }
+        input:checked ~ span::after {
+          transform: translateX(-50%) rotate(180deg);
+        }
+      }
+    }
+
+    &__dropdown {
+      transition: all 1s ease;
+      overflow: hidden;
+      border-radius: var(--border-radius);
+      border: var(--border-container);
+      border-color: var(--color-black);
+      height: 0;
+      z-index: 2;
+
+      &__visible {
+        height: auto;
+
+        border-color: var(--color-gray-dark);
+        // new css "calc-size" functionality
+        // for smooth transition
+        height: calc-size(auto, size);
+      }
+
+      & > div {
+        padding: 1rem;
+        z-index: 0;
+      }
+    }
+  }
+
+  .icon {
+    &__header {
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+      padding: 0;
+      margin-right: 0.6rem;
+      transform: translateY(0.3rem);
+    }
+
+    &__text {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      margin-left: 0.4rem;
+      margin-right: 0.4rem;
+      transform: translateY(0.15rem);
     }
   }
 

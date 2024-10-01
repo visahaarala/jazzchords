@@ -2,13 +2,15 @@
 
 ## now
 
-## later
-
 ### progressive app installation
 
 info dropdown (detect OS, be specific), pure CSS??
 
 browser agnostic [PWA install button](https://plainenglish.io/blog/create-a-browser-agnostic-pwa-install-button), or just browser-specific instructions ??
+
+### change play icon to C7 or some chord
+
+## later
 
 ### metronome UI
 
