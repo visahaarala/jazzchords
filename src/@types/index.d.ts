@@ -90,9 +90,10 @@ export type ExtensionText =
   | 'sus'
   | 'maj';
 
-export type Accidental = 'b' | '#' | undefined;
+// export type Accidental = 'b' | '#' | undefined;
+export type Accidental = 'b' | '#';
 
-export type Key = { base: Alphabet; accidental: Accidental };
+export type Key = { base: Alphabet; accidental?: Accidental };
 
 export type Note = {
   noteName: string;

@@ -4,6 +4,7 @@ import PlayIcon from '../components/svg/icons/PlayIcon';
 import LockIcon from '../components/svg/icons/LockIcon';
 import NotesIcon from '../components/svg/icons/NotesIcon';
 import ShareIcon from '../components/svg/icons/ShareIcon';
+import C7 from '../components/svg/icons/C7';
 
 const isMobile = matchMedia('(pointer:coarse)').matches;
 
@@ -39,7 +40,7 @@ const Info = () => {
 
       <div>
         <span className={styles.icon__header}>
-          <PlayIcon />
+          <C7 />
         </span>
         Practice randomly generated chords. <br />
         Use locks

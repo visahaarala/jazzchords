@@ -1,5 +1,10 @@
 const NotesIcon = () => (
-  <svg xmlns='http://www.w3.org/2000/svg' viewBox='5 5 90 90'>
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    viewBox='2 5 90 90'
+    //
+    // style={{ backgroundColor: 'orangered' }}
+  >
     <ellipse cx={20} cy={80} rx={15} ry={12} fill='currentColor' />
     <ellipse cx={70} cy={65} rx={15} ry={12} fill='currentColor' />
     <path

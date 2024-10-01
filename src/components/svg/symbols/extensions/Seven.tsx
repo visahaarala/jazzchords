@@ -1,11 +1,16 @@
-const Seven = ({ height }: { height?: number }) => {
+const Seven = ({
+  height,
+  strokeWidth,
+}: {
+  height?: number;
+  strokeWidth?: number;
+}) => {
   const xmin = 1.5;
   const ymin = 1.5;
 
   const svgWidth = 49.7;
   const svgHeight = 70;
-  const strokeWidth = svgHeight / 10;
-
+  const svgStrokeWidth = strokeWidth ? strokeWidth : svgHeight / 10;
 
   const divWidth = height ? `${height * (svgWidth / svgHeight)}em` : undefined;
 
@@ -21,7 +26,7 @@ const Seven = ({ height }: { height?: number }) => {
       <path
         d='M5 5 L 50 5 C 35 20 20 40 15 70'
         stroke='currentColor'
-        strokeWidth={strokeWidth}
+        strokeWidth={svgStrokeWidth}
         strokeLinecap='square'
         fill='none'
       />

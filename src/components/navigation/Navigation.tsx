@@ -3,8 +3,8 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { KeyboardEvent } from 'react';
 import InfoIcon from '../svg/icons/InfoIcon';
 import MetronomeIcon from '../svg/icons/MetronomeIcon';
-import PlayIcon from '../svg/icons/PlayIcon';
 import NotesIcon from '../svg/icons/NotesIcon';
+import C7 from '../svg/icons/C7';
 
 const Navigation = () => {
   const navigate = useNavigate();
@@ -17,12 +17,10 @@ const Navigation = () => {
     }
   };
 
-  type NavIcon = { [key: string]: JSX.Element, };
-
-  const navLinks: NavIcon = {
+  const navLinks: { [key: string]: JSX.Element } = {
     info: <InfoIcon />,
     notes: <NotesIcon />,
-    play: <PlayIcon />,
+    play: <C7 />,
     metronome: <MetronomeIcon />,
   };
 

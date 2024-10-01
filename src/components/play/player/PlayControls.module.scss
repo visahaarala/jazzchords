@@ -1,9 +1,8 @@
 .controls {
-  display: grid;
   gap: var(--gap-small);
 
   @media (pointer: fine) or (orientation: portrait) {
-    // min-height: 8rem;
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     & > div {
       &:last-child {
@@ -14,9 +13,10 @@
   }
 
   @media (pointer: coarse) and (orientation: landscape) {
+    display: flex;
+    flex-direction: column-reverse;
     margin-bottom: auto;
     width: 8rem;
-    gap: var(--gap-medium);
     margin-left: 4vw;
   }
 }
