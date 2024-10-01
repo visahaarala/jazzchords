@@ -90,8 +90,7 @@ export type ExtensionText =
   | 'sus'
   | 'maj';
 
-// export type Accidental = 'b' | '#' | undefined;
-export type Accidental = 'b' | '#';
+export type Accidental = 'b' | '#' | undefined;
 
 export type Key = { base: Alphabet; accidental?: Accidental };
 

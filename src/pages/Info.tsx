@@ -1,6 +1,5 @@
 import styles from './Info.module.scss';
 import MetronomeIcon from '../components/svg/icons/MetronomeIcon';
-import PlayIcon from '../components/svg/icons/PlayIcon';
 import LockIcon from '../components/svg/icons/LockIcon';
 import NotesIcon from '../components/svg/icons/NotesIcon';
 import ShareIcon from '../components/svg/icons/ShareIcon';
