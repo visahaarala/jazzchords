@@ -4,8 +4,6 @@ import { MetronomeContext } from '../../context/MetronomeContext';
 import { flashTempoLimit } from '../../pages/Metronome';
 
 const MetronomeLight = () => {
-  const isMobile = matchMedia('(pointer:coarse)').matches;
-
   const ctx = useContext(MetronomeContext);
   const [flashIsOn, setFlashIsOn] = ctx.flashState;
   const [tempo] = ctx.tempoState;
@@ -34,7 +32,7 @@ const MetronomeLight = () => {
       className={`iconButton ${!flashIsOn && 'iconButton__disabled'}`}
       onClick={flashHandler}
       onKeyDown={keyDownHandler}
-      tabIndex={isMobile ? -1 : 0}
+      tabIndex={0}
     >
       <LightIcon isOn={flashIsOn} />
     </div>

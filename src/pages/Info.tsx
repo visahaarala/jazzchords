@@ -4,8 +4,7 @@ import LockIcon from '../components/svg/icons/LockIcon';
 import NotesIcon from '../components/svg/icons/NotesIcon';
 import ShareIcon from '../components/svg/icons/ShareIcon';
 import C7 from '../components/svg/icons/C7';
-
-const isMobile = matchMedia('(pointer:coarse)').matches;
+import { isMobile } from '../App';
 
 const isStandaone = matchMedia('(display-mode: standalone)').matches;
 

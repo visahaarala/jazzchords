@@ -3,8 +3,6 @@ import MuteIcon from '../svg/icons/MuteIcon';
 import { MetronomeContext } from '../../context/MetronomeContext';
 
 const MetronomeMute = () => {
-  const isMobile = matchMedia('(pointer:coarse)').matches;
-
   const ctx = useContext(MetronomeContext);
   const [isMuted, setIsMuted] = ctx.mutedState;
 
@@ -22,7 +20,7 @@ const MetronomeMute = () => {
       className={`iconButton ${isMuted && 'iconButton__disabled'}`}
       onClick={setIsMuted.bind(null, !isMuted)}
       onKeyDown={keyDownHandler}
-      tabIndex={isMobile ? -1 : 0}
+      tabIndex={0}
     >
       <MuteIcon isOn={!isMuted} />
     </div>

@@ -5,6 +5,7 @@ import { useMetronome } from '../hooks/useMetronome';
 import { MetronomeContext } from '../context/MetronomeContext';
 import MetronomeMute from '../components/metronome/MetronomeMute';
 import MetronomeLight from '../components/metronome/MetronomeLight';
+import { isMobile } from '../App';
 
 const min = 10;
 const max = 600;
@@ -13,8 +14,6 @@ const max = 600;
 export const flashTempoLimit = 180;
 
 const Metronome = () => {
-  const isMobile = matchMedia('(pointer:coarse)').matches;
-
   const ctx = useContext(MetronomeContext);
   const [tempo, setTempo] = ctx.tempoState;
   const [isMuted] = ctx.mutedState;

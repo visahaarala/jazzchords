@@ -12,6 +12,8 @@ import Metronome from './pages/Metronome';
 import Notes from './pages/Notes';
 import PlaySettings from './components/play/settings/PlaySettings';
 
+export const isMobile = matchMedia('(pointer:coarse)').matches;
+
 const router = createBrowserRouter([
   {
     path: '/',

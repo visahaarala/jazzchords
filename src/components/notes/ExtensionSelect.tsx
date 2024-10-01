@@ -68,14 +68,14 @@ const ExtensionSelect = () => {
     }
   };
 
-  minors.sort(sortFn.bind(null, true));
-  majors.sort(sortFn.bind(null, false));
+  minors.sort(sortFn.bind(null, false));
+  majors.sort(sortFn.bind(null, true));
 
   return (
     <Select
       dispatchActionType='SET_NOTES_EXTENSION'
       payloadKey='notesExtension'
-      options={[...minors, ...majors]}
+      options={[...majors, ...minors]}
       optionToString={extensionToString}
       stringToOption={stringToExtension}
     />

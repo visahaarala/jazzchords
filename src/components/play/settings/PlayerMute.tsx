@@ -3,8 +3,6 @@ import { ChordsContext } from '../../../context/ChordsContext';
 import MuteIcon from '../../svg/icons/MuteIcon';
 
 const PlayerMute = () => {
-  const isMobile = matchMedia('(pointer:coarse)').matches;
-
   const { state, dispatch } = useContext(ChordsContext);
   const isMuted = state.isMuted;
 
@@ -26,7 +24,7 @@ const PlayerMute = () => {
       className={`iconButton ${isMuted && 'iconButton__disabled'}`}
       onClick={setIsMuted.bind(null, !isMuted)}
       onKeyDown={keyDownHandler}
-      tabIndex={isMobile ? -1 : 0}
+      tabIndex={0}
     >
       <MuteIcon isOn={!isMuted} />
     </div>

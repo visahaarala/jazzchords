@@ -4,18 +4,8 @@
 
 ### progressive app installation instructions
 
-- iPhone done
-- android etc. not yet..
-
-### change play icon to C7 or some chord
-
-### mobile or not ?
-
-Use Navigator.maxTouchPoints to detect if the user's device has a touchscreen
-
-Fix previous pointer: coarse implementations?
-
-... and move isMobile to a global exported isMobile variable
+- iPhone DONE
+- TODO: android etc.
 
 ## later
 
