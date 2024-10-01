@@ -11,7 +11,7 @@ const Navigation = () => {
   const { pathname } = useLocation();
 
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>, target: string) => {
-    if (e.code === 'Space') {
+    if (e.code === 'Space' || e.code === 'Enter') {
       e.preventDefault();
       navigate(target);
     }
