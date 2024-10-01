@@ -2,16 +2,16 @@
 
 ## now
 
+### metronome UI
+
+..might not be so good.. Maybe a range slider that works as a nudge tool, starting from center.. further right/left means faster changes? .. have to figure out something new! something to do with PointerEvent
+
 ### progressive app installation instructions
 
 - iPhone DONE
 - TODO: android etc.
 
 ## later
-
-### metronome UI
-
-..might not be so good.. Maybe a range slider that works as a nudge tool, starting from center.. further right/left means faster changes? .. have to figure out something new! something to do with PointerEvent
 
 ### make chord playable
 
