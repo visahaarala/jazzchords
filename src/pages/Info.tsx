@@ -16,7 +16,7 @@ const Info = () => {
     <div className={styles.info}>
       {isMobile && !isStandaone && (
         <div>
-          This progressive web app can be installed for easier use.
+          This progressive web app can be installed.
           {isIphone && (
             <>
               {' '}
