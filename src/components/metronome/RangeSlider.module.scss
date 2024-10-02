@@ -1,6 +1,5 @@
 .range {
   width: 90%;
-  // height: 3rem;
   position: relative;
 
   .input {
@@ -29,7 +28,6 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      // transition: left 0.01s linear;
       transform: translateY(-50%) translateX(-50%);
     }
 
@@ -37,10 +35,6 @@
       // this wider area is for taking the pointer (finger)
       width: 4rem;
       height: 3rem;
-
-      // /// remove these when ready
-      // background-color: rgba(100, 100, 100, 0.3);
-      // border: 1px solid rgba(255, 255, 255, 0.2);
 
       &::after {
         z-index: 1;
