@@ -18,14 +18,11 @@ const RangeSlider = ({
   tempoDown: (t: number) => void;
   isTouchingSliderState: [boolean, Dispatch<SetStateAction<boolean>>];
 }) => {
-  const [style, setStyle] = useState<CSSProperties>({});
+  const [ballStyle, setBallStyle] = useState<CSSProperties>({});
   const [startCenterX, setStartCenterX] = useState<number>();
   const [isTouchingSlider, setIsTouchingSlider] = isTouchingSliderState;
   const [afId, setAfId] = useState(0);
   const [lastTempoChangeTime, setLastTempoChangeTime] = useState<number>(0);
-  // const [tempoInfo, setTempoInfo] = useState('');
-  // const [reqTimeDiff, setReqTimeDiff] = useState(0);
-  // const [changeBy, setChangeBy] = useState(0);
 
   const sliderPctg = useRef(50);
 
@@ -74,27 +71,23 @@ const RangeSlider = ({
 
   useEffect(() => {
     // VISUAL CHANGES
-    // setTempoInfo('sliderPctg: ' + sliderPctg.current);
     if (isTouchingSlider) {
-      setStyle({ transition: 'left 0s', left: `${sliderPctg.current}%` });
+      setBallStyle({ transition: 'left 0s', left: `${sliderPctg.current}%` });
     } else {
-      setStyle({ transition: 'left .3s', left: '50%' });
+      setBallStyle({ transition: 'left .3s', left: '50%' });
     }
   }, [isTouchingSlider, sliderPctg.current]);
 
   useEffect(() => {
+    // TEMPO CHANGES
     const pctgOffset = sliderPctg.current - 50;
     const pctgOffsetAbs = Math.abs(pctgOffset);
     const requiredTimeDifference = Math.pow(1 / pctgOffsetAbs, 2) * 20000;
     const changeBy = 1 + Math.floor(Math.pow(pctgOffsetAbs / 22, 2));
-    // setReqTimeDiff(requiredTimeDifference);
-    // setChangeBy(changeBy);
 
     const now = Date.now();
     const timeDifference = now - lastTempoChangeTime;
-
     if (timeDifference > requiredTimeDifference) {
-      // TEMPO CHANGES
       if (pctgOffset > 0) {
         tempoUp(changeBy);
       } else {
@@ -106,18 +99,22 @@ const RangeSlider = ({
 
   return (
     <div className={styles.range}>
-      {/* <p>tempoInfo: {tempoInfo}</p>
-      <p>startCenterX: {startCenterX}</p>
-      <p>sliderPercentage: {sliderPctg.current}</p>
-      <p>AnimationFrame: {afId}</p>
-      <p>required time diff: {reqTimeDiff}</p>
-      <p>changeBy: {changeBy}</p> */}
-
       <div id='tempoRail' className={styles.input}>
+        <div
+          className={`${styles.input__numbers} ${
+            isTouchingSlider && styles['input__numbers--hide']
+          }`}
+        >
+          <span onClick={() => tempoDown(10)}>-10</span>
+          <span onClick={() => tempoDown(1)}>-1</span>
+          <span />
+          <span onClick={() => tempoUp(1)}>+1</span>
+          <span onClick={() => tempoUp(10)}>+10</span>
+        </div>
         <div
           id='tempoBall'
           className={styles.input__ball}
-          style={style}
+          style={ballStyle}
           onPointerOut={ballCancelHandler}
           onPointerMove={(e) => moveHandler(e)}
         />

@@ -2,8 +2,9 @@ import { KeyboardEvent, useContext } from 'react';
 import LightIcon from '../svg/icons/LightIcon';
 import { MetronomeContext } from '../../context/MetronomeContext';
 import { flashTempoLimit } from '../../pages/Metronome';
+import styles from './MetronomeLight.module.scss';
 
-const MetronomeLight = () => {
+const MetronomeLight = ({ hide }: { hide: boolean }) => {
   const ctx = useContext(MetronomeContext);
   const [flashIsOn, setFlashIsOn] = ctx.flashState;
   const [tempo] = ctx.tempoState;
@@ -29,7 +30,9 @@ const MetronomeLight = () => {
 
   return (
     <div
-      className={`iconButton ${!flashIsOn && 'iconButton__disabled'}`}
+      className={`iconButton ${!flashIsOn && 'iconButton__disabled'} ${
+        styles.metronomeLight
+      } ${hide && styles['metronomeLight--hide']}`}
       onClick={flashHandler}
       onKeyDown={keyDownHandler}
       tabIndex={0}

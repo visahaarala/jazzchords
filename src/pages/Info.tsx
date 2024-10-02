@@ -9,14 +9,16 @@ import { isMobile } from '../App';
 const isStandaone = matchMedia('(display-mode: standalone)').matches;
 
 const Info = () => {
-  const isIphone = navigator.userAgent.includes('iPhone');
+  const ua = navigator.userAgent;
+  const isIphone = ua.includes('iPhone');
+  const isIpad = ua.includes('iPad') || (ua.includes('Macintosh') && isMobile);
 
   return (
     <div className={styles.info}>
       {isMobile && !isStandaone && (
         <div>
           This progressive web app can be installed.
-          {isIphone && (
+          {(isIphone || isIpad) && (
             <>
               {' '}
               Just tap
@@ -28,7 +30,6 @@ const Info = () => {
           )}
         </div>
       )}
-
       <div>
         <span className={styles.icon__header}>
           <NotesIcon />

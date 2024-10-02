@@ -44,8 +44,11 @@
     gap: 1.5rem;
 
     @media (pointer: coarse) and (orientation: landscape) {
-      flex-direction: row-reverse;
       flex-direction: column-reverse;
+      width: 50%;
+      gap: 2rem;
+      // margin-bottom: 0.6rem;
+      // margin-right: 1rem;
     }
 
     .text {
@@ -60,7 +63,7 @@
       }
     }
 
-    .grid {
+    .toggles {
       width: 100%;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -71,26 +74,12 @@
       }
 
       @media (pointer: coarse) and (orientation: landscape) {
-        width: 100%;
-        max-height: 16rem;
+        display: flex;
+        justify-content: end;
         gap: var(--gap-medium) var(--gap-small);
 
-        grid-template-columns: repeat(3, 1fr);
-        margin-right: 2.5rem;
-
-        .light {
-          grid-row: 1;
-          grid-column: 1;
-        }
-
-        .mute {
-          grid-row: 2;
-          grid-column: 1;
-        }
-
         .start {
-          grid-row: 3;
-          grid-column: 1 / 4;
+          width: 8rem;
         }
       }
     }

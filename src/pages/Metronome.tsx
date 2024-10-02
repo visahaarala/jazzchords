@@ -109,8 +109,8 @@ const Metronome = () => {
             </p>
           </div>
         )}
-        <div className={styles.grid}>
-          <MetronomeLight />
+        <div className={styles.toggles}>
+          <MetronomeLight hide={tempo > flashTempoLimit} />
           <div
             id={'metronomeStart'}
             onClick={setPlay.bind(null, !play)}
