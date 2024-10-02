@@ -78,12 +78,23 @@ const RangeSlider = ({
     }
   }, [isTouchingSlider, sliderPctg.current]);
 
+  // const [changeSpeedDescription, setChangeSpeedDescription] = useState('');
   useEffect(() => {
     // TEMPO CHANGES
     const pctgOffset = sliderPctg.current - 50;
     const pctgOffsetAbs = Math.abs(pctgOffset);
-    const requiredTimeDifference = Math.pow(1 / pctgOffsetAbs, 2) * 20000;
     const changeBy = 1 + Math.floor(Math.pow(pctgOffsetAbs / 22, 2));
+    const requiredTimeDifference =
+      Math.pow(1 / pctgOffsetAbs, 2.8) * 150000 * changeBy;
+
+    // setChangeSpeedDescription(
+    //   'changeBy: ' +
+    //     changeBy +
+    //     ', time: ' +
+    //     (requiredTimeDifference !== Infinity
+    //       ? Math.floor(requiredTimeDifference) + 'ms'
+    //       : requiredTimeDifference + '')
+    // );
 
     const now = Date.now();
     const timeDifference = now - lastTempoChangeTime;
@@ -99,6 +110,7 @@ const RangeSlider = ({
 
   return (
     <div className={styles.range}>
+      {/* <p>{changeSpeedDescription}</p> */}
       <div id='tempoRail' className={styles.input}>
         <div
           className={`${styles.input__numbers} ${
