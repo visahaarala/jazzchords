@@ -137,14 +137,18 @@ main {
 
 footer {
   padding: 1.2rem;
-  height: 5.2rem;
+  padding-bottom: 1.6rem;
+  // height: 5rem;
   background-color: var(--color-gray);
   border-top: 1px solid var(--color-gray-light);
 
+  @media (pointer: coarse) {
+    padding-bottom: 2rem;
+  }
+
   @media (pointer: coarse) and (orientation: landscape) {
-    height: unset;
-    width: 5rem;
     padding: 0 1rem;
+    padding-right: 1.7rem;
     border-top: none;
     border-left: 1px solid var(--color-gray-light);
   }
