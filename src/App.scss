@@ -137,7 +137,7 @@ main {
 
 footer {
   padding: 1.2rem;
-  height: 5rem;
+  height: 5.2rem;
   background-color: var(--color-gray);
   border-top: 1px solid var(--color-gray-light);
 
@@ -151,7 +151,8 @@ footer {
 }
 
 h2 {
-  z-index: 2; // to be above settings box-shadow
+  user-select: none;
+  -webkit-user-select: none;
 
   font-weight: normal;
   font-size: 1.2rem;
@@ -170,20 +171,13 @@ h2 {
   }
 }
 
-.iconButton {
-  align-self: center;
-  justify-self: center;
-  display: flex;
-  justify-content: center; // the svg within
-  height: 2.2rem;
-  width: 2.2rem;
-  padding: 0.1rem;
-}
-
 .button,
 .iconButton {
-  cursor: pointer;
-  // same as .button
+  display: flex;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+
   border-radius: var(--border-radius);
   &:focus,
   &:hover {
@@ -199,17 +193,21 @@ h2 {
   }
 }
 
+.iconButton {
+  align-self: center;
+  justify-self: center;
+  height: 2.2rem;
+  width: 2.2rem;
+  padding: 0.1rem;
+}
+
 .button {
-  background-color: var(--color-gray);
-  border: var(--border-button);
+  align-items: center;
   color: inherit;
   font-family: inherit;
-  cursor: pointer;
+  background-color: var(--color-gray);
+  border: var(--border-button);
   padding: var(--button-padding);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   &__disabled {
     background-color: var(--color-gray-dark);

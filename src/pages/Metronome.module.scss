@@ -18,6 +18,7 @@
       width: 14rem;
       text-align: center;
       user-select: none;
+      -webkit-user-select: none;
       font-size: 6rem;
       padding: 1rem;
       border-radius: var(--border-radius);
@@ -39,55 +40,31 @@
   .bottom {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 
     @media (pointer: coarse) and (orientation: landscape) {
       flex-direction: row-reverse;
       flex-direction: column-reverse;
     }
 
-    .range {
-      input[type='range'] {
-        width: 100%;
-        appearance: none;
-        background-color: var(--color-gray);
-        border-radius: 2rem;
-        height: 0.7rem;
-        margin-bottom: 2rem;
+    .text {
+      p {
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
 
-        @media (pointer: coarse) and (orientation: landscape) {
-          margin-top: 1.5rem;
-          margin-bottom: 0.7rem;
-        }
-
-        &::-webkit-slider-thumb {
-          appearance: none;
-          width: 2rem;
-          height: 2rem;
-          background-color: var(--color-black);
-          border: 2px solid var(--color-gray-light);
-          border-radius: 50%;
-        }
+      code {
+        font-size: 1rem;
+        text-transform: lowercase;
       }
     }
 
     .grid {
+      width: 100%;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: var(--gap-small);
-
-      .text {
-        grid-column: 1 / 5;
-
-        p {
-          text-align: center;
-          margin-bottom: 0.5rem;
-        }
-
-        code {
-          font-size: 1rem;
-          text-transform: lowercase;
-        }
-      }
 
       .start {
         grid-column: 2 / 4;
@@ -109,26 +86,6 @@
         .mute {
           grid-row: 2;
           grid-column: 1;
-        }
-
-        .minusfive {
-          grid-row: 1;
-          grid-column: 2;
-        }
-
-        .plusfive {
-          grid-row: 1;
-          grid-column: 3;
-        }
-
-        .minusone {
-          grid-row: 2;
-          grid-column: 2;
-        }
-
-        .plusone {
-          grid-row: 2;
-          grid-column: 3;
         }
 
         .start {

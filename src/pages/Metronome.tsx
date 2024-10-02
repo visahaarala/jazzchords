@@ -6,9 +6,10 @@ import { MetronomeContext } from '../context/MetronomeContext';
 import MetronomeMute from '../components/metronome/MetronomeMute';
 import MetronomeLight from '../components/metronome/MetronomeLight';
 import { isMobile } from '../App';
+import RangeSlider from '../components/metronome/RangeSlider';
 
-const min = 10;
-const max = 600;
+export const minTempo = 10;
+export const maxTempo = 600;
 
 // no flash if tempo greater than:
 export const flashTempoLimit = 180;
@@ -21,6 +22,8 @@ const Metronome = () => {
 
   const [play, setPlay] = useState(false);
   const [delay, setDelay] = useState<number>();
+  const isTouchingSliderState = useState(false);
+  const [isTouchingSlider] = isTouchingSliderState;
 
   const keyDownHandler = (e: KeyboardEvent<HTMLDivElement>) => {
     const code = e.code;
@@ -35,7 +38,7 @@ const Metronome = () => {
   };
 
   const tempoUp = (number: number) => {
-    const newTempo = tempo + number > max ? max : tempo + number;
+    const newTempo = tempo + number > maxTempo ? maxTempo : tempo + number;
     setTempo(newTempo);
     if (newTempo > flashTempoLimit) {
       setFlashIsOn(false);
@@ -43,25 +46,17 @@ const Metronome = () => {
   };
 
   const tempoDown = (number: number) => {
-    const newTempo = tempo - number < min ? min : tempo - number;
+    const newTempo = tempo - number < minTempo ? minTempo : tempo - number;
     setTempo(newTempo);
   };
 
-  const rangeHandler = (tempoString: string) => {
-    const tempo = Number(tempoString);
-    setTempo(tempo);
-    if (tempo > flashTempoLimit) {
-      setFlashIsOn(false);
-    }
-  };
-
   useEffect(() => {
-    if (play) {
+    if (play && !isTouchingSlider) {
       setDelay((1000 * 60) / tempo);
     } else {
       setDelay(undefined);
     }
-  }, [tempo, play]);
+  }, [tempo, play, isTouchingSlider]);
 
   useMetronome({
     callBack: () => {
@@ -98,62 +93,23 @@ const Metronome = () => {
       </div>
       <div className={styles.bottom}>
         {isMobile ? (
-          <div className={styles.range}>
-            <input
-              tabIndex={-1}
-              type='range'
-              value={tempo}
-              onChange={(e) => rangeHandler(e.target.value)}
-              min={min}
-              max={max}
-              aria-label='tempo slider'
-            />
-          </div>
+          <RangeSlider
+            tempoUp={tempoUp}
+            tempoDown={tempoDown}
+            isTouchingSliderState={isTouchingSliderState}
+          />
         ) : (
-          ''
+          <div className={styles.text}>
+            <p>
+              Click <code>start/stop</code> or <code>{tempo}</code>.
+            </p>
+            <p>
+              Use <code>tab</code>, <code>arrows</code> & <code>space</code> for
+              control.
+            </p>
+          </div>
         )}
         <div className={styles.grid}>
-          {isMobile ? (
-            <>
-              <div
-                onClick={tempoDown.bind(null, 5)}
-                className={`button ${styles.minusfive}`}
-                aria-label='minus five'
-              >
-                -5
-              </div>
-              <div
-                onClick={tempoDown.bind(null, 1)}
-                className={`button ${styles.minusone}`}
-                aria-label='minus one'
-              >
-                -1
-              </div>
-              <div
-                onClick={tempoUp.bind(null, 1)}
-                className={`button ${styles.plusone}`}
-                aria-label='plus one'
-              >
-                +1
-              </div>
-              <div
-                onClick={tempoUp.bind(null, 5)}
-                className={`button ${styles.plusfive}`}
-                aria-label='plus five'
-              >
-                +5
-              </div>
-            </>
-          ) : (
-            <div className={styles.text}>
-              <p>
-                Click <code>start/stop</code> or <code>{tempo}</code>.
-              </p>
-              <p>
-                Use <code>Arrows</code> & <code>Space</code> for control.
-              </p>
-            </div>
-          )}
           <MetronomeLight />
           <div
             id={'metronomeStart'}

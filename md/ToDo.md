@@ -6,6 +6,10 @@
 
 ..might not be so good.. Maybe a range slider that works as a nudge tool, starting from center.. further right/left means faster changes? .. have to figure out something new! something to do with PointerEvent
 
+### silent mode & screen timeout instructions
+
+Create info/etc icon next to settings icon in player. When clickin info, CSS display text about the problemo and how to solve it. 
+
 ### progressive app installation instructions
 
 - iPhone DONE
