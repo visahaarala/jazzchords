@@ -2,7 +2,7 @@
 
 [https://jazzchords.singingtrumpet.com/](https://jazzchords.singingtrumpet.com/)
 
-A tool for learning & practicing jazz chords.
+A tool for learning jazz chords.
 
 Designed primarily for a mobile phone (iPhone XS as a reference). 
 
