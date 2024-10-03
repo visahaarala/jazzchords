@@ -2,7 +2,7 @@
 
 ## now
 
-#### progressive app installation instructions
+#### PWA installation instructions
 
 - iPhone DONE
 - TODO: android etc.
