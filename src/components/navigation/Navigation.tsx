@@ -24,12 +24,17 @@ const Navigation = () => {
     metronome: <MetronomeIcon />,
   };
 
-  const linkStyle = (navName: string): React.CSSProperties | undefined => {
-    if ('/' + navName === pathname) {
+  const linkStyle = (key: string): React.CSSProperties | undefined => {
+    // if pathname is '/', active page is Info
+    if (pathname === '/' && key === 'info') {
       return { color: 'var(--color-link)' };
-    } else {
-      return { color: 'currentColor' };
     }
+
+    if ('/' + key === pathname) {
+      return { color: 'var(--color-link)' };
+    }
+
+    return { color: 'currentColor' };
   };
 
   return (

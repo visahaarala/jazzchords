@@ -24,7 +24,8 @@ const router = createBrowserRouter([
       </RootLayout>
     ),
     children: [
-      { index: true, loader: async () => redirect('/info') },
+      // { index: true, loader: async () => redirect('/info') },
+      { index: true, element: <Info /> },
       {
         path: 'play',
         element: <Play />,
