@@ -90,7 +90,8 @@ export function useMetronome({
           if (
             clicksRef.current.length &&
             // give the visual click a small head start
-            clicksRef.current[0].time < now + 0.1
+            // .. now 0.0 (cancelled the head start)
+            clicksRef.current[0].time < now + 0.0
           ) {
             // update DOM visual click when it is time
             savedCallback.current();
