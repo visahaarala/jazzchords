@@ -7,9 +7,9 @@ import {
   useRef,
   useState,
 } from 'react';
-import styles from './RangeSlider.module.scss';
+import styles from './TempoSlider.module.scss';
 
-const RangeSlider = ({
+const TempoSlider = ({
   tempoUp,
   tempoDown,
   isTouchingSliderState,
@@ -135,4 +135,4 @@ const RangeSlider = ({
   );
 };
 
-export default RangeSlider;
+export default TempoSlider;

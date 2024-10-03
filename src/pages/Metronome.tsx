@@ -6,7 +6,7 @@ import { MetronomeContext } from '../context/MetronomeContext';
 import MetronomeMute from '../components/metronome/MetronomeMute';
 import MetronomeLight from '../components/metronome/MetronomeLight';
 import { isMobile } from '../App';
-import RangeSlider from '../components/metronome/RangeSlider';
+import TempoSlider from '../components/metronome/TempoSlider';
 
 export const minTempo = 10;
 export const maxTempo = 600;
@@ -93,7 +93,7 @@ const Metronome = () => {
       </div>
       <div className={styles.bottom}>
         {isMobile ? (
-          <RangeSlider
+          <TempoSlider
             tempoUp={tempoUp}
             tempoDown={tempoDown}
             isTouchingSliderState={isTouchingSliderState}
