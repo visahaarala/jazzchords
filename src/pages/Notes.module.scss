@@ -22,10 +22,9 @@
     gap: var(--gap-small);
 
     @media (pointer: coarse) and (orientation: landscape) {
-      align-items: end; // g-clef in landscape
       margin-top: auto;
       flex-direction: column-reverse;
-      gap: var(--gap-medium);
+      width: 8rem;
 
       & > select {
         align-self: stretch;

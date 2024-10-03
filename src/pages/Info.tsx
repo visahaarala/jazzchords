@@ -11,20 +11,24 @@ const isStandaone = matchMedia('(display-mode: standalone)').matches;
 const Info = () => {
   const ua = navigator.userAgent;
   const isIphone = ua.includes('iPhone');
-  // const isIpad = ua.includes('iPad') || (ua.includes('Macintosh') && isMobile);
+  const isIpad = ua.includes('iPad') || (ua.includes('Macintosh') && isMobile);
 
-  const showPWA = isMobile && !isStandaone && isIphone;
-  // || isIpad
+  const showPWA = isMobile && !isStandaone;
 
   return (
     <div className={styles.info}>
       {showPWA && (
         <div>
-          This progressive web app can be installed. Just tap
-          <span className={styles.icon__share}>
-            <ShareIcon />
-          </span>
-          and then "Add to Home Screen".
+          This is an installable progressive web app.
+          {(isIphone || isIpad) && (
+            <>
+              Just tap
+              <span className={styles.icon__share}>
+                <ShareIcon />
+              </span>
+              and then "Add to Home Screen".
+            </>
+          )}
         </div>
       )}
       <div>
