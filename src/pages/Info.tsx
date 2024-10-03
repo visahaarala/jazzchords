@@ -22,6 +22,7 @@ const Info = () => {
           This is an installable progressive web app.
           {(isIphone || isIpad) && (
             <>
+              {' '}
               Just tap
               <span className={styles.icon__share}>
                 <ShareIcon />
