@@ -2,30 +2,22 @@
 
 ## now
 
-### metronome UI
-
-..might not be so good.. Maybe a range slider that works as a nudge tool, starting from center.. further right/left means faster changes? .. have to figure out something new! something to do with PointerEvent
-
-### silent mode & screen timeout instructions
-
-Create info/etc icon next to settings icon in player. When clickin info, CSS display text about the problemo and how to solve it. 
-
-### progressive app installation instructions
+#### progressive app installation instructions
 
 - iPhone DONE
 - TODO: android etc.
 
 ## later
 
-### make chord playable
+#### make chord playable
 
 Elementary Audio
 
-### whiteKeyIndex
+#### whiteKeyIndex
 
 Use of that term whiteKeyIndex is not coherent throughout the app. Sometimes it means the index of the array ['C', 'D', 'E', ...], and sometimes it means the index of whitekeys in the whole keyboard. And where is the zero value, at middle C. Have to clarify this at some point.
 
-### randomTop note octaveNumber
+#### randomTop note octaveNumber
 
 .. fix randomizing.
 
@@ -34,11 +26,7 @@ Use of that term whiteKeyIndex is not coherent throughout the app. Sometimes it 
 - If clef/range changed, reset all randomnote information?
 - Min range set to a 7th instead of an octave?
 
-## update README.MD
-
-... before publishing, check the texts are up to date
-
-### other
+#### other
 
 - klikkipallot on/off
 
