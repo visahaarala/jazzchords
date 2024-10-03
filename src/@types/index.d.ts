@@ -158,38 +158,8 @@ export type BeatsPerMinute =
   | '238'
   | '262';
 
-// export type RandomTopNote =
-//   | 'E2' // E below bass clef staff
-//   | 'F2'
-//   | 'G2'
-//   | 'A2'
-//   | 'B2'
-//   | 'C3' // bass clef middle C
-//   | 'D3'
-//   | 'E3'
-//   | 'F3'
-//   | 'G3'
-//   | 'A3'
-//   | 'B3'
-//   | 'C3'
-//   | 'C4' // "low C"
-//   | 'D4'
-//   | 'E4'
-//   | 'F4'
-//   | 'G4'
-//   | 'A4'
-//   | 'B4'
-//   | 'C5'
-//   | 'D5'
-//   | 'E5'
-//   | 'F5'
-//   | 'G5'
-//   | 'A5'
-//   | 'B5'
-//   | 'C6'; // high C above treble clef staff
-
 export type RandomTopNote =
-  | 'E' // E below bass clef staff
+  | 'E' // E below staff in bass clef
   | 'F'
   | 'G'
   | 'A'
@@ -201,7 +171,7 @@ export type RandomTopNote =
   | 'g'
   | 'a'
   | 'b'
-  | 'c1' // "low C"
+  | 'c1' // "low C" in below staff in treble clef
   | 'd1'
   | 'e1'
   | 'f1'
@@ -215,4 +185,4 @@ export type RandomTopNote =
   | 'g2'
   | 'a2'
   | 'b2'
-  | 'c3'; // high C above treble clef staff
+  | 'c3'; // high C above staff in treble clef
