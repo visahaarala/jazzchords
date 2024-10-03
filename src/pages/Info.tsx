@@ -55,9 +55,8 @@ const Info = () => {
 
       {isMobile && (
         <div>
-          Turn off silent mode to hear the click. <br />
-          Prevent screen timeout / sleep / auto-lock from device settings if
-          necessary.
+          Turn off silent mode to hear the click. Prevent screen timeout / sleep
+          / auto-lock from device settings if necessary.
         </div>
       )}
 
