@@ -2,7 +2,7 @@ import './App.scss';
 import {
   RouterProvider,
   createBrowserRouter,
-  redirect,
+  // redirect,
 } from 'react-router-dom';
 import RootLayout from './pages/RootLayout';
 import ErrorPage from './pages/ErrorPage';
