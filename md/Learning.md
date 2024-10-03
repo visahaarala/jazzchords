@@ -50,7 +50,7 @@ Icons are generated from svg files by using [Favicon InBrowser.App](https://favi
 
 Further instructions for PWA icons in [https://vite-pwa-org.netlify.app/guide/pwa-minimal-requirements.html](https://vite-pwa-org.netlify.app/guide/pwa-minimal-requirements.html).
 
-#### changing a css variable name in all files recursively
+#### Changing a css variable name in all files recursively
 
 ```
 grep -rl 'color-white' | xargs -I % sed -i '.bak' 's/color-white/color-one/g' %
