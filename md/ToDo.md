@@ -33,3 +33,31 @@ Use of that term whiteKeyIndex is not coherent throughout the app. Sometimes it 
 - roman numerals
 
 - random bass eg. C7/E
+
+## ideas/comments from community
+
+#### basic
+
+- remove double flats & sharps
+
+- change things enharmonically when the option is a natural note
+
+- ability to hear the chords / base note
+
+- first tell what the app is about, then give installation instructions
+
+- more explanation / instructions (locs, settings, etc)
+
+- metronome and practice tempo difference confusing
+
+- why is there a separate metronome in the program
+
+- player settings into a separate tab?
+
+- possibility to hear chords / bottom note
+
+#### more complex
+
+- creating accompaniment notation based on chords (vapaasäestys)
+
+- reading music from thesession.org and generating accompaniment
