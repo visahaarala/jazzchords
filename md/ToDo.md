@@ -44,8 +44,6 @@ Use of that term whiteKeyIndex is not coherent throughout the app. Sometimes it 
 
 - ability to hear the chords / base note
 
-- first tell what the app is about, then give installation instructions
-
 - more explanation / instructions (locs, settings, etc)
 
 - metronome and practice tempo difference confusing
