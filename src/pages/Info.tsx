@@ -17,21 +17,6 @@ const Info = () => {
 
   return (
     <div className={styles.info}>
-      {showPWA && (
-        <div>
-          This is an installable progressive web app.
-          {(isIphone || isIpad) && (
-            <>
-              {' '}
-              Just tap
-              <span className={styles.icon__share}>
-                <ShareIcon />
-              </span>
-              and then "Add to Home Screen".
-            </>
-          )}
-        </div>
-      )}
       <div>
         <span className={styles.icon__header}>
           <NotesIcon />
@@ -66,6 +51,22 @@ const Info = () => {
       )}
 
       {!isMobile && <div>Use tab, space and arrows to navigate.</div>}
+
+      {showPWA && (
+        <div>
+          This is an installable progressive web app.
+          {(isIphone || isIpad) && (
+            <>
+              {' '}
+              Just tap
+              <span className={styles.icon__share}>
+                <ShareIcon />
+              </span>
+              and then "Add to Home Screen".
+            </>
+          )}
+        </div>
+      )}
 
       <div>
         More info at{' '}
