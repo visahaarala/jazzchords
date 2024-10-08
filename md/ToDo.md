@@ -34,7 +34,7 @@ Use of that term whiteKeyIndex is not coherent throughout the app. Sometimes it 
 
 - random bass eg. C7/E
 
-## ideas/comments from community
+## ideas/comments from friends
 
 #### basic
 
