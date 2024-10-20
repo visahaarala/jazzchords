@@ -41,6 +41,7 @@ const PlaySettings = () => {
               : randomTopNotes.slice(0, -(14 + 5))
           }
           disabled={!showRandomTopNote}
+          width={3.5}
         />
         <span>&mdash;</span>
         <Select<string>
@@ -53,6 +54,7 @@ const PlaySettings = () => {
               : randomTopNotes.slice(7, -(7 + 5))
           }
           disabled={!showRandomTopNote}
+          width={3.5}
         />
         <span className={styles.space} />
         <ClefSelector

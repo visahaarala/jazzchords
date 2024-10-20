@@ -39,7 +39,7 @@ const Notes = () => {
       <div className={styles.notes__select}>
         <KeySelect />
         <ExtensionSelect />
-        <ClefSelector dispatchType='SET_NOTES_CLEF' payloadKey='notesClef' />
+        <ClefSelector dispatchType='SET_NOTES_CLEF' payloadKey='notesClef' inverse={true} />
       </div>
     </div>
   );

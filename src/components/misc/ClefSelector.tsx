@@ -9,10 +9,12 @@ const ClefSelector = ({
   dispatchType,
   payloadKey,
   disabled,
+  inverse,
 }: {
   dispatchType: ReducerActionType;
   payloadKey: 'playerClef' | 'notesClef';
   disabled?: boolean;
+  inverse?: boolean;
 }) => {
   const { state, dispatch } = useContext(ChordsContext);
   const clef = state[payloadKey];
@@ -35,6 +37,8 @@ const ClefSelector = ({
     }
   };
 
+  const clefIsBass = clef === 'bass';
+
   return (
     <div
       className={`iconButton ${styles.selector} ${
@@ -45,10 +49,10 @@ const ClefSelector = ({
       tabIndex={disabled ? -1 : 0}
     >
       <div className={styles.selector__clef}>
-        <BassClefIcon hide={!(clef === 'bass')} height={2} />
+        <BassClefIcon hide={inverse ? clefIsBass : !clefIsBass} height={2} />
       </div>
       <div className={styles.selector__clef}>
-        <TrebleClefIcon hide={!(clef === 'treble')} height={2} />
+        <TrebleClefIcon hide={inverse ? !clefIsBass: clefIsBass} height={2} />
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ const Select = <T,>({
   optionToString,
   stringToOption,
   disabled,
+  width,
 }: {
   dispatchActionType: ReducerActionType;
   payloadKey: keyof ProgramState;
@@ -19,6 +20,7 @@ const Select = <T,>({
   optionToString?: (option: T) => string;
   stringToOption?: (optionString: string) => T;
   disabled?: boolean;
+  width?: number;
 }) => {
   const { state, dispatch } = useContext(ChordsContext);
 
@@ -41,6 +43,7 @@ const Select = <T,>({
       className={`button ${styles.select} ${disabled && styles.disabled}`}
       disabled={disabled ? true : false}
       aria-label={payloadKey}
+      style={width ? { width: width + 'rem' } : {}}
     >
       {options.map((option) => {
         const optionString = optionToString
