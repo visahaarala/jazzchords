@@ -58,6 +58,6 @@ grep -rl 'color-white' | xargs -I % sed -i '.bak' 's/color-white/color-one/g' %
 
 #### Notes in chords
 
-Nice source for info:
+[https://www.musmath.com/chord](https://www.musmath.com/chord)
 
 [https://www.chordatlas.com](https://www.chordatlas.com)

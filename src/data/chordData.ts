@@ -68,6 +68,7 @@ export const extensionsOrganized: {
     'maj13',
     '-maj13',
     '9#11',
+    '9b13',
     '7b13',
     '13#9',
     '13b9',

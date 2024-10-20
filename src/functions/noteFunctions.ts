@@ -42,24 +42,24 @@ const segmentInstructions: { [key: string]: SegmentInstruction } = {
 
 const getSegmentInstruction = (
   segment: string
-  // isMinor: boolean
 ): SegmentInstruction => {
   if (segmentInstructions[segment]) {
     return segmentInstructions[segment];
   }
-  // handle b5, #9, b13, #11, etc...
+  // in case of a number with accidental
+  // ie. (b5, #9, #11, b13, etc)
   if (
-    segment.length === 2 &&
+    segment.length >= 2 &&
     (segment[0] === 'b' || segment[0] === '#') &&
-    Number(segment[1])
+    Number(segment.slice(1))
   ) {
     return {
-      // first try to remove if number already exists in chord
-      remove: [segment[1]],
+      // first try to remove if number (without accidental) already exists in chord
+      remove: [segment.slice(1)],
       add: [segment],
     };
   }
-  // in case of a simple number (no 'b' or '#'), just add
+  // in case of a simple number without accidentals
   return { add: [segment] };
 };
 
