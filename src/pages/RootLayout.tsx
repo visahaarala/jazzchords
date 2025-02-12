@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Navigation from '../components/navigation/Navigation';
 import ChordsContextProvider from '../context/ChordsContext';
 import MetronomeContextProvider from '../context/MetronomeContext';
@@ -22,6 +23,7 @@ const RootLayout = ({
           <Navigation />
         </footer>
       </div>
+      <Analytics />
     </ChordsContextProvider>
   </MetronomeContextProvider>
 );
