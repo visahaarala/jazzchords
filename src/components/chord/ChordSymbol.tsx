@@ -1,6 +1,6 @@
 import styles from './ChordSymbol.module.scss';
 
-import React, { cloneElement } from 'react';
+import { JSX, cloneElement } from 'react';
 import Bracket from '../svg/symbols/extensions/Bracket';
 import A from '../svg/symbols/keys/A';
 import B from '../svg/symbols/keys/B';
@@ -38,7 +38,7 @@ const ChordSymbol = ({
   // this value dictates all other em size parameters
   if (size === undefined) size = 1.6; // rem
 
-  const bases: { [key in Alphabet]: (height: number) => React.JSX.Element } = {
+  const bases: { [key in Alphabet]: (height: number) => JSX.Element } = {
     A: (height) => <A height={height} />,
     B: (height) => <B height={height} />,
     C: (height) => <C height={height} />,
@@ -49,8 +49,8 @@ const ChordSymbol = ({
   };
 
   const extensions: {
-    // [key in ExtensionText]: (height: number) => React.JSX.Element;
-    [key: string]: (height: number) => React.JSX.Element;
+    // [key in ExtensionText]: (height: number) => JSX.Element;
+    [key: string]: (height: number) => JSX.Element;
   } = {
     b: (height) => <Flat height={height} />,
     '#': (height) => <Sharp height={height} />,
@@ -78,7 +78,7 @@ const ChordSymbol = ({
   const createJsxArray = (str: string) => {
     const jsxArray: {
       key: keyof ExtensionText;
-      element: (height: number) => React.JSX.Element;
+      element: (height: number) => JSX.Element;
     }[] = [];
 
     while (str.length) {
@@ -106,7 +106,7 @@ const ChordSymbol = ({
 
   const jsxArrays: {
     key: keyof ExtensionText;
-    element: (height: number) => React.JSX.Element;
+    element: (height: number) => JSX.Element;
   }[][] = [];
   chord.extension.segments.forEach((segment) =>
     jsxArrays.push(createJsxArray(segment))

@@ -22,7 +22,7 @@ export function useMetronome({
   });
 
   const [audioContext, setAudioContext] = useState<AudioContext>();
-  const gainNodeRef = useRef<GainNode>();
+  const gainNodeRef = useRef<GainNode>(null);
   const clicksRef = useRef<{ osc: OscillatorNode | undefined; time: number }[]>(
     []
   );

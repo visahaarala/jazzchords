@@ -1,6 +1,6 @@
 import styles from './Beats.module.scss';
 import BeatCirle from './BeatCircle';
-import { useContext } from 'react';
+import { JSX, useContext } from 'react';
 import { ChordsContext } from '../../../context/ChordsContext';
 
 const Beats = () => {

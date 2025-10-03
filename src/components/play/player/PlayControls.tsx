@@ -19,7 +19,7 @@ const PlayControls = () => {
     isMuted,
   } = state;
   const [play, setPlay] = useState<boolean>(false);
-  const wakeLock = useRef<WakeLockSentinel>();
+  const wakeLock = useRef<WakeLockSentinel>(null);
 
   // prevent display sleep while metronome playing
   // works on newer desktop browsers (not Firefox)

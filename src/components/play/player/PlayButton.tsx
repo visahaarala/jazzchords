@@ -1,4 +1,4 @@
-import { KeyboardEvent } from 'react';
+import { JSX, KeyboardEvent } from 'react';
 import styles from './PlayButton.module.scss';
 
 const PlayButton = ({

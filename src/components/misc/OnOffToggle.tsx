@@ -1,4 +1,4 @@
-import { KeyboardEvent, useContext } from 'react';
+import { JSX, KeyboardEvent, useContext } from 'react';
 import styles from './OnOffToggle.module.scss';
 import { ChordsContext } from '../../context/ChordsContext';
 import { ProgramState, ReducerActionType } from '../../@types';

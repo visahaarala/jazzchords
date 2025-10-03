@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import Navigation from '../components/navigation/Navigation';

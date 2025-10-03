@@ -1,6 +1,6 @@
 import styles from './Navigation.module.scss';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { KeyboardEvent } from 'react';
+import { JSX, KeyboardEvent } from 'react';
 import InfoIcon from '../svg/icons/InfoIcon';
 import MetronomeIcon from '../svg/icons/MetronomeIcon';
 import NotesIcon from '../svg/icons/NotesIcon';
